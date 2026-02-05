@@ -1,0 +1,100 @@
+\section{Reproducibility appendix}
+\label{app:reproducibility}
+
+This repository is designed so that the paper can be audited from stable, committed artifacts \emph{and} regenerated end to end from configuration files.
+
+\subsection{Configs (regenerating runs)}
+End-to-end runs are produced via the harness:
+\begin{quote}\small
+\begin{verbatim}
+python experiments/run.py --config experiments/configs/grid_plane.yaml
+python experiments/run.py --config experiments/configs/sphere_knn.yaml
+python experiments/run.py --config experiments/configs/sierpinski.yaml
+python experiments/run.py --config experiments/configs/anisotropic.yaml
+python experiments/run.py --config experiments/configs/holonomy_demo.yaml
+python experiments/run.py --config experiments/configs/pythagoras_rw_grid.yaml
+\end{verbatim}
+\end{quote}
+Each command creates \texttt{results/<run\_id>/} with \texttt{config.json}, \texttt{metrics.json}, \texttt{pointer.json}, per-run artifacts, and plots.  The \texttt{results/} directory is intentionally not committed.
+
+\subsection{Config format and determinism}
+The configuration files under \texttt{experiments/configs/} use the \texttt{.yaml} extension but contain JSON content (valid YAML~1.2) so they can be parsed without external YAML dependencies.  Each config includes explicit seeds; in particular, lens clustering uses seeded, deterministic routines and the holonomy demo uses deterministic loop sampling under fixed seeds (with sorted iteration to avoid ordering nondeterminism).  As with any linear-algebra-heavy pipeline, minor floating-point differences across platforms/BLAS implementations are possible; the committed run packs should be treated as the reference artifacts for the numbers and figures quoted in this paper.
+
+\subsection{Committed run packs (stable references for writing)}
+For writing stability, we commit run packs under:
+\begin{quote}\small
+\texttt{docs/notes/runs/<run\_id>/}
+\end{quote}
+These packs contain the exact plots and summary JSONs referenced by the paper, along with paper-ready comparison figures (\texttt{docs/notes/figures/}) and a quotables table (\texttt{docs/notes/tables/}).  The paper itself uses copies of these figures under \texttt{paper/figures/}.
+
+\subsection{Canonical configuration snapshot (major knobs)}
+For reader convenience we summarize the major knobs of the canonical configurations used in the paper.  The full parameter lists are in the config files themselves; these tables are a snapshot of the most load-bearing settings.
+
+\begin{table}[t]
+\centering
+\caption{Canonical geo-pipeline configurations used for E1--E4. Common settings: $\tau=5$, lens levels $[4,8,16,32,64,128]$ with $n_{\mathrm{eigs}}=6$, prototypes=\texttt{uniform}, symmetrize=\texttt{weight\_avg}, $\eta=10^{-12}$, and $\varepsilon_{\mathrm{edge}}=10^{-15}$.}
+\label{tab:canonical-configs-geo}
+\scriptsize
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+Exhibit & Config & Substrate (micro kernel) \\
+\midrule
+E1 plane & \texttt{grid\_plane.yaml} & Grid random walk: \texttt{n\_side}=25, \texttt{lazy}=0.5. \\
+E2 sphere & \texttt{sphere\_knn.yaml} & Sphere point cloud kNN: \texttt{n\_points}=500, \texttt{k}=10, $\sigma=0.5$, \texttt{self\_loop}=$10^{-6}$. (Coordinates are used only to generate the micro graph; closure never accesses them.) \\
+E3 fractal & \texttt{sierpinski.yaml} & Sierpi\'nski gasket random walk: \texttt{level}=5, \texttt{lazy}=0.5. \\
+E4 constrained & \texttt{anisotropic.yaml} & Grid + anisotropic gate: direction east, strength 1.0 (renormalized). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Canonical holonomy configuration used for Figure~\ref{fig:holonomy-plane-sphere} (E2).}
+\label{tab:canonical-config-holonomy}
+\scriptsize
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+Item & Setting \\
+\midrule
+Config & \texttt{holonomy\_demo.yaml} \\
+Macro construction & $\tau=5$, lens levels $[128]$, $n_{\mathrm{eigs}}=6$ (seed 0). \\
+Holonomy neighborhoods & $k_{\mathrm{neigh}}=24$, \texttt{expand\_hops}=1, \texttt{min\_overlap}=4. \\
+Loop sampling & triangles via $k_{\mathrm{loop}}=8$, \texttt{max\_loops}=800, seeds (plane=0, sphere=1). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Canonical Pythagoras run configuration (E5).}
+\label{tab:canonical-config-pythagoras}
+\scriptsize
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+Item & Setting \\
+\midrule
+Config & \texttt{pythagoras\_rw\_grid.yaml} \\
+Substrate & 2D torus random walk with $N=512$, lazy=0.5. \\
+Stages & $\tau\in\{4,8,16,32,64,128\}$. \\
+Sampling & displacement window via \texttt{D\_factor}=3 and \texttt{D\_max}=30; right-triangle samples=2000. \\
+Numerics & $p$-floor $10^{-300}$ and fit threshold $p_{\min}=10^{-20}$. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\FloatBarrier
+
+\subsection{Export and comparison scripts}
+Two helper scripts support writing-time reproducibility:
+\begin{itemize}
+  \item \texttt{python scripts/export\_run\_artifacts\_to\_docs.py --recommended --overwrite} exports recommended run outputs from \texttt{results/} into committed run packs under \texttt{docs/notes/runs/}.
+  \item \texttt{python scripts/make\_paper\_ready\_comparisons.py} regenerates the overlay comparison figures and quotables tables from the committed run packs.
+\end{itemize}
+
+\subsection{Paper build}
+To build the PDF:
+\begin{quote}\small
+\begin{verbatim}
+cd paper && make pdf
+\end{verbatim}
+\end{quote}

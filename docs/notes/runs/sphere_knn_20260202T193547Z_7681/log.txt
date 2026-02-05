@@ -1,0 +1,5 @@
+run_id: sphere_knn_20260202T193547Z_7681
+config_path: /home/repos/six-birds-space/experiments/configs/sphere_knn.yaml
+start_utc: 2026-02-02T19:35:47.968775+00:00
+
+end_utc: 2026-02-02T19:35:48.855384+00:00

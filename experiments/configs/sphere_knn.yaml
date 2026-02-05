@@ -1,0 +1,32 @@
+{
+  "run_name": "sphere_knn",
+  "runner": "geo_pipeline",
+  "seed": 0,
+  "output_root": "results",
+  "substrate": {"kind": "sphere_knn", "n_points": 500, "k": 10, "sigma": 0.5, "self_loop": 1e-6},
+  "lens": {"levels": [4, 8, 16, 32, 64, 128], "n_eigs": 6},
+  "tau": 5,
+  "prototypes": "uniform",
+  "metric": {"symmetrize": "weight_avg", "eps_edge": 1e-15, "eta": 1e-12},
+  "distortion": {"rescale": "lstsq"},
+  "plots": {"enabled": true},
+  "holonomy": {
+    "enabled": true,
+    "level_m": 64,
+    "k_neigh": 18,
+    "k_loop": 8,
+    "max_loops": 500,
+    "min_overlap": 4
+  },
+  "pointer_summary_keys": [
+    "n_micro",
+    "m_finest",
+    "tau",
+    "delta_finest",
+    "distortion_max_rescaled",
+    "mean_dist_finest",
+    "holonomy_median",
+    "holonomy_mean",
+    "holonomy_evaluated"
+  ]
+}

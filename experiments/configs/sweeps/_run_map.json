@@ -1,0 +1,58 @@
+{
+  "experiments/configs/sweeps/grid_eps_edge_disconnect.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/grid_eps_edge_disconnect_20260202T202926Z_f6ec",
+    "run_id": "grid_eps_edge_disconnect_20260202T202926Z_f6ec"
+  },
+  "experiments/configs/sweeps/grid_levels_coarse.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/grid_levels_coarse_20260202T202927Z_b787",
+    "run_id": "grid_levels_coarse_20260202T202927Z_b787"
+  },
+  "experiments/configs/sweeps/grid_levels_finer.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/grid_levels_finer_20260202T202928Z_d009",
+    "run_id": "grid_levels_finer_20260202T202928Z_d009"
+  },
+  "experiments/configs/sweeps/grid_prototypes_stationary.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/grid_prototypes_stationary_20260202T202925Z_9f4e",
+    "run_id": "grid_prototypes_stationary_20260202T202925Z_9f4e"
+  },
+  "experiments/configs/sweeps/grid_tau_1.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/grid_tau_1_20260202T202923Z_5174",
+    "run_id": "grid_tau_1_20260202T202923Z_5174"
+  },
+  "experiments/configs/sweeps/grid_tau_20.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/grid_tau_20_20260202T202924Z_8e0f",
+    "run_id": "grid_tau_20_20260202T202924Z_8e0f"
+  },
+  "experiments/configs/sweeps/pythagoras_aliasing_fail.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/pythagoras_aliasing_fail_20260202T202954Z_2779",
+    "run_id": "pythagoras_aliasing_fail_20260202T202954Z_2779"
+  },
+  "experiments/configs/sweeps/pythagoras_tau_large.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/pythagoras_tau_large_20260202T202934Z_f96a",
+    "run_id": "pythagoras_tau_large_20260202T202934Z_f96a"
+  },
+  "experiments/configs/sweeps/pythagoras_tau_small.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/pythagoras_tau_small_20260202T202933Z_f332",
+    "run_id": "pythagoras_tau_small_20260202T202933Z_f332"
+  },
+  "experiments/configs/sweeps/sphere_eps_edge_disconnect.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/sphere_eps_edge_disconnect_20260202T202932Z_36c8",
+    "run_id": "sphere_eps_edge_disconnect_20260202T202932Z_36c8"
+  },
+  "experiments/configs/sweeps/sphere_holonomy_unstable.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/sphere_holonomy_unstable_20260202T202932Z_1b76",
+    "run_id": "sphere_holonomy_unstable_20260202T202932Z_1b76"
+  },
+  "experiments/configs/sweeps/sphere_prototypes_stationary.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/sphere_prototypes_stationary_20260202T202930Z_76a4",
+    "run_id": "sphere_prototypes_stationary_20260202T202930Z_76a4"
+  },
+  "experiments/configs/sweeps/sphere_tau_1.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/sphere_tau_1_20260202T202928Z_daa9",
+    "run_id": "sphere_tau_1_20260202T202928Z_daa9"
+  },
+  "experiments/configs/sweeps/sphere_tau_30.yaml": {
+    "run_dir": "/home/repos/six-birds-space/results/sphere_tau_30_20260202T202929Z_e3bf",
+    "run_id": "sphere_tau_30_20260202T202929Z_e3bf"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "generated_utc": "2026-02-02T21:26:19.143248+00:00",
+  "runs": {
+    "anisotropic_20260202T193556Z_310f": {
+      "copied": [
+        "anisotropic_20260202T193556Z_310f/pointer.json",
+        "anisotropic_20260202T193556Z_310f/metrics.json",
+        "anisotropic_20260202T193556Z_310f/config.json",
+        "anisotropic_20260202T193556Z_310f/log.txt",
+        "anisotropic_20260202T193556Z_310f/artifacts/geo_pipeline_summary.json",
+        "anisotropic_20260202T193556Z_310f/plots/delta_vs_level.png",
+        "anisotropic_20260202T193556Z_310f/plots/distortion_vs_level.png",
+        "anisotropic_20260202T193556Z_310f/plots/mean_distance_vs_level.png"
+      ],
+      "missing": false
+    },
+    "grid_plane_20260202T193540Z_4b14": {
+      "copied": [
+        "grid_plane_20260202T193540Z_4b14/pointer.json",
+        "grid_plane_20260202T193540Z_4b14/metrics.json",
+        "grid_plane_20260202T193540Z_4b14/config.json",
+        "grid_plane_20260202T193540Z_4b14/log.txt",
+        "grid_plane_20260202T193540Z_4b14/artifacts/geo_pipeline_summary.json",
+        "grid_plane_20260202T193540Z_4b14/plots/delta_vs_level.png",
+        "grid_plane_20260202T193540Z_4b14/plots/distortion_vs_level.png",
+        "grid_plane_20260202T193540Z_4b14/plots/mean_distance_vs_level.png"
+      ],
+      "missing": false
+    },
+    "pythagoras_rw_grid_20260202T193600Z_ed66": {
+      "copied": [
+        "pythagoras_rw_grid_20260202T193600Z_ed66/pointer.json",
+        "pythagoras_rw_grid_20260202T193600Z_ed66/metrics.json",
+        "pythagoras_rw_grid_20260202T193600Z_ed66/config.json",
+        "pythagoras_rw_grid_20260202T193600Z_ed66/log.txt",
+        "pythagoras_rw_grid_20260202T193600Z_ed66/artifacts/pythagoras_rw_grid_summary.json",
+        "pythagoras_rw_grid_20260202T193600Z_ed66/plots/pythagoras_contour_control_L1.png",
+        "pythagoras_rw_grid_20260202T193600Z_ed66/plots/pythagoras_contour_rw_tau_4.png",
+        "pythagoras_rw_grid_20260202T193600Z_ed66/plots/pythagoras_residuals_vs_tau.png",
+        "pythagoras_rw_grid_20260202T193600Z_ed66/plots/pythagoras_contour_rw_tau_128.png"
+      ],
+      "missing": false
+    },
+    "sierpinski_20260202T193551Z_95ab": {
+      "copied": [
+        "sierpinski_20260202T193551Z_95ab/pointer.json",
+        "sierpinski_20260202T193551Z_95ab/metrics.json",
+        "sierpinski_20260202T193551Z_95ab/config.json",
+        "sierpinski_20260202T193551Z_95ab/log.txt",
+        "sierpinski_20260202T193551Z_95ab/artifacts/geo_pipeline_summary.json",
+        "sierpinski_20260202T193551Z_95ab/plots/delta_vs_level.png",
+        "sierpinski_20260202T193551Z_95ab/plots/distortion_vs_level.png",
+        "sierpinski_20260202T193551Z_95ab/plots/mean_distance_vs_level.png"
+      ],
+      "missing": false
+    },
+    "sphere_knn_20260202T193547Z_7681": {
+      "copied": [
+        "sphere_knn_20260202T193547Z_7681/pointer.json",
+        "sphere_knn_20260202T193547Z_7681/metrics.json",
+        "sphere_knn_20260202T193547Z_7681/config.json",
+        "sphere_knn_20260202T193547Z_7681/log.txt",
+        "sphere_knn_20260202T193547Z_7681/artifacts/geo_pipeline_summary.json",
+        "sphere_knn_20260202T193547Z_7681/plots/delta_vs_level.png",
+        "sphere_knn_20260202T193547Z_7681/plots/distortion_vs_level.png",
+        "sphere_knn_20260202T193547Z_7681/plots/mean_distance_vs_level.png",
+        "sphere_knn_20260202T193547Z_7681/plots/holonomy_hist.png"
+      ],
+      "missing": false
+    }
+  }
+}

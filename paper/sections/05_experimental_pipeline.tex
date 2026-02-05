@@ -1,0 +1,78 @@
+\section{Experimental pipeline and reproducibility}
+\label{sec:experimental-pipeline}
+
+This paper is intentionally empirical in the SBT sense: we propose concrete closure constructions and then test whether they stabilize under repetition and refinement.  To keep the narrative auditable, every figure and quoted metric in this paper is tied either to (i)~a configuration file that regenerates the run or (ii)~a committed ``run pack'' snapshot of the run outputs.
+
+\subsection{Substrates (microstate generators)}
+All experiments begin with a finite microstate space $Z$ and a micro Markov kernel $P$.
+
+\paragraph{Grid (plane-like substrate).}
+We use a lazy random walk on an $n\times n$ grid with von Neumann neighborhood (up/down/left/right) and stay-put probability.  This is a canonical substrate with isotropic local moves.  It supports E1 (plane-like metric) and serves as the flat baseline for holonomy comparisons.
+
+\paragraph{Sphere-like substrate (curved regime).}
+To obtain a curved macro regime without assuming coordinates in the closure, we generate a point cloud on the unit sphere $S^2$ only as a means to build a micro transition graph: we sample points, build a $k$-nearest-neighbor weighted graph with Gaussian weights, and row-normalize to obtain a Markov kernel.  Coordinates are not used by the closure pipeline; they are used only to generate the micro connectivity.  This substrate supports E2 (holonomy and curvature separation).
+
+\paragraph{Sierpi\'nski gasket (fractal regime).}
+We generate the Sierpi\'nski gasket graph by a recursive corner-identification construction and define a lazy random walk on its adjacency graph.  This yields a scale-stable but non-smooth neighborhood structure, supporting E3 (fractal regime).
+
+\paragraph{Anisotropic gating (constraints as geometry deformation).}
+To demonstrate the role of constraints (P2), we apply a directional gating transformation to a grid kernel: moves opposing a chosen direction are suppressed and the kernel is renormalized.  This produces an anisotropically deformed macro geometry (E4).
+
+\subsection{Lens ladders (packaging families) and refinement maps}
+To test coherence across scales we require not a single lens but a refinement ladder $f_0,\dots,f_L$ (coarse $\to$ fine) together with canonical refinement maps.  Operationally we construct lens ladders from \emph{diffusion coordinates} of the micro kernel \cite{CoifmanLafon2006,vonLuxburg2007}:
+\begin{enumerate}
+  \item Compute a low-dimensional spectral embedding from a symmetrized kernel (diffusion/Laplacian coordinates).
+  \item Cluster the embedded points at the finest requested resolution (e.g., $m=128$) using a deterministic $k$-means routine \cite{Lloyd1982}.
+  \item Build coarser levels by clustering cluster centroids, yielding a nested partition and an explicit refinement map $r: X_{\mathrm{fine}}\to X_{\mathrm{coarse}}$.
+\end{enumerate}
+This produces (i)~a label array $f_j:Z\to X_j$ at each scale and (ii)~refinement maps that satisfy consistency $f_{\mathrm{coarse}}(z)=r(f_{\mathrm{fine}}(z))$ by construction.
+
+\paragraph{Lens choice and (non-)circularity.}
+Because our lens ladders are built from diffusion/spectral summaries of $P$, a natural concern is circularity: are we ``injecting'' geometry by using a geometry-learning method?  In our setting, diffusion coordinates are computed from the micro Markov kernel itself and can be interpreted as extracting slow modes of the dynamics rather than importing an ambient coordinate system.  We nevertheless emphasize the SBT stance: a lens family is an observer/interface choice, and different packaging strategies can yield different macro geometries.  For that reason we do not claim an intrinsic geometry independent of packaging; instead we treat closure and refinement coherence as auditable properties of the induced layer and report robustness and failure modes alongside headline exhibits.
+
+\subsection{Prototypes}
+We use two prototype choices:
+\begin{itemize}
+  \item \textbf{Uniform-on-block:} $u_x$ is uniform over microstates assigned label $x$.
+  \item \textbf{Stationary-conditional:} compute a stationary distribution $\pi$ of $P$ and set $u_x$ proportional to $\pi$ restricted to the block $f^{-1}(x)$.
+\end{itemize}
+Both satisfy the macro identity condition $Q_f\circ U_f=\mathrm{id}_{\Delta(X)}$ by construction.
+
+\subsection{Macro dynamics, cost, and distance}
+Given a lens $(C,U)$ at scale $j$ and staging $\tau$, we compute the induced macro kernel
+\begin{equation}
+\widehat{P}_j = U_j P^\tau C_j,
+\end{equation}
+then define costs from negative log likelihood and distances as all-pairs shortest-path cost on the resulting weighted macro graph.  By default we symmetrize the kernel before converting to costs (to obtain an undirected metric), and we explicitly record disconnection as a failure mode via non-finite distances.
+
+\paragraph{Computational note.}
+At macro size $m$, distances are computed by all-pairs shortest paths on the macro move graph.  In the canonical runs used for this paper we cap $m\le 128$, so this step is inexpensive and stable.  Holonomy adds repeated local neighborhood embeddings and alignments; we therefore bound the number of sampled loops (typically $\le 800$).  Scaling the same diagnostics to $m\gg 10^3$ would require sparse/approximate shortest-path routines and more careful numerical conditioning, which we treat as future engineering work rather than a prerequisite for the present emergence exhibits.
+
+\subsection{Holonomy pipeline (curvature diagnostic)}
+To detect curvature as protocol residue, we compute a loop-based holonomy score from the induced macro metric:
+\begin{enumerate}
+  \item Construct local neighborhoods using metric $k$-nearest neighbors.
+  \item Embed each neighborhood into $\mathbb{R}^2$ via local classical MDS \cite{BorgGroenen2005}.
+  \item Define transport between overlapping neighborhoods by Procrustes alignment (best-fit rotation) \cite{Schonemann1966}.
+  \item For sampled small loops (triangles), compute the product of local transports around the loop and extract its rotation angle magnitude as the holonomy score.
+\end{enumerate}
+We provide a canonical, deterministic holonomy configuration (including neighborhood parameters and loop sampling seeds) that regenerates the committed holonomy figure and summary JSON.
+
+\paragraph{Two embeddings, two roles.}
+We use diffusion/spectral embeddings only to construct the lens ladder from $P$ (packaging); the emergent metric itself is defined from the induced macro kernel via costs and shortest paths.  Separately, the holonomy diagnostic uses local MDS embeddings of \emph{metric neighborhoods} as intermediate coordinate charts used only to estimate loop transport via alignment.  Neither embedding is used to define the distance; both are auxiliary constructions whose outputs are audited for stability and sensitivity.
+
+\subsection{Reproducibility: configs, run folders, and committed run packs}
+All runs are generated from configuration files via the experiment harness:
+\begin{quote}\small
+\begin{verbatim}
+python experiments/run.py --config experiments/configs/grid_plane.yaml
+python experiments/run.py --config experiments/configs/sphere_knn.yaml
+python experiments/run.py --config experiments/configs/sierpinski.yaml
+python experiments/run.py --config experiments/configs/anisotropic.yaml
+python experiments/run.py --config experiments/configs/holonomy_demo.yaml
+python experiments/run.py --config experiments/configs/pythagoras_rw_grid.yaml
+\end{verbatim}
+\end{quote}
+Each command produces a run folder \texttt{results/<run\_id>/} containing \texttt{config.json}, \texttt{metrics.json}, \texttt{pointer.json}, a short log, and per-run artifacts and plots.  These run folders are intentionally \emph{not} committed.
+
+For writing stability, the paper instead references committed run packs under \texttt{docs/\allowbreak notes/\allowbreak runs/\allowbreak <run\_id>/} that contain the exact summary JSONs and plots used in the exhibits, as well as paper-ready comparison figures and a quotables table under \texttt{docs/\allowbreak notes/\allowbreak figures/} and \texttt{docs/\allowbreak notes/\allowbreak tables/}.  This makes every quoted number auditable without requiring access to ephemeral local run directories.

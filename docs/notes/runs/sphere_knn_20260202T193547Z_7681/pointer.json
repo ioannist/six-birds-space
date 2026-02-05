@@ -1,0 +1,24 @@
+{
+  "artifacts_dir": "results/sphere_knn_20260202T193547Z_7681/artifacts",
+  "config_path": "experiments/configs/sphere_knn.yaml",
+  "git_commit": "unknown",
+  "metrics_path": "results/sphere_knn_20260202T193547Z_7681/metrics.json",
+  "plots_dir": "results/sphere_knn_20260202T193547Z_7681/plots",
+  "run_id": "sphere_knn_20260202T193547Z_7681",
+  "run_name": "sphere_knn",
+  "summary": {
+    "delta_finest": 0.2672417919635004,
+    "distortion_max_rescaled": 5.27327081317499,
+    "elapsed_sec": 0.8825478553771973,
+    "holonomy_evaluated": 369.0,
+    "holonomy_mean": 1.133702311658438,
+    "holonomy_median": 0.8698781595523436,
+    "m_finest": 128.0,
+    "mean_dist_finest": 8.997797943277071,
+    "n_micro": 500.0,
+    "seed": 0,
+    "smoke_ok": 1.0,
+    "tau": 5.0
+  },
+  "timestamp_utc": "2026-02-02T19:35:48.851601+00:00"
+}

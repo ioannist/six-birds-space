@@ -1,0 +1,51 @@
+{
+  "artifacts_dir": "/home/repos/six-birds-space/results/sierpinski_20260202T193551Z_95ab/artifacts",
+  "distortion": {
+    "rescale": "lstsq"
+  },
+  "holonomy": {
+    "enabled": false
+  },
+  "lens": {
+    "levels": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "n_eigs": 6
+  },
+  "metric": {
+    "eps_edge": 1e-15,
+    "eta": 1e-12,
+    "symmetrize": "weight_avg"
+  },
+  "notes": "",
+  "output_root": "results",
+  "plots": {
+    "enabled": true
+  },
+  "plots_dir": "/home/repos/six-birds-space/results/sierpinski_20260202T193551Z_95ab/plots",
+  "pointer_summary_keys": [
+    "n_micro",
+    "m_finest",
+    "tau",
+    "delta_finest",
+    "distortion_max_rescaled",
+    "mean_dist_finest"
+  ],
+  "prototypes": "uniform",
+  "run_dir": "/home/repos/six-birds-space/results/sierpinski_20260202T193551Z_95ab",
+  "run_id": "sierpinski_20260202T193551Z_95ab",
+  "run_name": "sierpinski",
+  "runner": "geo_pipeline",
+  "seed": 0,
+  "substrate": {
+    "kind": "sierpinski",
+    "lazy": 0.5,
+    "level": 5
+  },
+  "tau": 5
+}

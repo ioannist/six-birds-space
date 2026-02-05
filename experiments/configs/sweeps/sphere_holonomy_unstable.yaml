@@ -1,0 +1,57 @@
+{
+  "distortion": {
+    "rescale": "lstsq"
+  },
+  "holonomy": {
+    "enabled": true,
+    "expand_hops": 0,
+    "k_loop": 6,
+    "k_neigh": 12,
+    "level_m": 64,
+    "max_loops": 800,
+    "min_overlap": 6
+  },
+  "lens": {
+    "levels": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "n_eigs": 6
+  },
+  "metric": {
+    "eps_edge": 1e-15,
+    "eta": 1e-12,
+    "symmetrize": "weight_avg"
+  },
+  "output_root": "results",
+  "plots": {
+    "enabled": true
+  },
+  "pointer_summary_keys": [
+    "n_micro",
+    "m_finest",
+    "tau",
+    "delta_finest",
+    "distortion_max_rescaled",
+    "mean_dist_finest",
+    "holonomy_median",
+    "holonomy_mean",
+    "holonomy_evaluated"
+  ],
+  "prototypes": "uniform",
+  "run_name": "sphere_holonomy_unstable",
+  "runner": "geo_pipeline",
+  "seed": 0,
+  "substrate": {
+    "k": 10,
+    "kind": "sphere_knn",
+    "n_points": 500,
+    "self_loop": 1e-06,
+    "sigma": 0.5
+  },
+  "tau": 5
+}

@@ -1,0 +1,48 @@
+{
+  "allowed_roots": {
+    "docs": {
+      "extensions": [".tex", ".md", ".pdf", ".png", ".jpg", ".jpeg", ".json", ".txt", ".csv"]
+    },
+    "experiments": {
+      "extensions": [".py", ".json", ".yaml", ".yml", ".txt", ".md"]
+    },
+    "src": {
+      "extensions": [".py"]
+    },
+    "scripts": {
+      "extensions": [".sh", ".py", ".txt", ".md"]
+    },
+    "results": {
+      "extensions": [".md"],
+      "filenames": [".gitkeep"]
+    },
+    "tests": {
+      "extensions": [".py"]
+    },
+    "lean": {
+      "extensions": [".lean", ".md", ".json"],
+      "filenames": ["lean-toolchain"]
+    },
+    "paper": {
+      "extensions": [".tex", ".bib", ".png", ".pdf", ".md", ".csv", ".json"],
+      "filenames": ["Makefile"]
+    }
+  },
+  "allowed_root_files": [
+    "README.md",
+    "pyproject.toml",
+    ".gitignore",
+    ".package-repo-snapshot.json"
+  ],
+  "exclude_dirs": [
+    ".git",
+    ".lake",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".ipynb_checkpoints"
+  ]
+}

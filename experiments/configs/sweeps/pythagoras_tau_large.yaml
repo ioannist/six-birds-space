@@ -1,0 +1,21 @@
+{
+  "D_factor": 3.0,
+  "D_max": 30,
+  "N": 1024,
+  "lazy": 0.5,
+  "n_triangle_samples": 2000,
+  "output_root": "results",
+  "p_floor": 1e-300,
+  "p_min_fit": 1e-20,
+  "run_name": "pythagoras_tau_large",
+  "runner": "pythagoras_rw_grid",
+  "seed": 0,
+  "tau_list": [
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
+  "write_docs_artifacts": false
+}

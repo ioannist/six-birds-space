@@ -1,0 +1,124 @@
+{
+  "constraints": null,
+  "distortions": [
+    {
+      "alpha": 1.438554772647971,
+      "coarse_m": 4,
+      "fine_m": 8,
+      "raw": 3.998888943596137,
+      "rescaled": 3.998888943596137
+    },
+    {
+      "alpha": 1.273017235448642,
+      "coarse_m": 8,
+      "fine_m": 16,
+      "raw": 3.6623429155076392,
+      "rescaled": 3.6445276724067877
+    },
+    {
+      "alpha": 1.2962305924531545,
+      "coarse_m": 16,
+      "fine_m": 32,
+      "raw": 5.65137038983473,
+      "rescaled": 4.775731357649068
+    },
+    {
+      "alpha": 1.2268060955729476,
+      "coarse_m": 32,
+      "fine_m": 64,
+      "raw": 6.170347482131881,
+      "rescaled": 5.27327081317499
+    },
+    {
+      "alpha": 1.2358536805375282,
+      "coarse_m": 64,
+      "fine_m": 128,
+      "raw": 5.477712133537413,
+      "rescaled": 3.972427327726618
+    }
+  ],
+  "holonomy": {
+    "level_m": 64,
+    "mean_angle": 1.133702311658438,
+    "median_angle": 0.8698781595523436,
+    "triangles_evaluated": 369,
+    "triangles_sampled": 369
+  },
+  "lens": {
+    "levels": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "n_eigs": 6,
+    "seed": 0
+  },
+  "metric": {
+    "eps_edge": 1e-15,
+    "eta": 1e-12,
+    "symmetrize": "weight_avg"
+  },
+  "n_micro": 500,
+  "per_level": [
+    {
+      "delta": 0.21821477893932792,
+      "inf_count": 0,
+      "m": 4,
+      "mean_finite_dist": 2.8342936812865003,
+      "stab_max": 0.23250738240523852,
+      "stab_mean": 0.19239298857583986
+    },
+    {
+      "delta": 0.295930663515474,
+      "inf_count": 0,
+      "m": 8,
+      "mean_finite_dist": 3.7732679361858104,
+      "stab_max": 0.41664124429410654,
+      "stab_mean": 0.2756173568347806
+    },
+    {
+      "delta": 0.30022156787144205,
+      "inf_count": 0,
+      "m": 16,
+      "mean_finite_dist": 4.7738837816385,
+      "stab_max": 0.5687393637333007,
+      "stab_mean": 0.4060869672180826
+    },
+    {
+      "delta": 0.2898352281730221,
+      "inf_count": 0,
+      "m": 32,
+      "mean_finite_dist": 6.014593821932941,
+      "stab_max": 0.8678005021236336,
+      "stab_mean": 0.5696844472557608
+    },
+    {
+      "delta": 0.3020682631479516,
+      "inf_count": 0,
+      "m": 64,
+      "mean_finite_dist": 7.341172509382734,
+      "stab_max": 0.9816830127279328,
+      "stab_mean": 0.7409739436459275
+    },
+    {
+      "delta": 0.2672417919635004,
+      "inf_count": 0,
+      "m": 128,
+      "mean_finite_dist": 8.997797943277071,
+      "stab_max": 0.9851361901522213,
+      "stab_mean": 0.8551601977297032
+    }
+  ],
+  "prototypes": "uniform",
+  "substrate": {
+    "k": 10,
+    "kind": "sphere_knn",
+    "n_points": 500,
+    "self_loop": 1e-06,
+    "sigma": 0.5
+  },
+  "tau": 5
+}

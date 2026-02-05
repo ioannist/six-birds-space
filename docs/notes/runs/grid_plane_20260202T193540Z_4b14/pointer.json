@@ -1,0 +1,21 @@
+{
+  "artifacts_dir": "results/grid_plane_20260202T193540Z_4b14/artifacts",
+  "config_path": "experiments/configs/grid_plane.yaml",
+  "git_commit": "unknown",
+  "metrics_path": "results/grid_plane_20260202T193540Z_4b14/metrics.json",
+  "plots_dir": "results/grid_plane_20260202T193540Z_4b14/plots",
+  "run_id": "grid_plane_20260202T193540Z_4b14",
+  "run_name": "grid_plane",
+  "summary": {
+    "delta_finest": 0.318171182935395,
+    "distortion_max_rescaled": 6.492524105950391,
+    "elapsed_sec": 0.7500190734863281,
+    "m_finest": 128.0,
+    "mean_dist_finest": 13.120840153464398,
+    "n_micro": 625.0,
+    "seed": 0,
+    "smoke_ok": 1.0,
+    "tau": 5.0
+  },
+  "timestamp_utc": "2026-02-02T19:35:40.813397+00:00"
+}

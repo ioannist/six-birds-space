@@ -1,0 +1,89 @@
+\section{Results II: curvature as holonomy and the Pythagorean form (E2, E5)}
+\label{sec:results-holonomy-pythagoras}
+
+Section~\ref{sec:results-e1-e4} established that the induced cost metric can be coherent across refinement on multiple substrates.  We now present two signature results that connect SBT directly to classical geometric structure: (i) curvature detected as loop holonomy (protocol residue) and (ii) the emergence of a Pythagorean form from staged isotropic diffusion under a cost-as-accounting definition.
+
+\subsection{E2: Curvature as protocol residue (holonomy)}
+\label{sec:E2-holonomy}
+
+In SBT terms, curvature is not a primitive tensor on a pre-existing manifold.  It is the macroscopic footprint of P3: \emph{protocol order matters}.  After packaging, local ``move'' operators need not commute; when we compose local transports around a small loop, we may fail to return aligned.  That loop residue is called holonomy \cite{Lee1997Riemannian}.
+
+Operationally (Section~\ref{sec:diagnostics}), we compute holonomy from the induced macro metric by (i)~selecting local metric neighborhoods, (ii)~embedding them into $\mathbb{R}^2$ via local MDS, (iii)~defining transport between overlapping neighborhoods via Procrustes alignment (a best-fit rotation), and (iv)~composing transports around sampled triangles.  The resulting holonomy score is the rotation angle magnitude (in radians) of the loop transport product.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\linewidth]{figures/holonomy_plane_vs_sphere.png}
+  \caption{Holonomy (loop rotation angle magnitude) for a plane-like grid substrate versus a sphere-like substrate under the canonical holonomy configuration.  The plane distribution concentrates near zero, while the sphere distribution is shifted upward, indicating curvature as stable protocol residue after packaging.}
+  \label{fig:holonomy-plane-sphere}
+\end{figure}
+
+Figure~\ref{fig:holonomy-plane-sphere} shows a clear separation between plane-like and sphere-like substrates under a single canonical configuration that is reproducible from \texttt{experiments/configs/holonomy\_demo.yaml}.  In the committed summary JSON (\texttt{docs/notes/holonomy\_demo\_summary.json}), the median holonomy is $0.0479$ on the plane-like case versus $0.5980$ on the sphere-like case (median difference $0.5501$, median ratio $12.49$), with $791$ and $800$ evaluated loops, respectively.  Importantly, the holonomy pipeline is deterministic under fixed seeds: rerunning the same config reproduces the same summary statistics exactly, and sensitivity to neighborhood parameters is treated as a first-class failure mode in the robustness analysis.  We interpret this as diagnostic evidence of curvature-like loop residue in the packaged layer; we do not infer a smooth curvature tensor or sectional curvature from this estimator.
+
+In geometric language, this is the promised bridge from SBT to curvature: P5 packaging produces macro ``points,'' P6 accounting produces a macro metric, and P3 holonomy appears as loop-dependent residue of local transports.  The sphere-like substrate exhibits nonzero holonomy despite having otherwise coherent distance structure, demonstrating that curvature is not captured merely by distance coherence but by transport noncommutativity.
+
+\subsection{E5: Pythagoras as emergent accounting identity}
+\label{sec:E5-pythagoras}
+
+The Pythagorean theorem is often presented as an immutable truth about Euclidean triangles.  From the SBT perspective, it becomes a statement about a \emph{stable accounting law}: when staged dynamics and isotropy force costs to become quadratic and separable across orthogonal directions, the Pythagorean form emerges as the closed relation between costs of composed moves.
+
+\paragraph{Setup: cost from staged isotropic diffusion.}
+Consider a lazy isotropic random walk on a large 2D torus (to avoid boundary effects).  Let $p_\tau(\Delta x,\Delta y)$ denote the displacement probability after $\tau$ micro-steps.  We define the accounting cost surface
+\begin{equation}
+C_\tau(\Delta x,\Delta y) \;\coloneqq\; -\log\!\big(p_\tau(\Delta x,\Delta y)\big),
+\end{equation}
+with standard numerical smoothing in implementation \cite{CoverThomas2006}.
+As $\tau$ increases, the central limit regime makes the displacement distribution approximately Gaussian \cite{Durrett2019Probability}; in the isotropic case, the negative log probability becomes approximately quadratic in displacement.  Empirically we test the emergent quadratic form
+\begin{equation}
+C_\tau(\Delta x,\Delta y) \;\approx\; a_\tau(\Delta x^2+\Delta y^2)+b_\tau,
+\label{eq:quadratic-cost}
+\end{equation}
+and we quantify how closely it holds as $\tau$ varies.
+
+\paragraph{Remark (mechanism exhibit).}
+This experiment is intentionally stylized: rather than passing through a lens ladder, we measure displacement likelihood directly on a substrate where the diffusion mechanism is clean.  The purpose is to isolate a concrete route by which an accounting-based cost becomes approximately quadratic and separable under staging and isotropy, not to assert that every emergent metric produced by our closure pipeline must be Euclidean.
+
+\paragraph{Pythagorean residual as a protocol-composition test.}
+To express ``right-triangle additivity'' in cost terms, we compare the diagonal cost to the composed axis costs.  Define the Pythagorean residual
+\begin{equation}
+R_\tau(\Delta x,\Delta y)
+\;\coloneqq\;
+C_\tau(\Delta x,\Delta y)
+-\Big(C_\tau(\Delta x,0)+C_\tau(0,\Delta y)-C_\tau(0,0)\Big).
+\label{eq:pyth-residual}
+\end{equation}
+If cost is separable and quadratic as in~\eqref{eq:quadratic-cost}, then $R_\tau(\Delta x,\Delta y)\approx 0$ over a broad range of displacements, and level sets of $C_\tau$ become approximately circular.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\linewidth]{figures/pythagoras_residuals_vs_tau.png}
+  \caption{Pythagorean residual statistics versus stage $\tau$ for the isotropic torus random walk cost surface.  Residuals drop sharply after a regime transition (around $\tau\approx 16$ in the canonical run), consistent with the onset of an approximately quadratic and separable accounting law.}
+  \label{fig:pythagoras-residuals}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.49\linewidth]{figures/pythagoras_contour_rw_tau_4.png}\hfill
+  \includegraphics[width=0.49\linewidth]{figures/pythagoras_contour_rw_tau_128.png}
+  \caption{Cost contours $C_\tau(\Delta x,\Delta y)$ at small $\tau$ (left) and large $\tau$ (right).  As staging increases, the cost surface ``circularizes'' toward an isotropic quadratic form, consistent with emergent Euclidean distance structure under accounting-as-distance.}
+  \label{fig:pythagoras-contours}
+\end{figure}
+
+In the canonical run (committed summary \texttt{docs/notes/pythagoras\_rw\_grid\_summary.json}), the quadratic fit RMS decreases from $12.10$ at $\tau=4$ to $0.1509$ at $\tau=128$, and the median absolute Pythagorean residual decreases from $33.19$ to $0.0586$.  Beyond the transition, axis scaling strongly favors quadratic growth: at $\tau=128$, the quadratic-axis RMS is $0.0177$ versus $1.0536$ for a linear-axis model.  These trends are precisely what the SBT framework predicts when P4 staging pushes dynamics into a stable diffusion regime and P2 isotropy enforces symmetry between directions.
+
+\paragraph{Control: Manhattan cost fails as expected.}
+To ensure the above is not a tautology of shortest paths, we include a control in which the cost is explicitly Manhattan:
+\begin{equation}
+C_{\mathrm{L1}}(\Delta x,\Delta y) \;\coloneqq\; |\Delta x| + |\Delta y|.
+\end{equation}
+This control produces diamond-shaped contours rather than circles and exhibits linear axis scaling (near-zero axis-linear RMS by construction), while the quadratic-axis model performs poorly.
+Note that this is a geometric negative control rather than a matched dynamical control: it enforces linear additivity by definition rather than by altering the underlying random-walk dynamics.  Matched dynamical controls (e.g., anisotropic or driven/nonreversible walks) are a natural next step.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.70\linewidth]{figures/pythagoras_contour_control_L1.png}
+  \caption{Control: Manhattan (L1) cost yields diamond contours, not circular ones.  This explicitly fails the quadratic accounting law and serves as a negative control for the emergence of Pythagorean structure.}
+  \label{fig:pythagoras-control-L1}
+\end{figure}
+
+\paragraph{Bird-level interpretation.}
+This experiment makes the ``distance is accounting'' principle concrete.  P6 provides the ledger: cost is defined as negative log likelihood under the induced (staged) dynamics.  P4 provides the stage parameter $\tau$ that pushes the system into a stable diffusion regime.  P2 isotropy ensures symmetry and (approximately) independent contributions of orthogonal directions.  Finally P3 is the protocol logic: the ``hypotenuse'' move is compared to the composed axis moves via~\eqref{eq:pyth-residual}.  In this regime, the stable accounting law takes the Pythagorean form.  Importantly, this does not claim Euclidean geometry is fundamental; it demonstrates that Euclidean structure is a \emph{stable higher-layer description} in an isotropic staged-diffusion regime under SBT closure.

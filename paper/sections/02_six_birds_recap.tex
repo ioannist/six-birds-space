@@ -1,0 +1,43 @@
+\section{Six Birds Recap: how the primitives specialize to geometry}
+\label{sec:six-birds-recap}
+
+This paper applies Six Birds Theory (SBT)~\cite{SixBirdsTheory} to the emergence of space-like structure.  We do not treat ``geometry'' as a background container.  Instead, we treat it as a stable higher-layer theory: a description that becomes available when repeated compression makes notions of \emph{indistinguishability} (points), \emph{feasible transformation} (moves), and \emph{accounting} (cost) coherent under refinement.  The six primitives are unchanged; what changes is which stable objects they induce.  (Compare with our earlier application to emergent mathematics~\cite{ToCountAStone}.)
+
+\paragraph{P1: Operator rewrite (closure).}
+A layer is usable only if it closes: the dynamics can be written in the layer's own variables without constantly reopening micro-detail.  In this paper, P1 appears as the induced \emph{macro dynamics} obtained after packaging and staging.  Closure is not assumed; it is audited and quantified.  When closure holds, it supports geometry-like operators (transport, diffusion, and in smooth regimes, differential structure).
+
+\paragraph{P2: Constraints (feasibility).}
+Constraints define what transitions and interventions are admissible.  Geometrically, P2 shapes the reachable neighborhood structure and the anisotropy of motion: it decides which directions are ``easy,'' ``hard,'' or impossible.  In our exhibits, isotropic local moves yield plane-like metrics, while directional gating deforms the emergent metric in a predictable way.
+
+\paragraph{P3: Protocols and holonomy (composition matters).}
+P3 is the primitive of ordered composition: doing $A$ then $B$ need not equal doing $B$ then $A$.  Geometry reads this as curvature: after packaging, \emph{noncommutativity of local transport} becomes a stable loop residue (holonomy).  When small loops return to their starting point misaligned, curvature has emerged as a macroscopic footprint of protocol order.
+
+\paragraph{P4: Staging (multi-scale refinement).}
+Staging introduces a ladder of resolutions and time scales.  Here it is realized as (i)~a stage parameter $\tau$ (how much micro-dynamics we allow before repackaging) and (ii)~a family of lenses indexed by resolution.  Geometry is said to exist only when the induced structure is coherent across this refinement ladder; fractal regimes correspond to scale-stable closure without smoothing.
+
+\paragraph{P5: Packaging (quotienting indistinguishability).}
+Packaging maps many microstates to the same macro state: it constructs the layer's effective state space by collapsing distinctions the interface cannot reliably maintain.  In geometric language, this is where ``points'' come from: a point is an equivalence class of microstates that are indistinguishable at the chosen resolution.  Refinement corresponds to sharpening the quotient.
+
+\paragraph{P6: Accounting (cost is real).}
+Accounting assigns resource meaning to distinctions and transformations.  In this paper, distance is not primarily a ruler; it is primarily a ledger.  We define costs from transition likelihoods and obtain distances as minimal protocol cost (shortest paths) in the induced macro dynamics.  In the isotropic staged-diffusion regime, this accounting becomes approximately quadratic and separable, yielding a Pythagorean structure as the stable law of cost.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\linewidth}p{0.78\linewidth}@{}}
+\toprule
+\textbf{Primitive (Bird)} & \textbf{Role in emergent geometry (this paper)} \\
+\midrule
+P1 Operator rewrite & Closed macro dynamics and induced operators on packaged states; ``geometry'' exists only when the macro description closes and stabilizes under refinement. \\
+P2 Constraints & Feasibility of moves; controls locality, anisotropy, reachable neighborhoods, and deformations of the emergent metric. \\
+P3 Protocols / holonomy & Composition of moves; curvature as a stable residue of noncommuting local transports (loop holonomy). \\
+P4 Staging & Resolution ladder and time-scale parameter $\tau$; enables refinement tests, smooth versus scale-stable (fractal) fixed points. \\
+P5 Packaging & Points and regions as equivalence classes under indistinguishability; the effective state space $X$ is created by quotienting microstates. \\
+P6 Accounting & Distance as minimal cost of protocols; scaling exponents as ``bits per scale''; Pythagoras as stable quadratic accounting in isotropic diffusion regimes. \\
+\bottomrule
+\end{tabular}
+\caption{How the six SBT primitives specialize to geometry and space in this paper.}
+\label{tab:six-birds-geometry}
+\end{table}
+
+The remaining sections make these correspondences concrete.  We first define the packaging and closure constructions that yield a macro kernel and an induced cost metric, then introduce diagnostics that quantify coherence across refinement, and finally present reproducible exhibits separating plane-like, curved, anisotropic, and fractal regimes.

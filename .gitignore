@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+dist/
+build/
+
+# Results (keep README and .gitkeep)
+results/*
+!results/README.md
+!results/.gitkeep
+
+# Repo snapshots
+*_snapshot.zip
+*_snapshot_v*.zip
+
+# Lean
+lean/.lake/
+lean/lake-packages/
+
+# OS
+.DS_Store

@@ -1,0 +1,14 @@
+{
+  "run_name": "pythagoras_rw_grid",
+  "runner": "pythagoras_rw_grid",
+  "seed": 0,
+  "output_root": "results",
+  "N": 512,
+  "lazy": 0.5,
+  "tau_list": [4, 8, 16, 32, 64, 128],
+  "D_factor": 3.0,
+  "D_max": 30,
+  "p_floor": 1e-300,
+  "p_min_fit": 1e-20,
+  "n_triangle_samples": 2000
+}

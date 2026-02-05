@@ -1,0 +1,21 @@
+{
+  "artifacts_dir": "results/sierpinski_20260202T193551Z_95ab/artifacts",
+  "config_path": "experiments/configs/sierpinski.yaml",
+  "git_commit": "unknown",
+  "metrics_path": "results/sierpinski_20260202T193551Z_95ab/metrics.json",
+  "plots_dir": "results/sierpinski_20260202T193551Z_95ab/plots",
+  "run_id": "sierpinski_20260202T193551Z_95ab",
+  "run_name": "sierpinski",
+  "summary": {
+    "delta_finest": 0.25044796594108143,
+    "distortion_max_rescaled": 12.005445230943607,
+    "elapsed_sec": 0.636528491973877,
+    "m_finest": 128.0,
+    "mean_dist_finest": 19.387909222205497,
+    "n_micro": 366.0,
+    "seed": 0,
+    "smoke_ok": 1.0,
+    "tau": 5.0
+  },
+  "timestamp_utc": "2026-02-02T19:35:52.343955+00:00"
+}

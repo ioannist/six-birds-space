@@ -1,0 +1,15 @@
+{
+  "artifacts_dir": "results/pythagoras_rw_grid_20260202T193600Z_ed66/artifacts",
+  "config_path": "experiments/configs/pythagoras_rw_grid.yaml",
+  "git_commit": "unknown",
+  "metrics_path": "results/pythagoras_rw_grid_20260202T193600Z_ed66/metrics.json",
+  "plots_dir": "results/pythagoras_rw_grid_20260202T193600Z_ed66/plots",
+  "run_id": "pythagoras_rw_grid_20260202T193600Z_ed66",
+  "run_name": "pythagoras_rw_grid",
+  "summary": {
+    "elapsed_sec": 0.6282777786254883,
+    "seed": 0,
+    "smoke_ok": 1.0
+  },
+  "timestamp_utc": "2026-02-02T19:36:01.301208+00:00"
+}

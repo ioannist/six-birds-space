@@ -1,0 +1,26 @@
+{
+  "D_factor": 3.0,
+  "D_max": 30,
+  "N": 512,
+  "artifacts_dir": "/home/repos/six-birds-space/results/pythagoras_rw_grid_20260202T193600Z_ed66/artifacts",
+  "lazy": 0.5,
+  "n_triangle_samples": 2000,
+  "notes": "",
+  "output_root": "results",
+  "p_floor": 1e-300,
+  "p_min_fit": 1e-20,
+  "plots_dir": "/home/repos/six-birds-space/results/pythagoras_rw_grid_20260202T193600Z_ed66/plots",
+  "run_dir": "/home/repos/six-birds-space/results/pythagoras_rw_grid_20260202T193600Z_ed66",
+  "run_id": "pythagoras_rw_grid_20260202T193600Z_ed66",
+  "run_name": "pythagoras_rw_grid",
+  "runner": "pythagoras_rw_grid",
+  "seed": 0,
+  "tau_list": [
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ]
+}

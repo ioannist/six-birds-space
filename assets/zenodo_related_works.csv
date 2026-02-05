@@ -1,0 +1,12 @@
+relation,identifier,scheme,resource_type,bibkey,title
+Cites,10.5281/zenodo.18365949,DOI,other,SixBirdsTheory,Six Birds: Foundations of Emergence Calculus
+Cites,10.5281/zenodo.18402004,DOI,other,ToCountAStone,To Count a Stone with Six Birds: A Mathematics is A Theory
+Cites,978-0-521-48181-6,ISBN,publication-book,Norris1997,Markov Chains
+Cites,978-0-471-24195-9,ISBN,publication-book,CoverThomas2006,Elements of Information Theory
+Cites,10.1016/j.acha.2006.04.006,DOI,publication-article,CoifmanLafon2006,Diffusion Maps
+Cites,10.1007/s11222-007-9033-z,DOI,publication-article,vonLuxburg2007,A Tutorial on Spectral Clustering
+Cites,10.1007/0-387-28981-X,DOI,publication-book,BorgGroenen2005,Modern Multidimensional Scaling: Theory and Applications
+Cites,10.1007/BF02289451,DOI,publication-article,Schonemann1966,A Generalized Solution of the Orthogonal Procrustes Problem
+Cites,10.1002/j.1538-7305.1948.tb01338.x,DOI,publication-article,Shannon1948,A Mathematical Theory of Communication
+Cites,10.1109/TIT.1982.1056489,DOI,publication-article,Lloyd1982,Least Squares Quantization in PCM
+Cites,10.1007/BF02063299,DOI,publication-article,Renyi1959DimensionEntropy,On the Dimension and Entropy of Probability Distributions

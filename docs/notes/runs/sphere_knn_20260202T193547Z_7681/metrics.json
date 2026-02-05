@@ -1,0 +1,20 @@
+{
+  "delta_finest": 0.2672417919635004,
+  "delta_mean": 0.2789187156017863,
+  "distortion_last_rescaled": 3.972427327726618,
+  "distortion_max_raw": 6.170347482131881,
+  "distortion_max_rescaled": 5.27327081317499,
+  "elapsed_sec": 0.8825478553771973,
+  "holonomy_evaluated": 369.0,
+  "holonomy_mean": 1.133702311658438,
+  "holonomy_median": 0.8698781595523436,
+  "inf_count_finest": 0.0,
+  "m_finest": 128.0,
+  "mean_dist_finest": 8.997797943277071,
+  "n_micro": 500.0,
+  "seed": 0,
+  "smoke_ok": 1.0,
+  "stab_max_finest": 0.9851361901522213,
+  "stab_mean_finest": 0.8551601977297032,
+  "tau": 5.0
+}

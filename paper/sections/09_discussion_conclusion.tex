@@ -1,0 +1,65 @@
+\section{Discussion and conclusion: what SBT predicts about space}
+\label{sec:discussion}
+
+This paper answers the title question in SBT terms: \emph{to plot a stone} is not to recover coordinates from a pre-existing container, but to construct a stable notion of location, distance, and transport from finite-interface closure.  When packaging, staging, and accounting cohere under refinement, a space-like layer becomes available.  When they do not, the diagnostics indicate precisely which aspect of closure fails.
+
+\subsection{What we showed}
+We implemented and audited a concrete emergence pipeline from micro-dynamics to a macro metric, then tested it across multiple substrates.  The central empirical claims are:
+
+\begin{itemize}
+  \item \textbf{Points are packaged states.}  A ``point'' at a given resolution is an equivalence class induced by a lens $f:Z\to X$ (P5).  It is not assumed; it is constructed.
+  \item \textbf{Distance is optimized accounting.}  From the induced macro kernel $\widehat{P}=UP^\tau C$ we define costs from negative log likelihood and distances as minimal protocol cost (shortest paths).  This realizes P6 (ledger) optimized over P3 (composition of moves).
+  \item \textbf{Geometry is coherence under refinement.}  A single distance matrix is not yet geometry; geometry is a claim that the packaged layer stabilizes across staging and a refinement ladder.  We operationalize this via closure idempotence and prototype stability defects, route mismatch, inter-scale distortion (after rescaling), and connectivity.
+  \item \textbf{Curvature appears as holonomy.}  Distance coherence alone does not detect curvature.  Curvature appears as a stable loop residue of local transport (P3), and we empirically separate plane-like and sphere-like substrates by a holonomy distribution shift.
+  \item \textbf{The Pythagorean form emerges in an isotropic diffusion regime.}  Under staged isotropic diffusion, negative log transition probability becomes approximately quadratic and separable, and the Pythagorean residual collapses, while a Manhattan control fails as expected.
+\end{itemize}
+
+Taken together, these results support the SBT slogan stated in the introduction: \emph{geometry is what you get when repeated packaging produces a stable notion of nearby, composition of moves, and cost of moving, and that structure closes under refinement}.  Importantly, the paper is not a collection of isolated plots: it is a demonstration that SBT's closure primitives can be made computationally concrete and audited in a way that distinguishes regimes (flat versus curved versus fractal versus constrained deformation).
+
+\subsection{What we did not claim}
+The results are deliberately scoped.  In particular:
+
+\begin{itemize}
+  \item \textbf{We did not claim that geometry is fundamental.}  The Euclidean and Pythagorean structures observed here are not asserted to be axioms of reality; they are shown to be stable higher-layer accounting laws under specific staging, isotropy, and packaging choices.
+  \item \textbf{We did not claim uniqueness.}  Different lens families (different packaging strategies) can induce different macro points and therefore different geometries.  This is expected in SBT: geometry is layer-relative.
+  \item \textbf{We did not prove asymptotic limits.}  All constructions are finite and operational.  ``Limit behavior'' is inferred from coherence across ladders, not from a formal $\varepsilon\to 0$ theorem.
+  \item \textbf{We did not reduce curvature to a single scalar.}  Holonomy is a diagnostic built from local embeddings and alignments; it is a robust separator under canonical parameters, but it remains sensitive to neighborhood choices, as documented in the robustness sweeps.
+\end{itemize}
+
+These non-claims are not disclaimers; they are part of the SBT stance.  A space-like layer is a conditional birth, and its claims should be phrased in terms of stability under the very closure operations that define it.
+
+\subsection{Predictions and next experiments}
+The six-birds framing makes concrete predictions about when different geometric regimes should appear.
+
+\paragraph{Predictions.}
+\begin{itemize}
+  \item \textbf{Constraints shape geometry (P2).}  Changing feasibility (gating, anisotropy, locality) should predictably deform the induced metric and transport invariants.  In particular, strong directional constraints should produce anisotropic geodesics and may induce effective ``cones'' of reachability in the macro space.
+  \item \textbf{Curvature is protocol noncommutativity (P3).}  Whenever local transports are forced to be patchwise (because the layer is packaged), noncommutativity should generically appear, and holonomy-like residues should persist under refinement when the layer is coherent.
+  \item \textbf{Smooth versus fractal is a refinement-regime question (P4/P5/P6).}  Away from critical regimes, refinement should tend to smooth local neighborhoods toward Euclidean-like behavior.  Near critical or self-similar regimes, refinement should stabilize scale laws (non-integer dimensions, anomalous diffusion) rather than smooth tangent structure.  We use ``fixed point'' language only as an analogy: we do not implement a formal renormalization operator or prove convergence.
+  \item \textbf{Pythagoras is an accounting identity, not an axiom (P6/P4/P2).}  Quadratic-additive structure should appear precisely in regimes where staged dynamics yields approximately Gaussian displacement statistics with isotropy; it should fail under anisotropy, strong constraints, or finite-size aliasing.
+\end{itemize}
+
+\paragraph{Next experiments (concrete).}
+Several natural extensions would strengthen the emergence calculus and broaden applicability:
+\begin{itemize}
+  \item \textbf{Operator emergence beyond distance (P1).}  Study when induced macro operators become local and stable (discrete Laplacians, gradient-like operators, connections) and whether curvature can be recovered in multiple equivalent ways (e.g., via commutators of induced operators).
+  \item \textbf{Learned lenses and prototypes.}  Instead of fixing a lens ladder by diffusion clustering, learn packaging and prototype choices by explicitly minimizing closure defects and distortion across scales, turning ``geometry discovery'' into an optimization problem.
+  \item \textbf{Alternative ledgers (P6).}  Replace negative log likelihood with other accounting notions (control energy, communication cost, repair cost) and test which ledgers yield which emergent geometries on the same substrate.
+  \item \textbf{Beyond synthetic substrates.}  Apply the pipeline to real-world substrates that are naturally graph-like (transport networks, biological connectomes, interaction graphs) to test whether the same coherence diagnostics predict when a usable geometry layer appears.
+  \item \textbf{Formal convergence targets.}  Connect the empirical coherence criteria to formal notions of convergence of metric spaces (e.g., Gromov--Hausdorff style) and to renormalization-style fixed points for the lens ladder \cite{Gromov1999Metric}.
+\end{itemize}
+
+\subsection{Six birds, one end-to-end story}
+It is worth restating the complete pipeline in bird terms, because it is the core conceptual contribution.
+
+\begin{itemize}
+  \item \textbf{P5 Packaging} creates the candidate ``points'' as equivalence classes under indistinguishability: $f:Z\to X$.
+  \item \textbf{P4 Staging} provides the ladder (both in $\tau$ and in refinement levels) on which stability can be tested and on which smooth versus fractal regimes separate.
+  \item \textbf{P1 Operator rewrite} is realized by closure: inserting prototypes to rewrite micro dynamics as a macro kernel $\widehat{P}=UP^\tau C$ and auditing its idempotence and stability.
+  \item \textbf{P6 Accounting} turns macro feasibility into a ledger (cost), from which distance is defined.
+  \item \textbf{P3 Protocols} enter twice: distance is the minimal cost over composed move protocols (shortest paths), and curvature appears as the residue of composing local transports around loops (holonomy).
+  \item \textbf{P2 Constraints} shape the feasible protocol space, thereby deforming the geometry and potentially changing which fixed point the refinement ladder approaches.
+\end{itemize}
+
+\paragraph{Closing.}
+Plotting is therefore not a primitive act; it is a successful closure.  When closure succeeds, we obtain geometry as a stable higher-layer description of what moves are possible and what they cost.  When closure fails, the diagnostics tell us why.  In this sense, \emph{space is not where the stone is}; space is what becomes true about the stone when the six birds make a stable map possible.

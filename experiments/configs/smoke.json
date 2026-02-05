@@ -1,0 +1,7 @@
+{
+  "run_name": "smoke",
+  "seed": 0,
+  "notes": "smoke test",
+  "output_root": "results",
+  "runner": "smoke"
+}

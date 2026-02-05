@@ -1,0 +1,130 @@
+\section{Core construction: from packaging to an emergent metric}
+\label{sec:construction}
+
+We now present the minimal SBT-native construction that turns a substrate with micro-dynamics into a space-like layer with points and distances.  The key move is to treat distance as \emph{accounting} (P6) optimized over \emph{protocols} (P3), rather than as a primitive ruler.
+
+\subsection{Substrate and micro-dynamics}
+Let $Z$ be a finite set of microstates (in code: indices $0,\dots,n-1$).  Let $\Delta(Z)$ denote the probability simplex over $Z$.
+We model micro-dynamics by a Markov kernel $P \in \mathbb{R}^{Z\times Z}$ that is row-stochastic \cite{Norris1997}.  We adopt the row-vector convention: for $\mu\in\Delta(Z)$,
+\begin{equation}
+\mu_{t+1} = \mu_t P,
+\qquad
+\mu_t \in \Delta(Z).
+\end{equation}
+Staging (P4) enters via a discrete time-scale parameter $\tau \in \mathbb{N}$: the $\tau$-step evolution is $\mu \mapsto \mu P^\tau$.
+
+\subsection{Packaging as a lens: points are indistinguishability classes (P5)}
+A \emph{lens} (packaging map) is a function
+\begin{equation}
+f : Z \to X,
+\end{equation}
+where $X$ is a finite set of macro labels (``macro states'').  In geometric language, elements of $X$ will play the role of \emph{points} at this resolution: a point is not primitive; it is a quotient class created by collapsing microstates that are indistinguishable under the interface induced by $f$.
+
+We represent the lens by the indicator (coarse) matrix $C \in \{0,1\}^{Z\times X}$:
+\begin{equation}
+C[z,x] \coloneqq \mathbf{1}\{f(z)=x\}.
+\end{equation}
+This induces a pushforward map on distributions (the coarse-graining operator)
+\begin{equation}
+Q_f : \Delta(Z) \to \Delta(X),
+\qquad
+Q_f(\mu) \coloneqq \mu C.
+\end{equation}
+
+\subsection{Prototypes as lifts: closure representatives (P1, P5)}
+To close dynamics at the macro level we choose, for each $x\in X$, a \emph{prototype} $u_x \in \Delta(Z)$ that serves as a representative micro-distribution for the macro state $x$.  Collect these rows into a matrix $U\in\mathbb{R}^{X\times Z}$ with
+\begin{equation}
+U[x,z] \coloneqq u_x(z),
+\qquad
+\sum_{z\in Z} U[x,z] = 1,\ \ U[x,z]\ge 0.
+\end{equation}
+This induces a lift map
+\begin{equation}
+U_f : \Delta(X) \to \Delta(Z),
+\qquad
+U_f(\nu) \coloneqq \nu U.
+\end{equation}
+A basic consistency condition is that macro states are recovered after lifting:
+\begin{equation}
+Q_f \circ U_f = \mathrm{id}_{\Delta(X)}.
+\label{eq:Q-U-id}
+\end{equation}
+In words: if we choose a macro label distribution $\nu$, lift it to micro via prototypes, and repackage, we recover $\nu$.  (Our implementations enforce this numerically by construction.)
+
+\subsection{The induced macro kernel}
+With staging $\tau$, lens $f$, and prototypes $U$, we obtain an induced macro Markov kernel $\widehat{P}$ on $X$ by evolving in micro, then packaging:
+\begin{equation}
+\widehat{P} \;\coloneqq\; U\,P^\tau\,C
+\;\in\; \mathbb{R}^{X\times X}.
+\label{eq:macro-kernel}
+\end{equation}
+Under the row-vector convention, macro distributions $\nu\in\Delta(X)$ evolve as
+\begin{equation}
+\nu_{t+1} = \nu_t \widehat{P}.
+\end{equation}
+This is the closure move (P1) in its simplest form: we rewrite micro-dynamics in macro variables by inserting (i)~packaging and (ii)~a chosen lift back to micro.
+
+\subsection{Distance is accounting (P6): costs from likelihood}
+We now turn macro dynamics into a costed move system.  Let $\eta>0$ be a small smoothing constant.  Define a directed per-step cost by negative log likelihood \cite{Shannon1948}:
+\begin{equation}
+c_\eta(x\to y) \;\coloneqq\; -\log\!\big(\widehat{P}(x,y) + \eta\big).
+\label{eq:cost}
+\end{equation}
+To obtain an undirected cost suitable for a symmetric metric, we may symmetrize the kernel (or the cost).  A common choice is
+\begin{equation}
+W \;\coloneqq\; \tfrac12\big(\widehat{P} + \widehat{P}^{\mathsf{T}}\big),
+\qquad
+c^{\mathrm{sym}}_\eta(x,y) \coloneqq -\log\!\big(W(x,y)+\eta\big).
+\end{equation}
+
+\begin{quote}
+\noindent \textbf{Key principle:} \emph{Distance is accounting.}  A pair of macro states is ``near'' if it is cheap (low ledger cost) to move influence between them under the induced dynamics; the pair is ``far'' if doing so is expensive.
+\end{quote}
+
+\subsection{Distance is optimized protocol cost (P3): shortest paths}
+Let $G$ be the directed (or undirected) weighted graph on vertex set $X$ with edge weights given by $c_\eta$ (or $c^{\mathrm{sym}}_\eta$).  A \emph{protocol} is a finite path $\gamma = (x_0\to x_1 \to \cdots \to x_k)$ in this graph.  The protocol cost is additive:
+\begin{equation}
+\mathrm{Cost}_\eta(\gamma) \;\coloneqq\; \sum_{i=0}^{k-1} c_\eta(x_i\to x_{i+1}).
+\end{equation}
+We define the induced distance as the minimal protocol cost:
+\begin{equation}
+d_\eta(x,y) \;\coloneqq\; \inf_{\gamma: x\rightsquigarrow y}\ \mathrm{Cost}_\eta(\gamma).
+\label{eq:shortest-path-metric}
+\end{equation}
+In computation we realize~\eqref{eq:shortest-path-metric} via all-pairs shortest paths on the macro graph.  In the appendices we record minimal Lean anchors that connect this construction to standard metric facts (triangle inequality via path concatenation and metric separation via quotienting by zero distance).
+
+\subsection{Mathematical status: extended (pseudo-)metrics, directed costs, and quotients}
+\label{sec:metric-status}
+
+Because our distances are computed as minimal path cost on a weighted graph, the basic mathematical structure is determined by construction rather than by assumption.
+
+\paragraph{Nonnegativity and triangle inequality.}
+Edge costs defined from~\eqref{eq:cost} are nonnegative.  Therefore the shortest-path construction~\eqref{eq:shortest-path-metric} yields a (possibly extended) distance function satisfying $d_\eta(x,x)=0$ and the triangle inequality by path concatenation.
+
+\paragraph{Directed versus undirected.}
+If we use the directed cost $c_\eta(x\to y)$, then the resulting $d_\eta(x,y)$ need not equal $d_\eta(y,x)$; mathematically this is a directed shortest-path distance (a quasi-metric or directed pseudo-distance).  In this paper we default to an undirected geometry by symmetrizing before converting to costs, yielding a symmetric distance suitable for comparison with familiar geometric regimes.  Directed geometries induced by asymmetric feasibility (constraints) are natural in the SBT framework but are deferred to future work.
+
+\paragraph{Extended distances and disconnection.}
+If the macro move graph is disconnected, there exist pairs with no connecting protocol; in that case $d_\eta(x,y)=\infty$.  We treat non-finite distances as a failure mode of the proposed geometric layer and explicitly record the count of non-finite entries (connectivity audit).
+
+\paragraph{Pseudometric versus metric and separation.}
+In general, a shortest-path construction yields a pseudometric: it is possible in principle that distinct points have zero distance if there exist zero-cost paths.  Our likelihood-based costs typically make nontrivial zero-cost paths rare (they would require essentially deterministic transitions), but the correct mathematical statement is still a pseudo- or extended metric unless separation is verified.  A standard way to obtain a metric is to quotient by the zero-distance relation ($x\sim y$ iff $d_\eta(x,y)=0$), yielding a metric on the separation quotient.  We include minimal Lean anchors formalizing (i)~triangle inequality for shortest-path distance and (ii)~the separation quotient metric construction (Appendix~\ref{app:lean}).
+
+\subsection{When do we say a geometric layer exists?  (Coherence schema)}
+A single computed distance matrix is not yet ``geometry.''  Geometry is a claim of \emph{coherence under refinement}: the packaged points, induced dynamics, and cost structure must stabilize across staging and across a ladder of lenses.  We use the following practical schema.
+
+\paragraph{Given:} A refinement ladder of lenses $f_0,f_1,\dots,f_L$ (coarse to fine), corresponding coarse matrices $C_j$, prototype matrices $U_j$, a staging parameter $\tau$, and induced macro kernels $\widehat{P}_j = U_j P^\tau C_j$ with induced distances $d^{(j)}_\eta$.
+
+\paragraph{We say a space-like geometric layer is present on this ladder when the following hold:}
+\begin{enumerate}
+  \item \textbf{Closure is nearly idempotent (P1/P5):} The package--evolve--repackage operator is close to idempotent at each scale (small idempotence defect $\delta_{\tau,f_j}$).
+  \item \textbf{Macro points are stable (P4/P5):} Prototypes do not drift strongly under the induced closure (small stability defect $s_{\tau,f_j}(x)$ on average and in the worst case).
+  \item \textbf{The induced metric is connected (P2/P6):} The macro graph has finite distances between essentially all pairs (no or few infinite distances).
+  \item \textbf{Refinement is coherent (P4/P3):} Distances persist across scale changes up to rescaling.  Using the refinement map $r: X_{j+1}\to X_j$ (fine to coarse), inter-scale distortion
+  \begin{equation}
+  \max_{a,b\in X_{j+1}}
+  \Big| d^{(j+1)}_\eta(a,b) - \alpha\, d^{(j)}_\eta(r(a),r(b)) \Big|
+  \end{equation}
+  is bounded (for some fitted $\alpha>0$), and route mismatch between alternative coarse-graining routes is small.
+\end{enumerate}
+When these conditions hold across a range of refinements, we treat $(X_j, d^{(j)}_\eta)$ as an emergent geometric layer at scale $j$.  Smooth Euclidean-like geometry corresponds to a regime in which local neighborhoods stabilize toward Euclidean behavior as $j$ increases, while fractal regimes correspond to scale-stable closure without such smoothing.

@@ -1,0 +1,21 @@
+{
+  "artifacts_dir": "results/anisotropic_20260202T193556Z_310f/artifacts",
+  "config_path": "experiments/configs/anisotropic.yaml",
+  "git_commit": "unknown",
+  "metrics_path": "results/anisotropic_20260202T193556Z_310f/metrics.json",
+  "plots_dir": "results/anisotropic_20260202T193556Z_310f/plots",
+  "run_id": "anisotropic_20260202T193556Z_310f",
+  "run_name": "anisotropic",
+  "summary": {
+    "delta_finest": 0.41450068140073437,
+    "distortion_max_rescaled": 11.245526517381242,
+    "elapsed_sec": 0.8024380207061768,
+    "m_finest": 128.0,
+    "mean_dist_finest": 13.420259992922272,
+    "n_micro": 625.0,
+    "seed": 0,
+    "smoke_ok": 1.0,
+    "tau": 5.0
+  },
+  "timestamp_utc": "2026-02-02T19:35:56.817059+00:00"
+}

@@ -1,0 +1,45 @@
+\section{Robustness, failure modes, and limitations}
+\label{sec:robustness}
+
+SBT is falsification-first: a layer is not declared real because it is elegant but because it \emph{survives its own closure tests}.  In the geometry setting, this means we must treat ``space birth'' as conditional.  The same pipeline that yields coherent metrics and curvature signatures in Sections~\ref{sec:results-e1-e4}--\ref{sec:results-holonomy-pythagoras} also provides knobs that can cause the layer to destabilize, disconnect, or become ambiguous.  This section summarizes the main sensitivity findings and corresponding failure modes.
+
+All robustness sweeps are documented in an internal note (\texttt{docs/notes/robustness\_20260202.md}) and are reproducible via sweep configuration files under \texttt{experiments/configs/sweeps/}.  Here we summarize the outcomes at the level appropriate for the paper: what breaks, why it breaks in SBT terms, and what this implies for claims of emergent geometry.
+
+\subsection{Representative failure modes (``where it breaks'')}
+
+\paragraph{Grid (E1): staging that is too large can inflate stability defects.}
+On the plane-like grid substrate, increasing the stage parameter $\tau$ does not monotonically improve closure.  While moderate staging pushes dynamics into a regime where the induced cost metric is coherent across refinement, overly large staging can inflate prototype stability defects: macro representatives drift under repeated closure.  In SBT terms, P4 staging is not ``more is better'': too much micro evolution between repackaging can wash out the very distinctions the lens is attempting to preserve, so P5 packaging no longer yields persistent macro carriers.
+
+\paragraph{Grid (E1): very fine ladders can amplify inter-scale distortion.}
+Increasing the number of refinement levels or pushing to very fine macro resolutions can increase inter-scale distortion even when per-scale closure defects remain bounded.  This is a coherence failure rather than a local failure: distances may exist at each scale, but the refinement ladder is not compatible enough for a single stable geometry to persist across the range.  In SBT terms, P4 staging and P5 packaging have produced usable layers, but P3 cross-scale commutation (route coherence) becomes strained as the ladder becomes too fine for the fixed lens construction.
+
+\paragraph{Connectivity failure: thresholding and smoothing can disconnect the metric.}
+A direct failure mode of the induced metric is disconnection: if the macro move graph becomes disconnected (often due to overly aggressive edge thresholding or inappropriate likelihood smoothing choices), shortest-path distances become infinite.  This is not a minor numerical artifact; it is a conceptual failure of the claimed geometry layer.  In SBT terms, accounting (P6) has been applied to a move system that no longer supports global protocols (P3), so ``distance'' ceases to be a meaningful global invariant.
+
+\paragraph{Sphere holonomy (E2): neighborhood choice can destabilize curvature estimation.}
+Holonomy is intentionally a higher-order diagnostic: it depends on local neighborhoods, local embeddings, and overlap-based transport.  Robustness sweeps show that holonomy magnitudes and even the number of \emph{evaluated} loops can become unstable when neighborhood size is too small, overlap thresholds are too strict, or neighborhood expansion is disabled.  In such regimes, the pipeline can undersample valid loops or produce noisy local embeddings that inflate angles.  This sensitivity is not a flaw to be hidden; it is an expected feature of a curvature diagnostic built from finite, packaged neighborhoods.  It also motivates our use of a canonical deterministic configuration (\texttt{holonomy\_demo.yaml}) for the headline separation figure.
+
+\paragraph{Pythagoras (E5): finite-size aliasing can stall the quadratic regime.}
+The Pythagoras experiment relies on a staged diffusion regime in which displacement statistics approach a smooth, approximately Gaussian form.  If the torus is too small relative to $\tau$ (or if the sampled displacement window is too wide for the available support), wrap-around aliasing can disrupt the emergence of a clean quadratic cost surface and stall the improvement of the Pythagorean residual.  In SBT terms, this is a failure of staging-as-limit: P4 is being pushed beyond the regime where the substrate supports the intended diffusion approximation, so the accounting law (P6) does not stabilize into the Euclidean form.
+
+\subsection{Knobs that matter (practical guidance)}
+The following parameters materially affect whether a coherent geometric layer emerges and which regime it occupies:
+\begin{itemize}
+  \item \textbf{Staging $\tau$ (P4):} Too small yields under-mixed, noisy macro costs; too large can inflate prototype drift or wash out distinctions.
+  \item \textbf{Refinement ladder / macro resolutions (P4/P5):} Overly coarse ladders may hide structure; overly fine ladders can amplify distortion or route mismatch.
+  \item \textbf{Prototype choice (P5/P1):} Uniform-on-block versus stationary-conditional prototypes can change stability and idempotence behavior.
+  \item \textbf{Cost smoothing and thresholds (P6):} Parameters such as $\eta$ (log smoothing) and edge thresholding can affect connectivity and metric stability.
+  \item \textbf{Holonomy neighborhood parameters (P3):} $k_{\mathrm{neigh}}$, overlap thresholds, and neighborhood expansion control the stability and evaluability of loop transport.
+  \item \textbf{Finite-size parameters in Pythagoras (P4):} Torus size $N$, displacement window, and $\tau$ range determine whether the diffusion regime is clean or aliased.
+\end{itemize}
+
+\subsection{Limitations and non-claims}
+We emphasize what the results do \emph{not} claim.
+\begin{itemize}
+  \item \textbf{Not a proof of Euclidean fundamentality.}  The Pythagoras result does not assert that Euclidean geometry is fundamental; it provides evidence that Euclidean structure is a stable higher-layer accounting law in an isotropic staged diffusion regime under our cost definition.
+  \item \textbf{Finite constructions.}  All substrates here are finite and all limits are operational: refinement ladders, staging ladders, and stability are tested by diagnostics rather than by asymptotic theorems.
+  \item \textbf{Lens dependence.}  Different lens families (different packaging strategies) can produce different macro points and therefore different induced geometries.  This is expected in SBT: a geometry is layer-relative.
+  \item \textbf{Curvature estimation is diagnostic, not axiomatic.}  Holonomy is measured via local embedding and alignment; it is a robust separator in the canonical configuration but remains sensitive to neighborhood choices, as the sweeps document.
+\end{itemize}
+
+Taken together, these limitations strengthen the SBT interpretation: a geometric layer is a \emph{conditional closure artifact}.  When it stabilizes across repetition and refinement, ``space'' becomes available as a reliable compression.  When it does not, the diagnostics indicate which primitive (staging, packaging, constraints, accounting, or protocol coherence) has failed to support the intended layer.

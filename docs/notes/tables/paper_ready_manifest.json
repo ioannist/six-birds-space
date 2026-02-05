@@ -1,0 +1,23 @@
+{
+  "inputs": [
+    "/home/repos/six-birds-space/docs/notes/runs/grid_plane_20260202T193540Z_4b14/artifacts/geo_pipeline_summary.json",
+    "/home/repos/six-birds-space/docs/notes/runs/grid_plane_20260202T193540Z_4b14/metrics.json",
+    "/home/repos/six-birds-space/docs/notes/runs/sphere_knn_20260202T193547Z_7681/artifacts/geo_pipeline_summary.json",
+    "/home/repos/six-birds-space/docs/notes/runs/sphere_knn_20260202T193547Z_7681/metrics.json",
+    "/home/repos/six-birds-space/docs/notes/runs/sierpinski_20260202T193551Z_95ab/artifacts/geo_pipeline_summary.json",
+    "/home/repos/six-birds-space/docs/notes/runs/sierpinski_20260202T193551Z_95ab/metrics.json",
+    "/home/repos/six-birds-space/docs/notes/runs/anisotropic_20260202T193556Z_310f/artifacts/geo_pipeline_summary.json",
+    "/home/repos/six-birds-space/docs/notes/runs/anisotropic_20260202T193556Z_310f/metrics.json",
+    "/home/repos/six-birds-space/docs/notes/holonomy_demo_summary.json",
+    "/home/repos/six-birds-space/docs/notes/pythagoras_rw_grid_summary.json"
+  ],
+  "outputs": [
+    "/home/repos/six-birds-space/docs/notes/figures/compare_delta_vs_m.png",
+    "/home/repos/six-birds-space/docs/notes/figures/compare_distortion_vs_m.png",
+    "/home/repos/six-birds-space/docs/notes/figures/compare_mean_distance_vs_m.png",
+    "/home/repos/six-birds-space/docs/notes/tables/exhibit_quotables.md",
+    "/home/repos/six-birds-space/docs/notes/tables/exhibit_quotables.csv",
+    "/home/repos/six-birds-space/docs/notes/tables/paper_ready_manifest.json"
+  ],
+  "timestamp_utc": "2026-02-03T04:42:36.776257+00:00"
+}

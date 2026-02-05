@@ -1,0 +1,17 @@
+{
+  "delta_finest": 0.25044796594108143,
+  "delta_mean": 0.18776835423088278,
+  "distortion_last_rescaled": 7.202276837464595,
+  "distortion_max_raw": 13.387783448524793,
+  "distortion_max_rescaled": 12.005445230943607,
+  "elapsed_sec": 0.636528491973877,
+  "inf_count_finest": 0.0,
+  "m_finest": 128.0,
+  "mean_dist_finest": 19.387909222205497,
+  "n_micro": 366.0,
+  "seed": 0,
+  "smoke_ok": 1.0,
+  "stab_max_finest": 0.8492431640625001,
+  "stab_mean_finest": 0.6348456891756209,
+  "tau": 5.0
+}

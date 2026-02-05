@@ -1,0 +1,15 @@
+{
+  "run_name": "sierpinski",
+  "runner": "geo_pipeline",
+  "seed": 0,
+  "output_root": "results",
+  "substrate": {"kind": "sierpinski", "level": 5, "lazy": 0.5},
+  "lens": {"levels": [4, 8, 16, 32, 64, 128], "n_eigs": 6},
+  "tau": 5,
+  "prototypes": "uniform",
+  "metric": {"symmetrize": "weight_avg", "eps_edge": 1e-15, "eta": 1e-12},
+  "distortion": {"rescale": "lstsq"},
+  "plots": {"enabled": true},
+  "holonomy": {"enabled": false},
+  "pointer_summary_keys": ["n_micro", "m_finest", "tau", "delta_finest", "distortion_max_rescaled", "mean_dist_finest"]
+}

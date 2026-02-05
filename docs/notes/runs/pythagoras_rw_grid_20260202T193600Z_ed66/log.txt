@@ -1,0 +1,5 @@
+run_id: pythagoras_rw_grid_20260202T193600Z_ed66
+config_path: /home/repos/six-birds-space/experiments/configs/pythagoras_rw_grid.yaml
+start_utc: 2026-02-02T19:36:00.672733+00:00
+
+end_utc: 2026-02-02T19:36:01.304758+00:00

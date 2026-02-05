@@ -1,0 +1,21 @@
+\section{Lean anchors (minimal)}
+\label{app:lean}
+
+We include a small set of Lean 4 ``anchors'' that support the narrative without attempting to formalize the entire emergence pipeline.  The intent is modest: to confirm that the two load-bearing mathematical moves used throughout the paper align with standard metric constructions.
+
+\paragraph{Build.}
+The Lean project lives under \texttt{lean/}.  To build:
+\begin{quote}\small
+\begin{verbatim}
+cd lean && lake build
+\end{verbatim}
+\end{quote}
+
+\paragraph{Anchors proved.}
+\begin{itemize}
+  \item \texttt{GeoSBT/PathMetric.lean} proves \texttt{graph\_edist\_triangle}: triangle inequality for a shortest-path distance induced by nonnegative edge costs (path concatenation).
+  \item \texttt{GeoSBT/\allowbreak Quotient\-Metric.lean} proves \texttt{separation\_\allowbreak quotient\_\allowbreak metric} and \texttt{separation\_\allowbreak quotient\_\allowbreak dist\_\allowbreak eq\_\allowbreak zero}: the standard construction turning a pseudo-metric into a metric by quotienting by the ``zero distance'' relation (separation quotient).
+  \item \texttt{GeoSBT/Pythagoras.lean} proves \texttt{pythagoras\_real}: a classical Euclidean sanity anchor (orthogonality implies squared-norm additivity in $\mathbb{R}^2$).
+\end{itemize}
+
+These theorems do not prove that our emergent metric is Euclidean.  Rather, they formalize the minimal mathematical scaffolding that underlies our constructions: ``distance as minimal path cost'' is a pseudo-metric, and identifying points at zero distance yields a metric space.

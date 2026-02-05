@@ -1,0 +1,78 @@
+{
+  "config": {
+    "artifacts_dir": "/home/repos/six-birds-space/results/holonomy_demo_20260202T215655Z_c66b/artifacts",
+    "holonomy": {
+      "expand_hops": 1,
+      "k_loop": 8,
+      "k_neigh": 24,
+      "max_loops": 800,
+      "min_overlap": 4,
+      "seed_plane": 0,
+      "seed_sphere": 1
+    },
+    "macro": {
+      "levels": [
+        128
+      ],
+      "n_eigs": 6,
+      "seed": 0,
+      "tau": 5
+    },
+    "notes": "",
+    "output_root": "results",
+    "plane": {
+      "lazy": 0.5,
+      "n_side": 25
+    },
+    "plots_dir": "/home/repos/six-birds-space/results/holonomy_demo_20260202T215655Z_c66b/plots",
+    "pointer_summary_keys": [
+      "plane_median",
+      "sphere_median",
+      "median_diff",
+      "median_ratio",
+      "plane_evaluated",
+      "sphere_evaluated",
+      "tau"
+    ],
+    "run_dir": "/home/repos/six-birds-space/results/holonomy_demo_20260202T215655Z_c66b",
+    "run_id": "holonomy_demo_20260202T215655Z_c66b",
+    "run_name": "holonomy_demo",
+    "runner": "holonomy_demo",
+    "seed": 0,
+    "sphere": {
+      "knn_k": 10,
+      "n_points": 500,
+      "self_loop": 1e-06,
+      "sigma": 0.5
+    },
+    "write_docs_artifacts": true
+  },
+  "plane": {
+    "lazy": 0.5,
+    "n_side": 25,
+    "stats": {
+      "mean_angle": 0.2782062907077993,
+      "median_angle": 0.04788259433117165,
+      "triangles_evaluated": 791,
+      "triangles_sampled": 791
+    }
+  },
+  "run_id": "holonomy_demo_20260202T215655Z_c66b",
+  "separation": {
+    "median_diff": 0.5501187669777738,
+    "median_ratio": 12.488908958712072
+  },
+  "sphere": {
+    "knn_k": 10,
+    "n_points": 500,
+    "self_loop": 1e-06,
+    "sigma": 0.5,
+    "stats": {
+      "mean_angle": 0.8935807651858508,
+      "median_angle": 0.5980013613089455,
+      "triangles_evaluated": 800,
+      "triangles_sampled": 800
+    }
+  },
+  "timestamp_utc": "2026-02-02T21:56:56.754332+00:00"
+}

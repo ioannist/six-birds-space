@@ -1,0 +1,17 @@
+{
+  "axis_lin_rms_tau_max": 1.053557297693871,
+  "axis_quad_over_lin_L1": 1.7569046079232274e+16,
+  "axis_quad_over_lin_tau_max": 0.016788638422165617,
+  "axis_quad_rms_tau_max": 0.0176877925280163,
+  "axis_quad_rms_tau_min": 6.267169515511038,
+  "elapsed_sec": 0.6282777786254883,
+  "fit_rms_improve_ratio": 0.012465385050402272,
+  "fit_rms_tau_max": 0.1508638615691412,
+  "fit_rms_tau_min": 12.10262346162124,
+  "pyth_med_tau_max": 0.05858938329107133,
+  "pyth_med_tau_min": 33.18789857833447,
+  "seed": 0,
+  "smoke_ok": 1.0,
+  "tau_max": 128.0,
+  "tau_min": 4.0
+}

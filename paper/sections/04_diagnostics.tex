@@ -1,0 +1,82 @@
+\section{Diagnostics: when geometry is coherent (and when it breaks)}
+\label{sec:diagnostics}
+
+SBT emphasizes falsification-first: a higher-layer theory is not declared real because it is appealing, but because it is \emph{stable under repeated closure} and \emph{auditable}.  In this section we introduce the diagnostics used throughout the experiments.  Each diagnostic answers a concrete question about coherence of the packaged layer under staging and refinement.  We treat these quantities as falsification-first audits and gates, not as necessary and sufficient conditions for any particular continuum-limit notion of convergence.
+
+\subsection{Idempotence defect $\delta$: does closure stabilize?}
+Fix staging $\tau$ and a lens $f:Z\to X$ with coarse matrix $C$ and prototype matrix $U$.  Consider the package--evolve--repackage operator acting on micro distributions,
+\begin{equation}
+E_{\tau,f}(\mu) \;\coloneqq\; U_f\!\big(Q_f(\mu P^\tau)\big)
+\;=\; (\mu P^\tau C)\,U,
+\end{equation}
+where $\mu\in\Delta(Z)$.  If this operator is idempotent, $E_{\tau,f}\circ E_{\tau,f} = E_{\tau,f}$, then repeated closure does not drift.  We quantify deviation from idempotence by the total-variation extreme-point defect
+\begin{equation}
+\delta_{\tau,f} \;\coloneqq\; \tfrac12\max_{z\in Z}\ \sum_{z'\in Z}\Big|\big(E_{\tau,f}^2 - E_{\tau,f}\big)[z,z']\Big|.
+\end{equation}
+Equivalently, $\delta_{\tau,f}$ is the maximum total-variation gap between one-step and two-step closure applied to a point mass: $\delta_{\tau,f}=\max_{z\in Z}\mathrm{TV}(\delta_z E_{\tau,f},\,\delta_z E_{\tau,f}^2)$.
+A small $\delta_{\tau,f}$ indicates that closure is approximately stable under repetition; a large $\delta_{\tau,f}$ indicates that the ``macro description'' is not closed and will keep changing when reapplied.
+
+\subsection{Prototype stability $s_{\tau,f}$: do points persist under closure?}
+Each macro label $x\in X$ is represented by a prototype distribution $u_x$ (row $x$ of $U$).  Stability asks whether the prototype returns to itself after closure:
+\begin{equation}
+s_{\tau,f}(x) \;\coloneqq\; \mathrm{TV}\!\big(E_{\tau,f}(u_x) - u_x\big).
+\end{equation}
+We report mean and worst-case stability across $x$.  Intuitively, stability measures ``persistence of points'': if prototypes drift substantially, the intended points are not robust carriers at that stage.
+
+\subsection{Route mismatch (RM): does refinement commute?}
+Geometry is a multi-scale claim.  Given three adjacent scales $j \to j{+}1 \to j{+}2$, there are two natural ways to go from the finest to the coarsest: a direct two-step packaging route or a two-stage composition.  Route mismatch measures the disagreement between them:
+\begin{equation}
+\mathrm{RM}(j)
+\;\coloneqq\;
+d\!\Big(\mathsf{Pack}_{j\leftarrow j+2},\ \mathsf{Pack}_{j\leftarrow j+1}\circ \mathsf{Pack}_{j+1\leftarrow j+2}\Big),
+\end{equation}
+where $d$ is a chosen operator distance.  In our implementation we use a total-variation supremum proxy (extreme-point distance) and optionally a Frobenius norm.  A small RM indicates that refinement and packaging routes approximately commute; a large RM indicates a failure of scale coherence.
+
+\subsection{Inter-scale distortion: does distance persist across refinement?}
+Even if closure is stable at each scale, ``geometry'' requires that the \emph{induced distances} align across scales.  Let $d^{(j)}_\eta$ be the induced macro distance at scale $j$, and let $r: X_{j+1}\to X_j$ be the refinement map (fine $\to$ coarse).  We measure inter-scale distortion by
+\begin{equation}
+\mathrm{Dist}(j{+}1\to j)
+\;\coloneqq\;
+\max_{a,b\in X_{j+1}}
+\Big| d^{(j+1)}_\eta(a,b) - \alpha\, d^{(j)}_\eta(r(a),r(b)) \Big|.
+\label{eq:distortion}
+\end{equation}
+The scalar $\alpha>0$ may be fitted (e.g., by least squares through the origin) to account for the expected rescaling of distance between resolutions.  Small distortion indicates that the notions of ``near'' and ``far'' are compatible across refinement; large distortion indicates that the geometry is not stable as the observer sharpens resolution.
+
+\subsection{Dimension diagnostics: ``bits per scale'' and ball growth}
+A smooth Euclidean-like regime is characterized not only by coherence, but also by \emph{local growth laws}.  SBT suggests a natural interpretation of dimension as an accounting exponent: how many distinguishable macro cells must be maintained as resolution increases.
+
+\paragraph{Information (entropy) versus scale.}
+Fix a micro distribution $\mu$ (uniform or stationary).  At scale $j$, packaging yields $\nu_j = Q_{f_j}(\mu)\in\Delta(X_j)$ with entropy
+\begin{equation}
+H_j \;\coloneqq\; -\sum_{x\in X_j} \nu_j(x)\log \nu_j(x).
+\end{equation}
+Using a scale proxy $\varepsilon_j$ (taken from typical nearest-neighbor distance in the induced macro metric), we estimate an information-dimension slope by regressing $H_j$ against $\log(1/\varepsilon_j)$ \cite{Renyi1959DimensionEntropy,CoverThomas2006}.  In smooth regimes this slope trends toward an integer-like value; in fractal regimes it tends toward non-integer behavior \cite{Falconer2003Fractal}.
+
+\paragraph{Ball growth in the emergent metric.}
+Given a macro distance $d^{(j)}_\eta$, define metric balls $B_x(r)=\{y: d^{(j)}_\eta(x,y)\le r\}$ and the mean ball count $N(r)=\mathbb{E}_x|B_x(r)|$.  We estimate a ball-growth dimension by fitting the slope of $\log N(r)$ versus $\log r$ in a non-saturated radius range.  Smooth Euclidean-like regimes exhibit integer-like slopes, while fractal regimes exhibit non-integer-like scaling.
+
+\subsection{Connectivity: does the induced metric disconnect?}
+Because distance is computed from the induced macro dynamics, a failure mode is disconnection: if the macro graph lacks paths between regions, the induced shortest-path distance is infinite.  We explicitly record the count of non-finite distances.  Large numbers of infinities indicate that the stage, lens, or prototype choice has produced a broken geometric layer (often due to overly aggressive thresholding, inappropriate staging, or incoherent packaging).
+
+\subsection{Holonomy: curvature as protocol residue (P3 made geometric)}
+We detect curvature not by assuming a manifold but by measuring loop residue in local transport.  We construct local neighborhoods using metric $k$-nearest neighbors, embed each neighborhood into $\mathbb{R}^2$ via local classical multidimensional scaling (MDS), and define transport between neighboring neighborhoods via Procrustes alignment (a best-fit rotation).  Given a small loop (triangle) $(x,y,z)$, the holonomy matrix is
+\begin{equation}
+H_{x\to y\to z\to x} \;\coloneqq\; R_{x\to y}\,R_{y\to z}\,R_{z\to x},
+\end{equation}
+and we extract its rotation angle magnitude as the holonomy score.  Plane-like substrates concentrate near zero holonomy; sphere-like substrates exhibit a shifted distribution.  In SBT terms, this is P3: noncommutativity of protocols survives packaging as a stable geometric invariant.
+
+\subsection{Checklist: a practical ``geometry birth'' audit}
+For a lens ladder $\{f_j\}$ and staging $\tau$, we treat a geometric layer as coherent over a scale range when the following conditions jointly hold:
+\begin{itemize}
+  \item \textbf{Closure:} $\delta_{\tau,f_j}$ is small across scales (package--evolve--repackage stabilizes).
+  \item \textbf{Point stability:} $s_{\tau,f_j}(x)$ is small on average and in the worst case (prototypes persist).
+  \item \textbf{Connectivity:} Induced shortest-path distances are finite (macro graph connected).
+  \item \textbf{Refinement coherence:} Route mismatch is small and distortion~\eqref{eq:distortion} is bounded after rescaling.
+  \item \textbf{Regime signature:} Dimension diagnostics separate smooth from fractal behavior; holonomy separates flat from curved behavior.
+\end{itemize}
+
+These diagnostics are deliberately conservative: they are designed to fail loudly.  The robustness sweeps in later sections report where they break (e.g., staging too small or too large, overly fine or coarse ladders, prototype mismatch, threshold-induced disconnection, holonomy neighborhood instability, and aliasing effects in the Pythagoras experiment).  In this sense, ``where it breaks'' is part of the theory: a layer is real only to the extent that it survives its own closure tests.
+
+\paragraph{Lean anchors (minimal).}
+We do not formalize the entire emergence pipeline in Lean.  However, we include minimal anchors consistent with the above diagnostics: (i)~shortest-path costs satisfy triangle inequality via path concatenation (pseudometric structure) and (ii)~quotienting by zero-distance yields a metric space (standard separation quotient construction).  These anchors support the narrative without turning the paper into a full formalization project.

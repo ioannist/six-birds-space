@@ -1,0 +1,65 @@
+\section{Results I: coherent metrics, fractal regimes, and constraint deformation (E1--E4)}
+\label{sec:results-e1-e4}
+
+We now report the core empirical claim of this paper: when packaging and staging yield a coherent closure, the induced cost structure supports a stable notion of ``near'' and ``far'' that behaves like geometry.  We present four exhibits---plane-like (grid), sphere-like (curved regime), Sierpi\'nski (fractal regime), and anisotropic deformation under constraints---and interpret them through the diagnostics introduced in Section~\ref{sec:diagnostics}.  (Curvature as holonomy is deferred to Section~\ref{sec:results-holonomy-pythagoras}.)
+
+Throughout, the figures and quoted summary numbers refer to committed run packs (Section~\ref{sec:experimental-pipeline}), so the narrative is anchored to auditable artifacts rather than ad hoc screenshots.  The overlay figures in this section provide a ``regime map'' across substrates: idempotence defect (closure stability), inter-scale distortion (refinement coherence), and the mean induced distance scale.
+
+\subsection{Overlay summaries across substrates}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\linewidth]{figures/compare_delta_vs_m.png}
+  \caption{Idempotence defect $\delta$ across refinement, plotted against the macro state count $m$ for four canonical substrates (grid, sphere-like, Sierpi\'nski, anisotropic).  Bounded $\delta$ indicates that repeated package--evolve--repackage does not drift arbitrarily; large or rapidly growing $\delta$ signals failure of closure.}
+  \label{fig:compare-delta}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\linewidth]{figures/compare_distortion_vs_m.png}
+  \caption{Inter-scale distortion across adjacent refinement levels (after fitted rescaling), plotted against the finer-level macro state count.  Low distortion indicates that the induced notion of distance is compatible across refinement; high distortion indicates incoherence of ``near'' and ``far'' under scale change.}
+  \label{fig:compare-distortion}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\linewidth]{figures/compare_mean_distance_vs_m.png}
+  \caption{Mean finite induced distance as a function of macro resolution $m$.  This summarizes the overall scale of the induced metric and helps interpret the rescaling factor in distortion measurements.  Disconnection would appear as non-finite distances (recorded separately).}
+  \label{fig:compare-mean-distance}
+\end{figure}
+
+Table~\ref{tab:exhibit-quotables} reports representative per-run summary metrics for the four geo-pipeline exhibits (E1--E4), including $\delta$ and stability defects at the finest scale, connectivity (infinite-distance count), and maximum inter-scale distortion after rescaling.
+We also compute route mismatch (RM) for adjacent triples in the refinement ladder and record it in the committed run-pack summary JSONs; in the canonical runs it tracks the same coherence and failure modes as distortion (small when refinement is compatible, large when ladders become too fine or closure degrades).
+
+\input{tables/exhibit_quotables}
+
+\subsection{E1: Plane-like emergent metric on a grid}
+\label{sec:E1-grid}
+
+The grid substrate is the canonical ``flat'' case: micro moves are local and isotropic, and the lens ladder packages microstates into increasingly refined macro regions.  Across the refinement ladder, the induced closure remains bounded under repetition (Figure~\ref{fig:compare-delta}), and the induced distances remain compatible across refinement up to rescaling (Figure~\ref{fig:compare-distortion}).  The macro metric graph remains connected in the canonical run (finite distances throughout), confirming that the induced notion of distance is not an artifact of disconnection or thresholding.
+
+In SBT terms, this is the regime in which packaging (P5) and staging (P4) yield a usable closed operator (P1) and accounting (P6) produces a stable ledger over protocols (P3).  The outcome is not ``coordinates'' but a coherent notion of proximity: macro states that exchange probability mass easily are near; those that do not are far.
+
+\subsection{E2: Sphere-like macro metric (curvature expected; holonomy deferred)}
+\label{sec:E2-sphere}
+
+The sphere-like substrate is constructed to be locally similar to the grid in terms of local connectivity and random-walk dynamics, but globally incompatible with a flat embedding.  At the level of closure and distance coherence, the sphere-like run is comparable to the grid case: the induced macro kernel yields a connected macro graph, and the core defects remain bounded over the ladder (Figures~\ref{fig:compare-delta}--\ref{fig:compare-distortion}).  On these diagnostics alone, one might call the geometry ``well-formed.''
+
+However, coherence of distances does not by itself detect curvature.  Curvature is a statement about \emph{transport around loops}: whether the order of local moves matters after packaging.  This is exactly P3 (protocol composition) made geometric.  In Section~\ref{sec:results-holonomy-pythagoras} we therefore measure loop holonomy and show a clear separation between plane-like and sphere-like substrates: small-loop holonomy concentrates near zero for the grid but shifts upward for the sphere-like case.
+
+\subsection{E3: Sierpi\'nski gasket (fractal regime)}
+\label{sec:E3-sierpinski}
+
+The Sierpi\'nski gasket substrate exhibits stable multi-scale structure without smooth local Euclidean neighborhoods.  In this regime, the emergence question is not ``does it become a manifold'' but ``does it become coherent under refinement at all, and if so, what invariants stabilize?''  The overlay diagnostics show that closure and induced distance can remain meaningful (bounded defects, finite distances) while refinement does not smooth toward a single Euclidean tangent picture.  This is the SBT distinction between a smooth fixed point and a scale-stable (fractal) fixed point: both are valid higher-layer theories, but they stabilize different invariants.
+
+In practice, scaling diagnostics such as entropy-versus-scale and ball-growth in the induced metric are useful but can be sensitive in finite graphs and depend on the chosen cost-to-distance convention.  We therefore treat ``dimension'' estimates as secondary corroboration rather than a headline claim: our main point in E3 is that refinement can yield a coherent layer without smoothing toward Euclidean local neighborhoods.  Recovering precise Hausdorff-like dimensions is out of scope here; we instead emphasize auditable coherence and document scaling behavior and its sensitivities in the accompanying artifacts and robustness notes.
+
+\subsection{E4: Constraints deform geometry (anisotropic gating)}
+\label{sec:E4-anisotropic}
+
+To demonstrate that geometry is not merely ``read off'' from a substrate, we introduce constraints (P2) that alter feasibility of moves.  Starting from the grid kernel, we apply directional gating that suppresses motion against a preferred direction and renormalizes the kernel.  This produces a macro geometry that is still coherent enough to support an induced metric, but is systematically deformed: neighborhoods and distances reflect the biased feasibility structure rather than an isotropic baseline.
+
+Conceptually, this is a direct SBT statement: constraints are not secondary---they define what protocols exist and what accounting costs can be minimized.  When P2 changes, the emergent geometry changes.  The anisotropic exhibit thus serves as a controlled deformation of the plane-like regime, illustrating that the ``geometry layer'' is an induced theory of feasible transformations and their costs, not a fixed container.
+
+\paragraph{Summary of E1--E4.}
+Across these exhibits we see the same emergence calculus expressed in distinct refinement-stable regimes (analogous to fixed points in renormalization): (i)~a plane-like regime where closure and distances are coherent and curvature is absent, (ii)~a curved regime where distances remain coherent but loop transport accumulates residue, (iii)~a fractal regime where refinement stabilizes scale-laws rather than smooth tangent structure, and (iv)~constraint-driven deformation where feasibility reshapes the induced metric.  Section~\ref{sec:results-holonomy-pythagoras} makes the curvature statement explicit by measuring holonomy and then presents the Pythagoras emergence experiment as a signature accounting-to-geometry bridge.

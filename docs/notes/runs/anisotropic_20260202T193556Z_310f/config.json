@@ -1,0 +1,56 @@
+{
+  "artifacts_dir": "/home/repos/six-birds-space/results/anisotropic_20260202T193556Z_310f/artifacts",
+  "constraints": {
+    "direction": "east",
+    "kind": "anisotropic_gate",
+    "strength": 1.0
+  },
+  "distortion": {
+    "rescale": "lstsq"
+  },
+  "holonomy": {
+    "enabled": false
+  },
+  "lens": {
+    "levels": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "n_eigs": 6
+  },
+  "metric": {
+    "eps_edge": 1e-15,
+    "eta": 1e-12,
+    "symmetrize": "weight_avg"
+  },
+  "notes": "",
+  "output_root": "results",
+  "plots": {
+    "enabled": true
+  },
+  "plots_dir": "/home/repos/six-birds-space/results/anisotropic_20260202T193556Z_310f/plots",
+  "pointer_summary_keys": [
+    "n_micro",
+    "m_finest",
+    "tau",
+    "delta_finest",
+    "distortion_max_rescaled",
+    "mean_dist_finest"
+  ],
+  "prototypes": "uniform",
+  "run_dir": "/home/repos/six-birds-space/results/anisotropic_20260202T193556Z_310f",
+  "run_id": "anisotropic_20260202T193556Z_310f",
+  "run_name": "anisotropic",
+  "runner": "geo_pipeline",
+  "seed": 0,
+  "substrate": {
+    "kind": "grid",
+    "lazy": 0.5,
+    "n_side": 25
+  },
+  "tau": 5
+}

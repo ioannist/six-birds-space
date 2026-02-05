@@ -1,0 +1,120 @@
+{
+  "constraints": {
+    "direction": "east",
+    "kind": "anisotropic_gate",
+    "strength": 1.0
+  },
+  "distortions": [
+    {
+      "alpha": 1.3515575178023285,
+      "coarse_m": 4,
+      "fine_m": 8,
+      "raw": 5.454235348168731,
+      "rescaled": 5.454235348168731
+    },
+    {
+      "alpha": 1.3927155128640316,
+      "coarse_m": 8,
+      "fine_m": 16,
+      "raw": 11.245526517381242,
+      "rescaled": 11.245526517381242
+    },
+    {
+      "alpha": 1.3036690427273183,
+      "coarse_m": 16,
+      "fine_m": 32,
+      "raw": 5.968059092479304,
+      "rescaled": 4.543055010413163
+    },
+    {
+      "alpha": 1.3350986793248139,
+      "coarse_m": 32,
+      "fine_m": 64,
+      "raw": 9.776646991092797,
+      "rescaled": 6.731998549201354
+    },
+    {
+      "alpha": 1.327085376366555,
+      "coarse_m": 64,
+      "fine_m": 128,
+      "raw": 10.963064062064628,
+      "rescaled": 5.5201482595153895
+    }
+  ],
+  "holonomy": null,
+  "lens": {
+    "levels": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "n_eigs": 6,
+    "seed": 0
+  },
+  "metric": {
+    "eps_edge": 1e-15,
+    "eta": 1e-12,
+    "symmetrize": "weight_avg"
+  },
+  "n_micro": 625,
+  "per_level": [
+    {
+      "delta": 0.12609299619005748,
+      "inf_count": 0,
+      "m": 4,
+      "mean_finite_dist": 3.8769019051255658,
+      "stab_max": 0.1260929961900573,
+      "stab_mean": 0.08807063773906453
+    },
+    {
+      "delta": 0.2808465599350538,
+      "inf_count": 0,
+      "m": 8,
+      "mean_finite_dist": 4.6473615895368505,
+      "stab_max": 0.293639606585987,
+      "stab_mean": 0.1629660246348934
+    },
+    {
+      "delta": 0.3731141356465633,
+      "inf_count": 0,
+      "m": 16,
+      "mean_finite_dist": 6.374828181514421,
+      "stab_max": 0.5558032660994426,
+      "stab_mean": 0.2561435688871569
+    },
+    {
+      "delta": 0.3783145900257149,
+      "inf_count": 0,
+      "m": 32,
+      "mean_finite_dist": 7.842465778169726,
+      "stab_max": 0.6377104777771168,
+      "stab_mean": 0.3721295541974923
+    },
+    {
+      "delta": 0.3914581118598481,
+      "inf_count": 0,
+      "m": 64,
+      "mean_finite_dist": 10.28259624574246,
+      "stab_max": 0.7103984450923226,
+      "stab_mean": 0.49478087168167406
+    },
+    {
+      "delta": 0.41450068140073437,
+      "inf_count": 0,
+      "m": 128,
+      "mean_finite_dist": 13.420259992922272,
+      "stab_max": 0.8557743797227344,
+      "stab_mean": 0.615374573841885
+    }
+  ],
+  "prototypes": "uniform",
+  "substrate": {
+    "kind": "grid",
+    "lazy": 0.5,
+    "n_side": 25
+  },
+  "tau": 5
+}

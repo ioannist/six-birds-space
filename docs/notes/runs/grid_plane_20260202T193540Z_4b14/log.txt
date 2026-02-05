@@ -1,0 +1,5 @@
+run_id: grid_plane_20260202T193540Z_4b14
+config_path: /home/repos/six-birds-space/experiments/configs/grid_plane.yaml
+start_utc: 2026-02-02T19:35:40.063137+00:00
+
+end_utc: 2026-02-02T19:35:40.816821+00:00
