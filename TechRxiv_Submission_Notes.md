@@ -47,6 +47,7 @@ We present a reproducible computational pipeline that derives metric structure f
 ## Links
 
 - **Zenodo DOI (paper):** https://doi.org/10.5281/zenodo.18494975
+- **Zenodo DOI (code):** https://doi.org/10.5281/zenodo.18595948
 - **GitHub repository:** https://github.com/ioannist/six-birds-space
 - **SBT Foundations reference:** https://doi.org/10.5281/zenodo.18365949
 
