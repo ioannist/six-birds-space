@@ -1,0 +1,36 @@
+\section{Introduction}
+\label{sec:introduction}
+
+To \emph{plot} an object is to treat it as if it already lives in a space: we assign locations, measure distances, and speak of surfaces and curvature as though these were primitive facts.  Yet in practice we never access ``space itself''---we access only interactions, constraints, and limited interfaces: what an observer can reliably distinguish, compress, and act upon.  Six Birds Theory (SBT)~\cite{SixBirdsTheory} takes this seriously: points, distances, and geometric laws are not axioms but \emph{closure artifacts} of stable compression under the six primitives.
+
+This paper asks a concrete question: \emph{how do you plot a stone if you are not allowed to assume space?}  A stone has microstructure (grains, pores, microfractures) and dynamics (how disturbances propagate, how configurations change).  An agent with finite bandwidth cannot retain all micro-detail; it must package.  If repeated packaging produces a stable notion of ``the same'' (macro states), if feasible moves compose into protocols, and if the costs of effecting or distinguishing moves become coherent across refinement, then a space-like layer becomes available.  In one line:
+\begin{quote}
+\noindent \textbf{Geometry is what you get when repeated packaging produces a stable notion of nearby, composition of moves, and cost of moving, and that structure closes under refinement.}
+\end{quote}
+
+The narrative of this paper parallels our companion work on emergent mathematics~\cite{ToCountAStone}: there we study how counting-like structure becomes stable under SBT closure; here we study how \emph{plotting-like} structure becomes stable.  The difference is one of emphasis.  ``Counting'' stabilizes a notion of quantity; ``plotting'' stabilizes a notion of \emph{location and transport}.  Both are instances of the same emergence calculus: staging (multi-scale refinement) and packaging (quotienting by indistinguishability) are forced by finite interfaces, while accounting turns feasibility into a ledger that can be optimized over protocols.
+
+\paragraph{What we do (high level).}
+We start from a finite substrate of microstates with micro-dynamics (a Markov kernel).  At each stage we construct a lens (a packaging map) and prototypes that realize closure, yielding a macro kernel.  We then define distance from accounting: transition likelihood induces cost, and distance is the minimal cost of a protocol connecting macro states.  A geometric layer is said to exist when this induced metric structure is coherent across refinement, as quantified by a small set of diagnostics (idempotence and stability defects, route mismatch, inter-scale distortion, connectivity), and when curvature is detected as loop holonomy (protocol noncommutativity made geometric).
+
+\paragraph{Reader map: exhibits.}
+We emphasize falsification-first: each exhibit has a corresponding ``where it breaks'' analysis.  The core experimental exhibits are:
+\begin{itemize}
+  \item \textbf{E1 (plane-like)}: on a grid substrate with isotropic local moves, the emergent metric is coherent across scales (low defects, connected macro graph, bounded distortions).
+  \item \textbf{E2 (curvature as holonomy)}: a loop-based holonomy diagnostic concentrates near zero on plane-like substrates but shifts upward on sphere-like substrates, revealing curvature as protocol residue.
+  \item \textbf{E3 (fractal regime)}: on a Sierpi\'nski substrate, refinement does not smooth toward Euclidean neighborhoods but stabilizes in scale-space, separating fractal from smooth regimes.
+  \item \textbf{E4 (constraints deform geometry)}: imposing directional feasibility constraints induces anisotropic deformation of the emergent metric and its cross-scale coherence.
+  \item \textbf{E5 (Pythagoras emergence)}: using negative log transition probability as cost under isotropic staged diffusion, the stable accounting law becomes approximately quadratic and separable, yielding a Pythagorean structure; a Manhattan control fails as expected.
+\end{itemize}
+
+\paragraph{Reproducibility.}
+All experiments are runnable from configuration files in the repository (including end-to-end harness runs and a canonical holonomy run).  For writing stability, we also commit ``run packs'' under \texttt{docs/notes/runs/} containing the exact summary JSONs and plots referenced by the paper, together with paper-ready comparison figures and a quotables table.  This anchors the narrative to concrete, auditable artifacts rather than ad hoc screenshots.
+
+\paragraph{Code availability.}
+The repository for this paper is available at:
+\begin{itemize}[noitemsep,topsep=2pt]
+\item \url{https://github.com/ioannist/six-birds-space}
+\end{itemize}
+
+\paragraph{Roadmap.}
+Section~\ref{sec:six-birds-recap} recaps the six primitives and how they specialize to geometry.  We then present the emergent geometry construction (points as equivalence classes; distance as optimized accounting), the diagnostic toolkit, the experimental pipeline, and the exhibits, followed by robustness and failure modes and minimal Lean anchors.
