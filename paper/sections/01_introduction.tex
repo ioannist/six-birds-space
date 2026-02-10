@@ -13,6 +13,14 @@ The narrative of this paper parallels our companion work on emergent mathematics
 \paragraph{What we do (high level).}
 We start from a finite substrate of microstates with micro-dynamics (a Markov kernel).  At each stage we construct a lens (a packaging map) and prototypes that realize closure, yielding a macro kernel.  We then define distance from accounting: transition likelihood induces cost, and distance is the minimal cost of a protocol connecting macro states.  A geometric layer is said to exist when this induced metric structure is coherent across refinement, as quantified by a small set of diagnostics (idempotence and stability defects, route mismatch, inter-scale distortion, connectivity), and when curvature is detected as loop holonomy (protocol noncommutativity made geometric).
 
+\paragraph{Computational contributions.}
+The concrete deliverables of this paper are algorithmic and software-engineering contributions:
+(i)~a modular pipeline for constructing graph distances and path-cost metrics from Markov kernels via spectral lens ladders, macro-kernel closure, and shortest-path optimization;
+(ii)~a diagnostic toolkit for auditing metric coherence across scales---including idempotence defect, prototype stability, route mismatch, inter-scale distortion, connectivity, and loop-holonomy curvature estimation via local multidimensional scaling (MDS) and Procrustes alignment;
+(iii)~reproducible experiment configurations, committed run-pack artifacts, and paper-ready comparison scripts that tie every quoted number to an auditable source;
+and (iv)~minimal Lean~4 mechanized anchors for the core metric constructions (triangle inequality via path concatenation, separation quotient).
+This work sits at the intersection of computational geometry, manifold learning, and representation auditing: we construct metrics from observations rather than assuming them, and we provide stability and coherence tests that distinguish genuine geometric signal from packaging artifacts.
+
 \paragraph{Reader map: exhibits.}
 We emphasize falsification-first: each exhibit has a corresponding ``where it breaks'' analysis.  The core experimental exhibits are:
 \begin{itemize}
