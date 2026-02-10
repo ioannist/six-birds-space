@@ -68,7 +68,7 @@ If cost is separable and quadratic as in~\eqref{eq:quadratic-cost}, then $R_\tau
   \label{fig:pythagoras-contours}
 \end{figure}
 
-In the canonical run (committed summary \texttt{docs/notes/pythagoras\_rw\_grid\_summary.json}), the quadratic fit RMS decreases from $12.10$ at $\tau=4$ to $0.1509$ at $\tau=128$, and the median absolute Pythagorean residual decreases from $33.19$ to $0.0586$.  Beyond the transition, axis scaling strongly favors quadratic growth: at $\tau=128$, the quadratic-axis RMS is $0.0177$ versus $1.0536$ for a linear-axis model.  These trends are precisely what the SBT framework predicts when P4 staging pushes dynamics into a stable diffusion regime and P2 isotropy enforces symmetry between directions.
+In the canonical run (committed summary \texttt{docs/notes/pythagoras\_rw\_grid\_summary.json}), the quadratic fit root-mean-square error (RMS) decreases from $12.10$ at $\tau=4$ to $0.1509$ at $\tau=128$, and the median absolute Pythagorean residual decreases from $33.19$ to $0.0586$.  Beyond the transition, axis scaling strongly favors quadratic growth: at $\tau=128$, the quadratic-axis RMS is $0.0177$ versus $1.0536$ for a linear-axis model.  These trends are precisely what the SBT framework predicts when P4 staging pushes dynamics into a stable diffusion regime and P2 isotropy enforces symmetry between directions.
 
 \paragraph{Control: Manhattan cost fails as expected.}
 To ensure the above is not a tautology of shortest paths, we include a control in which the cost is explicitly Manhattan:

@@ -1,7 +1,7 @@
 \section{Diagnostics: when geometry is coherent (and when it breaks)}
 \label{sec:diagnostics}
 
-SBT emphasizes falsification-first: a higher-layer theory is not declared real because it is appealing, but because it is \emph{stable under repeated closure} and \emph{auditable}.  In this section we introduce the diagnostics used throughout the experiments.  Each diagnostic answers a concrete question about coherence of the packaged layer under staging and refinement.  We treat these quantities as falsification-first audits and gates, not as necessary and sufficient conditions for any particular continuum-limit notion of convergence.
+SBT emphasizes falsification-first: a higher-layer description is not declared valid because it is appealing, but because it is \emph{stable under repeated closure} and \emph{auditable}.  In this section we introduce the diagnostics used throughout the experiments.  Each diagnostic answers a concrete question about coherence of the packaged layer under staging and refinement.  We treat these quantities as falsification-first audits and gates, not as necessary and sufficient conditions for any particular continuum-limit notion of convergence.
 
 \subsection{Idempotence defect $\delta$: does closure stabilize?}
 Fix staging $\tau$ and a lens $f:Z\to X$ with coarse matrix $C$ and prototype matrix $U$.  Consider the package--evolve--repackage operator acting on micro distributions,
@@ -76,7 +76,7 @@ For a lens ladder $\{f_j\}$ and staging $\tau$, we treat a geometric layer as co
   \item \textbf{Regime signature:} Dimension diagnostics separate smooth from fractal behavior; holonomy separates flat from curved behavior.
 \end{itemize}
 
-These diagnostics are deliberately conservative: they are designed to fail loudly.  The robustness sweeps in later sections report where they break (e.g., staging too small or too large, overly fine or coarse ladders, prototype mismatch, threshold-induced disconnection, holonomy neighborhood instability, and aliasing effects in the Pythagoras experiment).  In this sense, ``where it breaks'' is part of the theory: a layer is real only to the extent that it survives its own closure tests.
+These diagnostics are deliberately conservative: they are designed to fail loudly.  The robustness sweeps in later sections report where they break (e.g., staging too small or too large, overly fine or coarse ladders, prototype mismatch, threshold-induced disconnection, holonomy neighborhood instability, and aliasing effects in the Pythagoras experiment).  In this sense, ``where it breaks'' is part of the theory: a layer is valid only to the extent that it survives its own closure tests.
 
 \paragraph{Lean anchors (minimal).}
 We do not formalize the entire emergence pipeline in Lean.  However, we include minimal anchors consistent with the above diagnostics: (i)~shortest-path costs satisfy triangle inequality via path concatenation (pseudometric structure) and (ii)~quotienting by zero-distance yields a metric space (standard separation quotient construction).  These anchors support the narrative without turning the paper into a full formalization project.

@@ -7,7 +7,7 @@ This paper is intentionally empirical in the SBT sense: we propose concrete clos
 All experiments begin with a finite microstate space $Z$ and a micro Markov kernel $P$.
 
 \paragraph{Grid (plane-like substrate).}
-We use a lazy random walk on an $n\times n$ grid with von Neumann neighborhood (up/down/left/right) and stay-put probability.  This is a canonical substrate with isotropic local moves.  It supports E1 (plane-like metric) and serves as the flat baseline for holonomy comparisons.
+We use a lazy random walk on an $n\times n$ grid with von Neumann neighborhood (up/down/left/right) and stay-put probability.  This is a standard substrate with isotropic local moves.  It supports E1 (plane-like metric) and serves as the flat baseline for holonomy comparisons.
 
 \paragraph{Sphere-like substrate (curved regime).}
 To obtain a curved macro regime without assuming coordinates in the closure, we generate a point cloud on the unit sphere $S^2$ only as a means to build a micro transition graph: we sample points, build a $k$-nearest-neighbor weighted graph with Gaussian weights, and row-normalize to obtain a Markov kernel.  Coordinates are not used by the closure pipeline; they are used only to generate the micro connectivity.  This substrate supports E2 (holonomy and curvature separation).
