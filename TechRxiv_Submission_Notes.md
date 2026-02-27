@@ -6,7 +6,7 @@ Copy/paste-ready metadata for the TechRxiv upload form.
 
 ## Title
 
-To Plot a Stone with Six Birds: A Geometry is A Theory
+To Plot a Stone with Six Birds: Constructing and Auditing Emergent Geometry from Markov Dynamics
 
 ## Abstract
 
@@ -49,7 +49,7 @@ We present a reproducible computational pipeline that derives metric structure f
 - **Zenodo DOI (paper):** https://doi.org/10.5281/zenodo.18494975
 - **Zenodo DOI (code):** https://doi.org/10.5281/zenodo.18595948
 - **GitHub repository:** https://github.com/ioannist/six-birds-space
-- **SBT Foundations reference:** https://doi.org/10.5281/zenodo.18365949
+- **SBT Foundations reference:** https://doi.org/10.48550/arXiv.2602.00134
 
 ## License Recommendation
 

@@ -10,6 +10,42 @@ import subprocess
 from pathlib import Path
 
 
+def _collapse_whitespace(value: str) -> str:
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def _normalize_title_for_metadata(value: str) -> str:
+    # Convert LaTeX line breaks to regular spaces for metadata forms.
+    value = value.replace("\\\\", " ")
+    value = value.replace("\\", " ")
+    return _collapse_whitespace(value)
+
+
+def _strip_latex_for_forms(value: str) -> str:
+    value = value.replace("~", " ")
+    value = value.replace("---", "-")
+    value = value.replace("--", "-")
+    value = value.replace("\\rightarrow", "->")
+    value = value.replace("\\tau", "tau")
+    value = value.replace("{=}", "=")
+    value = value.replace("``", '"')
+    value = value.replace("''", '"')
+
+    value = re.sub(r"\\(?:cite|citet|citep)\{[^}]*\}", "", value)
+    value = re.sub(r"\\(?:emph|textit|textbf|texttt|url)\{([^{}]*)\}", r"\1", value)
+    value = value.replace("\\%", "%")
+    value = value.replace("\\_", "_")
+    value = value.replace("\\&", "&")
+    value = value.replace("\\{", "{")
+    value = value.replace("\\}", "}")
+    value = value.replace("$", "")
+    value = re.sub(r"\\[A-Za-z]+\*?", "", value)
+    value = re.sub(r"\{([^{}]+)\}", r"\1", value)
+    value = re.sub(r"\s+([,.;:])", r"\1", value)
+    value = _collapse_whitespace(value)
+    return value
+
+
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
     paper_dir = repo_root / "paper"
@@ -65,7 +101,8 @@ def main() -> int:
             raise SystemExit(f"[build_space_paper] ERROR: could not extract {name} from main.tex")
         return m.group(1).strip()
 
-    title = _extract(r"\\title\{(.*?)\}", "title")
+    raw_title = _extract(r"\\title\{(.*?)\}", "title")
+    title = _normalize_title_for_metadata(raw_title)
 
     abstract_path = paper_dir / "sections" / "00_abstract.tex"
     abstract_tex = abstract_path.read_text()
@@ -75,6 +112,7 @@ def main() -> int:
     abstract = m.group(1).strip()
     if "\n" in abstract or "\r" in abstract:
         raise SystemExit("[build_space_paper] ERROR: abstract must be a single paragraph with no line breaks")
+    abstract_plain = _strip_latex_for_forms(abstract)
 
     kw_match = re.search(r"\\textbf\{keywords:\}\s*([^\n]+)", tex, re.IGNORECASE)
     if not kw_match:
@@ -84,6 +122,22 @@ def main() -> int:
     if any(k != k.lower() for k in keywords):
         raise SystemExit("[build_space_paper] ERROR: keywords must be lowercase and semicolon-separated")
 
+    authors = [
+        {
+            "first_name": "Ioannis",
+            "last_name": "Tsiokos",
+            "email": "ioannis@automorph.io",
+            "orcid": "0009-0009-7659-5964",
+            "affiliation_structure": {
+                "name": "Automorph Inc.",
+                "type": "Entreprise",
+                "address": "1207 Delaware Ave #4131, Wilmington, DE 19806",
+                "country": "US",
+            },
+            "role": "author",
+        }
+    ]
+
     meta = {
         "hal_metadata": {
             "title": title,
@@ -92,21 +146,7 @@ def main() -> int:
             "language": "en",
             "domain": "math.DG",
             "license": "CC-BY 4.0",
-            "authors": [
-                {
-                    "first_name": "Ioannis",
-                    "last_name": "Tsiokos",
-                    "email": "ioannis@automorph.io",
-                    "orcid": "0009-0009-7659-5964",
-                    "affiliation_structure": {
-                        "name": "Automorph Inc.",
-                        "type": "Entreprise",
-                        "address": "1207 Delaware Ave #4131, Wilmington, DE 19806",
-                        "country": "US",
-                    },
-                    "role": "author",
-                }
-            ],
+            "authors": authors,
         }
     }
     meta_path = out_dir / "metadata.json"
@@ -131,8 +171,8 @@ def main() -> int:
             raise SystemExit("[build_space_paper] ERROR: PDF is encrypted.")
 
     size = pdf_path.stat().st_size
-    if size > 50 * 1024 * 1024:
-        raise SystemExit("[build_space_paper] ERROR: PDF exceeds 50MB size limit.")
+    if size > 100 * 1024 * 1024:
+        raise SystemExit("[build_space_paper] ERROR: PDF exceeds 100MB size limit.")
 
     if shutil.which("pdffonts"):
         out = subprocess.check_output(["pdffonts", str(pdf_path)], text=True)
@@ -181,6 +221,29 @@ def main() -> int:
     if arxiv_zip.exists():
         arxiv_named = out_dir / f"2026_Tsiokos_{short}_v1_arxiv_source.zip"
         shutil.copy2(arxiv_zip, arxiv_named)
+
+    ssrn_meta = {
+        "ssrn_metadata": {
+            "title": title,
+            "abstract": abstract_plain,
+            "keywords": keywords,
+            "language": "English",
+            "paper_type": "Research Paper",
+            "license": "CC-BY 4.0",
+            "authors": [
+                {
+                    "name": "Ioannis Tsiokos",
+                    "affiliation": "Automorph Inc., Wilmington, DE, USA",
+                    "email": "ioannis@automorph.io",
+                    "orcid": "0009-0009-7659-5964",
+                }
+            ],
+            "upload_files": {
+                "paper_pdf": hal_pdf_name,
+            },
+        }
+    }
+    (out_dir / "ssrn_metadata.json").write_text(json.dumps(ssrn_meta, indent=2))
 
     return 0
 

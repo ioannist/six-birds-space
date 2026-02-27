@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1770750947 "main.aux" "main.bbl" "main" 1770750948
+["bibtex main"] 1772196342 "main.aux" "main.bbl" "main" 1772196343
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "main.aux" 1770750948 26886 860d07a2d96452e5d9dc1aca50a6fa4c "pdflatex"
-  "references.bib" 1770288807 3888 7f1a13ec579fd880a8a4f9ba66b79de1 ""
+  "main.aux" 1772196343 26886 3cea925bd3463ebce6431b10adf76261 "pdflatex"
+  "references.bib" 1772196087 3988 ec3b011087977e81ef38b3a02623e0dc ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1770750947 "main.tex" "main.pdf" "main" 1770750948
+["pdflatex"] 1772196342 "main.tex" "main.pdf" "main" 1772196343
   "/etc/texmf/web2c/texmf.cnf" 1768821459 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
@@ -251,10 +251,10 @@
   "figures/pythagoras_contour_rw_tau_128.png" 1770206390 10849 79f4e5ee41fbf3021bec4ded6ca3c2a9 ""
   "figures/pythagoras_contour_rw_tau_4.png" 1770206390 3474 3e1012086daf83fb77d7612fd15aab2a ""
   "figures/pythagoras_residuals_vs_tau.png" 1770206390 34073 66c0ef720ee8fdcc4e9cf00156e5aec5 ""
-  "main.aux" 1770750948 26886 860d07a2d96452e5d9dc1aca50a6fa4c "pdflatex"
-  "main.bbl" 1770750947 3717 ad4fb38c9c7f004b5da71c645f4796f3 "bibtex main"
-  "main.out" 1770750948 16510 fd4ab091dfcbb800abacddc6929888c2 "pdflatex"
-  "main.tex" 1770749277 2239 026c5ca352da000ca33548756317b8bf ""
+  "main.aux" 1772196343 26886 3cea925bd3463ebce6431b10adf76261 "pdflatex"
+  "main.bbl" 1772196342 3738 1f6fd37c98cd4d2bb44e6b048f81436a "bibtex main"
+  "main.out" 1772196343 16510 fd4ab091dfcbb800abacddc6929888c2 "pdflatex"
+  "main.tex" 1772196316 2323 e02e56604c1d0077044ee8d004b08426 ""
   "sections/00_abstract.tex" 1770749335 2580 24917a892d6c6848743783c322a5b8bf ""
   "sections/01_introduction.tex" 1770749898 6516 aa1570e84cb29236050ccaa375c5788b ""
   "sections/02_six_birds_recap.tex" 1770290557 5046 1ab9cf936d422623ed3b7b35a079478f ""

@@ -2,7 +2,7 @@
 
 This repository contains the **space/geometry instantiation** for the paper:
 
-> **To Plot a Stone with Six Birds: A Geometry is A Theory**
+> **To Plot a Stone with Six Birds: Constructing and Auditing Emergent Geometry from Markov Dynamics**
 >
 > Archived at: https://zenodo.org/records/18494975
 >

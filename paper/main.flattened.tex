@@ -1,5 +1,7 @@
 \documentclass[11pt]{article}
 
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{mathtools}
@@ -15,6 +17,7 @@
 \usepackage{natbib}
 \usepackage{pdflscape}
 \usepackage{enumitem}
+\usepackage{orcidlink}
 
 \hypersetup{
   colorlinks=true,
@@ -23,15 +26,17 @@
   urlcolor=blue!80!black,
   bookmarksnumbered=true,
   pdfauthor={Ioannis Tsiokos},
-  pdftitle={To Plot a Stone with Six Birds: A Geometry is A Theory}
+  pdftitle={To Plot a Stone with Six Birds: Constructing and Auditing Emergent Geometry from Markov Dynamics}
 }
 
-\title{To Plot a Stone with Six Birds:\\A Geometry is A Theory}
-\author{Ioannis Tsiokos\\\texttt{ioannis@automorph.io}}
-\date{5 February 2026}
+\title{To Plot a Stone with Six Birds:\\Constructing and Auditing Emergent Geometry from Markov Dynamics}
+\author{Ioannis Tsiokos\,\orcidlink{0009-0009-7659-5964}}
+\date{5 February 2026\\[4pt]{\small Version 2 (revised 27 February 2026) \quad$\cdot$\quad Zenodo v1: \href{https://doi.org/10.5281/zenodo.18494975}{10.5281/zenodo.18494975}}}
+
+\newcommand{\printaffiliation}{\begin{center}\small \end{center}}
 
 \fancypagestyle{firstpage}{\fancyhf{}
-\fancyfoot[C]{\scriptsize DOI: \href{https://doi.org/10.5281/zenodo.18494975}{10.5281/zenodo.18494975} \quad \textcopyright\ 2026 Automorph Inc.}
+  \fancyfoot[C]{\scriptsize Automorph Inc., Wilmington, DE, USA \quad \texttt{ioannis@automorph.io} \quad DOI: \href{https://doi.org/10.5281/zenodo.18494975}{10.5281/zenodo.18494975} \quad \textcopyright\ 2026 \quad CC-BY 4.0 \quad Preprint --- not peer reviewed.}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
@@ -39,20 +44,16 @@
 \begin{document}
 \maketitle
 \thispagestyle{firstpage}
+\printaffiliation
 
-\begin{abstract}
-Geometry is usually treated as a background container: points, distances, and curvature are assumed and then modeled.  From the Six Birds Theory (SBT) perspective, this conflates the object with the interface: we lack an auditable way to \emph{derive} space-like structure as a stable closure artifact of finite observers acting on micro-dynamics, or to distinguish genuine geometric signal from packaging artifacts.
-
-We present an SBT-native construction in which \emph{points} are packaged macro-states (equivalence classes under a lens) and \emph{distance} is optimized accounting: costs derived from induced macro dynamics are composed into protocols and minimized over paths.  Operationally, we implement a reproducible pipeline (substrate $\rightarrow$ lens ladder $\rightarrow$ closed macro kernel $\rightarrow$ cost metric) together with coherence audits (idempotence defect, prototype stability, route mismatch, inter-scale distortion, and connectivity) and a curvature diagnostic based on loop holonomy.
-
-Across controlled substrates, we obtain three checkable results: (i)~on an isotropic grid, the induced metric is connected and remains coherent across refinement (bounded closure and distortion audits), while constraints (anisotropic gating) induce a systematic deformation of the emergent metric; (ii)~under a fixed deterministic holonomy protocol, loop residue is near-zero on the plane-like grid (median $0.0479$) but shifts strongly upward on a sphere-like substrate (median $0.5980$), separating flat from curved regimes; (iii)~defining cost as negative log transition probability under staged isotropic diffusion yields an approximately quadratic, separable accounting law in which the median Pythagorean residual drops from $33.19$ at $\tau{=}4$ to $0.0586$ at $\tau{=}128$, while a Manhattan (L1) control produces diamond contours and does not exhibit this collapse.
-
-These results provide a falsification-first, reproducible workflow for comparing emergent geometries (flat versus curved versus constrained versus fractal) without assuming coordinates, and for attaching each claim to audits and explicit controls.  We emphasize that stronger claims (e.g., continuum-limit convergence to manifolds or exact curvature tensors) are not established here; our conclusions rely on diagnostic proxies under controlled substrates with documented failure modes.  This work extends the SBT foundation~\cite{SixBirdsTheory} and complements our prior treatment of emergent mathematics~\cite{ToCountAStone}.
-\end{abstract}
- \section{Introduction}
+\begin{abstract}We present a reproducible computational pipeline that derives metric structure from finite-state Markov dynamics without assuming coordinates: substrate $\rightarrow$ lens ladder $\rightarrow$ closed macro kernel $\rightarrow$ path-cost metric. The pipeline includes a suite of coherence audits (idempotence defect, prototype stability, route mismatch, inter-scale distortion, and connectivity) together with a curvature diagnostic based on loop holonomy, and all experiments are driven from committed configuration files with mechanized Lean anchors for the core metric constructions. Building on Six Birds Theory (SBT)~\cite{SixBirdsTheory}, we treat geometry not as a background container but as a closure artifact: \emph{points} are equivalence classes under a packaging map (lens) and \emph{distance} is the minimal cost of composed transitions (protocols) in the induced macro dynamics. Across controlled substrates, we obtain three auditable results: (i)~on an isotropic grid, the induced metric is connected and remains coherent across refinement (bounded closure and distortion audits), while constraints (anisotropic gating) induce a systematic deformation of the emergent metric; (ii)~under a fixed deterministic holonomy protocol, loop residue is near-zero on the plane-like grid (median $0.0479$) but shifts strongly upward on a sphere-like substrate (median $0.5980$), separating flat from curved regimes; (iii)~defining cost as negative log transition probability under staged isotropic diffusion yields an approximately quadratic, separable cost law in which the median Pythagorean residual drops from $33.19$ at $\tau{=}4$ to $0.0586$ at $\tau{=}128$, while a Manhattan (L1) control produces diamond contours and does not exhibit this collapse. These results provide a falsification-first, reproducible workflow for comparing emergent geometries (flat versus curved versus constrained versus fractal) without assuming coordinates, and for attaching each claim to audits and explicit controls. Throughout, ``theory'' is used in the SBT technical sense---a closure (lens + completion + audit)---not as a speculative hypothesis or manuscript-type category. We emphasize that stronger claims (e.g., continuum-limit convergence to manifolds or exact curvature tensors) are not established here; our conclusions rely on diagnostic proxies under controlled substrates with documented failure modes. This work extends the SBT foundation~\cite{SixBirdsTheory} and complements our prior treatment of emergent mathematics~\cite{ToCountAStone}.\end{abstract}
+ \noindent\textbf{keywords:} emergent geometry; computational metric construction; closure audits; graph distances; reproducible pipelines; emergence calculus
+\section{Introduction}
 \label{sec:introduction}
 
 To \emph{plot} an object is to treat it as if it already lives in a space: we assign locations, measure distances, and speak of surfaces and curvature as though these were primitive facts.  Yet in practice we never access ``space itself''---we access only interactions, constraints, and limited interfaces: what an observer can reliably distinguish, compress, and act upon.  Six Birds Theory (SBT)~\cite{SixBirdsTheory} takes this seriously: points, distances, and geometric laws are not axioms but \emph{closure artifacts} of stable compression under the six primitives.
+
+This is a Research Article: it reports original computational experiments with reproducible configurations, committed run-pack artifacts, and mechanized Lean anchors, not a review, opinion, or purely theoretical contribution.
 
 This paper asks a concrete question: \emph{how do you plot a stone if you are not allowed to assume space?}  A stone has microstructure (grains, pores, microfractures) and dynamics (how disturbances propagate, how configurations change).  An agent with finite bandwidth cannot retain all micro-detail; it must package.  If repeated packaging produces a stable notion of ``the same'' (macro states), if feasible moves compose into protocols, and if the costs of effecting or distinguishing moves become coherent across refinement, then a space-like layer becomes available.  In one line:
 \begin{quote}
@@ -63,6 +64,14 @@ The narrative of this paper parallels our companion work on emergent mathematics
 
 \paragraph{What we do (high level).}
 We start from a finite substrate of microstates with micro-dynamics (a Markov kernel).  At each stage we construct a lens (a packaging map) and prototypes that realize closure, yielding a macro kernel.  We then define distance from accounting: transition likelihood induces cost, and distance is the minimal cost of a protocol connecting macro states.  A geometric layer is said to exist when this induced metric structure is coherent across refinement, as quantified by a small set of diagnostics (idempotence and stability defects, route mismatch, inter-scale distortion, connectivity), and when curvature is detected as loop holonomy (protocol noncommutativity made geometric).
+
+\paragraph{Computational contributions.}
+The concrete deliverables of this paper are algorithmic and software-engineering contributions:
+(i)~a modular pipeline for constructing graph distances and path-cost metrics from Markov kernels via spectral lens ladders, macro-kernel closure, and shortest-path optimization;
+(ii)~a diagnostic toolkit for auditing metric coherence across scales---including idempotence defect, prototype stability, route mismatch, inter-scale distortion, connectivity, and loop-holonomy curvature estimation via local multidimensional scaling (MDS) and Procrustes alignment;
+(iii)~reproducible experiment configurations, committed run-pack artifacts, and paper-ready comparison scripts that tie every quoted number to an auditable source;
+and (iv)~minimal Lean~4 mechanized anchors for the core metric constructions (triangle inequality via path concatenation, separation quotient).
+This work sits at the intersection of computational geometry, manifold learning, and representation auditing: we construct metrics from observations rather than assuming them, and we provide stability and coherence tests that distinguish genuine geometric signal from packaging artifacts.
 
 \paragraph{Reader map: exhibits.}
 We emphasize falsification-first: each exhibit has a corresponding ``where it breaks'' analysis.  The core experimental exhibits are:
@@ -261,7 +270,7 @@ When these conditions hold across a range of refinements, we treat $(X_j, d^{(j)
  \section{Diagnostics: when geometry is coherent (and when it breaks)}
 \label{sec:diagnostics}
 
-SBT emphasizes falsification-first: a higher-layer theory is not declared real because it is appealing, but because it is \emph{stable under repeated closure} and \emph{auditable}.  In this section we introduce the diagnostics used throughout the experiments.  Each diagnostic answers a concrete question about coherence of the packaged layer under staging and refinement.  We treat these quantities as falsification-first audits and gates, not as necessary and sufficient conditions for any particular continuum-limit notion of convergence.
+SBT emphasizes falsification-first: a higher-layer description is not declared valid because it is appealing, but because it is \emph{stable under repeated closure} and \emph{auditable}.  In this section we introduce the diagnostics used throughout the experiments.  Each diagnostic answers a concrete question about coherence of the packaged layer under staging and refinement.  We treat these quantities as falsification-first audits and gates, not as necessary and sufficient conditions for any particular continuum-limit notion of convergence.
 
 \subsection{Idempotence defect $\delta$: does closure stabilize?}
 Fix staging $\tau$ and a lens $f:Z\to X$ with coarse matrix $C$ and prototype matrix $U$.  Consider the package--evolve--repackage operator acting on micro distributions,
@@ -336,7 +345,7 @@ For a lens ladder $\{f_j\}$ and staging $\tau$, we treat a geometric layer as co
   \item \textbf{Regime signature:} Dimension diagnostics separate smooth from fractal behavior; holonomy separates flat from curved behavior.
 \end{itemize}
 
-These diagnostics are deliberately conservative: they are designed to fail loudly.  The robustness sweeps in later sections report where they break (e.g., staging too small or too large, overly fine or coarse ladders, prototype mismatch, threshold-induced disconnection, holonomy neighborhood instability, and aliasing effects in the Pythagoras experiment).  In this sense, ``where it breaks'' is part of the theory: a layer is real only to the extent that it survives its own closure tests.
+These diagnostics are deliberately conservative: they are designed to fail loudly.  The robustness sweeps in later sections report where they break (e.g., staging too small or too large, overly fine or coarse ladders, prototype mismatch, threshold-induced disconnection, holonomy neighborhood instability, and aliasing effects in the Pythagoras experiment).  In this sense, ``where it breaks'' is part of the theory: a layer is valid only to the extent that it survives its own closure tests.
 
 \paragraph{Lean anchors (minimal).}
 We do not formalize the entire emergence pipeline in Lean.  However, we include minimal anchors consistent with the above diagnostics: (i)~shortest-path costs satisfy triangle inequality via path concatenation (pseudometric structure) and (ii)~quotienting by zero-distance yields a metric space (standard separation quotient construction).  These anchors support the narrative without turning the paper into a full formalization project.
@@ -349,7 +358,7 @@ This paper is intentionally empirical in the SBT sense: we propose concrete clos
 All experiments begin with a finite microstate space $Z$ and a micro Markov kernel $P$.
 
 \paragraph{Grid (plane-like substrate).}
-We use a lazy random walk on an $n\times n$ grid with von Neumann neighborhood (up/down/left/right) and stay-put probability.  This is a canonical substrate with isotropic local moves.  It supports E1 (plane-like metric) and serves as the flat baseline for holonomy comparisons.
+We use a lazy random walk on an $n\times n$ grid with von Neumann neighborhood (up/down/left/right) and stay-put probability.  This is a standard substrate with isotropic local moves.  It supports E1 (plane-like metric) and serves as the flat baseline for holonomy comparisons.
 
 \paragraph{Sphere-like substrate (curved regime).}
 To obtain a curved macro regime without assuming coordinates in the closure, we generate a point cloud on the unit sphere $S^2$ only as a means to build a micro transition graph: we sample points, build a $k$-nearest-neighbor weighted graph with Gaussian weights, and row-normalize to obtain a Markov kernel.  Coordinates are not used by the closure pipeline; they are used only to generate the micro connectivity.  This substrate supports E2 (holonomy and curvature separation).
@@ -598,7 +607,7 @@ If cost is separable and quadratic as in~\eqref{eq:quadratic-cost}, then $R_\tau
   \label{fig:pythagoras-contours}
 \end{figure}
 
-In the canonical run (committed summary \texttt{docs/notes/pythagoras\_rw\_grid\_summary.json}), the quadratic fit RMS decreases from $12.10$ at $\tau=4$ to $0.1509$ at $\tau=128$, and the median absolute Pythagorean residual decreases from $33.19$ to $0.0586$.  Beyond the transition, axis scaling strongly favors quadratic growth: at $\tau=128$, the quadratic-axis RMS is $0.0177$ versus $1.0536$ for a linear-axis model.  These trends are precisely what the SBT framework predicts when P4 staging pushes dynamics into a stable diffusion regime and P2 isotropy enforces symmetry between directions.
+In the canonical run (committed summary \texttt{docs/notes/pythagoras\_rw\_grid\_summary.json}), the quadratic fit root-mean-square error (RMS) decreases from $12.10$ at $\tau=4$ to $0.1509$ at $\tau=128$, and the median absolute Pythagorean residual decreases from $33.19$ to $0.0586$.  Beyond the transition, axis scaling strongly favors quadratic growth: at $\tau=128$, the quadratic-axis RMS is $0.0177$ versus $1.0536$ for a linear-axis model.  These trends are precisely what the SBT framework predicts when P4 staging pushes dynamics into a stable diffusion regime and P2 isotropy enforces symmetry between directions.
 
 \paragraph{Control: Manhattan cost fails as expected.}
 To ensure the above is not a tautology of shortest paths, we include a control in which the cost is explicitly Manhattan:
@@ -678,7 +687,7 @@ We implemented and audited a concrete emergence pipeline from micro-dynamics to 
   \item \textbf{The Pythagorean form emerges in an isotropic diffusion regime.}  Under staged isotropic diffusion, negative log transition probability becomes approximately quadratic and separable, and the Pythagorean residual collapses, while a Manhattan control fails as expected.
 \end{itemize}
 
-Taken together, these results support the SBT slogan stated in the introduction: \emph{geometry is what you get when repeated packaging produces a stable notion of nearby, composition of moves, and cost of moving, and that structure closes under refinement}.  Importantly, the paper is not a collection of isolated plots: it is a demonstration that SBT's closure primitives can be made computationally concrete and audited in a way that distinguishes regimes (flat versus curved versus fractal versus constrained deformation).
+Taken together, these results support the SBT thesis stated in the introduction: \emph{geometry is what you get when repeated packaging produces a stable notion of nearby, composition of moves, and cost of moving, and that structure closes under refinement}.  Importantly, the paper is not a collection of isolated plots: it is a demonstration that SBT's closure primitives can be made computationally concrete and audited in a way that distinguishes regimes (flat versus curved versus fractal versus constrained deformation).
 
 \subsection{What we did not claim}
 The results are deliberately scoped.  In particular:
@@ -713,8 +722,8 @@ Several natural extensions would strengthen the emergence calculus and broaden a
   \item \textbf{Formal convergence targets.}  Connect the empirical coherence criteria to formal notions of convergence of metric spaces (e.g., Gromov--Hausdorff style) and to renormalization-style fixed points for the lens ladder \cite{Gromov1999Metric}.
 \end{itemize}
 
-\subsection{Six birds, one end-to-end story}
-It is worth restating the complete pipeline in bird terms, because it is the core conceptual contribution.
+\subsection{Six birds, one end-to-end pipeline}
+It is worth restating the complete pipeline in primitive terms, because it is the core computational contribution.
 
 \begin{itemize}
   \item \textbf{P5 Packaging} creates the candidate ``points'' as equivalence classes under indistinguishability: $f:Z\to X$.
@@ -725,8 +734,34 @@ It is worth restating the complete pipeline in bird terms, because it is the cor
   \item \textbf{P2 Constraints} shape the feasible protocol space, thereby deforming the geometry and potentially changing which fixed point the refinement ladder approaches.
 \end{itemize}
 
-\paragraph{Closing.}
+\paragraph{Conclusion.}
 Plotting is therefore not a primitive act; it is a successful closure.  When closure succeeds, we obtain geometry as a stable higher-layer description of what moves are possible and what they cost.  When closure fails, the diagnostics tell us why.  In this sense, \emph{space is not where the stone is}; space is what becomes true about the stone when the six birds make a stable map possible.
+
+\section*{Declarations}
+
+\paragraph{Corresponding author.}
+Correspondence to Ioannis Tsiokos (\texttt{ioannis@automorph.io}).
+
+\paragraph{Competing interests.}
+The author declares no competing interests.
+
+\paragraph{Funding.}
+No external funding was received for this research.
+
+\paragraph{Ethics approval and consent to participate.}
+Not applicable; this study involves computational experiments only and uses no human participants, animal subjects, or personal data.
+
+\paragraph{Data availability.}
+All generated artifacts (JSON and CSV files) are available in the repository and in the archived release. No external datasets were used; all data are produced by the included scripts.
+
+\paragraph{Code availability.}
+Source code is available at \url{https://github.com/ioannist/six-birds-space}. A permanent archive of the code is deposited at Zenodo under DOI \href{https://doi.org/10.5281/zenodo.18595948}{10.5281/zenodo.18595948}.
+
+\paragraph{Author contributions.}
+I.T.\ is the sole author and was responsible for conceptualization, methodology, software development, formal analysis, writing, and visualization.
+
+\paragraph{Use of AI/LLMs.}
+LLM tools (Claude, Anthropic) were used as coding assistants for software scaffolding and manuscript formatting. All scientific content, claims, and experimental design were produced by the author. LLM outputs were reviewed and validated before inclusion.
  \appendix
 \section{Lean anchors (minimal)}
 \label{app:lean}
