@@ -54,3 +54,6 @@ import GeoSBT
 #print axioms GeoSBT.triangleHolonomy_eq_one_iff
 #print axioms GeoSBT.macro_return_le_fiber_bound
 #print axioms GeoSBT.prototype_defect_ge_fiber_escape
+#print axioms GeoSBT.triangleHolonomy_common_chart
+#print axioms GeoSBT.triangle_transport_error
+#print axioms GeoSBT.normalized_angle_error

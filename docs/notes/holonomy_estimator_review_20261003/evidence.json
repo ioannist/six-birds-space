@@ -1,0 +1,1333 @@
+{
+  "exact_leading_certificate": {
+    "absolute_area_normalized_limit": "7884106465972959320549378723/6552773242191625884795360000",
+    "chart_covariance_determinants": [
+      "1655",
+      "12271/9",
+      "17984/9"
+    ],
+    "cloud_integer_normal_coordinates": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        -4
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        -3,
+        -3
+      ],
+      [
+        6,
+        -4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        2,
+        -3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        -4,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "knn": 8,
+    "limit_exceeds_one_by_at_least": "1/5",
+    "neighborhoods": [
+      [
+        0,
+        11,
+        1,
+        2,
+        9,
+        8,
+        10,
+        3,
+        5
+      ],
+      [
+        1,
+        11,
+        0,
+        2,
+        8,
+        4,
+        9,
+        3,
+        7
+      ],
+      [
+        2,
+        9,
+        11,
+        0,
+        1,
+        10,
+        7,
+        4,
+        8
+      ]
+    ],
+    "oriented_edge_angle_coefficients": [
+      "-75894178062724579/45452061771615000",
+      "-104826658495683443/161102651999662464",
+      "-662096301998269/7708082093811000"
+    ],
+    "oriented_loop_angle_coefficient": "-7884106465972959320549378723/3276386621095812942397680000",
+    "overlap_covariance_determinants": [
+      "913/7",
+      "3407/4",
+      "544"
+    ],
+    "overlaps": [
+      [
+        0,
+        1,
+        2,
+        3,
+        8,
+        9,
+        11
+      ],
+      [
+        0,
+        1,
+        2,
+        4,
+        7,
+        8,
+        9,
+        11
+      ],
+      [
+        0,
+        1,
+        2,
+        8,
+        9,
+        10,
+        11
+      ]
+    ],
+    "planar_triangle_area": "2",
+    "squared_distance_boundary_gaps": [
+      "8",
+      "3",
+      "5"
+    ]
+  },
+  "refinement_cases": [
+    {
+      "analytic_area_interval": [
+        0.0007989338508889612,
+        0.0008008541076676914
+      ],
+      "exact_flat": {
+        "angle_after_independent_gauges": 1.3722755348804354e-16,
+        "angle_divided_by_planar_h_squared_area": 1.0715892875231108e-13,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            9,
+            11,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 8.572714300184888e-17,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.560176488268056,
+              3.2969663688748057
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.95049626569331,
+              20.79950373430668
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.979102983393304,
+              20.163754159463842
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "h": 0.02,
+      "identical_neighborhood_spherical_MDS": {
+        "angle_after_independent_gauges": 5.286624136610856e-17,
+        "angle_divided_by_planar_h_squared_area": 1.2032136485726337e-13,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5,
+            4,
+            7,
+            6
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7,
+            6,
+            5,
+            10
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8,
+            5,
+            3,
+            6
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 9.625709188581069e-17,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.8596011439305,
+              85.0018295800898
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85960114393055,
+              85.00182958008996
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85960114393053,
+              85.00182958008993
+            ],
+            "overlap_count": 12
+          }
+        ]
+      },
+      "known_metric_error_spherical_control": {
+        "area_normalized_error_bound": 0.08760330111816239,
+        "observed_area_normalized_angle": 0.9999998917140849,
+        "proved_error_bounds_under_model_hypotheses": {
+          "edge_operator_error": 1.487596426925329e-05,
+          "point_error": 5.542562584220407e-07,
+          "triangle_operator_error": 4.462789280775987e-05,
+          "triangle_principal_angle_error": 7.010133009502559e-05
+        },
+        "recognition_residuals": {
+          "landmark_orthogonality_error": 7.999999995789153e-08,
+          "metric_reconstruction_error": 8.927047012718958e-08,
+          "radial_error": 1.4298389805489364e-08
+        },
+        "supplied_true_metric_error_bound": 1.6e-07
+      },
+      "mds_angle_divided_by_area": 1.2043216390647618,
+      "original_MDS": {
+        "angle_after_independent_gauges": 0.0009637142400238358,
+        "angle_divided_by_planar_h_squared_area": 1.2046428000296807,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 0.9999999999999992,
+        "principal_angle": 0.0009637142400237447,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.557811241377955,
+              3.297180956763804
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.92630804797608,
+              20.805170852904602
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.976935718539938,
+              20.15791152370849
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "spherical_model_control": {
+        "angle_after_independent_O2_gauges": 0.0008002133389981574,
+        "metric_recognition": {
+          "landmark_orthogonality_error": 0.0,
+          "metric_reconstruction_error": 2.220446049250313e-16,
+          "radial_error": 1.1102230246251565e-16
+        },
+        "principal_angle": 0.0008002133389981574
+      },
+      "spherical_transport_angle_divided_by_area": 1.0000000000000022,
+      "spherical_triangle_area_quadrature": 0.0008002133389981556
+    },
+    {
+      "analytic_area_interval": [
+        0.00019993334142170158,
+        0.00020005334542474206
+      ],
+      "exact_flat": {
+        "angle_after_independent_gauges": 1.6752657861773554e-16,
+        "angle_divided_by_planar_h_squared_area": 4.2863571500924434e-13,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            9,
+            11,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 8.572714300184888e-17,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.560176488268056,
+              3.2969663688748057
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.95049626569331,
+              20.79950373430668
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.979102983393304,
+              20.163754159463842
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "h": 0.01,
+      "identical_neighborhood_spherical_MDS": {
+        "angle_after_independent_gauges": 7.606449730382141e-17,
+        "angle_divided_by_planar_h_squared_area": 5.006083246696064e-13,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5,
+            4,
+            7,
+            6
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7,
+            6,
+            5,
+            10
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8,
+            5,
+            3,
+            6
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 1.001216649339213e-16,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.8527606210543,
+              85.05013246374895
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85276062105433,
+              85.05013246374898
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85276062105432,
+              85.05013246374897
+            ],
+            "overlap_count": 12
+          }
+        ]
+      },
+      "known_metric_error_spherical_control": {
+        "area_normalized_error_bound": 0.021905205297950276,
+        "observed_area_normalized_angle": 0.999999993433384,
+        "proved_error_bounds_under_model_hypotheses": {
+          "edge_operator_error": 9.297477668283306e-07,
+          "point_error": 3.4641016151377544e-08,
+          "triangle_operator_error": 2.789243300484992e-06,
+          "triangle_principal_angle_error": 4.381333130939099e-06
+        },
+        "recognition_residuals": {
+          "landmark_orthogonality_error": 4.999999969612645e-09,
+          "metric_reconstruction_error": 5.294953586698625e-09,
+          "radial_error": 4.4921222297489294e-10
+        },
+        "supplied_true_metric_error_bound": 1e-08
+      },
+      "mds_angle_divided_by_area": 1.203457262659992,
+      "original_MDS": {
+        "angle_after_independent_gauges": 0.0002407074987353743,
+        "angle_divided_by_planar_h_squared_area": 1.2035374936784737,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 1.000000000000001,
+        "principal_angle": 0.00024070749873569475,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.55958834101247,
+              3.297022032490821
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.94446041803059,
+              20.80092103782366
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.978564002227476,
+              20.16229732619731
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "spherical_model_control": {
+        "angle_after_independent_O2_gauges": 0.0002000133334221287,
+        "metric_recognition": {
+          "landmark_orthogonality_error": 0.0,
+          "metric_reconstruction_error": 2.0816681711721685e-16,
+          "radial_error": 1.1102230246251565e-16
+        },
+        "principal_angle": 0.0002000133334221287
+      },
+      "spherical_transport_angle_divided_by_area": 1.0000000000000022,
+      "spherical_triangle_area_quadrature": 0.00020001333342212826
+    },
+    {
+      "analytic_area_interval": [
+        4.99958334597202e-05,
+        5.000333352223207e-05
+      ],
+      "exact_flat": {
+        "angle_after_independent_gauges": 1.9913500098443422e-16,
+        "angle_divided_by_planar_h_squared_area": 1.7145428600369774e-12,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            9,
+            11,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 8.572714300184888e-17,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.560176488268056,
+              3.2969663688748057
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.95049626569331,
+              20.79950373430668
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.979102983393304,
+              20.163754159463842
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "h": 0.005,
+      "identical_neighborhood_spherical_MDS": {
+        "angle_after_independent_gauges": 4.913432562692615e-16,
+        "angle_divided_by_planar_h_squared_area": 6.885112364820967e-12,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5,
+            4,
+            7,
+            6
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7,
+            6,
+            5,
+            10
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8,
+            5,
+            3,
+            6
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 3.4425561824104834e-16,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85105274170724,
+              85.06217274021706
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85105274170725,
+              85.06217274021708
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85105274170724,
+              85.06217274021706
+            ],
+            "overlap_count": 12
+          }
+        ]
+      },
+      "known_metric_error_spherical_control": {
+        "area_normalized_error_bound": 0.005476575137269498,
+        "observed_area_normalized_angle": 0.999999999595842,
+        "proved_error_bounds_under_model_hypotheses": {
+          "edge_operator_error": 5.810923542677066e-08,
+          "point_error": 2.1650635094610965e-09,
+          "triangle_operator_error": 1.74327706280312e-07,
+          "triangle_principal_angle_error": 2.738333206836937e-07
+        },
+        "recognition_residuals": {
+          "landmark_orthogonality_error": 3.1250002585636594e-10,
+          "metric_reconstruction_error": 3.2179681141997207e-10,
+          "radial_error": 1.4056311670174182e-11
+        },
+        "supplied_true_metric_error_bound": 6.25e-10
+      },
+      "mds_angle_divided_by_area": 1.2032424497346899,
+      "original_MDS": {
+        "angle_after_independent_gauges": 6.0163125190663927e-05,
+        "angle_divided_by_planar_h_squared_area": 1.2032625038089337,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 1.0000000000000002,
+        "principal_angle": 6.0163125190446686e-05,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.56002964904869,
+              3.2969804106137777
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.94898800301301,
+              20.799858092618106
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.97896841517024,
+              20.163390189622625
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "spherical_model_control": {
+        "angle_after_independent_O2_gauges": 5.0000833334721957e-05,
+        "metric_recognition": {
+          "landmark_orthogonality_error": 0.0,
+          "metric_reconstruction_error": 2.1510571102112408e-16,
+          "radial_error": 1.1102230246251565e-16
+        },
+        "principal_angle": 5.0000833334721957e-05
+      },
+      "spherical_transport_angle_divided_by_area": 1.0000000000000018,
+      "spherical_triangle_area_quadrature": 5.000083333472187e-05
+    },
+    {
+      "analytic_area_interval": [
+        1.2499739585308152e-05,
+        1.2500208336284761e-05
+      ],
+      "exact_flat": {
+        "angle_after_independent_gauges": 6.530845666266569e-16,
+        "angle_divided_by_planar_h_squared_area": 6.8581714401479094e-12,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            9,
+            11,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 8.572714300184888e-17,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.560176488268056,
+              3.2969663688748057
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.95049626569331,
+              20.79950373430668
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.979102983393304,
+              20.163754159463842
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "h": 0.0025,
+      "identical_neighborhood_spherical_MDS": {
+        "angle_after_independent_gauges": 1.540389761408573e-16,
+        "angle_divided_by_planar_h_squared_area": 4.236694917748821e-11,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5,
+            4,
+            7,
+            6
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7,
+            6,
+            5,
+            10
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8,
+            5,
+            3,
+            6
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 5.295868647186026e-16,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85062591967733,
+              85.06518058894255
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85062591967733,
+              85.06518058894251
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85062591967737,
+              85.06518058894258
+            ],
+            "overlap_count": 12
+          }
+        ]
+      },
+      "known_metric_error_spherical_control": {
+        "area_normalized_error_bound": 0.0013691608985790143,
+        "observed_area_normalized_angle": 0.9999999999748925,
+        "proved_error_bounds_under_model_hypotheses": {
+          "edge_operator_error": 3.6318272141731663e-09,
+          "point_error": 1.3531646934131853e-10,
+          "triangle_operator_error": 1.08954816425195e-08,
+          "triangle_principal_angle_error": 1.7114582542730856e-08
+        },
+        "recognition_residuals": {
+          "landmark_orthogonality_error": 1.953126549381068e-11,
+          "metric_reconstruction_error": 1.982303210468217e-11,
+          "radial_error": 4.3942627314663696e-13
+        },
+        "supplied_true_metric_error_bound": 3.90625e-11
+      },
+      "mds_angle_divided_by_area": 1.2031888264298276,
+      "original_MDS": {
+        "angle_after_independent_gauges": 1.5039922996359862e-05,
+        "angle_divided_by_planar_h_squared_area": 1.203193839718693,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 0.9999999999999999,
+        "principal_angle": 1.5039922996483664e-05,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.56013979081001,
+              3.2969698871710382
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.95011924370691,
+              20.799592325906758
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.97906935240241,
+              20.163663181898468
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "spherical_model_control": {
+        "angle_after_independent_O2_gauges": 1.25000520833545e-05,
+        "metric_recognition": {
+          "landmark_orthogonality_error": 0.0,
+          "metric_reconstruction_error": 1.739060284666749e-16,
+          "radial_error": 1.1102230246251565e-16
+        },
+        "principal_angle": 1.25000520833545e-05
+      },
+      "spherical_transport_angle_divided_by_area": 0.9999999999999573,
+      "spherical_triangle_area_quadrature": 1.2500052083355033e-05
+    },
+    {
+      "analytic_area_interval": [
+        3.1249837239891893e-06,
+        3.125013020879449e-06
+      ],
+      "exact_flat": {
+        "angle_after_independent_gauges": 3.952906271969825e-16,
+        "angle_divided_by_planar_h_squared_area": 2.7432685760591638e-11,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            9,
+            11,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 8.572714300184888e-17,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.560176488268056,
+              3.2969663688748057
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.95049626569331,
+              20.79950373430668
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.979102983393304,
+              20.163754159463842
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "h": 0.00125,
+      "identical_neighborhood_spherical_MDS": {
+        "angle_after_independent_gauges": 1.784867055119304e-17,
+        "angle_divided_by_planar_h_squared_area": 6.416830070369481e-11,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5,
+            4,
+            7,
+            6
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7,
+            6,
+            5,
+            10
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8,
+            5,
+            3,
+            6
+          ]
+        ],
+        "loop_determinant": 1.0,
+        "principal_angle": 2.0052593969904628e-16,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85051922351839,
+              85.0659324122698
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85051922351838,
+              85.06593241226985
+            ],
+            "overlap_count": 12
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              98.85051922351829,
+              85.06593241226977
+            ],
+            "overlap_count": 12
+          }
+        ]
+      },
+      "known_metric_error_spherical_control": {
+        "area_normalized_error_bound": 0.00034229129430114844,
+        "observed_area_normalized_angle": 0.9999999999983524,
+        "proved_error_bounds_under_model_hypotheses": {
+          "edge_operator_error": 2.269892008858229e-10,
+          "point_error": 8.457279333832408e-12,
+          "triangle_operator_error": 6.809676026574687e-10,
+          "triangle_principal_angle_error": 1.0696614089206785e-09
+        },
+        "recognition_residuals": {
+          "landmark_orthogonality_error": 1.2208012378778221e-12,
+          "metric_reconstruction_error": 1.2299050666797484e-12,
+          "radial_error": 1.3766765505351941e-14
+        },
+        "supplied_true_metric_error_bound": 2.44140625e-12
+      },
+      "mds_angle_divided_by_area": 1.2031754253858298,
+      "original_MDS": {
+        "angle_after_independent_gauges": 3.7599271212237347e-06,
+        "angle_divided_by_planar_h_squared_area": 1.203176678693695,
+        "center_neighborhoods": [
+          [
+            0,
+            11,
+            1,
+            2,
+            9,
+            8,
+            10,
+            3,
+            5
+          ],
+          [
+            1,
+            11,
+            0,
+            2,
+            8,
+            9,
+            4,
+            3,
+            7
+          ],
+          [
+            2,
+            11,
+            9,
+            0,
+            1,
+            10,
+            7,
+            4,
+            8
+          ]
+        ],
+        "loop_determinant": 1.0000000000000007,
+        "principal_angle": 3.7599271209177974e-06,
+        "rank_diagnostics": [
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              39.56016731467518,
+              3.2969672489401542
+            ],
+            "overlap_count": 7
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              40.95040201292664,
+              20.79952588233302
+            ],
+            "overlap_count": 8
+          },
+          {
+            "cross_singular_values_divided_by_h_squared": [
+              26.979094576337094,
+              20.163731416003266
+            ],
+            "overlap_count": 7
+          }
+        ]
+      },
+      "spherical_model_control": {
+        "angle_after_independent_O2_gauges": 3.1250032552085397e-06,
+        "metric_recognition": {
+          "landmark_orthogonality_error": 0.0,
+          "metric_reconstruction_error": 2.0122792321330962e-16,
+          "radial_error": 1.1102230246251565e-16
+        },
+        "principal_angle": 3.1250032552085397e-06
+      },
+      "spherical_transport_angle_divided_by_area": 0.9999999999999576,
+      "spherical_triangle_area_quadrature": 3.1250032552086723e-06
+    }
+  ],
+  "scope": "Exact rational leading MDS bias; floating exact-metric controls. Spherical repair assumes three orthogonal landmarks and a unit-sphere model; no learned Markov applicability claim.",
+  "source_sha256": {
+    "lean/GeoSBT/Connection.lean": "240e8cf4097a430b015fe0d58d55d4052d2bbefff4928be38aaea46222803c78",
+    "scripts/audit_holonomy_estimator.py": "e4c4e5841646771668274bdebf4aae406d07139793fc914c00f5258db74f12b3",
+    "src/geo_sbt/geometry/holonomy.py": "4c4276abc826866d92c86f26f90a3d223e9758ca39b7a75ad264c16dd58b1b10",
+    "src/geo_sbt/geometry/spherical_transport.py": "139a164872b175d748cb22f92a6691eba8daa38d0ffaa8250ed64fc3bbc697cd"
+  }
+}

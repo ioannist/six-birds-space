@@ -1,0 +1,26 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "artifact_sha256": {
+    "docs/notes/holonomy_estimator_review_20261003.md": "83ab3dc57154b27eb054a37b0877d239940ef49984d4e59a2d0ac324c3b0579b",
+    "docs/notes/holonomy_estimator_review_20261003/evidence.json": "e5d6e1ec7ce0e7d143b178919cc14017a0955ff5f33e9f5d83cfb2f46c32f6b7",
+    "docs/notes/holonomy_estimator_review_20261003/lean_axioms.txt": "2c77add02a8e15c7d502a5474586a0c7265949be9eb447cb291ae9b767f33776",
+    "docs/notes/holonomy_estimator_review_20261003/lean_build.txt": "e785c54edf1903ada19821e134f6ca3fe81f50960be8c391bec8573b9e65b90c",
+    "docs/notes/holonomy_estimator_review_20261003/python_tests.txt": "9b95a041c01284d266c001ebc7eb303c54a8617dfca8b12a48701637a45c6ac0",
+    "docs/notes/holonomy_estimator_review_20261003/verification.txt": "817e09c00db11561f525d8d29c3911093017bad7f32fb75375843f43ed930b1d",
+    "lean/GeoSBT/TransportError.lean": "1f6fd9a81c041727db8249969367ee058db1a912dcb86aec26f0917a064a082e",
+    "tests/test_holonomy_estimator_review.py": "2821cf97844aa789cb8d985d513dad12d6e79f1ad1f5c1ff7b20289439eea332"
+  },
+  "evidence_source_hashes_match": true,
+  "goal_complete": false,
+  "lean_build_jobs": 2116,
+  "open_obligations": [
+    "Coherent curved Markov family satisfying all gates",
+    "Derived uniform Markov metric error at shrinking-loop scale"
+  ],
+  "printed_axiom_anchors": 56,
+  "python_tests": 96
+}

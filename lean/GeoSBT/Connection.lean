@@ -60,4 +60,11 @@ theorem triangleHolonomy_eq_one_iff {G : Type*} [Group G] (a b c : G) :
     a * b * c⁻¹ = 1 ↔ a * b = c := by
   exact mul_inv_eq_one
 
+/-- Charts of a single common embedding give a pure gauge connection. Such a
+connection has trivial triangular holonomy regardless of the source metric.
+The MDS applicability argument and uniqueness of polar alignment are external. -/
+theorem triangleHolonomy_common_chart {G : Type*} [Group G] (a b c : G) :
+    (a⁻¹ * b) * (b⁻¹ * c) * (c⁻¹ * a) = 1 := by
+  simp [mul_assoc]
+
 end GeoSBT

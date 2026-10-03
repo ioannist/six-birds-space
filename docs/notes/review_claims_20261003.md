@@ -7,7 +7,13 @@ supports the original staged accounting claim on growing central windows.
 a precise noncommutativity interpretation and an exact spherical area control.
 The complete Fourier and geometric calculations are written proofs; their
 quantitative and algebraic bridges are mechanized. The original estimator's
-consistency and learned-lens coherence remain separate gaps.
+universal curvature interpretation now has an
+[exact spherical counterexample](holonomy_estimator_review_20261003.md):
+its area-normalized limit can exceed 1.2 with full-rank distinct charts, or
+vanish with identical charts. A separate spherical reconstruction supplies
+genuine transport under explicit landmark/model assumptions and quantitative
+metric-error bounds. Learned Markov applicability and coherent curved
+construction remain separate gaps.
 An [exact prototype-optimization obstruction](prototype_obstruction_review_20261003.md)
 also shows that reweighting supported prototypes cannot improve the canonical
 finest grid/gasket worst persistence defects. A recovery at stage five must
@@ -37,6 +43,8 @@ The requested pre-review baseline is commit `4e2e9a0`.
 | Fractal non-smoothing | At every point of that gasket limit, balls of radii `2^-j` contain a four-point obstruction ruling out every real Hilbert fit with uniform distance error at most `2^-j/16`. | This is a specified approximation criterion. No curvature tensor, anomalous-diffusion theorem or different tangent-space definition is inferred. |
 | Canonical learned lenses | Valid finite metrics and recorded audit defects; the canonical gasket also has an exact local nonembedding witness. The grid/gasket worst persistence defects are exact minima over every supported stochastic prototype choice at their fixed partition and stage. | Worst prototype defects are about 0.783 (grid), 0.985 (sphere), and 0.849 (gasket). Full-ladder small-defect coherence fails. The sphere value is for uniform prototypes only. Finite nonembedding also occurs on the grid, so it alone is not a fractal classifier. |
 | Grid/sphere loop residue | Gauge-correct finite O(2) Procrustes loop residue separates the two canonical cases: median sphere/grid ratio about 25.34. Covariant shifts on a common section space commute exactly when their square holonomy is trivial. A supplied unit-sphere connection has an exact area law. | Individual SO(2) matrices commute, while covariant shifts can fail to commute. The estimator is not proved to recover that geometric connection, and no coherent curved learned-lens limit is established. Shrinking-loop curvature uses area normalization. |
+| Exact metric estimator obstruction | On exact spherical metrics the original local MDS estimator can have area-normalized holonomy limit 1.203170959... with full-rank distinct neighborhoods; identical neighborhoods give exactly zero. Both patches extend to globally dense sphere samples. | These are written counterexamples with an exact rational leading coefficient. They refute universal curvature consistency, not every possible balanced sampling regime. |
+| Spherical transport repair | Under an explicit unit-sphere metric model, three marked orthogonal landmarks recover coordinates and great-circle parallel transport. Uniform metric error epsilon gives a quantified angle error with fixed frame and arc conditioning margins. | Area-normalized consistency requires epsilon/area tending to zero. Recognition residuals do not supply the true-model premise; applicability to actual learned Markov metrics remains unproved. This is a separate estimator, not a new interpretation of historical MDS results. |
 | Staged quadratic cost | The original lattice walk has a derived uniform local probability estimate, a quadratic negative-log limit with coefficient 2/n and offset log(pi n/2), vanishing axis residual and a Euclidean square-root readout limit. The exact stage-128 certificate remains sharper on its 529 points. | Fixed central windows in diffusion units, growing torus size, and unclipped probabilities are explicit. The Fourier proof is outside Lean; the log/residual bridges are mechanized. This readout remains separate from the macro shortest-path metric. |
 | Constraints and controls | Directional gating changes the kernel and metric even with the lens held fixed. L1 axis separability is exactly zero, while its squared-distance Pythagorean residual is nonzero. | Anisotropy can retain a positive quadratic form and weighted Pythagoras. It need not destroy inner-product geometry. Saturated and unsupported diagnostics fail explicitly. |
 
@@ -72,9 +80,14 @@ not certify an eigensolver or infer an infinite regime from ten finite cases.
 The [quadratic-limit audit](quadratic_limit_review_20261003/evidence.json) and
 [connection audit](connection_holonomy_review_20261003/evidence.json) extend
 the preceding checkpoint, along with the exact prototype obstruction. The
-current suite passes **88 tests**; the fresh Lean build and **53** transitive
-axiom checks use only the standard foundations.
-Full-suite, Lean and exact recheck receipts are in
+preceding checkpoint passed **88 tests** with **53** transitive axiom checks.
+The current [estimator audit](holonomy_estimator_review_20261003/evidence.json)
+adds exact refinement obstructions, metric-only spherical reconstruction and
+quantitative transport bounds. The current suite passes **96 tests**; a fresh
+Lean build and **56** transitive axiom checks use only the standard foundations.
+Current receipts are in
+[holonomy_estimator_review_20261003](holonomy_estimator_review_20261003/python_tests.txt).
+The preceding full-suite, Lean and exact recheck receipts are in
 [quadratic_limit_review_20261003](quadratic_limit_review_20261003/python_tests.txt).
 
 [The Lean coverage description](../../lean/README.md) identifies the represented
@@ -107,11 +120,14 @@ twenty corrected canonical and sweep configurations. The
 the exact quadratic certificates and broader learned-lens tests. Their older
 test counts and receipts describe those checkpoints, not this final state.
 
-The final adversarial pass was a self-review. It checked interface stabilization,
+The preceding adversarial pass was a self-review. It checked interface stabilization,
 graph excursions and distinct ports, route input domains, units and floor
 scaling, stationary domination, uniform limit compatibility, ball-measure
 bounds, and the limiting witness rather than relying solely on passing finite
 tests. No independent mathematical reviewer was used.
+The current estimator self-review additionally checked spectral derivatives,
+overlap conditioning, area units, dense-sample extension and the explicit model
+assumptions of the spherical repair, as detailed in its companion note.
 
 ## Reproduction
 
@@ -125,6 +141,8 @@ OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/certify_local_nonembedding.py -
 OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_quadratic_limit.py --output results/quadratic_limit_review
 OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_connection_holonomy.py --output results/connection_holonomy_review
 OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_prototype_obstruction.py --verify docs/notes/prototype_obstruction_review_20261003/evidence.json
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_holonomy_estimator.py --output results/holonomy_estimator_review
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_holonomy_estimator.py --verify docs/notes/holonomy_estimator_review_20261003/evidence.json
 .venv/bin/python3 -m pytest -q
 cd lean
 lake build

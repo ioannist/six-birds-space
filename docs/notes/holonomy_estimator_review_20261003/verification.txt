@@ -1,0 +1,1 @@
+Exact leading coefficient, positive ranks and strict bias verified. Taylor applicability is a written proof.

@@ -7,3 +7,4 @@ import GeoSBT.EuclideanObstruction
 import GeoSBT.QuadraticLimit
 import GeoSBT.Connection
 import GeoSBT.PrototypeObstruction
+import GeoSBT.TransportError

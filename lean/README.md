@@ -63,6 +63,16 @@ commuting base translations, including for abelian coefficient groups. It
 also proves the gauge laws and the triangle route criterion. The vector-section
 operator norm and spherical parallel-transport calculations are written
 arguments outside Lean; they do not establish MDS-estimator consistency.
+Its common-chart theorem also proves pure-gauge triangular cancellation. The
+written MDS argument explains why identical overlapping charts can therefore
+erase genuine spherical curvature.
+
+`TransportError.lean` bounds the actual product error of three contraction
+transports in a normed ring and divides angle error by positive area. A written
+metric reconstruction using three orthogonal spherical landmarks supplies
+quantitative coordinate and transport bounds under explicit model and
+conditioning hypotheses. Neither its applicability to learned Markov metrics
+nor the MDS spectral perturbation argument is formalized here.
 
 `PrototypeObstruction.lean` proves a lower TV-defect bound for every stochastic
 fiber-supported prototype from a return bound holding throughout a fixed
