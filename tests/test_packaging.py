@@ -83,3 +83,15 @@ def test_disjoint_fiber_prototype_stability_is_escape_probability():
     P = grid_2d(4, lazy=.5)
     K = macro_kernel(P, 3, C, U)
     assert np.allclose(prototype_stabilities(P, 3, C, U), 1. - np.diag(K), atol=1e-12)
+
+
+def test_factored_defect_includes_overlapping_and_signed_prototypes():
+    from geo_sbt.packaging import idempotence_defect_from_factors
+    # Deliberately not stochastic: this checks the unconditional factorization
+    # and prevents smuggling normalized/disjoint hypotheses into the fallback.
+    B = np.array([[.2, .8], [.7, .3], [.4, .6]])
+    for U in [np.array([[2., -.5, 0.], [0., 0., 3.]]),
+              np.array([[.5, .5, 0.], [.2, .3, .5]])]:
+        E = B @ U
+        expected = .5 * np.abs(E @ E - E).sum(axis=1).max()
+        assert np.isclose(idempotence_defect_from_factors(B, U), expected, atol=1e-12)

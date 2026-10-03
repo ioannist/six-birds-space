@@ -1,0 +1,1 @@
+Exact recurrence, complete windows, and rational logarithmic bounds verified.

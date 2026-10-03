@@ -29,10 +29,21 @@ general nonnegativity guarantee.
 
 `Pythagoras.lean` is a classical inner-product-space theorem. It does not prove
 that a computed cost or path metric is Euclidean, or that stochastic dynamics
-produce an inner product.
+produce an inner product. It also proves a conditional readout bridge: a uniform
+bound on nonnegative quadratic cost gives a square-root displacement bound.
+An RMS fit does not supply the uniform premise.
+
+`MarkovClosure.lean` proves stochasticity of the actual finite closure
+`P^tau C U` and macro kernel, the extreme-row TV criterion, the unconditional
+closure-defect factorization, and a finite-horizon repetition bound with loss
+`k D`. Fiber-supported stochastic prototypes satisfy `U C = I`, preserve signed
+L1 discrepancies, and have stability defect exactly equal to macro escape mass.
+It does not prove that any experimental ladder has small defects or coherent
+geometry.
 
 `Audit.lean` prints the transitive axioms of the anchors. The mathematical
 declarations should use only Lean's standard foundations (`propext`,
 `Classical.choice`, `Quot.sound`), with no `sorryAx` or added axioms. These files do
-not verify floating-point algorithms, Markov closure, curvature identification,
-or continuum limits.
+not verify floating-point algorithms, curvature identification, or continuum
+limits. The exact quadratic-walk certificate checker is Python code, outside
+the Lean trust boundary.

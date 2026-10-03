@@ -1,5 +1,10 @@
 # Mathematical review and repairs
 
+Follow-up: [Closure proofs and finite refinement](closure_and_refinement_review_20261003.md)
+adds mechanized Markov results, exact finite quadratic-cost certificates,
+larger-substrate checks and current verification receipts. The receipts below
+describe the initial repair checkpoint.
+
 The weighted metric construction and its Lean coverage have been repaired. Corrected experiments retain a grid versus sphere loop-residue separation, an approximately quadratic cost law at large staging, and deformation under directional gating. The stronger interpretation that the canonical refinement ladders satisfy the paper's small-defect coherence criterion is unverified and conflicts with large reported prototype defects. The fractal fixed-point interpretation also lacks the required geometric evidence. Those main-claim questions remain open for discussion with the author; this review does not authorize a downgrade.
 
 The paper and historical run packs were left unchanged. This note records the mathematical issues, repairs, current evidence, and work needed before the later paper revision. The requested baseline checkpoint is commit `4e2e9a0`. The review covered the paper's constructions and exhibits, all four Lean modules, the numerical library, experiment runners, diagnostics, and original tests. A separate adversarial pass over the repairs was a self-review.

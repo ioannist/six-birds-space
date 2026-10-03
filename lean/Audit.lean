@@ -17,3 +17,23 @@ import GeoSBT
 #print axioms GeoSBT.flooredLikelihoodCost_nonneg
 #print axioms GeoSBT.flooredLikelihoodCost_encoding
 #print axioms pythagoras_real
+
+#print axioms GeoSBT.stochastic_mul
+#print axioms GeoSBT.coarseMatrix_stochastic
+#print axioms GeoSBT.stochastic_power
+#print axioms GeoSBT.closure_and_macro_stochastic
+#print axioms GeoSBT.closure_defect_factorization
+#print axioms GeoSBT.lift_coarse_identity
+#print axioms GeoSBT.totalVariation_push_row_bound
+#print axioms GeoSBT.totalVariation_extreme_point_iff
+#print axioms GeoSBT.push_distribution
+#print axioms GeoSBT.push_push
+#print axioms GeoSBT.totalVariation_triangle
+#print axioms GeoSBT.closure_repetition_bound
+#print axioms GeoSBT.disjoint_push_l1
+#print axioms GeoSBT.fiber_push_l1_isometry
+#print axioms GeoSBT.totalVariation_fiber_lift
+#print axioms GeoSBT.totalVariation_point_eq_escape
+#print axioms GeoSBT.prototype_stability_eq_escape
+#print axioms GeoSBT.squared_readout_error_le
+#print axioms GeoSBT.quadratic_cost_readout_error

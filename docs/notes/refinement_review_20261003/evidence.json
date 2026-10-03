@@ -1,0 +1,971 @@
+{
+  "geometry_size_family": [
+    {
+      "ball_growth_slope": 1.7263731662515196,
+      "delta": 0.2745547421983684,
+      "diameter": 8.173023505065292,
+      "escape_max": 0.8684488932291666,
+      "escape_mean": 0.6378642809570898,
+      "gasket_level": null,
+      "inf_count": 0,
+      "kind": "grid",
+      "lazy": 0.5,
+      "local_mds": [
+        {
+          "centers": 16,
+          "k": 8,
+          "median_radius_over_diameter": 0.5519159573763252,
+          "median_relative_mds_error": 0.08086898936610629
+        },
+        {
+          "centers": 16,
+          "k": 12,
+          "median_radius_over_diameter": 0.6972306884876968,
+          "median_relative_mds_error": 0.08404636761602095
+        }
+      ],
+      "m": 16,
+      "min_fiber_size": 1,
+      "n": 49,
+      "n_eigs": 6,
+      "n_side": 7,
+      "tau": 5
+    },
+    {
+      "ball_growth_slope": 1.3155805348909486,
+      "delta": 0.22754765416805942,
+      "diameter": 9.136239901001272,
+      "escape_max": 0.8492431640625,
+      "escape_mean": 0.6319408416748047,
+      "gasket_level": 3,
+      "inf_count": 0,
+      "kind": "gasket",
+      "lazy": 0.5,
+      "local_mds": [
+        {
+          "centers": 16,
+          "k": 8,
+          "median_radius_over_diameter": 0.4990404180399418,
+          "median_relative_mds_error": 0.06723778734763589
+        },
+        {
+          "centers": 16,
+          "k": 12,
+          "median_radius_over_diameter": 0.7033082595884236,
+          "median_relative_mds_error": 0.11722884627722109
+        }
+      ],
+      "m": 16,
+      "min_fiber_size": 1,
+      "n": 42,
+      "n_eigs": 6,
+      "n_side": null,
+      "tau": 5
+    },
+    {
+      "ball_growth_slope": 1.6133322608466967,
+      "delta": 0.2955158475733217,
+      "diameter": 17.050729121786144,
+      "escape_max": 0.8684488932291666,
+      "escape_mean": 0.6843300080789951,
+      "gasket_level": null,
+      "inf_count": 0,
+      "kind": "grid",
+      "lazy": 0.5,
+      "local_mds": [
+        {
+          "centers": 40,
+          "k": 8,
+          "median_radius_over_diameter": 0.21829009950071226,
+          "median_relative_mds_error": 0.05447624767630502
+        },
+        {
+          "centers": 40,
+          "k": 12,
+          "median_radius_over_diameter": 0.28695241073066263,
+          "median_relative_mds_error": 0.05635564799492759
+        },
+        {
+          "centers": 40,
+          "k": 24,
+          "median_radius_over_diameter": 0.460240018677506,
+          "median_relative_mds_error": 0.06094410941373292
+        }
+      ],
+      "m": 40,
+      "min_fiber_size": 1,
+      "n": 121,
+      "n_eigs": 6,
+      "n_side": 11,
+      "tau": 5
+    },
+    {
+      "ball_growth_slope": 1.2762232533229247,
+      "delta": 0.23344813510775564,
+      "diameter": 19.105826177505353,
+      "escape_max": 0.8492431640625,
+      "escape_mean": 0.6203125620275979,
+      "gasket_level": 4,
+      "inf_count": 0,
+      "kind": "gasket",
+      "lazy": 0.5,
+      "local_mds": [
+        {
+          "centers": 41,
+          "k": 8,
+          "median_radius_over_diameter": 0.24000852234664755,
+          "median_relative_mds_error": 0.0864171227040726
+        },
+        {
+          "centers": 41,
+          "k": 12,
+          "median_radius_over_diameter": 0.3143628496697423,
+          "median_relative_mds_error": 0.07995762074558381
+        },
+        {
+          "centers": 41,
+          "k": 24,
+          "median_radius_over_diameter": 0.5480186792545536,
+          "median_relative_mds_error": 0.08893721747976721
+        }
+      ],
+      "m": 41,
+      "min_fiber_size": 1,
+      "n": 123,
+      "n_eigs": 6,
+      "n_side": null,
+      "tau": 5
+    },
+    {
+      "ball_growth_slope": 1.7220629500282982,
+      "delta": 0.29727558792914127,
+      "diameter": 27.791178979899104,
+      "escape_max": 0.86865234375,
+      "escape_mean": 0.7139310497957726,
+      "gasket_level": null,
+      "inf_count": 0,
+      "kind": "grid",
+      "lazy": 0.5,
+      "local_mds": [
+        {
+          "centers": 120,
+          "k": 8,
+          "median_radius_over_diameter": 0.13103905622343776,
+          "median_relative_mds_error": 0.06921065073916567
+        },
+        {
+          "centers": 120,
+          "k": 12,
+          "median_radius_over_diameter": 0.16407193026243627,
+          "median_relative_mds_error": 0.06626261056147387
+        },
+        {
+          "centers": 120,
+          "k": 24,
+          "median_radius_over_diameter": 0.2390435146426381,
+          "median_relative_mds_error": 0.05881792724004528
+        }
+      ],
+      "m": 120,
+      "min_fiber_size": 1,
+      "n": 361,
+      "n_eigs": 6,
+      "n_side": 19,
+      "tau": 5
+    },
+    {
+      "ball_growth_slope": 1.376500234073917,
+      "delta": 0.25644646259024745,
+      "diameter": 40.20609566415571,
+      "escape_max": 0.8492431640625,
+      "escape_mean": 0.6289373135275125,
+      "gasket_level": 5,
+      "inf_count": 0,
+      "kind": "gasket",
+      "lazy": 0.5,
+      "local_mds": [
+        {
+          "centers": 122,
+          "k": 8,
+          "median_radius_over_diameter": 0.1150892771350667,
+          "median_relative_mds_error": 0.07300254211705924
+        },
+        {
+          "centers": 122,
+          "k": 12,
+          "median_radius_over_diameter": 0.1512139862160018,
+          "median_relative_mds_error": 0.06944296292069263
+        },
+        {
+          "centers": 122,
+          "k": 24,
+          "median_radius_over_diameter": 0.24984140398666002,
+          "median_relative_mds_error": 0.07013494807628168
+        }
+      ],
+      "m": 122,
+      "min_fiber_size": 1,
+      "n": 366,
+      "n_eigs": 6,
+      "n_side": null,
+      "tau": 5
+    },
+    {
+      "ball_growth_slope": 1.7727438386606968,
+      "delta": 0.3100225030961964,
+      "diameter": 44.747353959726475,
+      "escape_max": 0.86865234375,
+      "escape_mean": 0.6621750441676526,
+      "gasket_level": null,
+      "inf_count": 0,
+      "kind": "grid",
+      "lazy": 0.5,
+      "local_mds": [
+        {
+          "centers": 256,
+          "k": 8,
+          "median_radius_over_diameter": 0.0865417585126884,
+          "median_relative_mds_error": 0.05437909475372113
+        },
+        {
+          "centers": 256,
+          "k": 12,
+          "median_radius_over_diameter": 0.1045537984791291,
+          "median_relative_mds_error": 0.05658974482882898
+        },
+        {
+          "centers": 256,
+          "k": 24,
+          "median_radius_over_diameter": 0.15020676828642243,
+          "median_relative_mds_error": 0.052941550179283384
+        }
+      ],
+      "m": 256,
+      "min_fiber_size": 1,
+      "n": 1089,
+      "n_eigs": 6,
+      "n_side": 33,
+      "tau": 5
+    },
+    {
+      "ball_growth_slope": 1.3849171160880422,
+      "delta": 0.2718888602818229,
+      "diameter": 74.46172116556983,
+      "escape_max": 0.8492431640625,
+      "escape_mean": 0.5630859088330042,
+      "gasket_level": 6,
+      "inf_count": 0,
+      "kind": "gasket",
+      "lazy": 0.5,
+      "local_mds": [
+        {
+          "centers": 256,
+          "k": 8,
+          "median_radius_over_diameter": 0.06647088608772198,
+          "median_relative_mds_error": 0.052211164931440686
+        },
+        {
+          "centers": 256,
+          "k": 12,
+          "median_radius_over_diameter": 0.08793508963104778,
+          "median_relative_mds_error": 0.054212426254832774
+        },
+        {
+          "centers": 256,
+          "k": 24,
+          "median_radius_over_diameter": 0.14422987207362617,
+          "median_relative_mds_error": 0.07005723220526212
+        }
+      ],
+      "m": 256,
+      "min_fiber_size": 1,
+      "n": 1095,
+      "n_eigs": 6,
+      "n_side": null,
+      "tau": 5
+    }
+  ],
+  "grid_ladders": [
+    {
+      "distortions": [
+        {
+          "alpha": 1.3402828254663095,
+          "disconnected": false,
+          "finite_max_abs_diff": 4.721444381524852,
+          "finite_pairs": 64,
+          "max_abs_diff": 4.721444381524852,
+          "relative_to_fine_diameter": 0.4856898099722082,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3514769968503924,
+          "disconnected": false,
+          "finite_max_abs_diff": 4.858109309995999,
+          "finite_pairs": 256,
+          "max_abs_diff": 4.858109309995999,
+          "relative_to_fine_diameter": 0.28531088228855045,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.2732462338916506,
+          "disconnected": false,
+          "finite_max_abs_diff": 6.679999501052879,
+          "finite_pairs": 1024,
+          "max_abs_diff": 6.679999501052879,
+          "relative_to_fine_diameter": 0.28640538538660737,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3568281203369126,
+          "disconnected": false,
+          "finite_max_abs_diff": 8.674319439358214,
+          "finite_pairs": 4096,
+          "max_abs_diff": 8.674319439358214,
+          "relative_to_fine_diameter": 0.28629754822281334,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.327454280651926,
+          "disconnected": false,
+          "finite_max_abs_diff": 8.380388807213665,
+          "finite_pairs": 16384,
+          "max_abs_diff": 8.380388807213665,
+          "relative_to_fine_diameter": 0.19453905197068191,
+          "unmatched_pairs": 0
+        }
+      ],
+      "lazy": 0.5,
+      "levels": [
+        {
+          "delta": 0.04119047619047565,
+          "diameter": 7.900721557483118,
+          "escape_max": 0.04119047619047511,
+          "escape_mean": 0.03224195599292315,
+          "inf_count": 0,
+          "m": 4,
+          "min_fiber_size": 102
+        },
+        {
+          "delta": 0.11904761904761904,
+          "diameter": 9.721110644250533,
+          "escape_max": 0.11904761904761907,
+          "escape_mean": 0.05699832082539588,
+          "inf_count": 0,
+          "m": 8,
+          "min_fiber_size": 28
+        },
+        {
+          "delta": 0.2371482683982684,
+          "diameter": 17.027423808821734,
+          "escape_max": 0.2727272727272727,
+          "escape_mean": 0.10892567486236071,
+          "inf_count": 0,
+          "m": 16,
+          "min_fiber_size": 4
+        },
+        {
+          "delta": 0.24709990530303025,
+          "diameter": 23.323582034031276,
+          "escape_max": 0.33333333333333337,
+          "escape_mean": 0.15247956453781442,
+          "inf_count": 0,
+          "m": 32,
+          "min_fiber_size": 3
+        },
+        {
+          "delta": 0.29999999999999993,
+          "diameter": 30.298266587345545,
+          "escape_max": 0.4027777777777778,
+          "escape_mean": 0.21030539014715655,
+          "inf_count": 0,
+          "m": 64,
+          "min_fiber_size": 2
+        },
+        {
+          "delta": 0.29999999999999993,
+          "diameter": 43.07818261845254,
+          "escape_max": 0.4027777777777778,
+          "escape_mean": 0.2665617766203704,
+          "inf_count": 0,
+          "m": 128,
+          "min_fiber_size": 2
+        }
+      ],
+      "n_eigs": 6,
+      "n_side": 25,
+      "tau": 1
+    },
+    {
+      "distortions": [
+        {
+          "alpha": 1.367592526266752,
+          "disconnected": false,
+          "finite_max_abs_diff": 3.7107316482509707,
+          "finite_pairs": 64,
+          "max_abs_diff": 3.7107316482509707,
+          "relative_to_fine_diameter": 0.4650266639788398,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.2942667393702454,
+          "disconnected": false,
+          "finite_max_abs_diff": 3.6560670789655223,
+          "finite_pairs": 256,
+          "max_abs_diff": 3.6560670789655223,
+          "relative_to_fine_diameter": 0.29891313216469206,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.2328781929717303,
+          "disconnected": false,
+          "finite_max_abs_diff": 4.606993375902476,
+          "finite_pairs": 1024,
+          "max_abs_diff": 4.606993375902476,
+          "relative_to_fine_diameter": 0.2806465251316302,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3685809665128963,
+          "disconnected": false,
+          "finite_max_abs_diff": 5.368924731970196,
+          "finite_pairs": 4096,
+          "max_abs_diff": 5.368924731970196,
+          "relative_to_fine_diameter": 0.23873393596616094,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.348285051120187,
+          "disconnected": false,
+          "finite_max_abs_diff": 6.0502285842134285,
+          "finite_pairs": 16384,
+          "max_abs_diff": 6.0502285842134285,
+          "relative_to_fine_diameter": 0.19123748963378923,
+          "unmatched_pairs": 0
+        }
+      ],
+      "lazy": 0.5,
+      "levels": [
+        {
+          "delta": 0.11169712826898703,
+          "diameter": 5.9015621576298996,
+          "escape_max": 0.11169712826898703,
+          "escape_mean": 0.08813596161750337,
+          "inf_count": 0,
+          "m": 4,
+          "min_fiber_size": 102
+        },
+        {
+          "delta": 0.2795650457927688,
+          "diameter": 7.979610494807715,
+          "escape_max": 0.3253263084416107,
+          "escape_mean": 0.15575521895538294,
+          "inf_count": 0,
+          "m": 8,
+          "min_fiber_size": 28
+        },
+        {
+          "delta": 0.33363321741013585,
+          "diameter": 12.231202598857852,
+          "escape_max": 0.642822265625,
+          "escape_mean": 0.28105788857986425,
+          "inf_count": 0,
+          "m": 16,
+          "min_fiber_size": 4
+        },
+        {
+          "delta": 0.3329534482446771,
+          "diameter": 16.415643748810652,
+          "escape_max": 0.7180989583333334,
+          "escape_mean": 0.39283495501129573,
+          "inf_count": 0,
+          "m": 32,
+          "min_fiber_size": 3
+        },
+        {
+          "delta": 0.32515612851314696,
+          "diameter": 22.489156014799708,
+          "escape_max": 0.7825927734375,
+          "escape_mean": 0.510979803826225,
+          "inf_count": 0,
+          "m": 64,
+          "min_fiber_size": 2
+        },
+        {
+          "delta": 0.311007208323287,
+          "diameter": 31.637251648718728,
+          "escape_max": 0.7825927734375,
+          "escape_mean": 0.6251987755703532,
+          "inf_count": 0,
+          "m": 128,
+          "min_fiber_size": 2
+        }
+      ],
+      "n_eigs": 6,
+      "n_side": 25,
+      "tau": 5
+    },
+    {
+      "distortions": [
+        {
+          "alpha": 1.539951036278909,
+          "disconnected": false,
+          "finite_max_abs_diff": 8.348476378545657,
+          "finite_pairs": 64,
+          "max_abs_diff": 8.348476378545657,
+          "relative_to_fine_diameter": 0.6531108059742968,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.2938969435887628,
+          "disconnected": false,
+          "finite_max_abs_diff": 8.780329261722207,
+          "finite_pairs": 256,
+          "max_abs_diff": 8.780329261722207,
+          "relative_to_fine_diameter": 0.4740792825876292,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.2273627282070705,
+          "disconnected": false,
+          "finite_max_abs_diff": 8.064719142001175,
+          "finite_pairs": 1024,
+          "max_abs_diff": 8.064719142001175,
+          "relative_to_fine_diameter": 0.3190710245195958,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3424257456261024,
+          "disconnected": false,
+          "finite_max_abs_diff": 11.284962646260913,
+          "finite_pairs": 4096,
+          "max_abs_diff": 11.284962646260913,
+          "relative_to_fine_diameter": 0.336070672556087,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3312598002223146,
+          "disconnected": false,
+          "finite_max_abs_diff": 10.454756816597456,
+          "finite_pairs": 16384,
+          "max_abs_diff": 10.454756816597456,
+          "relative_to_fine_diameter": 0.22527219010044153,
+          "unmatched_pairs": 0
+        }
+      ],
+      "lazy": 0.5,
+      "levels": [
+        {
+          "delta": 0.06701030927835028,
+          "diameter": 5.243613778148829,
+          "escape_max": 0.06701030927835006,
+          "escape_mean": 0.03511981505996259,
+          "inf_count": 0,
+          "m": 4,
+          "min_fiber_size": 97
+        },
+        {
+          "delta": 0.06944444444444409,
+          "diameter": 12.782633976008983,
+          "escape_max": 0.06944444444444375,
+          "escape_mean": 0.04594341145921836,
+          "inf_count": 0,
+          "m": 8,
+          "min_fiber_size": 78
+        },
+        {
+          "delta": 0.20000000000000004,
+          "diameter": 18.520803553779515,
+          "escape_max": 0.20000000000000007,
+          "escape_mean": 0.07718172694257626,
+          "inf_count": 0,
+          "m": 16,
+          "min_fiber_size": 10
+        },
+        {
+          "delta": 0.20000000000000004,
+          "diameter": 25.275623677028307,
+          "escape_max": 0.21759259259259267,
+          "escape_mean": 0.11556412639266714,
+          "inf_count": 0,
+          "m": 32,
+          "min_fiber_size": 9
+        },
+        {
+          "delta": 0.25000000000000006,
+          "diameter": 33.57913548489584,
+          "escape_max": 0.3125,
+          "escape_mean": 0.15704925086864174,
+          "inf_count": 0,
+          "m": 64,
+          "min_fiber_size": 4
+        },
+        {
+          "delta": 0.26171875,
+          "diameter": 46.40944278091326,
+          "escape_max": 0.375,
+          "escape_mean": 0.20530106081835173,
+          "inf_count": 0,
+          "m": 128,
+          "min_fiber_size": 2
+        }
+      ],
+      "n_eigs": 6,
+      "n_side": 33,
+      "tau": 1
+    },
+    {
+      "distortions": [
+        {
+          "alpha": 1.5055698215488273,
+          "disconnected": false,
+          "finite_max_abs_diff": 6.231058472764529,
+          "finite_pairs": 64,
+          "max_abs_diff": 6.231058472764529,
+          "relative_to_fine_diameter": 0.64375843857345,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.269247606755956,
+          "disconnected": false,
+          "finite_max_abs_diff": 6.611067469805436,
+          "finite_pairs": 256,
+          "max_abs_diff": 6.611067469805436,
+          "relative_to_fine_diameter": 0.4911895113728786,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.2141070920578756,
+          "disconnected": false,
+          "finite_max_abs_diff": 5.002776745327607,
+          "finite_pairs": 1024,
+          "max_abs_diff": 5.002776745327607,
+          "relative_to_fine_diameter": 0.27262648497045794,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3181306756049411,
+          "disconnected": false,
+          "finite_max_abs_diff": 8.06338380500718,
+          "finite_pairs": 4096,
+          "max_abs_diff": 8.06338380500718,
+          "relative_to_fine_diameter": 0.34004318736628725,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.337793799464092,
+          "disconnected": false,
+          "finite_max_abs_diff": 7.594567693668537,
+          "finite_pairs": 16384,
+          "max_abs_diff": 7.594567693668537,
+          "relative_to_fine_diameter": 0.22808149868094285,
+          "unmatched_pairs": 0
+        }
+      ],
+      "lazy": 0.5,
+      "levels": [
+        {
+          "delta": 0.1835979298595592,
+          "diameter": 4.223530744914759,
+          "escape_max": 0.18364094213112114,
+          "escape_mean": 0.09604820132844324,
+          "inf_count": 0,
+          "m": 4,
+          "min_fiber_size": 97
+        },
+        {
+          "delta": 0.1911731909928328,
+          "diameter": 9.679187253175854,
+          "escape_max": 0.19146579605631808,
+          "escape_mean": 0.1268825024684617,
+          "inf_count": 0,
+          "m": 8,
+          "min_fiber_size": 78
+        },
+        {
+          "delta": 0.31853481565933595,
+          "diameter": 13.459300975966384,
+          "escape_max": 0.505279541015625,
+          "escape_mean": 0.2115431843126717,
+          "inf_count": 0,
+          "m": 16,
+          "min_fiber_size": 10
+        },
+        {
+          "delta": 0.33120589738770567,
+          "diameter": 18.35029617855988,
+          "escape_max": 0.5534415958022548,
+          "escape_mean": 0.3106749581195595,
+          "inf_count": 0,
+          "m": 32,
+          "min_fiber_size": 9
+        },
+        {
+          "delta": 0.31939080719517554,
+          "diameter": 23.71282267837784,
+          "escape_max": 0.677764892578125,
+          "escape_mean": 0.415557825069759,
+          "inf_count": 0,
+          "m": 64,
+          "min_fiber_size": 4
+        },
+        {
+          "delta": 0.3159556736527903,
+          "diameter": 33.297605187575414,
+          "escape_max": 0.7825927734375,
+          "escape_mean": 0.5218314669761157,
+          "inf_count": 0,
+          "m": 128,
+          "min_fiber_size": 2
+        }
+      ],
+      "n_eigs": 6,
+      "n_side": 33,
+      "tau": 5
+    },
+    {
+      "distortions": [
+        {
+          "alpha": 1.4472591959678927,
+          "disconnected": false,
+          "finite_max_abs_diff": 8.47025216568777,
+          "finite_pairs": 64,
+          "max_abs_diff": 8.47025216568777,
+          "relative_to_fine_diameter": 0.5750378274626802,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3259992500702689,
+          "disconnected": false,
+          "finite_max_abs_diff": 7.900797653773296,
+          "finite_pairs": 256,
+          "max_abs_diff": 7.900797653773296,
+          "relative_to_fine_diameter": 0.430678703658817,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3613730743934935,
+          "disconnected": false,
+          "finite_max_abs_diff": 7.548666746674723,
+          "finite_pairs": 1024,
+          "max_abs_diff": 7.548666746674723,
+          "relative_to_fine_diameter": 0.27130031858831793,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.2808041638700995,
+          "disconnected": false,
+          "finite_max_abs_diff": 11.174745228546538,
+          "finite_pairs": 4096,
+          "max_abs_diff": 11.174745228546538,
+          "relative_to_fine_diameter": 0.32584285908169724,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3443368783576417,
+          "disconnected": false,
+          "finite_max_abs_diff": 12.36552141878525,
+          "finite_pairs": 16384,
+          "max_abs_diff": 12.36552141878525,
+          "relative_to_fine_diameter": 0.21785463716751616,
+          "unmatched_pairs": 0
+        }
+      ],
+      "lazy": 0.5,
+      "levels": [
+        {
+          "delta": 0.026041666666667147,
+          "diameter": 9.79394591370859,
+          "escape_max": 0.02604166666666763,
+          "escape_mean": 0.01652023126913635,
+          "inf_count": 0,
+          "m": 4,
+          "min_fiber_size": 192
+        },
+        {
+          "delta": 0.05659203980099507,
+          "diameter": 14.729904297013377,
+          "escape_max": 0.05659203980099514,
+          "escape_mean": 0.028092965371137577,
+          "inf_count": 0,
+          "m": 8,
+          "min_fiber_size": 134
+        },
+        {
+          "delta": 0.1212121212121214,
+          "diameter": 18.344992651487814,
+          "escape_max": 0.12121212121212155,
+          "escape_mean": 0.05466396131247254,
+          "inf_count": 0,
+          "m": 16,
+          "min_fiber_size": 33
+        },
+        {
+          "delta": 0.20000000000000004,
+          "diameter": 27.82402463054006,
+          "escape_max": 0.20000000000000007,
+          "escape_mean": 0.08599292833940578,
+          "inf_count": 0,
+          "m": 32,
+          "min_fiber_size": 10
+        },
+        {
+          "delta": 0.2,
+          "diameter": 34.294890672269545,
+          "escape_max": 0.20000000000000007,
+          "escape_mean": 0.11115541117135164,
+          "inf_count": 0,
+          "m": 64,
+          "min_fiber_size": 9
+        },
+        {
+          "delta": 0.21875,
+          "diameter": 56.76042327837604,
+          "escape_max": 0.21875,
+          "escape_mean": 0.1411883026893251,
+          "inf_count": 0,
+          "m": 128,
+          "min_fiber_size": 8
+        }
+      ],
+      "n_eigs": 6,
+      "n_side": 49,
+      "tau": 1
+    },
+    {
+      "distortions": [
+        {
+          "alpha": 1.4438833923356709,
+          "disconnected": false,
+          "finite_max_abs_diff": 6.378313810017584,
+          "finite_pairs": 64,
+          "max_abs_diff": 6.378313810017584,
+          "relative_to_fine_diameter": 0.5490915262988096,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.306790002836285,
+          "disconnected": false,
+          "finite_max_abs_diff": 5.972738103841811,
+          "finite_pairs": 256,
+          "max_abs_diff": 5.972738103841811,
+          "relative_to_fine_diameter": 0.4229756092210872,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.320872744922203,
+          "disconnected": false,
+          "finite_max_abs_diff": 5.6228451787384905,
+          "finite_pairs": 1024,
+          "max_abs_diff": 5.6228451787384905,
+          "relative_to_fine_diameter": 0.2713344590481884,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.2600326325046782,
+          "disconnected": false,
+          "finite_max_abs_diff": 7.656050697338916,
+          "finite_pairs": 4096,
+          "max_abs_diff": 7.656050697338916,
+          "relative_to_fine_diameter": 0.3012594081480474,
+          "unmatched_pairs": 0
+        },
+        {
+          "alpha": 1.3314300719869996,
+          "disconnected": false,
+          "finite_max_abs_diff": 7.98398875346896,
+          "finite_pairs": 16384,
+          "max_abs_diff": 7.98398875346896,
+          "relative_to_fine_diameter": 0.19585910297846323,
+          "unmatched_pairs": 0
+        }
+      ],
+      "lazy": 0.5,
+      "levels": [
+        {
+          "delta": 0.07312830936761543,
+          "diameter": 7.638802569665579,
+          "escape_max": 0.07312830936761539,
+          "escape_mean": 0.04723507726037052,
+          "inf_count": 0,
+          "m": 4,
+          "min_fiber_size": 192
+        },
+        {
+          "delta": 0.1600736269160571,
+          "diameter": 11.616121365068334,
+          "escape_max": 0.1602533219904887,
+          "escape_mean": 0.07918503494791747,
+          "inf_count": 0,
+          "m": 8,
+          "min_fiber_size": 134
+        },
+        {
+          "delta": 0.289895009738509,
+          "diameter": 14.120762459189205,
+          "escape_max": 0.317626953125,
+          "escape_mean": 0.14915554150219282,
+          "inf_count": 0,
+          "m": 16,
+          "min_fiber_size": 33
+        },
+        {
+          "delta": 0.3121321827642961,
+          "diameter": 20.72293065341872,
+          "escape_max": 0.485992431640625,
+          "escape_mean": 0.23229766145238628,
+          "inf_count": 0,
+          "m": 32,
+          "min_fiber_size": 10
+        },
+        {
+          "delta": 0.3154766304050728,
+          "diameter": 25.41348250135483,
+          "escape_max": 0.4869452582465278,
+          "escape_mean": 0.3028395136922373,
+          "inf_count": 0,
+          "m": 64,
+          "min_fiber_size": 9
+        },
+        {
+          "delta": 0.33352700482698966,
+          "diameter": 40.763940159303615,
+          "escape_max": 0.5318527221679688,
+          "escape_mean": 0.38164669745959134,
+          "inf_count": 0,
+          "m": 128,
+          "min_fiber_size": 8
+        }
+      ],
+      "n_eigs": 6,
+      "n_side": 49,
+      "tau": 5
+    }
+  ],
+  "numpy": "2.4.4",
+  "python": "3.12.3",
+  "scope": "Finite pipeline evidence; MDS reconstruction is an upper bound on best Euclidean fit error, not a nonembedding certificate.",
+  "source_sha256": {
+    "scripts/audit_refinement_families.py": "9d3f889ea6e8614d3e94a14c9e7b075c3c1aee0186f4861821472dcd6d2b1f40",
+    "src/geo_sbt/__init__.py": "b30079fa5aeb0655932383562d12c138ccb5b5b138bfbf3f8401c5d4e58dc96f",
+    "src/geo_sbt/geometry/__init__.py": "bc2b8d64ca2969b157220a198b515a0b5ed8fe24e20d847606df0d3482994963",
+    "src/geo_sbt/geometry/dimension.py": "0e48a53b427e401c2080faea2dca253497a9fb54d870831e98a66f221dc32a56",
+    "src/geo_sbt/geometry/holonomy.py": "4c4276abc826866d92c86f26f90a3d223e9758ca39b7a75ad264c16dd58b1b10",
+    "src/geo_sbt/geometry/metric.py": "c2dbc47e9b6a5dd6a2d63033889f5b8308e57938d8f5aa27bd83db1711fa3e06",
+    "src/geo_sbt/lenses/__init__.py": "2726558896d9d7ee940553e17c5da15b39c9957e040a50938fcb4f9347e86f6b",
+    "src/geo_sbt/lenses/diffusion.py": "9a08b82b026c4c54fc8cb06960e62afe81bf739601268d4b229eab772b651aba",
+    "src/geo_sbt/lenses/kmeans.py": "1a2f8a8b980047fb85261393b25701a327f9be89bf8a0304ef11bea7f9caa704",
+    "src/geo_sbt/lenses/ladder.py": "b71664366e8a501499928bff8f96317e5f7bff8078bd4c3819bc447b9798d75b",
+    "src/geo_sbt/lenses/prototypes.py": "88bf003df0ba6faaac8d921b646caa491d460672e3dda56582422820bf2ae3e3",
+    "src/geo_sbt/lenses/stationary.py": "7952d192122b64be54c625b94e7bafcbe7dd7cff5fb5986504d88bef36ffb587",
+    "src/geo_sbt/metrics_tv.py": "6b846a8ceb69e0dffca11d0000b8a54a7c523786e767607a2f3891fc3dab94c3",
+    "src/geo_sbt/packaging.py": "e1905ca7b105ce19aa826befb351ae410179d5d61e5b4e0d69c80b8edc5d42ee",
+    "src/geo_sbt/route_mismatch.py": "d99ff8c9401e0f1ef6896bb4cbcf4f52833dd4897a626b1ab30859e445806052",
+    "src/geo_sbt/substrates/__init__.py": "98ba68b11ea5d1fadd7156784fa2201ee417071ab31b2b00fbe8ae8c8f7af59f",
+    "src/geo_sbt/substrates/constraints.py": "25244d781652911964f9d3d5c6078e10f109e83084732020d5394e24e875b202",
+    "src/geo_sbt/substrates/grid.py": "52c74a30aaa861f98ae3962946df65d3dec8d58780449e04d80df9eafb1914cb",
+    "src/geo_sbt/substrates/knn.py": "71791a3388bdb9a011501336802bde16b2fa60e5dea9fd0d6a60b058049c78b4",
+    "src/geo_sbt/substrates/sierpinski.py": "f4d19395485f1a10a2eb38c95e17906ea2204910292fd67c1db3f9b3c1effc04",
+    "src/geo_sbt/substrates/sphere.py": "5aaa1a40c9298062ce34366d89961b185ef8070c6b96da3ce26460442c0489b3",
+    "src/geo_sbt/substrates/validate.py": "78b14171077bdba4dca037190b43fa2ed8422fd88724a76ee982ace063ecf595"
+  }
+}

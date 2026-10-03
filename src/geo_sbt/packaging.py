@@ -65,17 +65,38 @@ def E_apply(mu: np.ndarray, P: np.ndarray, tau: int, C: np.ndarray, U: np.ndarra
 
 def idempotence_defect_delta(P: np.ndarray, tau: int, C: np.ndarray, U: np.ndarray) -> float:
     """Idempotence defect delta via extreme-point formula."""
-    E = E_matrix(P, tau, C, U)
-    diff = E @ E - E
-    defects = 0.5 * np.sum(np.abs(diff), axis=1)
+    B = markov_power(P, tau) @ np.asarray(C, dtype=np.float64)
+    return idempotence_defect_from_factors(B, U)
+
+
+def idempotence_defect_from_factors(B: np.ndarray, U: np.ndarray) -> float:
+    """Compute the same extreme-point defect for E = B U by factorization.
+
+    E^2 - E = (B (U B) - B) U. For disjoint prototype supports the L1 norm
+    of a lifted signed row is the sum of the absolute macro coefficients
+    weighted by each prototype's L1 norm. This branch requires neither
+    stochasticity nor an assumed identity U C = I. Overlapping supports use
+    the full lifted discrepancy. It avoids cubic work in the microstate size.
+    """
+    B_arr = np.asarray(B, dtype=np.float64)
+    U_arr = np.asarray(U, dtype=np.float64)
+    if B_arr.ndim != 2 or U_arr.shape != B_arr.T.shape:
+        raise ValueError("B and U must have shapes (n, m) and (m, n)")
+    if not np.isfinite(B_arr).all() or not np.isfinite(U_arr).all():
+        raise ValueError("closure factors must have finite entries")
+    macro_diff = B_arr @ (U_arr @ B_arr) - B_arr
+    if np.all(np.count_nonzero(U_arr, axis=0) <= 1):
+        defects = .5 * (np.abs(macro_diff) @ np.sum(np.abs(U_arr), axis=1))
+    else:
+        defects = .5 * np.sum(np.abs(macro_diff @ U_arr), axis=1)
     return float(np.max(defects)) if defects.size else 0.0
 
 
 def prototype_stabilities(P: np.ndarray, tau: int, C: np.ndarray, U: np.ndarray) -> np.ndarray:
     """Prototype stability vector s(x) = TV(E(u_x), u_x)."""
     U_arr = np.asarray(U, dtype=np.float64)
-    E = E_matrix(P, tau, C, U_arr)
-    UE = U_arr @ E
+    B = markov_power(P, tau) @ np.asarray(C, dtype=np.float64)
+    UE = (U_arr @ B) @ U_arr
     return tv_rows(UE, U_arr)
 
 
