@@ -1,0 +1,227 @@
+{
+  "analytic_family_bounds": [
+    {
+      "k": 1,
+      "micro_side": 16,
+      "prototype_input_route_bound": 4.375,
+      "scope": "analytic formula, not a run at this substrate size",
+      "worst_escape_and_delta_bound": "1/4",
+      "worst_normalized_distortion_bound": 0.6573870976361983
+    },
+    {
+      "k": 2,
+      "micro_side": 64,
+      "prototype_input_route_bound": 2.1875,
+      "scope": "analytic formula, not a run at this substrate size",
+      "worst_escape_and_delta_bound": "1/8",
+      "worst_normalized_distortion_bound": 0.31582211665249726
+    },
+    {
+      "k": 3,
+      "micro_side": 256,
+      "prototype_input_route_bound": 1.09375,
+      "scope": "analytic formula, not a run at this substrate size",
+      "worst_escape_and_delta_bound": "1/16",
+      "worst_normalized_distortion_bound": 0.15313047065425198
+    },
+    {
+      "k": 4,
+      "micro_side": 1024,
+      "prototype_input_route_bound": 0.546875,
+      "scope": "analytic formula, not a run at this substrate size",
+      "worst_escape_and_delta_bound": "1/32",
+      "worst_normalized_distortion_bound": 0.07473682633622203
+    },
+    {
+      "k": 5,
+      "micro_side": 4096,
+      "prototype_input_route_bound": 0.2734375,
+      "scope": "analytic formula, not a run at this substrate size",
+      "worst_escape_and_delta_bound": "1/64",
+      "worst_normalized_distortion_bound": 0.03665303793247603
+    },
+    {
+      "k": 6,
+      "micro_side": 16384,
+      "prototype_input_route_bound": 0.13671875,
+      "scope": "analytic formula, not a run at this substrate size",
+      "worst_escape_and_delta_bound": "1/128",
+      "worst_normalized_distortion_bound": 0.01804087953820467
+    },
+    {
+      "k": 7,
+      "micro_side": 65536,
+      "prototype_input_route_bound": 0.068359375,
+      "scope": "analytic formula, not a run at this substrate size",
+      "worst_escape_and_delta_bound": "1/256",
+      "worst_normalized_distortion_bound": 0.00890425192507066
+    },
+    {
+      "k": 8,
+      "micro_side": 262144,
+      "prototype_input_route_bound": 0.0341796875,
+      "scope": "analytic formula, not a run at this substrate size",
+      "worst_escape_and_delta_bound": "1/512",
+      "worst_normalized_distortion_bound": 0.004404066447785007
+    }
+  ],
+  "finite_ladders": [
+    {
+      "distortions": [
+        {
+          "analytic_bound": 0.5658221166524972,
+          "coarse_macro_side": 2,
+          "fine_macro_side": 4,
+          "max_normalized_distortion": 0.4942261391290032,
+          "raw_cost_rescaling_alpha": 1.6666666666666667
+        },
+        {
+          "analytic_bound": 0.4073870976361984,
+          "coarse_macro_side": 4,
+          "fine_macro_side": 8,
+          "max_normalized_distortion": 0.25,
+          "raw_cost_rescaling_alpha": 1.5999999999999999
+        }
+      ],
+      "k": 1,
+      "lazy": 0.5,
+      "levels": [
+        {
+          "block_width": 8,
+          "delta": 0.032552083333333356,
+          "eps_edge": 0,
+          "escape_and_delta_bound": "1/16",
+          "escape_max": 0.03255208333333337,
+          "eta": "1/128",
+          "inf_count": 0,
+          "macro_side": 2,
+          "macro_states": 4,
+          "normalized_l1_error_bound": 0.019631229684522838,
+          "normalized_l1_readout_error": 0.009815614842261344
+        },
+        {
+          "block_width": 4,
+          "delta": 0.125,
+          "eps_edge": 0,
+          "escape_and_delta_bound": "1/8",
+          "escape_max": 0.125,
+          "eta": "1/64",
+          "inf_count": 0,
+          "macro_side": 4,
+          "macro_states": 16,
+          "normalized_l1_error_bound": 0.04619088696797439,
+          "normalized_l1_readout_error": 0.034643165225980876
+        },
+        {
+          "block_width": 2,
+          "delta": 0.171875,
+          "eps_edge": 0,
+          "escape_and_delta_bound": "1/4",
+          "escape_max": 0.25,
+          "eta": "1/32",
+          "inf_count": 0,
+          "macro_side": 8,
+          "macro_states": 64,
+          "normalized_l1_error_bound": 0.11119621066822397,
+          "normalized_l1_readout_error": 0.09729668433469563
+        }
+      ],
+      "micro_side": 16,
+      "prototype_input_route_bound": 4.375,
+      "prototype_input_route_mismatch": 0.058919270833333356,
+      "route_domain": "all finest prototype rows; equal total staging two; not the microstate simplex",
+      "tau": 1
+    },
+    {
+      "distortions": [
+        {
+          "analytic_bound": 0.278130470654252,
+          "coarse_macro_side": 4,
+          "fine_macro_side": 8,
+          "max_normalized_distortion": 0.25,
+          "raw_cost_rescaling_alpha": 1.7142857142857142
+        },
+        {
+          "analytic_bound": 0.1908221166524972,
+          "coarse_macro_side": 8,
+          "fine_macro_side": 16,
+          "max_normalized_distortion": 0.12500000000000022,
+          "raw_cost_rescaling_alpha": 1.6666666666666667
+        }
+      ],
+      "k": 2,
+      "lazy": 0.5,
+      "levels": [
+        {
+          "block_width": 16,
+          "delta": 0.03125,
+          "eps_edge": 0,
+          "escape_and_delta_bound": "1/32",
+          "escape_max": 0.03125,
+          "eta": "1/256",
+          "inf_count": 0,
+          "macro_side": 4,
+          "macro_states": 16,
+          "normalized_l1_error_bound": 0.008499240969729153,
+          "normalized_l1_readout_error": 0.00637443072729682
+        },
+        {
+          "block_width": 8,
+          "delta": 0.0625,
+          "eps_edge": 0,
+          "escape_and_delta_bound": "1/16",
+          "escape_max": 0.0625,
+          "eta": "1/128",
+          "inf_count": 0,
+          "macro_side": 8,
+          "macro_states": 64,
+          "normalized_l1_error_bound": 0.019631229684522838,
+          "normalized_l1_readout_error": 0.017177325973956714
+        },
+        {
+          "block_width": 4,
+          "delta": 0.125,
+          "eps_edge": 0,
+          "escape_and_delta_bound": "1/8",
+          "escape_max": 0.125,
+          "eta": "1/64",
+          "inf_count": 0,
+          "macro_side": 16,
+          "macro_states": 256,
+          "normalized_l1_error_bound": 0.04619088696797439,
+          "normalized_l1_readout_error": 0.04330395653247554
+        }
+      ],
+      "micro_side": 64,
+      "prototype_input_route_bound": 2.1875,
+      "prototype_input_route_mismatch": 0.03125,
+      "route_domain": "all finest prototype rows; equal total staging two; not the microstate simplex",
+      "tau": 1
+    }
+  ],
+  "scope": "Explicit block-lens control on the existing open grid; no learned-lens, Euclidean, curvature, or fractal claim.",
+  "source_sha256": {
+    "scripts/audit_block_lens_coherence.py": "30e4f1c331910587e38ccf93395915ea01e386f4b56fae9a841bb1b79293d18c",
+    "src/geo_sbt/__init__.py": "b30079fa5aeb0655932383562d12c138ccb5b5b138bfbf3f8401c5d4e58dc96f",
+    "src/geo_sbt/geometry/__init__.py": "bc2b8d64ca2969b157220a198b515a0b5ed8fe24e20d847606df0d3482994963",
+    "src/geo_sbt/geometry/dimension.py": "0e48a53b427e401c2080faea2dca253497a9fb54d870831e98a66f221dc32a56",
+    "src/geo_sbt/geometry/holonomy.py": "4c4276abc826866d92c86f26f90a3d223e9758ca39b7a75ad264c16dd58b1b10",
+    "src/geo_sbt/geometry/metric.py": "c2dbc47e9b6a5dd6a2d63033889f5b8308e57938d8f5aa27bd83db1711fa3e06",
+    "src/geo_sbt/lenses/__init__.py": "2726558896d9d7ee940553e17c5da15b39c9957e040a50938fcb4f9347e86f6b",
+    "src/geo_sbt/lenses/diffusion.py": "9a08b82b026c4c54fc8cb06960e62afe81bf739601268d4b229eab772b651aba",
+    "src/geo_sbt/lenses/kmeans.py": "1a2f8a8b980047fb85261393b25701a327f9be89bf8a0304ef11bea7f9caa704",
+    "src/geo_sbt/lenses/ladder.py": "b71664366e8a501499928bff8f96317e5f7bff8078bd4c3819bc447b9798d75b",
+    "src/geo_sbt/lenses/prototypes.py": "88bf003df0ba6faaac8d921b646caa491d460672e3dda56582422820bf2ae3e3",
+    "src/geo_sbt/lenses/stationary.py": "7952d192122b64be54c625b94e7bafcbe7dd7cff5fb5986504d88bef36ffb587",
+    "src/geo_sbt/metrics_tv.py": "6b846a8ceb69e0dffca11d0000b8a54a7c523786e767607a2f3891fc3dab94c3",
+    "src/geo_sbt/packaging.py": "e1905ca7b105ce19aa826befb351ae410179d5d61e5b4e0d69c80b8edc5d42ee",
+    "src/geo_sbt/route_mismatch.py": "d99ff8c9401e0f1ef6896bb4cbcf4f52833dd4897a626b1ab30859e445806052",
+    "src/geo_sbt/substrates/__init__.py": "98ba68b11ea5d1fadd7156784fa2201ee417071ab31b2b00fbe8ae8c8f7af59f",
+    "src/geo_sbt/substrates/constraints.py": "25244d781652911964f9d3d5c6078e10f109e83084732020d5394e24e875b202",
+    "src/geo_sbt/substrates/grid.py": "52c74a30aaa861f98ae3962946df65d3dec8d58780449e04d80df9eafb1914cb",
+    "src/geo_sbt/substrates/knn.py": "71791a3388bdb9a011501336802bde16b2fa60e5dea9fd0d6a60b058049c78b4",
+    "src/geo_sbt/substrates/sierpinski.py": "f4d19395485f1a10a2eb38c95e17906ea2204910292fd67c1db3f9b3c1effc04",
+    "src/geo_sbt/substrates/sphere.py": "5aaa1a40c9298062ce34366d89961b185ef8070c6b96da3ce26460442c0489b3",
+    "src/geo_sbt/substrates/validate.py": "78b14171077bdba4dca037190b43fa2ed8422fd88724a76ee982ace063ecf595"
+  }
+}

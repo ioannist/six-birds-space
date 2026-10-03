@@ -1,5 +1,10 @@
 # Closure proofs and finite refinement follow-up
 
+Further constructive work: [Block-lens coherence control](block_lens_coherence_review_20261003.md)
+establishes a positive joint-size/scale regime on the original grid with a
+supplied lens and declared metric normalization. It does not replace the
+learned-lens or fractal claim decisions recorded below.
+
 The finite Markov construction is now mechanized, and the staged quadratic-cost
 exhibit has an exact uniform certificate on declared finite windows. Additional
 substrate sizes retain a grid/gasket ball-growth difference but do not establish

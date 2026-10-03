@@ -40,6 +40,9 @@ closure-defect factorization, and a finite-horizon repetition bound with loss
 L1 discrepancies, and have stability defect exactly equal to macro escape mass.
 It does not prove that any experimental ladder has small defects or coherent
 geometry.
+`closure_defect_le_macro_escape` additionally derives a bound on every
+microstate closure-defect row from a bound on macro escape, under those same
+stochasticity and fiber-support conditions.
 
 `Audit.lean` prints the transitive axioms of the anchors. The mathematical
 declarations should use only Lean's standard foundations (`propext`,

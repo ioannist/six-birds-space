@@ -303,4 +303,26 @@ theorem prototype_stability_eq_escape {X Z : Type*} [Fintype X] [Fintype Z]
   rw [← hp, totalVariation_fiber_lift f U hU hs]
   exact totalVariation_point_eq_escape ((U * B) x) (stochastic_mul U B hU hB x) x
 
+/-- Small macro escape bounds the actual microstate-supremum closure defect. -/
+theorem closure_defect_le_macro_escape {X Z : Type*} [Fintype X] [Fintype Z]
+    [DecidableEq X] (f : Z → X) (B : Matrix Z X ℝ) (U : Matrix X Z ℝ)
+    (hB : IsStochastic B) (hU : IsStochastic U) (hs : FiberSupported f U)
+    (D : ℝ) (he : ∀ x, 1 - (U * B) x x ≤ D) (z : Z) :
+    totalVariation (((B * U) * (B * U)) z) ((B * U) z) ≤ D := by
+  have hmat : (B * U) * (B * U) = (B * (U * B)) * U := by
+    simp only [Matrix.mul_assoc]
+  rw [hmat]
+  change totalVariation (push ((B * (U * B)) z) U) (push (B z) U) ≤ D
+  rw [totalVariation_fiber_lift f U hU hs]
+  have hrow : ∀ x, totalVariation ((U * B) x) ((1 : Matrix X X ℝ) x) ≤ D := by
+    intro x
+    rw [totalVariation_point_eq_escape _ (stochastic_mul U B hU hB x) x]
+    exact he x
+  have hid : push (B z) (1 : Matrix X X ℝ) = B z := by
+    ext x
+    simp [push, Matrix.one_apply]
+  have h := totalVariation_push_row_bound (B z) (U * B) (1 : Matrix X X ℝ) D
+    (hB z) hrow
+  simpa only [hid] using h
+
 end GeoSBT
