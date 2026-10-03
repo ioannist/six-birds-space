@@ -1,0 +1,115 @@
+# Mathematical review: current claims and evidence
+
+The finite metric and closure constructions are valid after repair. There are
+now constructive coherent grid and fractal regimes under the original micro
+dynamics and staging five. The recursive gasket construction has a compact
+metric limit of Hausdorff dimension `log(3)/log(2)`, with a persistent local
+Hilbert obstruction. These are new cell-lens constructions; the canonical
+learned-lens runs still have large prototype defects. They cannot be cited as
+passing the same small-defect criterion.
+
+The manuscript and historical experiment packs have not been edited. This
+ledger gives the mathematical conclusions available for a later revision,
+without assigning corrected interpretations to those historical artifacts.
+The requested pre-review baseline is commit `4e2e9a0`.
+
+## Claim coverage
+
+| Subject | Strongest justified conclusion | Conditions and limits |
+|---|---|---|
+| Distance from likelihood | Nonnegative weighted protocol costs give an extended pseudometric; zero-distance separation gives an extended metric preserving distances. | Use `-log(max(p,eta))`, with probability and floor bounds. Thresholding retains absent edges as absent. Connectivity is required for finite distances. The paper's additive `p+eta` rule can give negative cycles. |
+| Finite closure | The actual `E=P^tau C U` and `K=U P^tau C` are stochastic. Fiber prototypes give `UC=I`, signed L1 preservation, prototype defect equal to escape, and full microstate closure defect bounded by worst macro escape. | Stochasticity, nonempty fibers and fiber support are explicit. Repetition bounds grow with the finite horizon; there is no uniform arbitrary-horizon stability theorem. |
+| Constructive grid coherence | Block lenses on the original open grid have vanishing closure, prototype, normalized distortion and prototype-input route defects in a joint substrate/cell regime, including stage five. | Blocks are supplied interfaces. Distance units and a decreasing floor are declared. The limit readout is an L1 square; coherence does not imply a Euclidean inner product. |
+| Constructive fractal coherence | Recursive cell lenses on the original gasket at stage five have the same vanishing-defect properties. Their normalized metrics converge to a compact, self-similar metric space of dimension `log(3)/log(2)`. | Cell genealogy is recognition input. Cell size and macro depth both grow; this is not infinite refinement of a fixed finite substrate. The floor scales below positive edge weights. |
+| Fractal non-smoothing | At every point of that gasket limit, balls of radii `2^-j` contain a four-point obstruction ruling out every real Hilbert fit with uniform distance error at most `2^-j/16`. | This is a specified approximation criterion. No curvature tensor, anomalous-diffusion theorem or different tangent-space definition is inferred. |
+| Canonical learned lenses | Valid finite metrics and recorded audit defects; the canonical gasket also has an exact local nonembedding witness. | Worst prototype defects are about 0.783 (grid), 0.985 (sphere), and 0.849 (gasket). Full-ladder small-defect coherence fails. Finite nonembedding also occurs on the grid, so it alone is not a fractal classifier. |
+| Grid/sphere loop residue | Gauge-correct finite O(2) Procrustes loop residue separates the two canonical cases: median sphere/grid ratio about 25.34. | Rank and orientation checks are explicit. There is no proved curvature-tensor identification or coherent curved limit. SO(2) rotations commute, so literal operator noncommutativity is not established. |
+| Staged quadratic cost | Exact integer walk counts certify a uniform centered quadratic-cost bound on predefined finite windows; at stage 128, the normalized square-root readout error is at most 0.1 on all 529 window points. | The pinned lattice walk, stage, torus and window are explicit. The exact Python checker is outside Lean. This readout is separate from the macro shortest-path metric, and no continuum local-limit theorem is claimed. |
+| Constraints and controls | Directional gating changes the kernel and metric even with the lens held fixed. L1 axis separability is exactly zero, while its squared-distance Pythagorean residual is nonzero. | Anisotropy can retain a positive quadratic form and weighted Pythagoras. It need not destroy inner-product geometry. Saturated and unsupported diagnostics fail explicitly. |
+
+## Constructive replacements
+
+The [block-lens proof](block_lens_coherence_review_20261003.md) derives the
+original-stage grid bounds directly from the open-grid transition law. Its
+stage-five extension uses stationary domination to bound prototype escape by
+`5/b`, and bounds all normalized metric pairs by their L1 readout. The slow
+logarithmic metric error tends to zero; the finite smallest-block checks are
+not presented as tight small-error certificates.
+
+The [recursive-gasket proof](recursive_gasket_coherence_review_20261003.md)
+keeps the original lazy walk and stage five. Exact interface flux is
+`11905/16384`. With cell volume V, macro escape and full microstate closure
+defect are at most `3*(11905/16384)/(V-3)`. Recursive graph distances have an
+explicit refinement recurrence, supplying compactness and a compatible limit.
+Uniform intrinsic ball growth supplies the dimension argument. A separate
+fixed-address witness supplies the limiting Hilbert gap; a shrinking finite
+witness is not improperly transferred through a comparable approximation
+error.
+
+The [learned-lens certificate](local_nonembedding_review_20261003.md) reconstructs
+the ideal staged macro probabilities from the recorded labels, checks exact
+multiplicative shortest paths, and encloses logarithms rationally. It excludes
+fits of the canonical gasket patch within 9.1% of its radius, in any real
+inner-product dimension. The corresponding grid exclusion is 5.6%. These
+certificates verify the metric conditional on the recorded partition; they do
+not certify an eigensolver or infer an infinite regime from ten finite cases.
+
+## Mechanization and verification boundary
+
+[The Lean coverage description](../../lean/README.md) identifies the represented
+statements and the remaining external applicability arguments. Weighted metric,
+finite Markov and quantitative Hilbert bridges are proved in Lean. The entire
+recursive graph family, measure construction and Hausdorff-dimension proof are
+written proofs outside Lean. Numerical implementations are not formally
+verified by the scalar bridges.
+
+The latest validation receipts are:
+
+- [77 passing Python tests](recursive_gasket_review_20261003/python_tests.txt),
+  including false-target controls, fractional-input rejection, direct comparison
+  with the original staged kernels, exact-certificate tampering and recursive
+  graph-law checks.
+- [Fresh Lean build](recursive_gasket_review_20261003/lean_build.txt) and
+  [transitive axiom audit](recursive_gasket_review_20261003/lean_axioms.txt), using
+  only the standard foundations, with no added axioms or `sorryAx`.
+- [Independent certificate recheck](local_nonembedding_review_20261003/verification.txt)
+  reconstructing all ten finite witnesses. This is a fresh computation with the
+  verifier, not an independent reviewer.
+- Source-stamped [gasket audit](recursive_gasket_review_20261003/evidence.json),
+  [stage-five grid audit](staged_block_lens_review_20261003/evidence.json) and
+  [learned-lens certificates](local_nonembedding_review_20261003/certificate.json).
+  All recorded Python source hashes match the reviewed sources.
+
+The [initial repair checkpoint](mathematical_review_20261003.md) records the
+twenty corrected canonical and sweep configurations. The
+[closure/quadratic follow-up](closure_and_refinement_review_20261003.md) records
+the exact quadratic certificates and broader learned-lens tests. Their older
+test counts and receipts describe those checkpoints, not this final state.
+
+The final adversarial pass was a self-review. It checked interface stabilization,
+graph excursions and distinct ports, route input domains, units and floor
+scaling, stationary domination, uniform limit compatibility, ball-measure
+bounds, and the limiting witness rather than relying solely on passing finite
+tests. No independent mathematical reviewer was used.
+
+## Reproduction
+
+Install the optional audit dependencies with `pip install -e '.[audit]'`.
+The scripts write new results rather than replacing historical packs:
+
+```bash
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_block_lens_stage_five.py --output results/staged_block_review
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_recursive_gasket_coherence.py --output results/recursive_gasket_review
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/certify_local_nonembedding.py --verify docs/notes/local_nonembedding_review_20261003/certificate.json
+.venv/bin/python3 -m pytest -q
+cd lean
+lake build
+lake env lean Audit.lean
+```
+
+This completes the mathematical review and its implementation repairs. The
+later manuscript revision must preserve the distinction between the proved
+cell-lens constructions, validated finite diagnostics and false historical
+interpretations. In particular, a coherent curved limit, automatic lens
+discovery and a Euclidean macro path-metric limit remain unproved; they are not
+needed for the explicit coherent-fractal construction established here.

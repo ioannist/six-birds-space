@@ -36,5 +36,11 @@ import GeoSBT
 #print axioms GeoSBT.totalVariation_point_eq_escape
 #print axioms GeoSBT.prototype_stability_eq_escape
 #print axioms GeoSBT.closure_defect_le_macro_escape
+#print axioms GeoSBT.hilbert_quadrilateral
+#print axioms GeoSBT.no_hilbert_uniform_approximation
+#print axioms GeoSBT.gasket_quadrilateral_gap
+#print axioms GeoSBT.gasket_limit_quadrilateral_gap
+#print axioms GeoSBT.gasket_log_bracket
+#print axioms GeoSBT.gasket_staged_log_bracket
 #print axioms GeoSBT.squared_readout_error_le
 #print axioms GeoSBT.quadratic_cost_readout_error

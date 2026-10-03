@@ -34,3 +34,13 @@ def test_l1_control_passes_separability_but_fails_squared_distance():
     assert result['squared_distance_residual_median_L1'] > 0.
     assert result['axis_lin_rms_L1'] < 1e-12
     assert result['axis_quad_rms_L1'] > .1
+
+
+def test_runner_rejects_fractional_stages_and_grid_size(tmp_path):
+    import pytest
+    from experiments.runners.pythagoras_rw_grid import run_pythagoras_rw_grid
+    for config in [{'N': 64.5}, {'N': 64, 'tau_list': [4.5]}]:
+        config.update(artifacts_dir=str(tmp_path/'artifacts'), write_docs_artifacts=False)
+        with pytest.raises(ValueError, match='integer'):
+            run_pythagoras_rw_grid(config)
+    assert not (tmp_path/'artifacts').exists()

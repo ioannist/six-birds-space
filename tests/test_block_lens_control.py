@@ -63,3 +63,17 @@ def test_clipping_probability_floor_invalidates_the_readout_bound():
         d = all_pairs_shortest_path(cost_matrix_from_kernel(K, eta=eta, symmetrize='weight_avg'))
         discrepancy = np.max(np.abs(d/(M*np.log(8*b))-reference))
         assert bool(discrepancy <= control.metric_error_bound(b)+1e-12) == should_pass
+
+
+def test_stage_five_probability_brackets_use_the_original_open_grid():
+    staged_spec = importlib.util.spec_from_file_location('staged_block_control', ROOT/'scripts/audit_block_lens_stage_five.py')
+    staged = importlib.util.module_from_spec(staged_spec)
+    staged_spec.loader.exec_module(staged)
+    P = control.sparse_grid(16)
+    record, values = staged.layer(P, 16, 8)
+    C, U, B, _ = values
+    original = grid_2d(16, .5)
+    assert np.allclose(B, np.linalg.matrix_power(original, 5) @ C, atol=1e-13, rtol=0)
+    assert record['escape_max'] <= 5/8
+    assert record['inf_count'] == 0
+    assert np.allclose((U @ B).sum(axis=1), 1.)

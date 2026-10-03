@@ -5,6 +5,8 @@ from __future__ import annotations
 import math
 import numpy as np
 
+from ..packaging import assert_row_stochastic
+
 
 def anisotropic_gate(P: np.ndarray, direction: str, strength: float) -> np.ndarray:
     """Apply a directional feasibility constraint to a grid kernel.
@@ -12,8 +14,9 @@ def anisotropic_gate(P: np.ndarray, direction: str, strength: float) -> np.ndarr
     Assumes states are ordered row-major on an n_side x n_side grid.
     direction in {'east','west','north','south'}.
     strength in [0,1]: 0=no change, 1=fully suppress moves opposite to direction.
+    A row with no remaining mass becomes absorbing at its current state.
     """
-    if strength < 0.0 or strength > 1.0:
+    if not np.isfinite(strength) or strength < 0.0 or strength > 1.0:
         raise ValueError("strength must be in [0, 1]")
     direction = direction.lower()
     if direction not in {"east", "west", "north", "south"}:
@@ -22,6 +25,7 @@ def anisotropic_gate(P: np.ndarray, direction: str, strength: float) -> np.ndarr
     P_arr = np.asarray(P, dtype=np.float64)
     if P_arr.ndim != 2 or P_arr.shape[0] != P_arr.shape[1]:
         raise ValueError("P must be a square matrix")
+    assert_row_stochastic(P_arr)
 
     n = P_arr.shape[0]
     n_side = int(round(math.sqrt(n)))

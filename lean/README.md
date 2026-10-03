@@ -44,6 +44,13 @@ geometry.
 microstate closure-defect row from a bound on macro escape, under those same
 stochasticity and fiber-support conditions.
 
+`EuclideanObstruction.lean` proves the four-point squared-distance inequality
+in every real inner-product space, and proves that a strict interval gap rules
+out any fit with a stated uniform distance error. The recursive gasket's
+positive-gap and logarithmic cost bounds are also mechanized. Python exact
+counts and paths supply finite witnesses; recursive graph laws and the metric
+limit argument are written proofs outside Lean.
+
 `Audit.lean` prints the transitive axioms of the anchors. The mathematical
 declarations should use only Lean's standard foundations (`propext`,
 `Classical.choice`, `Quot.sound`), with no `sorryAx` or added axioms. These files do

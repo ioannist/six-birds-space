@@ -48,3 +48,11 @@ def test_geo_pipeline_runner_basic():
         assert len(summary["route_mismatch"]) == 1
         assert 0. <= summary["route_mismatch"][0]["tv_sup"] <= 1.
         assert "P^(2tau)" in summary["route_mismatch_definition"]
+
+
+def test_runner_rejects_fractional_stage_before_creating_artifacts(tmp_path):
+    import pytest
+    config = {'seed': 0, 'tau': 1.5, 'artifacts_dir': str(tmp_path/'artifacts')}
+    with pytest.raises(ValueError, match='tau must be an integer'):
+        run_geo_pipeline(config)
+    assert not (tmp_path/'artifacts').exists()

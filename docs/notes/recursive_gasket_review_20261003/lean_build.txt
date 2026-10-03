@@ -1,0 +1,3 @@
+✔ [2110/2112] Built GeoSBT.EuclideanObstruction (10s)
+✔ [2111/2112] Built GeoSBT (4.9s)
+Build completed successfully (2112 jobs).

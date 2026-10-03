@@ -1,0 +1,630 @@
+{
+  "finite_ladders": [
+    {
+      "distortions": [
+        {
+          "analytic_bound": 0.25613474884294907,
+          "max_normalized_distortion": 0.2504685069090569
+        },
+        {
+          "analytic_bound": 0.14807855746442347,
+          "max_normalized_distortion": 0.13032035990690138
+        }
+      ],
+      "lazy": "1/2",
+      "levels": [
+        {
+          "cell_size_before_ownership": 366,
+          "delta": 0.0039924370063530055,
+          "delta_and_escape_bound": "11905/1982464",
+          "eps_edge": 0,
+          "escape_max": 0.003992437006353022,
+          "eta": "11905/11993088",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 1,
+          "macro_states": 3,
+          "maximum_fiber_size": 366,
+          "micro_cell_level": 5,
+          "minimum_fiber_size": 364,
+          "normalized_readout_error": 0.00033017331808204986,
+          "normalized_readout_error_bound": 0.0013228102631583478,
+          "tau": 5,
+          "unit_graph_diameter": 1
+        },
+        {
+          "cell_size_before_ownership": 123,
+          "delta": 0.0180154595493285,
+          "delta_and_escape_bound": "2381/131072",
+          "eps_edge": 0,
+          "escape_max": 0.01801545954932851,
+          "eta": "11905/4030464",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 2,
+          "macro_states": 9,
+          "maximum_fiber_size": 123,
+          "micro_cell_level": 4,
+          "minimum_fiber_size": 121,
+          "nonembedding": {
+            "absolute_fit_error_excluded": "5131531124291/4000000000000",
+            "corner_patch_radius_upper_bound": "15394593372873/1000000000000",
+            "distance_bounds": {
+              "01": [
+                "153205155351/10000000000",
+                "15394593372873/1000000000000"
+              ],
+              "02": [
+                "51068385117/10000000000",
+                "5131531124291/1000000000000"
+              ],
+              "03": [
+                "51068385117/5000000000",
+                "5131531124291/500000000000"
+              ],
+              "12": [
+                "51068385117/5000000000",
+                "5131531124291/500000000000"
+              ],
+              "13": [
+                "51068385117/10000000000",
+                "5131531124291/1000000000000"
+              ],
+              "23": [
+                "153205155351/10000000000",
+                "15394593372873/1000000000000"
+              ]
+            },
+            "normalized_corner_patch_radius_upper_bound": 0.75,
+            "relative_fit_error_lower_bound": "1/12",
+            "strict_rational_gap": "72325059071377966410143139/1600000000000000000000000",
+            "vertices": [
+              1,
+              7,
+              2,
+              5
+            ]
+          },
+          "normalized_readout_error": 0.0021959648242709795,
+          "normalized_readout_error_bound": 0.004811938579790759,
+          "tau": 5,
+          "unit_graph_diameter": 3
+        },
+        {
+          "cell_size_before_ownership": 42,
+          "delta": 0.05448794930537301,
+          "delta_and_escape_bound": "11905/212992",
+          "eps_edge": 0,
+          "escape_max": 0.05449676513671875,
+          "eta": "11905/1376256",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 3,
+          "macro_states": 27,
+          "maximum_fiber_size": 42,
+          "micro_cell_level": 3,
+          "minimum_fiber_size": 40,
+          "nonembedding": {
+            "absolute_fit_error_excluded": "2028508193601/2000000000000",
+            "corner_patch_radius_upper_bound": "6085524580803/500000000000",
+            "distance_bounds": {
+              "01": [
+                "11948725245141/1000000000000",
+                "6085524580803/500000000000"
+              ],
+              "02": [
+                "3982908415047/1000000000000",
+                "2028508193601/500000000000"
+              ],
+              "03": [
+                "3982908415047/500000000000",
+                "2028508193601/250000000000"
+              ],
+              "12": [
+                "3982908415047/500000000000",
+                "2028508193601/250000000000"
+              ],
+              "13": [
+                "3982908415047/1000000000000",
+                "2028508193601/500000000000"
+              ],
+              "23": [
+                "11948725245141/1000000000000",
+                "6085524580803/500000000000"
+              ]
+            },
+            "normalized_corner_patch_radius_upper_bound": 0.375,
+            "relative_fit_error_lower_bound": "1/12",
+            "strict_rational_gap": "8415403015177137740962491/400000000000000000000000",
+            "vertices": [
+              1,
+              7,
+              2,
+              5
+            ]
+          },
+          "normalized_readout_error": 0.010144803014381143,
+          "normalized_readout_error_bound": 0.01826661888463271,
+          "tau": 5,
+          "unit_graph_diameter": 7
+        }
+      ],
+      "micro_level": 6,
+      "n_micro": 1095,
+      "prototype_input_route_bound": "36979837/131203072",
+      "prototype_input_route_mismatch": 0.006004278245391722,
+      "route_domain": "finest macro prototypes, equal total staging 10",
+      "tau": 5
+    },
+    {
+      "distortions": [
+        {
+          "analytic_bound": 0.2516977132117272,
+          "max_normalized_distortion": 0.25012648993510256
+        },
+        {
+          "analytic_bound": 0.1311347488429491,
+          "max_normalized_distortion": 0.12639128256134824
+        }
+      ],
+      "lazy": "1/2",
+      "levels": [
+        {
+          "cell_size_before_ownership": 1095,
+          "delta": 0.0013295947578339197,
+          "delta_and_escape_bound": "11905/5963776",
+          "eps_edge": 0,
+          "escape_max": 0.0013295947578339433,
+          "eta": "2381/7176192",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 1,
+          "macro_states": 3,
+          "maximum_fiber_size": 1095,
+          "micro_cell_level": 6,
+          "minimum_fiber_size": 1093,
+          "normalized_readout_error": 9.367573862656409e-05,
+          "normalized_readout_error_bound": 0.000374902948568872,
+          "tau": 5,
+          "unit_graph_diameter": 1
+        },
+        {
+          "cell_size_before_ownership": 366,
+          "delta": 0.005988655509529482,
+          "delta_and_escape_bound": "11905/1982464",
+          "eps_edge": 0,
+          "escape_max": 0.005988655509529533,
+          "eta": "11905/11993088",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 2,
+          "macro_states": 9,
+          "maximum_fiber_size": 366,
+          "micro_cell_level": 5,
+          "minimum_fiber_size": 364,
+          "nonembedding": {
+            "absolute_fit_error_excluded": "77774751279/50000000000",
+            "corner_patch_radius_upper_bound": "233324253837/12500000000",
+            "distance_bounds": {
+              "01": [
+                "18641248809549/1000000000000",
+                "233324253837/12500000000"
+              ],
+              "02": [
+                "6213749603183/1000000000000",
+                "77774751279/12500000000"
+              ],
+              "03": [
+                "6213749603183/500000000000",
+                "77774751279/6250000000"
+              ],
+              "12": [
+                "6213749603183/500000000000",
+                "77774751279/6250000000"
+              ],
+              "13": [
+                "6213749603183/1000000000000",
+                "77774751279/12500000000"
+              ],
+              "23": [
+                "18641248809549/1000000000000",
+                "233324253837/12500000000"
+              ]
+            },
+            "normalized_corner_patch_radius_upper_bound": 0.75,
+            "relative_fit_error_lower_bound": "1/12",
+            "strict_rational_gap": "35449116258373767361734561/500000000000000000000000",
+            "vertices": [
+              1,
+              7,
+              2,
+              5
+            ]
+          },
+          "normalized_readout_error": 0.0006054180064992698,
+          "normalized_readout_error_bound": 0.0013228102631583478,
+          "tau": 5,
+          "unit_graph_diameter": 3
+        },
+        {
+          "cell_size_before_ownership": 123,
+          "delta": 0.0180154595493285,
+          "delta_and_escape_bound": "2381/131072",
+          "eps_edge": 0,
+          "escape_max": 0.01801545954932851,
+          "eta": "11905/4030464",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 3,
+          "macro_states": 27,
+          "maximum_fiber_size": 123,
+          "micro_cell_level": 4,
+          "minimum_fiber_size": 121,
+          "nonembedding": {
+            "absolute_fit_error_excluded": "5131531124291/4000000000000",
+            "corner_patch_radius_upper_bound": "15394593372873/1000000000000",
+            "distance_bounds": {
+              "01": [
+                "153205155351/10000000000",
+                "15394593372873/1000000000000"
+              ],
+              "02": [
+                "51068385117/10000000000",
+                "5131531124291/1000000000000"
+              ],
+              "03": [
+                "51068385117/5000000000",
+                "5131531124291/500000000000"
+              ],
+              "12": [
+                "51068385117/5000000000",
+                "5131531124291/500000000000"
+              ],
+              "13": [
+                "51068385117/10000000000",
+                "5131531124291/1000000000000"
+              ],
+              "23": [
+                "153205155351/10000000000",
+                "15394593372873/1000000000000"
+              ]
+            },
+            "normalized_corner_patch_radius_upper_bound": 0.375,
+            "relative_fit_error_lower_bound": "1/12",
+            "strict_rational_gap": "72325059071377966410143139/1600000000000000000000000",
+            "vertices": [
+              1,
+              7,
+              2,
+              5
+            ]
+          },
+          "normalized_readout_error": 0.002695342866413486,
+          "normalized_readout_error_bound": 0.004811938579790759,
+          "tau": 5,
+          "unit_graph_diameter": 7
+        }
+      ],
+      "micro_level": 7,
+      "n_micro": 3282,
+      "prototype_input_route_bound": "345373891/3790471168",
+      "prototype_input_route_mismatch": 0.001996185929646923,
+      "route_domain": "finest macro prototypes, equal total staging 10",
+      "tau": 5
+    },
+    {
+      "distortions": [
+        {
+          "analytic_bound": 0.12548357014888775,
+          "max_normalized_distortion": 0.12510634025034917
+        },
+        {
+          "analytic_bound": 0.06419771321172722,
+          "max_normalized_distortion": 0.06300475376853576
+        }
+      ],
+      "lazy": "1/2",
+      "levels": [
+        {
+          "cell_size_before_ownership": 3282,
+          "delta": 0.0006645946967892543,
+          "delta_and_escape_bound": "11905/17907712",
+          "eps_edge": 0,
+          "escape_max": 0.000664594696789253,
+          "eta": "11905/107544576",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 2,
+          "macro_states": 9,
+          "maximum_fiber_size": 3282,
+          "micro_cell_level": 7,
+          "minimum_fiber_size": 3280,
+          "nonembedding": {
+            "absolute_fit_error_excluded": "8415555040569/4000000000000",
+            "corner_patch_radius_upper_bound": "25246665121707/1000000000000",
+            "distance_bounds": {
+              "01": [
+                "12621960818643/500000000000",
+                "25246665121707/1000000000000"
+              ],
+              "02": [
+                "4207320272881/500000000000",
+                "8415555040569/1000000000000"
+              ],
+              "03": [
+                "4207320272881/250000000000",
+                "8415555040569/500000000000"
+              ],
+              "12": [
+                "4207320272881/250000000000",
+                "8415555040569/500000000000"
+              ],
+              "13": [
+                "4207320272881/500000000000",
+                "8415555040569/1000000000000"
+              ],
+              "23": [
+                "12621960818643/500000000000",
+                "25246665121707/1000000000000"
+              ]
+            },
+            "normalized_corner_patch_radius_upper_bound": 0.75,
+            "relative_fit_error_lower_bound": "1/12",
+            "strict_rational_gap": "1060291880954990362299091959/8000000000000000000000000",
+            "vertices": [
+              1,
+              7,
+              2,
+              5
+            ]
+          },
+          "normalized_readout_error": 4.979786334013969e-05,
+          "normalized_readout_error_bound": 0.00010866720031887433,
+          "tau": 5,
+          "unit_graph_diameter": 3
+        },
+        {
+          "cell_size_before_ownership": 1095,
+          "delta": 0.0019943921367509073,
+          "delta_and_escape_bound": "11905/5963776",
+          "eps_edge": 0,
+          "escape_max": 0.001994392136750915,
+          "eta": "2381/7176192",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 3,
+          "macro_states": 27,
+          "maximum_fiber_size": 1095,
+          "micro_cell_level": 6,
+          "minimum_fiber_size": 1093,
+          "nonembedding": {
+            "absolute_fit_error_excluded": "7317856411169/4000000000000",
+            "corner_patch_radius_upper_bound": "21953569233507/1000000000000",
+            "distance_bounds": {
+              "01": [
+                "21945338775669/1000000000000",
+                "21953569233507/1000000000000"
+              ],
+              "02": [
+                "7315112925223/1000000000000",
+                "7317856411169/1000000000000"
+              ],
+              "03": [
+                "7315112925223/500000000000",
+                "7317856411169/500000000000"
+              ],
+              "12": [
+                "7315112925223/500000000000",
+                "7317856411169/500000000000"
+              ],
+              "13": [
+                "7315112925223/1000000000000",
+                "7317856411169/1000000000000"
+              ],
+              "23": [
+                "21945338775669/1000000000000",
+                "21953569233507/1000000000000"
+              ]
+            },
+            "normalized_corner_patch_radius_upper_bound": 0.375,
+            "relative_fit_error_lower_bound": "1/12",
+            "strict_rational_gap": "797966241502501644031595583/8000000000000000000000000",
+            "vertices": [
+              1,
+              7,
+              2,
+              5
+            ]
+          },
+          "normalized_readout_error": 0.00021078467108393006,
+          "normalized_readout_error_bound": 0.000374902948568872,
+          "tau": 5,
+          "unit_graph_diameter": 7
+        },
+        {
+          "cell_size_before_ownership": 366,
+          "delta": 0.005988655509529482,
+          "delta_and_escape_bound": "11905/1982464",
+          "eps_edge": 0,
+          "escape_max": 0.005988655509529533,
+          "eta": "11905/11993088",
+          "inf_count": 0,
+          "interface_flux": "11905/16384",
+          "macro_depth": 4,
+          "macro_states": 81,
+          "maximum_fiber_size": 366,
+          "micro_cell_level": 5,
+          "minimum_fiber_size": 364,
+          "nonembedding": {
+            "absolute_fit_error_excluded": "77774751279/50000000000",
+            "corner_patch_radius_upper_bound": "233324253837/12500000000",
+            "distance_bounds": {
+              "01": [
+                "18641248809549/1000000000000",
+                "233324253837/12500000000"
+              ],
+              "02": [
+                "6213749603183/1000000000000",
+                "77774751279/12500000000"
+              ],
+              "03": [
+                "6213749603183/500000000000",
+                "77774751279/6250000000"
+              ],
+              "12": [
+                "6213749603183/500000000000",
+                "77774751279/6250000000"
+              ],
+              "13": [
+                "6213749603183/1000000000000",
+                "77774751279/12500000000"
+              ],
+              "23": [
+                "18641248809549/1000000000000",
+                "233324253837/12500000000"
+              ]
+            },
+            "normalized_corner_patch_radius_upper_bound": 0.1875,
+            "relative_fit_error_lower_bound": "1/12",
+            "strict_rational_gap": "35449116258373767361734561/500000000000000000000000",
+            "vertices": [
+              1,
+              7,
+              2,
+              5
+            ]
+          },
+          "normalized_readout_error": 0.000811851522812157,
+          "normalized_readout_error_bound": 0.0013228102631583478,
+          "tau": 5,
+          "unit_graph_diameter": 15
+        }
+      ],
+      "micro_level": 9,
+      "n_micro": 29526,
+      "prototype_input_route_bound": "15731965961/523172249600",
+      "prototype_input_route_mismatch": 0.0006647973789198176,
+      "route_domain": "finest macro prototypes, equal total staging 10",
+      "tau": 5
+    }
+  ],
+  "flux_calibration": {
+    "cell_size_before_ownership": 42,
+    "delta": 0.0363311767578125,
+    "delta_and_escape_bound": "11905/212992",
+    "eps_edge": 0,
+    "escape_max": 0.0363311767578125,
+    "eta": "11905/1376256",
+    "inf_count": 0,
+    "interface_flux": "11905/16384",
+    "macro_depth": 1,
+    "macro_states": 3,
+    "maximum_fiber_size": 42,
+    "micro_cell_level": 3,
+    "minimum_fiber_size": 40,
+    "normalized_readout_error": 0.004500853347896849,
+    "normalized_readout_error_bound": 0.01826661888463271,
+    "tau": 5,
+    "unit_graph_diameter": 1
+  },
+  "limit_witness_prefix_checks": [
+    {
+      "integer_distances": {
+        "01": 5,
+        "02": 1,
+        "03": 4,
+        "12": 4,
+        "13": 3,
+        "23": 5
+      },
+      "macro_depth": 3,
+      "scope": "finite check of the separately proved prefix formula",
+      "vertices": [
+        4,
+        19,
+        5,
+        17
+      ]
+    },
+    {
+      "integer_distances": {
+        "01": 11,
+        "02": 3,
+        "03": 8,
+        "12": 8,
+        "13": 5,
+        "23": 11
+      },
+      "macro_depth": 4,
+      "scope": "finite check of the separately proved prefix formula",
+      "vertices": [
+        13,
+        58,
+        17,
+        53
+      ]
+    },
+    {
+      "integer_distances": {
+        "01": 23,
+        "02": 7,
+        "03": 16,
+        "12": 16,
+        "13": 9,
+        "23": 23
+      },
+      "macro_depth": 5,
+      "scope": "finite check of the separately proved prefix formula",
+      "vertices": [
+        40,
+        175,
+        53,
+        161
+      ]
+    },
+    {
+      "integer_distances": {
+        "01": 47,
+        "02": 15,
+        "03": 32,
+        "12": 32,
+        "13": 17,
+        "23": 47
+      },
+      "macro_depth": 6,
+      "scope": "finite check of the separately proved prefix formula",
+      "vertices": [
+        121,
+        526,
+        161,
+        485
+      ]
+    }
+  ],
+  "scope": "Recursive-cell positive control on the original gasket kernel; no learned-lens claim. Universal argument is in the companion proof note.",
+  "source_sha256": {
+    "scripts/audit_recursive_gasket_coherence.py": "570fbdcee373ce1c7bb76bcc606b86754f7945688c2345bfb3872c60a22ba615",
+    "scripts/certify_local_nonembedding.py": "4f256c72fa467cede8defd0348c6a53e7a83a0b495de7b88c27e41de6a9ee6ba",
+    "src/geo_sbt/__init__.py": "b30079fa5aeb0655932383562d12c138ccb5b5b138bfbf3f8401c5d4e58dc96f",
+    "src/geo_sbt/geometry/__init__.py": "bc2b8d64ca2969b157220a198b515a0b5ed8fe24e20d847606df0d3482994963",
+    "src/geo_sbt/geometry/dimension.py": "0e48a53b427e401c2080faea2dca253497a9fb54d870831e98a66f221dc32a56",
+    "src/geo_sbt/geometry/holonomy.py": "4c4276abc826866d92c86f26f90a3d223e9758ca39b7a75ad264c16dd58b1b10",
+    "src/geo_sbt/geometry/metric.py": "c2dbc47e9b6a5dd6a2d63033889f5b8308e57938d8f5aa27bd83db1711fa3e06",
+    "src/geo_sbt/lenses/__init__.py": "2726558896d9d7ee940553e17c5da15b39c9957e040a50938fcb4f9347e86f6b",
+    "src/geo_sbt/lenses/diffusion.py": "d313b1635b1de24cc739d6ac067f35e73a5976c8b4612f7d3dedf67f8905036f",
+    "src/geo_sbt/lenses/kmeans.py": "1a2f8a8b980047fb85261393b25701a327f9be89bf8a0304ef11bea7f9caa704",
+    "src/geo_sbt/lenses/ladder.py": "532955f8d7de75d9bbd7aec033e19a5f2e2419b7fe68a69127791432df76d59b",
+    "src/geo_sbt/lenses/prototypes.py": "88bf003df0ba6faaac8d921b646caa491d460672e3dda56582422820bf2ae3e3",
+    "src/geo_sbt/lenses/stationary.py": "7952d192122b64be54c625b94e7bafcbe7dd7cff5fb5986504d88bef36ffb587",
+    "src/geo_sbt/metrics_tv.py": "6b846a8ceb69e0dffca11d0000b8a54a7c523786e767607a2f3891fc3dab94c3",
+    "src/geo_sbt/packaging.py": "e1905ca7b105ce19aa826befb351ae410179d5d61e5b4e0d69c80b8edc5d42ee",
+    "src/geo_sbt/route_mismatch.py": "d99ff8c9401e0f1ef6896bb4cbcf4f52833dd4897a626b1ab30859e445806052",
+    "src/geo_sbt/substrates/__init__.py": "98ba68b11ea5d1fadd7156784fa2201ee417071ab31b2b00fbe8ae8c8f7af59f",
+    "src/geo_sbt/substrates/constraints.py": "39c89170b318a4bd990f6ebaf070fc7c9260caf0214cc37b04423774da83fc33",
+    "src/geo_sbt/substrates/grid.py": "52c74a30aaa861f98ae3962946df65d3dec8d58780449e04d80df9eafb1914cb",
+    "src/geo_sbt/substrates/knn.py": "71791a3388bdb9a011501336802bde16b2fa60e5dea9fd0d6a60b058049c78b4",
+    "src/geo_sbt/substrates/sierpinski.py": "f4d19395485f1a10a2eb38c95e17906ea2204910292fd67c1db3f9b3c1effc04",
+    "src/geo_sbt/substrates/sphere.py": "5aaa1a40c9298062ce34366d89961b185ef8070c6b96da3ce26460442c0489b3",
+    "src/geo_sbt/substrates/validate.py": "78b14171077bdba4dca037190b43fa2ed8422fd88724a76ee982ace063ecf595"
+  }
+}

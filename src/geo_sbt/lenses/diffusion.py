@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import numpy as np
 
+from ..packaging import assert_row_stochastic
+
 try:  # optional
     from scipy.sparse.linalg import eigsh  # type: ignore
 except Exception:  # pragma: no cover
@@ -17,8 +19,11 @@ def diffusion_coordinates(P: np.ndarray, n_eigs: int) -> np.ndarray:
     Returns coordinates with shape (n, n_eigs) excluding the trivial eigenvector.
     """
     P_arr = np.asarray(P, dtype=np.float64)
+    if not isinstance(n_eigs, (int, np.integer)) or isinstance(n_eigs, (bool, np.bool_)) or n_eigs < 0:
+        raise ValueError("n_eigs must be a nonnegative integer")
     if P_arr.ndim != 2 or P_arr.shape[0] != P_arr.shape[1]:
         raise ValueError("P must be a square matrix")
+    assert_row_stochastic(P_arr)
     n = P_arr.shape[0]
     if n == 0:
         return np.zeros((0, 0), dtype=np.float64)

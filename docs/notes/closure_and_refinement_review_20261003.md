@@ -1,5 +1,10 @@
 # Closure proofs and finite refinement follow-up
 
+**Historical checkpoint.** See the [current claim ledger](review_claims_20261003.md)
+for later stage-five grid and gasket constructions, the metric-limit proof and
+current verification receipts. The unresolved-status statements below describe
+this earlier checkpoint.
+
 Further constructive work: [Block-lens coherence control](block_lens_coherence_review_20261003.md)
 establishes a positive joint-size/scale regime on the original grid with a
 supplied lens and declared metric normalization. It does not replace the

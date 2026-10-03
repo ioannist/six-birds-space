@@ -1,5 +1,10 @@
 # Mathematical review and repairs
 
+**Historical checkpoint.** The [current claim ledger](review_claims_20261003.md)
+supersedes the open-work status below. Subsequent constructive work supplies a
+coherent fractal regime with a different lens; the original learned-lens defects
+are retained as contrary evidence.
+
 Follow-up: [Closure proofs and finite refinement](closure_and_refinement_review_20261003.md)
 adds mechanized Markov results, exact finite quadratic-cost certificates,
 larger-substrate checks and current verification receipts. The receipts below

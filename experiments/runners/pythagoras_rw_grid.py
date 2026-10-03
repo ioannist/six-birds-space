@@ -6,6 +6,8 @@ from typing import Dict, List
 
 import numpy as np
 
+from experiments.config_validation import config_int
+
 
 def _torus_kernel_fft(N: int, lazy: float) -> np.ndarray:
     if N <= 0:
@@ -246,15 +248,15 @@ def _save_plots(
 
 def run_pythagoras_rw_grid(config: dict) -> Dict[str, float]:
     """Run the Pythagoras emergence experiment on a torus grid."""
-    N = int(config.get("N", 512))
+    N = config_int(config.get("N", 512), "N")
     lazy = float(config.get("lazy", 0.5))
-    tau_list = [int(t) for t in config.get("tau_list", [4, 8, 16, 32, 64, 128])]
+    tau_list = [config_int(t, "tau_list entry") for t in config.get("tau_list", [4, 8, 16, 32, 64, 128])]
     D_factor = float(config.get("D_factor", 3.0))
-    D_max = int(config.get("D_max", 30))
+    D_max = config_int(config.get("D_max", 30), "D_max")
     p_floor = float(config.get("p_floor", 1e-300))
     p_min_fit = float(config.get("p_min_fit", 1e-20))
-    n_triangle_samples = int(config.get("n_triangle_samples", 2000))
-    seed = int(config.get("seed", 0))
+    n_triangle_samples = config_int(config.get("n_triangle_samples", 2000), "n_triangle_samples")
+    seed = config_int(config.get("seed", 0), "seed")
     write_docs = bool(config.get("write_docs_artifacts", True))
     allow_aliasing = bool(config.get("allow_aliasing", False))
 

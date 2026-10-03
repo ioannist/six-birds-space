@@ -97,3 +97,26 @@ def test_periodic_chain_stationarity_and_nonconvergence():
     assert np.sum(np.abs(pi @ P - pi)) <= 1e-12
     with pytest.raises(RuntimeError):
         stationary_distribution(np.array([[.9, .1], [.2, .8]]), max_iter=1)
+
+
+def test_refinement_audit_does_not_silently_truncate_invalid_labels():
+    assert not check_refinement_consistency([.5], [.5], [.5])
+    assert not check_refinement_consistency([0], [-1], [0])
+    assert not check_refinement_consistency([0], [1], [0])
+    assert not check_refinement_consistency([0], [0], [np.nan])
+    assert not check_refinement_consistency([[0]], [[0]], [0])
+    assert check_refinement_consistency([4, 7], [1, 0], [7, 4])
+
+
+def test_lens_parameters_and_diffusion_kernel_are_validated():
+    import pytest
+    from geo_sbt.lenses.diffusion import diffusion_coordinates
+    P = grid_2d(3, .5)
+    for levels in [[2.5, 4], [True, 4], ['2', '4']]:
+        with pytest.raises(ValueError, match='integers'):
+            hierarchical_diffusion_partition(P, levels, 2)
+    for n_eigs in [1.5, np.nan, -1, True]:
+        with pytest.raises(ValueError, match='nonnegative integer'):
+            diffusion_coordinates(P, n_eigs)
+    with pytest.raises(ValueError, match='finite'):
+        diffusion_coordinates(np.array([[np.nan]]), 1)

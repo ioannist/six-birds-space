@@ -6,6 +6,8 @@ from typing import Dict
 
 import numpy as np
 
+from experiments.config_validation import config_int
+
 from geo_sbt.geometry.holonomy import (
     holonomy_angles_for_triangles,
     local_embeddings_from_metric,
@@ -45,23 +47,23 @@ def _build_micro_kernel(config: dict) -> tuple[np.ndarray, dict]:
     substrate = config["substrate"]
     kind = substrate["kind"]
     if kind == "grid":
-        n_side = int(substrate["n_side"])
+        n_side = config_int(substrate["n_side"], "substrate.n_side")
         lazy = float(substrate.get("lazy", 0.5))
         P = grid_2d(n_side=n_side, lazy=lazy)
         info = {"kind": kind, "n_side": n_side, "lazy": lazy}
         return P, info
     if kind == "sphere_knn":
-        n_points = int(substrate["n_points"])
-        k = int(substrate["k"])
+        n_points = config_int(substrate["n_points"], "substrate.n_points")
+        k = config_int(substrate["k"], "substrate.k")
         sigma = float(substrate["sigma"])
         self_loop = float(substrate.get("self_loop", 1e-6))
-        rng = np.random.default_rng(int(config.get("seed", 0)))
+        rng = np.random.default_rng(config_int(config.get("seed", 0), "seed"))
         points = sphere_points(n_points, rng)
         P = knn_points(points, k=k, sigma=sigma, self_loop=self_loop, symmetrize=True)
         info = {"kind": kind, "n_points": n_points, "k": k, "sigma": sigma, "self_loop": self_loop}
         return P, info
     if kind == "sierpinski":
-        level = int(substrate["level"])
+        level = config_int(substrate["level"], "substrate.level")
         lazy = float(substrate.get("lazy", 0.5))
         _, P = sierpinski(level=level, lazy=lazy)
         info = {"kind": kind, "level": level, "lazy": lazy}
@@ -100,7 +102,8 @@ def _plots_enabled(config: dict) -> bool:
 
 def run_geo_pipeline(config: dict) -> Dict[str, float]:
     """Run the end-to-end geometry pipeline."""
-    seed = int(config.get("seed", 0))
+    seed = config_int(config.get("seed", 0), "seed")
+    tau = config_int(config["tau"], "tau")
     rng = np.random.default_rng(seed)
 
     P, substrate_info = _build_micro_kernel(config)
@@ -109,14 +112,13 @@ def run_geo_pipeline(config: dict) -> Dict[str, float]:
 
     lens = config["lens"]
     levels = lens["levels"]
-    n_eigs = int(lens["n_eigs"])
-    lens_seed = int(lens.get("seed", seed))
+    n_eigs = config_int(lens["n_eigs"], "lens.n_eigs")
+    lens_seed = config_int(lens.get("seed", seed), "lens.seed")
     ladder = hierarchical_diffusion_partition(P, levels=levels, n_eigs=n_eigs, seed=lens_seed)
     labels_list = ladder["labels_list"]
     refine_maps = ladder["refine_maps"]
     cluster_counts = ladder["cluster_counts"]
 
-    tau = int(config["tau"])
     proto_kind = config.get("prototypes", "uniform")
 
     pi = None

@@ -1,5 +1,9 @@
 # A constructive coherence control on the original grid
 
+The stage-five extension below keeps the paper's original staging value as
+well as its micro dynamics. The earlier sharper stage-one results remain
+useful as a separate control.
+
 An explicit nested block lens gives a nontrivial route to small closure and
 prototype defects, connected metrics, and vanishing **normalized** distance
 distortion as both substrate size and macro resolution grow. The micro kernel
@@ -191,7 +195,7 @@ analytic bound. The same JSON separately labels larger-family bounds as
 defect bound 1/512 and normalized distortion bound approximately 0.004404,
 but no 262144-by-262144 micro grid was allocated or simulated.
 
-## What this restores and what remains open
+## Scope of the stage-one checkpoint
 
 This construction proves that meaningful small-defect coherence is attainable
 under the actual finite closure, at fixed micro dynamics, with a declared
@@ -216,6 +220,11 @@ materially changes the current main interpretation. The fractal non-smoothing
 claim still needs a persistent geometric obstruction in a specified regime;
 the existing finite fits do not provide it.
 
+The stage-five extension below and the later
+[recursive-gasket proof](recursive_gasket_coherence_review_20261003.md) resolve
+the corresponding constructive existence questions. These later results do
+not assert coherence of the historical learned-lens examples.
+
 The derivation received a separate self-review of boundary degrees, floor
 scaling, normalization, route domain, time budget, and limit quantifiers. This
 is not independent external review. New tests distinguish the original open
@@ -232,4 +241,71 @@ OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_block_lens_coherence.py -
 cd lean
 lake build
 lake env lean Audit.lean
+```
+
+## Extension to the original staging value five
+
+[audit_block_lens_stage_five.py](../../scripts/audit_block_lens_stage_five.py)
+uses the same open grid and block prototypes with tau = 5. For integer block
+width b >= 8, a five-step walk cannot jump more than one macro block in either
+coordinate. All cardinal and diagonal neighboring blocks are reachable.
+
+For a cardinal macro edge, start at any of the b boundary sites, cross on the
+first step, then stay for four steps. Each move probability is at least 1/8
+and each stay probability is 1/2. Conversely, a crossing requires an initial
+site in a strip of width five. For a diagonal edge, a single corner site,
+two perpendicular moves and three stays supply a lower bound, while both
+width-five strips are necessary. These arguments also apply to the reversed
+transition, hence to the weight-averaged ledger:
+
+```
+1/(128b) <= W_cardinal <= 5/b,
+1/(512b^2) <= W_diagonal <= 25/b^2.
+```
+
+Choose `eta_b = 1/(1024b^2)` and threshold zero; no positive edge is clipped.
+Put `c_b = log(128b)` and `e = log(640)`. A cardinal edge costs at least
+`log(b)-log(5) = c_b-e`; a diagonal edge costs at least twice that, reflecting
+its two units of Manhattan displacement. Every path therefore costs at least
+`(c_b-e)L(x,y)`. A cardinal monotone path supplies the upper bound c_b L.
+Both endpoints are positive for b >= 8, so the graph is connected and metric.
+
+```
+(c_b-e)L <= d_b <= c_b L,
+max |d_b/(M c_b)-L/M| <= 2 log(640)/log(128b).
+```
+
+The error bound tends to zero as b grows. It is intentionally conservative
+and is not a small-error certificate at the smallest audited block widths.
+For nested factor-two lenses, add the two readout errors and `2/M_f` to bound
+normalized refinement distortion. Thus that distortion vanishes jointly as
+the minimum block width and macro side grow. The readout limit is the L1
+unit square, with nonzero diameter. This does not assert a Euclidean
+inner-product metric or a uniform bound in raw negative-log units.
+
+Prototype persistence also vanishes without changing dynamics. The stationary
+law is proportional to degree, and every uniform b-by-b prototype is pointwise
+at most `E/b^2` times that law, where E is the number of undirected micro edges.
+Domination persists under P. Each directed crossing edge has stationary flow
+`1/(4E)`, and at most 4b such edges leave a block. Consequently each step's
+outgoing event probability is at most 1/b. A union bound gives five-step
+prototype escape at most 5/b; the mechanized closure-from-escape theorem
+gives the same bound on the full microstate-supremum closure defect.
+
+For the equal-time ten-step prototype-input route comparison, direct escape
+is at most 10/b_f; the staged route has escape at most `5/b_f+5/b_m`.
+TV to the initial coarse point mass and the triangle inequality yield
+`RM <= 15/b_f+5/b_m`, tending to zero. This domain restriction and finite time
+budget are retained.
+
+The [finite stage-five receipts](staged_block_lens_review_20261003/evidence.json)
+check complete ladders at micro sides 64 and 128, including a 256-state finest
+macro graph. Every macro edge is checked against its probability bracket,
+and every macro pair against the readout and refinement bounds. Tests compare
+the staged sparse micro calculation directly with the original dense grid.
+These are supplied block lenses, with declared normalization and floors;
+they do not repair the high defects of the canonical learned partitions.
+
+```bash
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_block_lens_stage_five.py --output results/staged_block_lens_review
 ```

@@ -14,8 +14,8 @@ from .kmeans import kmeans
 def _normalize_levels(levels, n: int) -> List[int]:
     if n <= 0:
         raise ValueError("substrate must be nonempty")
-    if isinstance(levels, int):
-        L = levels
+    if isinstance(levels, (int, np.integer)) and not isinstance(levels, (bool, np.bool_)):
+        L = int(levels)
         if L <= 0 or L > n:
             raise ValueError("number of levels must be in [1, n]")
         if L == 1:
@@ -29,7 +29,10 @@ def _normalize_levels(levels, n: int) -> List[int]:
         return counts
 
     if isinstance(levels, Iterable):
-        counts = [int(x) for x in levels]
+        requested = list(levels)
+        if any(not isinstance(x, (int, np.integer)) or isinstance(x, (bool, np.bool_)) for x in requested):
+            raise ValueError("cluster counts must be integers")
+        counts = [int(x) for x in requested]
         if len(counts) == 0:
             raise ValueError("levels list must be non-empty")
         if any(c <= 0 for c in counts):
@@ -60,12 +63,21 @@ def check_refinement_consistency(
     refine_map: np.ndarray,
 ) -> bool:
     """Check labels_coarse[z] == refine_map[labels_fine[z]] for all z."""
-    labels_coarse = np.asarray(labels_coarse, dtype=int)
-    labels_fine = np.asarray(labels_fine, dtype=int)
-    refine_map = np.asarray(refine_map, dtype=int)
-    if labels_coarse.shape != labels_fine.shape:
+    labels_coarse = np.asarray(labels_coarse)
+    labels_fine = np.asarray(labels_fine)
+    refine_map = np.asarray(refine_map)
+    if (labels_coarse.ndim != 1 or labels_fine.ndim != 1 or refine_map.ndim != 1
+            or labels_coarse.shape != labels_fine.shape):
         return False
-    return np.all(labels_coarse == refine_map[labels_fine])
+    try:
+        if any(not np.isfinite(a).all() or np.any(a < 0) or np.any(a != np.floor(a))
+               for a in [labels_coarse, labels_fine, refine_map]):
+            return False
+    except (TypeError, ValueError):
+        return False
+    if np.any(labels_fine >= len(refine_map)):
+        return False
+    return bool(np.all(labels_coarse == refine_map[labels_fine.astype(np.intp)]))
 
 
 def hierarchical_diffusion_partition(

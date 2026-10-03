@@ -60,3 +60,15 @@ def test_directed_connectivity_distinguishes_weak_and_strong():
     assert info['valid']
     assert info['weakly_connected']
     assert not info['strongly_connected']
+
+
+def test_gate_rejects_nan_and_handles_complete_feasibility_removal():
+    import pytest
+    with pytest.raises(ValueError, match='strength'):
+        anisotropic_gate(grid_2d(2, .5), 'east', np.nan)
+    with pytest.raises(ValueError, match='sum'):
+        anisotropic_gate(np.zeros((4, 4)), 'east', 1.)
+    P = np.eye(4)
+    P[1] = [1., 0., 0., 0.]
+    gated = anisotropic_gate(P, 'east', 1.)
+    assert np.array_equal(gated, np.eye(4))
