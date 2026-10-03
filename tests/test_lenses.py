@@ -80,3 +80,20 @@ def test_macro_identity_deviation():
             mu = U_f(nu, U)
             nu_back = Q_f(mu, C)
             assert np.allclose(nu_back, nu, atol=1e-12)
+
+
+def test_repeated_coordinates_still_make_nonempty_cells():
+    from geo_sbt.lenses.kmeans import kmeans
+    labels = kmeans(np.zeros((8, 2)), 4)
+    assert np.array_equal(np.unique(labels), np.arange(4))
+    assert np.array_equal(labels, kmeans(np.zeros((8, 2)), 4))
+
+
+def test_periodic_chain_stationarity_and_nonconvergence():
+    import pytest
+    P = np.array([[0., .5, .5], [1., 0., 0.], [1., 0., 0.]])
+    pi = stationary_distribution(P)
+    assert np.allclose(pi, [.5, .25, .25], atol=1e-12)
+    assert np.sum(np.abs(pi @ P - pi)) <= 1e-12
+    with pytest.raises(RuntimeError):
+        stationary_distribution(np.array([[.9, .1], [.2, .8]]), max_iter=1)

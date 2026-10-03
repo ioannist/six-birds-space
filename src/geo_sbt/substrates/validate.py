@@ -16,7 +16,8 @@ def validate_kernel(
 ) -> dict:
     """Validate that P is a row-stochastic Markov kernel.
 
-    Returns a dict with diagnostics.
+    Returns a dict with diagnostics. `connected` retains the historical weak
+    (undirected support) meaning; strong connectivity is reported separately.
     """
     P_arr = np.asarray(P, dtype=np.float64)
     if P_arr.ndim != 2 or P_arr.shape[0] != P_arr.shape[1]:
@@ -48,7 +49,27 @@ def validate_kernel(
                     queue.append(nbr)
         connected = len(visited) == n
 
+    strongly_connected = None
+    if check_connected:
+        mask = P_arr > eps_edge
+        def reaches_all(edges):
+            if n == 0:
+                return True
+            seen = {0}
+            queue = deque([0])
+            while queue:
+                node = queue.popleft()
+                for neighbor in np.flatnonzero(edges[node]):
+                    if int(neighbor) not in seen:
+                        seen.add(int(neighbor))
+                        queue.append(int(neighbor))
+            return len(seen) == n
+        strongly_connected = reaches_all(mask) and reaches_all(mask.T)
+
     return {
+        "valid": bool(np.isfinite(P_arr).all() and min_entry >= -tol and max_abs_row_sum_err <= tol),
+        "weakly_connected": connected if check_connected else None,
+        "strongly_connected": strongly_connected,
         "n": n,
         "max_abs_row_sum_err": max_abs_row_sum_err,
         "min_entry": min_entry,

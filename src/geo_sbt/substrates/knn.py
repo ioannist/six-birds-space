@@ -27,6 +27,10 @@ def knn_points(
     pts = np.asarray(points, dtype=np.float64)
     if pts.ndim != 2:
         raise ValueError("points must be a 2D array")
+    if not np.isfinite(pts).all():
+        raise ValueError("points must have finite coordinates")
+    if not np.isfinite(self_loop) or self_loop < 0:
+        raise ValueError("self_loop must be finite and nonnegative")
     n = pts.shape[0]
     if n == 0:
         raise ValueError("points must be non-empty")
@@ -47,8 +51,10 @@ def knn_points(
             dists = dists[:, None]
             idxs = idxs[:, None]
         for i in range(n):
-            neighbors = idxs[i][1:]
-            dist_sq = dists[i][1:] ** 2
+            # With duplicate points, query need not return i first.
+            valid = idxs[i] != i
+            neighbors = idxs[i][valid][:k_eff]
+            dist_sq = dists[i][valid][:k_eff] ** 2
             weights = np.exp(-dist_sq / (2.0 * sigma * sigma))
             W[i, neighbors] = weights
     else:

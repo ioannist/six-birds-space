@@ -44,3 +44,7 @@ def test_geo_pipeline_runner_basic():
         summary = json.loads(summary_path.read_text())
         assert "per_level" in summary
         assert len(summary["per_level"]) == 3
+
+        assert len(summary["route_mismatch"]) == 1
+        assert 0. <= summary["route_mismatch"][0]["tv_sup"] <= 1.
+        assert "P^(2tau)" in summary["route_mismatch_definition"]

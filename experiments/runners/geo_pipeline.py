@@ -24,7 +24,8 @@ from geo_sbt.lenses.prototypes import (
     prototypes_uniform,
 )
 from geo_sbt.lenses.stationary import stationary_distribution
-from geo_sbt.packaging import idempotence_defect_delta, make_C, prototype_stabilities
+from geo_sbt.packaging import idempotence_defect_delta, make_C, prototype_stabilities, markov_power
+from geo_sbt.route_mismatch import d_tv_sup
 from geo_sbt.substrates.constraints import anisotropic_gate
 from geo_sbt.substrates.grid import grid_2d
 from geo_sbt.substrates.knn import knn_points
@@ -129,11 +130,13 @@ def run_geo_pipeline(config: dict) -> Dict[str, float]:
 
     per_level = []
     dists = []
+    lenses = []
     deltas = []
 
     for labels, m in zip(labels_list, cluster_counts):
         C = make_C(labels, m)
         U = _make_prototypes(labels, m, proto_kind, pi)
+        lenses.append((C, U))
 
         delta = idempotence_defect_delta(P, tau, C, U)
         stabs = prototype_stabilities(P, tau, C, U)
@@ -181,8 +184,26 @@ def run_geo_pipeline(config: dict) -> Dict[str, float]:
                 "raw": float(raw["max_abs_diff"]),
                 "rescaled": float(rescaled["max_abs_diff"]),
                 "alpha": float(rescaled["alpha"]),
+                "unmatched_pairs": rescaled["unmatched_pairs"],
+                "disconnected": rescaled["disconnected"],
             }
         )
+
+    route_audits = []
+    if len(lenses) >= 3:
+        P_tau = markov_power(P, tau)
+        for j in range(len(lenses) - 2):
+            C_coarse, _ = lenses[j]
+            C_mid, U_mid = lenses[j + 1]
+            _, U_fine = lenses[j + 2]
+            # Two equally staged routes from finest prototype distributions to
+            # coarse labels, with versus without intermediate packaging.
+            direct = U_fine @ P_tau @ P_tau @ C_coarse
+            indirect = U_fine @ P_tau @ C_mid @ U_mid @ P_tau @ C_coarse
+            route_audits.append({"coarse_m": int(cluster_counts[j]),
+                                 "mid_m": int(cluster_counts[j + 1]),
+                                 "fine_m": int(cluster_counts[j + 2]),
+                                 "tv_sup": d_tv_sup(direct, indirect)})
 
     holonomy_stats = None
     holonomy_angles = None
@@ -212,12 +233,15 @@ def run_geo_pipeline(config: dict) -> Dict[str, float]:
         )
         knn_loop = metric_knn(d, k=k_loop)
         triangles = sample_triangles_from_knn(knn_loop, max_loops=max_loops, seed=seed)
-        angles = holonomy_angles_for_triangles(
-            triangles, neighborhoods, coords_list, min_overlap=min_overlap
+        loop_audit = holonomy_angles_for_triangles(
+            triangles, neighborhoods, coords_list, min_overlap=min_overlap, return_diagnostics=True
         )
+        angles = loop_audit["angles"]
         holonomy_angles = angles
 
         holonomy_stats = {
+            "missing_transport": loop_audit["missing_transport"],
+            "orientation_reversing": loop_audit["orientation_reversing"],
             "level_m": int(cluster_counts[idx]),
             "triangles_sampled": int(len(triangles)),
             "triangles_evaluated": int(angles.size),
@@ -243,6 +267,8 @@ def run_geo_pipeline(config: dict) -> Dict[str, float]:
         },
         "per_level": per_level,
         "distortions": distortions,
+        "route_mismatch": route_audits,
+        "route_mismatch_definition": "U_fine P^(2tau) C_coarse versus U_fine P^tau C_mid U_mid P^tau C_coarse",
         "holonomy": holonomy_stats,
     }
 
@@ -317,6 +343,7 @@ def run_geo_pipeline(config: dict) -> Dict[str, float]:
         "distortion_max_raw": float(max_raw),
         "distortion_max_rescaled": float(max_rescaled),
         "distortion_last_rescaled": float(last_rescaled),
+        "route_mismatch_max": max((row["tv_sup"] for row in route_audits), default=None),
     }
 
     if holonomy_stats is not None:

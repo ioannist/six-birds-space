@@ -1,0 +1,105 @@
+{
+  "constraints": null,
+  "distortions": [
+    {
+      "alpha": 1.411374132140997,
+      "coarse_m": 4,
+      "disconnected": false,
+      "fine_m": 8,
+      "raw": 4.6918053646029385,
+      "rescaled": 3.846541492706527,
+      "unmatched_pairs": 0
+    },
+    {
+      "alpha": 1.3759955299898068,
+      "coarse_m": 8,
+      "disconnected": false,
+      "fine_m": 16,
+      "raw": 6.308913106195176,
+      "rescaled": 5.056277773042286,
+      "unmatched_pairs": 0
+    },
+    {
+      "alpha": 1.3141407191975827,
+      "coarse_m": 16,
+      "disconnected": false,
+      "fine_m": 32,
+      "raw": 6.921947383559763,
+      "rescaled": 4.806107570081761,
+      "unmatched_pairs": 0
+    }
+  ],
+  "holonomy": null,
+  "lens": {
+    "levels": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "n_eigs": 6,
+    "seed": 0
+  },
+  "metric": {
+    "eps_edge": 1e-15,
+    "eta": 1e-12,
+    "symmetrize": "weight_avg"
+  },
+  "n_micro": 625,
+  "per_level": [
+    {
+      "delta": 0.15678813912058756,
+      "inf_count": 0,
+      "m": 4,
+      "mean_finite_dist": 3.728385510953516,
+      "stab_max": 0.15686085676370914,
+      "stab_mean": 0.09700425520822667
+    },
+    {
+      "delta": 0.26347673128467486,
+      "inf_count": 0,
+      "m": 8,
+      "mean_finite_dist": 4.863052047866547,
+      "stab_max": 0.2706216417239272,
+      "stab_mean": 0.15363670891682993
+    },
+    {
+      "delta": 0.3197274213451491,
+      "inf_count": 0,
+      "m": 16,
+      "mean_finite_dist": 6.238361686125389,
+      "stab_max": 0.3935279846191406,
+      "stab_mean": 0.24665349242279727
+    },
+    {
+      "delta": 0.32393474029217284,
+      "inf_count": 0,
+      "m": 32,
+      "mean_finite_dist": 8.151340284184197,
+      "stab_max": 0.5083075629340278,
+      "stab_mean": 0.33619525386298565
+    }
+  ],
+  "prototypes": "uniform",
+  "route_mismatch": [
+    {
+      "coarse_m": 4,
+      "fine_m": 16,
+      "mid_m": 8,
+      "tv_sup": 0.07904956476647655
+    },
+    {
+      "coarse_m": 8,
+      "fine_m": 32,
+      "mid_m": 16,
+      "tv_sup": 0.12473785287195094
+    }
+  ],
+  "route_mismatch_definition": "U_fine P^(2tau) C_coarse versus U_fine P^tau C_mid U_mid P^tau C_coarse",
+  "substrate": {
+    "kind": "grid",
+    "lazy": 0.5,
+    "n_side": 25
+  },
+  "tau": 5
+}

@@ -60,3 +60,45 @@ def test_distortion_finite():
     out = distortion_between_scales(d_f, d_c, r, rescale="lstsq")
     assert np.isfinite(out["max_abs_diff"])
     assert out["finite_pairs"] > 0
+
+
+def test_zero_cost_edges_preserved_in_both_backends(monkeypatch):
+    import geo_sbt.geometry.metric as metric
+    costs = np.array([[0., 0., np.inf], [0., 0., 2.], [np.inf, 2., 0.]])
+    expected = np.array([[0., 0., 2.], [0., 0., 2.], [2., 2., 0.]])
+    assert np.array_equal(metric.all_pairs_shortest_path(costs), expected)
+    monkeypatch.setattr(metric, 'sp_dijkstra', None)
+    assert np.array_equal(metric.all_pairs_shortest_path(costs), expected)
+
+
+def test_invalid_costs_rejected_before_dijkstra():
+    import pytest
+    for invalid in [-1., np.nan, -np.inf]:
+        with pytest.raises(ValueError):
+            all_pairs_shortest_path(np.array([[0., invalid], [1., 0.]]))
+    for eta in [0., 2., np.nan]:
+        with pytest.raises(ValueError):
+            cost_matrix_from_kernel(np.eye(2), eta=eta)
+
+
+def test_unmatched_reachability_has_infinite_distortion():
+    fine = np.array([[0., 1.], [1., 0.]])
+    coarse = np.array([[0., np.inf], [np.inf, 0.]])
+    result = distortion_between_scales(fine, coarse, np.arange(2), rescale='lstsq')
+    assert result['max_abs_diff'] == np.inf
+    assert result['unmatched_pairs'] == 2
+
+
+def test_global_distortion_audit_rejects_shared_disconnection():
+    d = np.array([[0., np.inf], [np.inf, 0.]])
+    result = distortion_between_scales(d, d, np.arange(2))
+    assert result['max_abs_diff'] == np.inf
+    assert result['finite_max_abs_diff'] == 0.
+    assert result['disconnected']
+
+
+def test_threshold_can_genuinely_disconnect_macro_graph():
+    costs = cost_matrix_from_kernel(np.full((2, 2), .5), eta=1e-12, eps_edge=.6)
+    distances = all_pairs_shortest_path(costs)
+    assert distances[0, 1] == np.inf
+    assert np.all(np.diag(distances) == 0.)

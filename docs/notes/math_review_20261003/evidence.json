@@ -1,0 +1,472 @@
+{
+  "dimension_proxies": {
+    "grid": {
+      "ball_cost": 1.670676179699302,
+      "ball_sqrt": 3.341352359589835,
+      "info_cost": 4.660001981673769,
+      "info_sqrt": 9.32555357718067,
+      "levels_used": 6
+    },
+    "sierpinski": {
+      "ball_cost": 1.3886478916493858,
+      "ball_sqrt": 2.777295797141653,
+      "info_cost": 2.071879326089831,
+      "info_sqrt": 4.143767360234439,
+      "levels_used": 6
+    }
+  },
+  "fixed_lens_anisotropy": {
+    "baseline": {
+      "horizontal_mean": 4.145494896739165,
+      "horizontal_over_vertical": 0.9840476825476355,
+      "vertical_mean": 4.21269717947686
+    },
+    "constraints": {
+      "direction": "east",
+      "kind": "anisotropic_gate",
+      "strength": 1.0
+    },
+    "distance_max_change": 2.4228781014765097,
+    "gated": {
+      "horizontal_mean": 4.35725476122389,
+      "horizontal_over_vertical": 1.0869015651388871,
+      "vertical_mean": 4.008877069440146
+    },
+    "macro_kernel_max_change": 0.23070225761424037
+  },
+  "metric_checks": [
+    {
+      "m": 2,
+      "stability_identity_error": 1.0408340855860843e-16,
+      "triangle_violation": 0.0
+    },
+    {
+      "m": 4,
+      "stability_identity_error": 5.551115123125783e-17,
+      "triangle_violation": 0.0
+    },
+    {
+      "m": 8,
+      "stability_identity_error": 1.6653345369377348e-16,
+      "triangle_violation": 0.0
+    },
+    {
+      "m": 16,
+      "stability_identity_error": 1.1102230246251565e-16,
+      "triangle_violation": 1.7763568394002505e-15
+    }
+  ],
+  "numpy": "2.4.4",
+  "python": "3.12.3",
+  "runs": {
+    "anisotropic": {
+      "config_source": "experiments/configs/anisotropic.yaml",
+      "metrics": {
+        "delta_finest": 0.41450068140073437,
+        "delta_mean": 0.3273878458429953,
+        "distortion_last_rescaled": 5.5201482595153895,
+        "distortion_max_raw": 11.245526517381242,
+        "distortion_max_rescaled": 11.245526517381242,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 13.420259992922272,
+        "n_micro": 625.0,
+        "route_mismatch_max": 0.2234311929999601,
+        "stab_max_finest": 0.8557743797227344,
+        "stab_mean_finest": 0.615374573841885,
+        "tau": 5.0
+      }
+    },
+    "grid_eps_edge_disconnect": {
+      "config_source": "experiments/configs/sweeps/grid_eps_edge_disconnect.yaml",
+      "metrics": {
+        "delta_finest": 0.31100720832328693,
+        "delta_mean": 0.28233536275883375,
+        "distortion_last_rescaled": 6.0502285842134285,
+        "distortion_max_raw": 9.40815574611831,
+        "distortion_max_rescaled": 6.0502285842134285,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 13.295955010903452,
+        "n_micro": 625.0,
+        "route_mismatch_max": 0.1390424125872361,
+        "stab_max_finest": 0.7825927734375,
+        "stab_mean_finest": 0.6251987755703532,
+        "tau": 5.0
+      }
+    },
+    "grid_levels_coarse": {
+      "config_source": "experiments/configs/sweeps/grid_levels_coarse.yaml",
+      "metrics": {
+        "delta_finest": 0.32393474029217284,
+        "delta_mean": 0.26598175801064605,
+        "distortion_last_rescaled": 4.806107570081761,
+        "distortion_max_raw": 6.921947383559763,
+        "distortion_max_rescaled": 5.056277773042286,
+        "inf_count_finest": 0.0,
+        "m_finest": 32.0,
+        "mean_dist_finest": 8.151340284184197,
+        "n_micro": 625.0,
+        "route_mismatch_max": 0.12473785287195094,
+        "stab_max_finest": 0.5083075629340278,
+        "stab_mean_finest": 0.33619525386298565,
+        "tau": 5.0
+      }
+    },
+    "grid_levels_finer": {
+      "config_source": "experiments/configs/sweeps/grid_levels_finer.yaml",
+      "metrics": {
+        "delta_finest": 0.3066148512686292,
+        "delta_mean": 0.30013580426679703,
+        "distortion_last_rescaled": 7.27196200493637,
+        "distortion_max_raw": 12.921157864308068,
+        "distortion_max_rescaled": 7.34324170152308,
+        "inf_count_finest": 0.0,
+        "m_finest": 256.0,
+        "mean_dist_finest": 16.449639932619046,
+        "n_micro": 625.0,
+        "route_mismatch_max": 0.15430478424667654,
+        "stab_max_finest": 0.8686523437500001,
+        "stab_mean_finest": 0.7545945296480495,
+        "tau": 5.0
+      }
+    },
+    "grid_plane": {
+      "config_source": "experiments/configs/grid_plane.yaml",
+      "metrics": {
+        "delta_finest": 0.31100720832328693,
+        "delta_mean": 0.28233536275883375,
+        "distortion_last_rescaled": 6.0502285842134285,
+        "distortion_max_raw": 9.40815574611831,
+        "distortion_max_rescaled": 6.0502285842134285,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 13.293776656182937,
+        "n_micro": 625.0,
+        "route_mismatch_max": 0.1390424125872361,
+        "stab_max_finest": 0.7825927734375,
+        "stab_mean_finest": 0.6251987755703532,
+        "tau": 5.0
+      }
+    },
+    "grid_prototypes_stationary": {
+      "config_source": "experiments/configs/sweeps/grid_prototypes_stationary.yaml",
+      "metrics": {
+        "delta_finest": 0.3178910845642904,
+        "delta_mean": 0.2834254850078684,
+        "distortion_last_rescaled": 6.05022858422927,
+        "distortion_max_raw": 9.503143420802676,
+        "distortion_max_rescaled": 6.05022858422927,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 13.287738328821115,
+        "n_micro": 625.0,
+        "route_mismatch_max": 0.1437725617495207,
+        "stab_max_finest": 0.7825927734375,
+        "stab_mean_finest": 0.6268600218127092,
+        "tau": 5.0
+      }
+    },
+    "grid_tau_1": {
+      "config_source": "experiments/configs/sweeps/grid_tau_1.yaml",
+      "metrics": {
+        "delta_finest": 0.3,
+        "delta_mean": 0.20741437815656558,
+        "distortion_last_rescaled": 8.380388807213665,
+        "distortion_max_raw": 13.908047181572638,
+        "distortion_max_rescaled": 8.674319439358216,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 17.94538132173454,
+        "n_micro": 625.0,
+        "route_mismatch_max": 0.10695543605699855,
+        "stab_max_finest": 0.4027777777777778,
+        "stab_mean_finest": 0.2665617766203704,
+        "tau": 1.0
+      }
+    },
+    "grid_tau_20": {
+      "config_source": "experiments/configs/sweeps/grid_tau_20.yaml",
+      "metrics": {
+        "delta_finest": 0.2775478002295002,
+        "delta_mean": 0.29237514612055315,
+        "distortion_last_rescaled": 5.593296034538717,
+        "distortion_max_raw": 7.439845370423136,
+        "distortion_max_rescaled": 5.593296034538717,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 10.424218808429911,
+        "n_micro": 625.0,
+        "route_mismatch_max": 0.13428353682864017,
+        "stab_max_finest": 0.9392878048010507,
+        "stab_mean_finest": 0.8483953890352961,
+        "tau": 20.0
+      }
+    },
+    "holonomy_demo": {
+      "config_source": "experiments/configs/holonomy_demo.yaml",
+      "metrics": {
+        "median_diff": 0.04114623736458392,
+        "median_ratio": 25.343061840755432,
+        "plane_evaluated": 789.0,
+        "plane_mean": 0.0029349647594028817,
+        "plane_median": 0.0016902654905841148,
+        "sphere_evaluated": 800.0,
+        "sphere_mean": 0.04780993824319319,
+        "sphere_median": 0.04283650285516804,
+        "tau": 5.0
+      }
+    },
+    "pythagoras_aliasing_fail": {
+      "config_source": "experiments/configs/sweeps/pythagoras_aliasing_fail.yaml",
+      "metrics": {
+        "axis_lin_rms_tau_max": 0.07275025619369108,
+        "axis_quad_over_lin_L1": 248845906524531.6,
+        "axis_quad_over_lin_tau_max": 0.19492003978961717,
+        "axis_quad_rms_tau_max": 0.014180482831979107,
+        "axis_quad_rms_tau_min": 0.00458290312155052,
+        "fit_rms_improve_ratio": 0.5891114722162113,
+        "fit_rms_tau_max": 0.020036474069859905,
+        "fit_rms_tau_min": 0.03401134592487832,
+        "pyth_med_tau_max": 0.00033445333912940356,
+        "pyth_med_tau_min": 0.015880473912736726,
+        "tau_max": 256.0,
+        "tau_min": 64.0
+      }
+    },
+    "pythagoras_rw_grid": {
+      "config_source": "experiments/configs/pythagoras_rw_grid.yaml",
+      "metrics": {
+        "axis_lin_rms_tau_max": 1.0535572976625955,
+        "axis_quad_over_lin_L1": 1.512931672062564e+16,
+        "axis_quad_over_lin_tau_max": 0.016788638456670554,
+        "axis_quad_rms_tau_max": 0.017687792563844156,
+        "axis_quad_rms_tau_min": 0.05418216997465784,
+        "fit_rms_improve_ratio": 0.32026325058434246,
+        "fit_rms_tau_max": 0.1508638092106339,
+        "fit_rms_tau_min": 0.4710618809225611,
+        "pyth_med_tau_max": 0.058589383290293284,
+        "pyth_med_tau_min": 0.8615658321849091,
+        "tau_max": 128.0,
+        "tau_min": 4.0
+      }
+    },
+    "pythagoras_tau_large": {
+      "config_source": "experiments/configs/sweeps/pythagoras_tau_large.yaml",
+      "metrics": {
+        "axis_lin_rms_tau_max": 0.5381000355306389,
+        "axis_quad_over_lin_L1": 1.512931672062564e+16,
+        "axis_quad_over_lin_tau_max": 0.004723286790927834,
+        "axis_quad_rms_tau_max": 0.002541600790019665,
+        "axis_quad_rms_tau_min": 0.07098962716754045,
+        "fit_rms_improve_ratio": 0.015939299810735004,
+        "fit_rms_tau_max": 0.018738102492975674,
+        "fit_rms_tau_min": 1.1755913192846588,
+        "pyth_med_tau_max": 0.007755316058949191,
+        "pyth_med_tau_min": 0.6477079121526792,
+        "tau_max": 256.0,
+        "tau_min": 16.0
+      }
+    },
+    "pythagoras_tau_small": {
+      "config_source": "experiments/configs/sweeps/pythagoras_tau_small.yaml",
+      "metrics": {
+        "axis_lin_rms_tau_max": 1.2911994590351168,
+        "axis_quad_over_lin_L1": 566652294510074.1,
+        "axis_quad_over_lin_tau_max": 0.05039057355953069,
+        "axis_quad_rms_tau_max": 0.06506428132053528,
+        "axis_quad_rms_tau_min": 4.1043229949538597e-16,
+        "fit_rms_improve_ratio": 2996374563735278.0,
+        "fit_rms_tau_max": 1.190176350463076,
+        "fit_rms_tau_min": 3.9720546451956367e-16,
+        "pyth_med_tau_max": 0.4237281657193783,
+        "pyth_med_tau_min": null,
+        "tau_max": 32.0,
+        "tau_min": 1.0
+      }
+    },
+    "sierpinski": {
+      "config_source": "experiments/configs/sierpinski.yaml",
+      "metrics": {
+        "delta_finest": 0.245026011330386,
+        "delta_mean": 0.21696125719830392,
+        "distortion_last_rescaled": 6.622812960433869,
+        "distortion_max_raw": 13.303611927708342,
+        "distortion_max_rescaled": 8.34736587812256,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 19.374311225418722,
+        "n_micro": 366.0,
+        "route_mismatch_max": 0.09119423351561036,
+        "stab_max_finest": 0.8492431640625002,
+        "stab_mean_finest": 0.6413894254063803,
+        "tau": 5.0
+      }
+    },
+    "sphere_eps_edge_disconnect": {
+      "config_source": "experiments/configs/sweeps/sphere_eps_edge_disconnect.yaml",
+      "metrics": {
+        "delta_finest": 0.2672417919635004,
+        "delta_mean": 0.2789187156017863,
+        "distortion_last_rescaled": 4.155683167493706,
+        "distortion_max_raw": 6.170347482131882,
+        "distortion_max_rescaled": 5.269212877028456,
+        "holonomy_evaluated": 369.0,
+        "holonomy_mean": 0.11394978060103204,
+        "holonomy_median": 0.08888670441687492,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 9.151598649685917,
+        "n_micro": 500.0,
+        "route_mismatch_max": 0.11218502483811954,
+        "stab_max_finest": 0.9851361901522213,
+        "stab_mean_finest": 0.8551601977297031,
+        "tau": 5.0
+      }
+    },
+    "sphere_holonomy_unstable": {
+      "config_source": "experiments/configs/sweeps/sphere_holonomy_unstable.yaml",
+      "metrics": {
+        "delta_finest": 0.2672417919635004,
+        "delta_mean": 0.2789187156017863,
+        "distortion_last_rescaled": 3.972427327726619,
+        "distortion_max_raw": 6.170347482131882,
+        "distortion_max_rescaled": 5.273270813174991,
+        "holonomy_evaluated": 190.0,
+        "holonomy_mean": 0.10220347495969632,
+        "holonomy_median": 0.08597649773987631,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 8.997797943277071,
+        "n_micro": 500.0,
+        "route_mismatch_max": 0.11218502483811954,
+        "stab_max_finest": 0.9851361901522213,
+        "stab_mean_finest": 0.8551601977297031,
+        "tau": 5.0
+      }
+    },
+    "sphere_knn": {
+      "config_source": "experiments/configs/sphere_knn.yaml",
+      "metrics": {
+        "delta_finest": 0.2672417919635004,
+        "delta_mean": 0.2789187156017863,
+        "distortion_last_rescaled": 3.972427327726619,
+        "distortion_max_raw": 6.170347482131882,
+        "distortion_max_rescaled": 5.273270813174991,
+        "holonomy_evaluated": 369.0,
+        "holonomy_mean": 0.11102415624495905,
+        "holonomy_median": 0.083185458477489,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 8.997797943277071,
+        "n_micro": 500.0,
+        "route_mismatch_max": 0.11218502483811954,
+        "stab_max_finest": 0.9851361901522213,
+        "stab_mean_finest": 0.8551601977297031,
+        "tau": 5.0
+      }
+    },
+    "sphere_prototypes_stationary": {
+      "config_source": "experiments/configs/sweeps/sphere_prototypes_stationary.yaml",
+      "metrics": {
+        "delta_finest": 0.26930761446990387,
+        "delta_mean": 0.2758560234471251,
+        "distortion_last_rescaled": 3.963334225152679,
+        "distortion_max_raw": 6.195655000594645,
+        "distortion_max_rescaled": 5.319360937684278,
+        "holonomy_evaluated": 363.0,
+        "holonomy_mean": 0.11348162642653684,
+        "holonomy_median": 0.08639202753388234,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 9.00845759448065,
+        "n_micro": 500.0,
+        "route_mismatch_max": 0.10486397128278827,
+        "stab_max_finest": 0.9851361901522213,
+        "stab_mean_finest": 0.8551322447427926,
+        "tau": 5.0
+      }
+    },
+    "sphere_tau_1": {
+      "config_source": "experiments/configs/sweeps/sphere_tau_1.yaml",
+      "metrics": {
+        "delta_finest": 0.5278585175971423,
+        "delta_mean": 0.3267784019859094,
+        "distortion_last_rescaled": 5.592803281130491,
+        "distortion_max_raw": 7.593195282464675,
+        "distortion_max_rescaled": 6.3053333791461785,
+        "holonomy_evaluated": 361.0,
+        "holonomy_mean": 0.10078162052057628,
+        "holonomy_median": 0.0664403760649772,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 10.713525912715085,
+        "n_micro": 500.0,
+        "route_mismatch_max": 0.1873648327056121,
+        "stab_max_finest": 0.9999999503963356,
+        "stab_mean_finest": 0.7322668933215637,
+        "tau": 1.0
+      }
+    },
+    "sphere_tau_30": {
+      "config_source": "experiments/configs/sweeps/sphere_tau_30.yaml",
+      "metrics": {
+        "delta_finest": 0.23960636013270295,
+        "delta_mean": 0.24516704426598943,
+        "distortion_last_rescaled": 4.890709273829325,
+        "distortion_max_raw": 4.890709273829325,
+        "distortion_max_rescaled": 4.890709273829325,
+        "holonomy_evaluated": 500.0,
+        "holonomy_mean": 0.1411806359907362,
+        "holonomy_median": 0.10557149811590119,
+        "inf_count_finest": 0.0,
+        "m_finest": 128.0,
+        "mean_dist_finest": 5.899309660803446,
+        "n_micro": 500.0,
+        "route_mismatch_max": 0.056903791831505214,
+        "stab_max_finest": 0.9960429127728025,
+        "stab_mean_finest": 0.9658271491674619,
+        "tau": 30.0
+      }
+    }
+  },
+  "source_sha256": {
+    "experiments/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/run.py": "2e26a346ccdac53f1df293238c791b54ce3e8bb51ea7354231093d495b20c5c6",
+    "experiments/runners/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/runners/geo_pipeline.py": "4ad03417e49cdeafb272a56ed035690da971cc2667acd5f43125bc43f295841f",
+    "experiments/runners/holonomy_demo.py": "40dd3b06b2028a29dbbd02191f4ad8da20e83f87a1cfc346fa072890758d38a9",
+    "experiments/runners/pythagoras_rw_grid.py": "72865f93061b69c6ad8c4cfdd98b06ade6b7135df76200f32d9f00aec090cd7d",
+    "experiments/runners/smoke.py": "d7d1dd0a74073538c62dbb77f1dd2dd55f0406652bf419af90b0a0af805cbb22",
+    "lean/Audit.lean": "92789f33ddb1599dccf0fad3b380db3baf6d64cb7f45172ca03007976724551e",
+    "lean/GeoSBT.lean": "2ad624126c8b025464e8990a0af60cdb0a1ebc609dd60d7d2b4ef36c2b1f8c25",
+    "lean/GeoSBT/LikelihoodCost.lean": "44d5401c2e536f3641bde106eaa79d9eb4ab8d19e2f95ba5962d37bade906da4",
+    "lean/GeoSBT/PathMetric.lean": "0d2431f9677154041ae7691233c8f305c3237ee343f36964c926e308360e3d68",
+    "lean/GeoSBT/Pythagoras.lean": "25c569cf4ed4918fa57eb5f103fb2a18e5957498071a3f7754bf8cdcd688080f",
+    "lean/GeoSBT/QuotientMetric.lean": "c575805f968cf9583d97ce99cae9b92c8c3e49a64d3205365fedd92da7902f25",
+    "lean/lakefile.lean": "d4582e70120271c9da9909f2f89c6c69c89257bdfc4e378b41ef66e851b0d150",
+    "scripts/audit_mathematics.py": "c3d0a244ea327c808c7b1f433f0a338e766589aee3daedb44ccdf06ba7345ffd",
+    "scripts/toy_dimension_demo.py": "b0a66b9377dd8fe13d25075c05bb36b67d47d467167c67449c75ce93fc7d9a9d",
+    "src/geo_sbt/__init__.py": "b30079fa5aeb0655932383562d12c138ccb5b5b138bfbf3f8401c5d4e58dc96f",
+    "src/geo_sbt/geometry/__init__.py": "bc2b8d64ca2969b157220a198b515a0b5ed8fe24e20d847606df0d3482994963",
+    "src/geo_sbt/geometry/dimension.py": "0e48a53b427e401c2080faea2dca253497a9fb54d870831e98a66f221dc32a56",
+    "src/geo_sbt/geometry/holonomy.py": "4c4276abc826866d92c86f26f90a3d223e9758ca39b7a75ad264c16dd58b1b10",
+    "src/geo_sbt/geometry/metric.py": "c2dbc47e9b6a5dd6a2d63033889f5b8308e57938d8f5aa27bd83db1711fa3e06",
+    "src/geo_sbt/lenses/__init__.py": "2726558896d9d7ee940553e17c5da15b39c9957e040a50938fcb4f9347e86f6b",
+    "src/geo_sbt/lenses/diffusion.py": "9a08b82b026c4c54fc8cb06960e62afe81bf739601268d4b229eab772b651aba",
+    "src/geo_sbt/lenses/kmeans.py": "1a2f8a8b980047fb85261393b25701a327f9be89bf8a0304ef11bea7f9caa704",
+    "src/geo_sbt/lenses/ladder.py": "b71664366e8a501499928bff8f96317e5f7bff8078bd4c3819bc447b9798d75b",
+    "src/geo_sbt/lenses/prototypes.py": "88bf003df0ba6faaac8d921b646caa491d460672e3dda56582422820bf2ae3e3",
+    "src/geo_sbt/lenses/stationary.py": "7952d192122b64be54c625b94e7bafcbe7dd7cff5fb5986504d88bef36ffb587",
+    "src/geo_sbt/metrics_tv.py": "6b846a8ceb69e0dffca11d0000b8a54a7c523786e767607a2f3891fc3dab94c3",
+    "src/geo_sbt/packaging.py": "0b29253f9e2d92c64fa59a6bea9bf79634e15b2acbf3c77d15a1e3c43cdcc9a8",
+    "src/geo_sbt/route_mismatch.py": "d99ff8c9401e0f1ef6896bb4cbcf4f52833dd4897a626b1ab30859e445806052",
+    "src/geo_sbt/substrates/__init__.py": "98ba68b11ea5d1fadd7156784fa2201ee417071ab31b2b00fbe8ae8c8f7af59f",
+    "src/geo_sbt/substrates/constraints.py": "25244d781652911964f9d3d5c6078e10f109e83084732020d5394e24e875b202",
+    "src/geo_sbt/substrates/grid.py": "52c74a30aaa861f98ae3962946df65d3dec8d58780449e04d80df9eafb1914cb",
+    "src/geo_sbt/substrates/knn.py": "71791a3388bdb9a011501336802bde16b2fa60e5dea9fd0d6a60b058049c78b4",
+    "src/geo_sbt/substrates/sierpinski.py": "f4d19395485f1a10a2eb38c95e17906ea2204910292fd67c1db3f9b3c1effc04",
+    "src/geo_sbt/substrates/sphere.py": "5aaa1a40c9298062ce34366d89961b185ef8070c6b96da3ce26460442c0489b3",
+    "src/geo_sbt/substrates/validate.py": "78b14171077bdba4dca037190b43fa2ed8422fd88724a76ee982ace063ecf595"
+  }
+}

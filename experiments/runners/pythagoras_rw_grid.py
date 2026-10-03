@@ -23,17 +23,23 @@ def _torus_kernel_fft(N: int, lazy: float) -> np.ndarray:
 
 
 def torus_rw_distribution(N: int, lazy: float, tau: int) -> np.ndarray:
-    """Compute P_tau on an N x N torus by FFT."""
-    if tau < 0:
-        raise ValueError("tau must be nonnegative")
-    K = _torus_kernel_fft(N, lazy)
-    F = np.fft.fft2(K)
-    P_tau = np.fft.ifft2(F**tau).real
-    P_tau[P_tau < 0.0] = 0.0
-    total = float(P_tau.sum())
-    if total > 0:
-        P_tau = P_tau / total
-    return P_tau
+    """Compute displacement probabilities by nonnegative stencil convolution.
+
+    This avoids FFT roundoff assigning positive mass to unreachable states.
+    Wraparound and parity are preserved exactly at the support level.
+    """
+    if not isinstance(tau, (int, np.integer)) or tau < 0:
+        raise ValueError("tau must be a nonnegative integer")
+    _torus_kernel_fft(N, lazy)  # validate parameters
+    prob = np.zeros((N, N), dtype=np.float64)
+    prob[0, 0] = 1.0
+    share = (1.0 - lazy) / 4.0
+    for _ in range(tau):
+        prob = lazy * prob + share * (
+            np.roll(prob, 1, axis=0) + np.roll(prob, -1, axis=0)
+            + np.roll(prob, 1, axis=1) + np.roll(prob, -1, axis=1)
+        )
+    return prob / prob.sum()
 
 
 def _fit_linear(X: np.ndarray, y: np.ndarray) -> tuple[float, float, float]:
@@ -73,17 +79,19 @@ def _compute_metrics_for_tau(
     mask = P_win > p_min_fit
     X = r2[mask].astype(np.float64)
     y = C[mask].astype(np.float64)
-    if X.size == 0:
-        X = r2.ravel().astype(np.float64)
-        y = C.ravel().astype(np.float64)
+    if X.size < 2 or np.unique(X).size < 2:
+        raise ValueError("insufficient supported displacements for quadratic fit")
     a_fit, b_fit, fit_rms = _fit_linear(X, y)
 
     C_x = C[:, D]
     C_y = C[D, :]
     dx = dxs.astype(np.float64)
 
-    aq, bq, axis_quad_rms = _fit_linear(dx * dx, C_x)
-    al, bl, axis_lin_rms = _fit_linear(np.abs(dx), C_x)
+    axis_mask = P_win[:, D] > p_min_fit
+    if axis_mask.sum() < 2 or np.unique(dx[axis_mask] ** 2).size < 2:
+        raise ValueError("insufficient supported axis points")
+    aq, bq, axis_quad_rms = _fit_linear(dx[axis_mask] ** 2, C_x[axis_mask])
+    al, bl, axis_lin_rms = _fit_linear(np.abs(dx[axis_mask]), C_x[axis_mask])
 
     n_samples = n_triangle_samples
     dx_pos = rng.integers(1, D + 1, size=n_samples)
@@ -95,18 +103,23 @@ def _compute_metrics_for_tau(
     C_dx = C[idx_dx, D]
     C_dy = C[D, idx_dy]
     C_00 = C[D, D]
-    residual = C_xy - (C_dx + C_dy - C_00)
-    pyth_rms = float(np.sqrt(np.mean(residual**2)))
-    pyth_median_abs = float(np.median(np.abs(residual)))
+    valid_triangles = (P_win[idx_dx, idx_dy] > p_min_fit) & (P_win[idx_dx, D] > p_min_fit) & (P_win[D, idx_dy] > p_min_fit)
+    if P_win[D, D] <= p_min_fit:
+        valid_triangles[:] = False
+    residual = (C_xy - (C_dx + C_dy - C_00))[valid_triangles]
+    pyth_rms = float(np.sqrt(np.mean(residual**2))) if residual.size else None
+    pyth_median_abs = float(np.median(np.abs(residual))) if residual.size else None
+    cost_variation = float(np.std(y))
+    relative_fit_rms = fit_rms / cost_variation if cost_variation > 0 else None
 
     r2_vals = r2.ravel()
     C_vals = C.ravel()
     circular_stds = []
     for r2_val in np.unique(r2_vals):
-        idx = r2_vals == r2_val
+        idx = (r2_vals == r2_val) & (P_win.ravel() > p_min_fit)
         if np.sum(idx) >= 8:
             circular_stds.append(float(np.std(C_vals[idx])))
-    circularity_mean_std = float(np.mean(circular_stds)) if circular_stds else float("nan")
+    circularity_mean_std = float(np.mean(circular_stds)) if circular_stds else None
 
     return {
         "tau": tau,
@@ -114,8 +127,13 @@ def _compute_metrics_for_tau(
         "a_fit": a_fit,
         "b_fit": b_fit,
         "fit_rms": fit_rms,
+        "fit_relative_rms": relative_fit_rms,
+        "fit_points": int(X.size),
+        "triangle_samples": int(n_samples),
+        "supported_triangle_samples": int(residual.size),
         "pyth_rms": pyth_rms,
         "pyth_median_abs": pyth_median_abs,
+        "axis_fit_points": int(axis_mask.sum()),
         "axis_quad_rms": axis_quad_rms,
         "axis_lin_rms": axis_lin_rms,
         "circularity_mean_std": circularity_mean_std,
@@ -144,9 +162,14 @@ def _compute_control_L1(D: int) -> dict:
         idx = r2_vals == r2_val
         if np.sum(idx) >= 8:
             circular_stds.append(float(np.std(C_vals[idx])))
-    circularity_mean_std = float(np.mean(circular_stds)) if circular_stds else float("nan")
+    circularity_mean_std = float(np.mean(circular_stds)) if circular_stds else None
 
     return {
+        # L1 is axis-separable, so the additive cost residual is zero.
+        # Its square fails squared-distance additivity on right triangles.
+        "pyth_median_abs_L1": 0.0,
+        "squared_distance_residual_median_L1": float(np.median(
+            2 * np.arange(1, D + 1)[:, None] * np.arange(1, D + 1)[None, :])),
         "fit_rms_L1": fit_rms,
         "axis_quad_rms_L1": axis_quad_rms,
         "axis_lin_rms_L1": axis_lin_rms,
@@ -235,12 +258,21 @@ def run_pythagoras_rw_grid(config: dict) -> Dict[str, float]:
     write_docs = bool(config.get("write_docs_artifacts", True))
     allow_aliasing = bool(config.get("allow_aliasing", False))
 
+    if not tau_list or any(t <= 0 for t in tau_list):
+        raise ValueError("tau_list must contain positive stages")
+    if not np.isfinite(D_factor) or D_factor <= 0 or D_max < 1 or n_triangle_samples < 1:
+        raise ValueError("window and sample parameters must be positive")
+    if not 0 < p_floor <= p_min_fit < 1:
+        raise ValueError("require 0 < p_floor <= p_min_fit < 1")
     tau_list = sorted(tau_list)
     if N <= 2 * max(tau_list) + 1:
         if not allow_aliasing:
             raise ValueError("N must be > 2*tau_max + 1 to avoid aliasing")
         print("warning: N is too small for tau_max; aliasing likely")
 
+    max_window = min(D_max, int(np.ceil(D_factor * np.sqrt(max(tau_list)))))
+    if 2 * max_window >= N:
+        raise ValueError("displacement window must have unique torus representatives")
     rng = np.random.default_rng(seed)
 
     per_tau: List[dict] = []
@@ -276,6 +308,8 @@ def run_pythagoras_rw_grid(config: dict) -> Dict[str, float]:
             "p_min_fit": p_min_fit,
             "n_triangle_samples": n_triangle_samples,
         },
+        "probability_method": "nonnegative_stencil_convolution",
+        "residual_scope": "axis separability on samples above p_min_fit; not a metric theorem",
         "per_tau": [
             {k: v for k, v in row.items() if k != "C_grid"} for row in per_tau
         ],
@@ -320,8 +354,8 @@ def run_pythagoras_rw_grid(config: dict) -> Dict[str, float]:
         "tau_max": float(tau_max["tau"]),
         "fit_rms_tau_min": float(tau_min["fit_rms"]),
         "fit_rms_tau_max": float(tau_max["fit_rms"]),
-        "pyth_med_tau_min": float(tau_min["pyth_median_abs"]),
-        "pyth_med_tau_max": float(tau_max["pyth_median_abs"]),
+        "pyth_med_tau_min": tau_min["pyth_median_abs"],
+        "pyth_med_tau_max": tau_max["pyth_median_abs"],
         "axis_quad_rms_tau_min": float(tau_min["axis_quad_rms"]),
         "axis_quad_rms_tau_max": float(tau_max["axis_quad_rms"]),
         "axis_lin_rms_tau_max": float(tau_max["axis_lin_rms"]),

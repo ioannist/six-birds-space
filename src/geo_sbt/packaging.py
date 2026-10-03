@@ -11,13 +11,14 @@ from .metrics_tv import tv_rows
 
 def make_C(labels: np.ndarray, m: Optional[int] = None) -> np.ndarray:
     """Build the coarse map matrix C with shape (n, m)."""
-    labels_arr = np.asarray(labels, dtype=int)
+    labels_arr = np.asarray(labels)
     if labels_arr.ndim != 1:
         raise ValueError("labels must be a 1D array")
     n = labels_arr.shape[0]
     if m is None:
         m = int(labels_arr.max()) + 1 if n > 0 else 0
     assert_labels_valid(labels_arr, m)
+    labels_arr = labels_arr.astype(int)
     C = np.zeros((n, m), dtype=np.float64)
     if n == 0 or m == 0:
         return C
@@ -39,11 +40,12 @@ def U_f(nu: np.ndarray, U: np.ndarray) -> np.ndarray:
 
 def markov_power(P: np.ndarray, tau: int) -> np.ndarray:
     """Compute P^tau using matrix_power."""
-    if tau < 0:
+    if not isinstance(tau, (int, np.integer)) or tau < 0:
         raise ValueError("tau must be nonnegative")
     P_arr = np.asarray(P, dtype=np.float64)
     if P_arr.ndim != 2 or P_arr.shape[0] != P_arr.shape[1]:
         raise ValueError("P must be a square matrix")
+    assert_row_stochastic(P_arr)
     return np.linalg.matrix_power(P_arr, tau)
 
 
@@ -82,10 +84,12 @@ def assert_row_stochastic(P: np.ndarray, tol: float = 1e-9) -> None:
     P_arr = np.asarray(P, dtype=np.float64)
     if P_arr.ndim != 2 or P_arr.shape[0] != P_arr.shape[1]:
         raise ValueError("P must be a square matrix")
+    if not np.isfinite(P_arr).all():
+        raise ValueError("P must have finite entries")
     if np.any(P_arr < -tol):
         raise ValueError("P has negative entries")
     row_sums = P_arr.sum(axis=1)
-    if not np.allclose(row_sums, 1.0, atol=tol):
+    if not np.allclose(row_sums, 1.0, atol=tol, rtol=0.0):
         raise ValueError("P rows do not sum to 1 within tolerance")
 
 
@@ -94,6 +98,10 @@ def assert_labels_valid(labels: np.ndarray, m: int) -> None:
     labels_arr = np.asarray(labels)
     if labels_arr.ndim != 1:
         raise ValueError("labels must be 1D")
+    if not isinstance(m, (int, np.integer)) or m < 0:
+        raise ValueError("m must be a nonnegative integer")
+    if not np.isfinite(labels_arr).all() or np.any(labels_arr != np.floor(labels_arr)):
+        raise ValueError("labels must be finite integers")
     if labels_arr.size == 0:
         return
     if labels_arr.min() < 0 or labels_arr.max() >= m:
@@ -105,8 +113,10 @@ def assert_prototypes_valid(U: np.ndarray, tol: float = 1e-9) -> None:
     U_arr = np.asarray(U, dtype=np.float64)
     if U_arr.ndim != 2:
         raise ValueError("U must be 2D")
+    if not np.isfinite(U_arr).all():
+        raise ValueError("U must have finite entries")
     if np.any(U_arr < -tol):
         raise ValueError("U has negative entries")
     row_sums = U_arr.sum(axis=1)
-    if not np.allclose(row_sums, 1.0, atol=tol):
+    if not np.allclose(row_sums, 1.0, atol=tol, rtol=0.0):
         raise ValueError("U rows do not sum to 1 within tolerance")

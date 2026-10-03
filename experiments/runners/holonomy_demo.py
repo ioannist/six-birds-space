@@ -61,10 +61,13 @@ def _holonomy_stats(
     )
     knn_loop = metric_knn(d_cost, k=k_loop)
     triangles = sample_triangles_from_knn(knn_loop, max_loops=max_loops, seed=seed)
-    angles = holonomy_angles_for_triangles(
-        triangles, neighborhoods, coords_list, min_overlap=min_overlap
+    loop_audit = holonomy_angles_for_triangles(
+        triangles, neighborhoods, coords_list, min_overlap=min_overlap, return_diagnostics=True
     )
+    angles = loop_audit["angles"]
     return {
+        "missing_transport": loop_audit["missing_transport"],
+        "orientation_reversing": loop_audit["orientation_reversing"],
         "triangles_sampled": int(len(triangles)),
         "triangles_evaluated": int(angles.size),
         "mean_angle": float(np.mean(angles)) if angles.size else float("nan"),
@@ -195,6 +198,8 @@ def run_holonomy_demo(config: dict) -> Dict[str, float]:
             "n_side": n_side,
             "lazy": lazy,
             "stats": {
+                "missing_transport": plane_stats["missing_transport"],
+                "orientation_reversing": plane_stats["orientation_reversing"],
                 "triangles_sampled": plane_stats["triangles_sampled"],
                 "triangles_evaluated": plane_stats["triangles_evaluated"],
                 "mean_angle": plane_stats["mean_angle"],
@@ -207,6 +212,8 @@ def run_holonomy_demo(config: dict) -> Dict[str, float]:
             "sigma": sigma,
             "self_loop": self_loop,
             "stats": {
+                "missing_transport": sphere_stats["missing_transport"],
+                "orientation_reversing": sphere_stats["orientation_reversing"],
                 "triangles_sampled": sphere_stats["triangles_sampled"],
                 "triangles_evaluated": sphere_stats["triangles_evaluated"],
                 "mean_angle": sphere_stats["mean_angle"],

@@ -1,0 +1,83 @@
+{
+  "config": {
+    "artifacts_dir": "/home/repos/six-birds-space/docs/notes/math_review_20261003/holonomy_demo/artifacts",
+    "holonomy": {
+      "expand_hops": 1,
+      "k_loop": 8,
+      "k_neigh": 24,
+      "max_loops": 800,
+      "min_overlap": 4,
+      "seed_plane": 0,
+      "seed_sphere": 1
+    },
+    "macro": {
+      "levels": [
+        128
+      ],
+      "n_eigs": 6,
+      "seed": 0,
+      "tau": 5
+    },
+    "output_root": "results",
+    "plane": {
+      "lazy": 0.5,
+      "n_side": 25
+    },
+    "plots": {
+      "enabled": true
+    },
+    "plots_dir": "/home/repos/six-birds-space/docs/notes/math_review_20261003/holonomy_demo/plots",
+    "pointer_summary_keys": [
+      "plane_median",
+      "sphere_median",
+      "median_diff",
+      "median_ratio",
+      "plane_evaluated",
+      "sphere_evaluated",
+      "tau"
+    ],
+    "run_id": "math_review_holonomy_demo",
+    "run_name": "holonomy_demo",
+    "runner": "holonomy_demo",
+    "seed": 0,
+    "sphere": {
+      "knn_k": 10,
+      "n_points": 500,
+      "self_loop": 1e-06,
+      "sigma": 0.5
+    },
+    "write_docs_artifacts": false
+  },
+  "plane": {
+    "lazy": 0.5,
+    "n_side": 25,
+    "stats": {
+      "mean_angle": 0.0029349647594028817,
+      "median_angle": 0.0016902654905841148,
+      "missing_transport": 0,
+      "orientation_reversing": 0,
+      "triangles_evaluated": 789,
+      "triangles_sampled": 789
+    }
+  },
+  "run_id": "math_review_holonomy_demo",
+  "separation": {
+    "median_diff": 0.04114623736458392,
+    "median_ratio": 25.343061840755432
+  },
+  "sphere": {
+    "knn_k": 10,
+    "n_points": 500,
+    "self_loop": 1e-06,
+    "sigma": 0.5,
+    "stats": {
+      "mean_angle": 0.04780993824319319,
+      "median_angle": 0.04283650285516804,
+      "missing_transport": 0,
+      "orientation_reversing": 0,
+      "triangles_evaluated": 800,
+      "triangles_sampled": 800
+    }
+  },
+  "timestamp_utc": "2026-10-03T09:57:36.567790+00:00"
+}

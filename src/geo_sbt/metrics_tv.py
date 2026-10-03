@@ -32,6 +32,8 @@ def is_distribution(p: np.ndarray, tol: float = 1e-9) -> bool:
     p_arr = np.asarray(p, dtype=np.float64)
     if p_arr.ndim != 1:
         return False
+    if not np.isfinite(p_arr).all():
+        return False
     if np.any(p_arr < -tol):
         return False
     return abs(float(np.sum(p_arr)) - 1.0) <= tol

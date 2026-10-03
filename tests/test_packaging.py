@@ -60,3 +60,26 @@ def test_E_maps_distributions():
 
     E = E_matrix(P, tau=2, C=C, U=U)
     assert np.allclose(E.sum(axis=1), 1.0, atol=1e-12)
+
+
+def test_invalid_labels_and_nonfinite_kernels_rejected():
+    import pytest
+    from geo_sbt.packaging import assert_row_stochastic
+    for labels in [np.array([0., .5]), np.array([0., np.nan]), np.array([-1, 0])]:
+        with pytest.raises(ValueError):
+            make_C(labels, 2)
+    for P in [np.array([[np.nan]]), np.array([[np.inf]]), np.array([[1.000001]])]:
+        with pytest.raises(ValueError):
+            assert_row_stochastic(P)
+
+
+def test_disjoint_fiber_prototype_stability_is_escape_probability():
+    from geo_sbt.packaging import prototype_stabilities
+    from geo_sbt.geometry.metric import macro_kernel
+    from geo_sbt.lenses.prototypes import prototypes_uniform
+    from geo_sbt.substrates.grid import grid_2d
+    labels = np.repeat(np.arange(4), 4)
+    C, U = make_C(labels), prototypes_uniform(labels)
+    P = grid_2d(4, lazy=.5)
+    K = macro_kernel(P, 3, C, U)
+    assert np.allclose(prototype_stabilities(P, 3, C, U), 1. - np.diag(K), atol=1e-12)

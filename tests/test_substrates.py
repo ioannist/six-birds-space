@@ -52,3 +52,11 @@ def test_anisotropic_gate_changes_kernel():
     assert info["min_entry"] >= -1e-12
     assert info["connected"] is True
     assert np.max(np.abs(P2 - P)) > 0.0
+
+
+def test_directed_connectivity_distinguishes_weak_and_strong():
+    P = np.array([[0., 1.], [0., 1.]])
+    info = validate_kernel(P)
+    assert info['valid']
+    assert info['weakly_connected']
+    assert not info['strongly_connected']

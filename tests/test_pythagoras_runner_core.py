@@ -16,3 +16,21 @@ def test_fft_distribution_core():
     assert P_tau.min() >= -1e-12
     assert np.isfinite(P_tau[0, 0])
     assert P_tau[0, 0] > 0.0
+
+
+def test_support_and_parity_are_not_fft_roundoff():
+    p = torus_rw_distribution(32, lazy=.5, tau=4)
+    d = np.abs(np.fft.fftfreq(32) * 32)
+    assert np.all(p[d[:, None] + d[None, :] > 4] == 0)
+    p = torus_rw_distribution(32, lazy=0., tau=4)
+    odd = (d[:, None] + d[None, :]) % 2 == 1
+    assert np.all(p[odd] == 0)
+
+
+def test_l1_control_passes_separability_but_fails_squared_distance():
+    from experiments.runners.pythagoras_rw_grid import _compute_control_L1
+    result = _compute_control_L1(5)
+    assert result['pyth_median_abs_L1'] == 0.
+    assert result['squared_distance_residual_median_L1'] > 0.
+    assert result['axis_lin_rms_L1'] < 1e-12
+    assert result['axis_quad_rms_L1'] > .1

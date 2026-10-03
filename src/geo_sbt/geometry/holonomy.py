@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-import heapq
-from typing import List, Tuple
-
 import numpy as np
 
 
@@ -36,6 +33,10 @@ def classical_mds(D: np.ndarray, dim: int = 2) -> np.ndarray:
     D_arr = np.asarray(D, dtype=np.float64)
     if D_arr.ndim != 2 or D_arr.shape[0] != D_arr.shape[1]:
         raise ValueError("D must be square")
+    if not np.isfinite(D_arr).all() or np.any(D_arr < 0):
+        raise ValueError("MDS requires finite nonnegative distances")
+    if not np.allclose(D_arr, D_arr.T, atol=1e-10, rtol=0) or not np.allclose(np.diag(D_arr), 0., atol=1e-10, rtol=0):
+        raise ValueError("MDS requires symmetric distances with zero diagonal")
     n = D_arr.shape[0]
     if dim <= 0 or dim >= n:
         raise ValueError("dim must be in [1, n-1]")
@@ -140,7 +141,13 @@ def transport_rotation(
     if np.linalg.matrix_rank(B - B.mean(axis=0)) < 2:
         return None
 
-    return procrustes_rotation(A, B, enforce_proper=True)
+    # Local MDS charts have arbitrary O(2) gauges, including reflections.
+    # Forcing SO(2) here turns a chart reflection into spurious loop residue.
+    # Full-rank cross covariance is needed for a unique polar alignment.
+    cross = (A - A.mean(axis=0)).T @ (B - B.mean(axis=0))
+    if np.linalg.matrix_rank(cross) < 2:
+        return None
+    return procrustes_rotation(A, B, enforce_proper=False)
 
 
 def sample_triangles_from_knn(
@@ -178,6 +185,10 @@ def rotation_angle(R: np.ndarray) -> float:
     R_arr = np.asarray(R, dtype=np.float64)
     if R_arr.shape != (2, 2):
         raise ValueError("R must be 2x2")
+    if not np.isfinite(R_arr).all() or not np.allclose(R_arr.T @ R_arr, np.eye(2), atol=1e-8):
+        raise ValueError("R must be an orthogonal matrix")
+    if np.linalg.det(R_arr) < 0:
+        raise ValueError("an orientation-reversing loop has no rotation angle")
     angle = float(np.arctan2(R_arr[1, 0], R_arr[0, 0]))
     angle = abs(angle)
     if angle > np.pi:
@@ -191,15 +202,27 @@ def holonomy_angles_for_triangles(
     coords_list: list[np.ndarray],
     *,
     min_overlap: int = 4,
-) -> np.ndarray:
+    return_diagnostics: bool = False,
+) -> np.ndarray | dict:
     """Compute holonomy angles for triangle loops."""
     angles = []
+    missing = 0
+    reversing = 0
     for x, y, z in triangles:
         R_xy = transport_rotation(x, y, neighborhoods, coords_list, min_overlap=min_overlap)
         R_yz = transport_rotation(y, z, neighborhoods, coords_list, min_overlap=min_overlap)
         R_zx = transport_rotation(z, x, neighborhoods, coords_list, min_overlap=min_overlap)
         if R_xy is None or R_yz is None or R_zx is None:
+            missing += 1
             continue
         H = R_xy @ R_yz @ R_zx
+        if np.linalg.det(H) < 0:
+            reversing += 1
+            continue
         angles.append(rotation_angle(H))
-    return np.asarray(angles, dtype=np.float64)
+    result = np.asarray(angles, dtype=np.float64)
+    if return_diagnostics:
+        return {"angles": result, "triangles_sampled": len(triangles),
+                "triangles_evaluated": len(result), "missing_transport": missing,
+                "orientation_reversing": reversing}
+    return result

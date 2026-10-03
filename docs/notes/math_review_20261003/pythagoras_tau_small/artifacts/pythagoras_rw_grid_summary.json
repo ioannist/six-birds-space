@@ -1,0 +1,189 @@
+{
+  "config": {
+    "D_factor": 3.0,
+    "D_max": 30,
+    "N": 512,
+    "lazy": 0.5,
+    "n_triangle_samples": 2000,
+    "p_floor": 1e-300,
+    "p_min_fit": 1e-20,
+    "tau_list": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+    ]
+  },
+  "control_L1": {
+    "per_tau": [
+      {
+        "D": 3,
+        "axis_lin_rms_L1": 2.234375941574848e-17,
+        "axis_quad_rms_L1": 0.2857142857142857,
+        "circularity_mean_std_L1": 0.0,
+        "fit_rms_L1": 0.40406101782088427,
+        "pyth_median_abs_L1": 0.0,
+        "squared_distance_residual_median_L1": 6.0,
+        "tau": 1
+      },
+      {
+        "D": 5,
+        "axis_lin_rms_L1": 6.988573483114321e-16,
+        "axis_quad_rms_L1": 0.42190498262932463,
+        "circularity_mean_std_L1": 0.09428090415820634,
+        "fit_rms_L1": 0.5966637484671761,
+        "pyth_median_abs_L1": 0.0,
+        "squared_distance_residual_median_L1": 16.0,
+        "tau": 2
+      },
+      {
+        "D": 6,
+        "axis_lin_rms_L1": 2.0077125864306461e-19,
+        "axis_quad_rms_L1": 0.49090709859536347,
+        "circularity_mean_std_L1": 0.0628539361054709,
+        "fit_rms_L1": 0.6942474766987891,
+        "pyth_median_abs_L1": 0.0,
+        "squared_distance_residual_median_L1": 20.0,
+        "tau": 4
+      },
+      {
+        "D": 9,
+        "axis_lin_rms_L1": 1.9534214238447616e-15,
+        "axis_quad_rms_L1": 0.70116442841131,
+        "circularity_mean_std_L1": 0.1142828847989449,
+        "fit_rms_L1": 0.9915962441128537,
+        "pyth_median_abs_L1": 0.0,
+        "squared_distance_residual_median_L1": 40.0,
+        "tau": 8
+      },
+      {
+        "D": 12,
+        "axis_lin_rms_L1": 3.6734423963841175e-15,
+        "axis_quad_rms_L1": 0.9141211031938534,
+        "circularity_mean_std_L1": 0.16018419944800416,
+        "fit_rms_L1": 1.2927624617882032,
+        "pyth_median_abs_L1": 0.0,
+        "squared_distance_residual_median_L1": 66.0,
+        "tau": 16
+      },
+      {
+        "D": 17,
+        "axis_lin_rms_L1": 2.244097133735741e-15,
+        "axis_quad_rms_L1": 1.2716227899348385,
+        "circularity_mean_std_L1": 0.2904308729233963,
+        "fit_rms_L1": 1.798346195748562,
+        "pyth_median_abs_L1": 0.0,
+        "squared_distance_residual_median_L1": 126.0,
+        "tau": 32
+      }
+    ]
+  },
+  "per_tau": [
+    {
+      "D": 3,
+      "a_fit": 1.3862943611198901,
+      "axis_fit_points": 3,
+      "axis_lin_rms": 4.1043229949538597e-16,
+      "axis_quad_rms": 4.1043229949538597e-16,
+      "b_fit": 0.6931471805599453,
+      "circularity_mean_std": null,
+      "fit_points": 5,
+      "fit_relative_rms": 7.163079423454646e-16,
+      "fit_rms": 3.9720546451956367e-16,
+      "pyth_median_abs": null,
+      "pyth_rms": null,
+      "supported_triangle_samples": 0,
+      "tau": 1,
+      "triangle_samples": 2000
+    },
+    {
+      "D": 5,
+      "a_fit": 0.6954291350804589,
+      "axis_fit_points": 5,
+      "axis_lin_rms": 0.27804622497004355,
+      "axis_quad_rms": 0.07156514717878139,
+      "b_fit": 1.5774905491469045,
+      "circularity_mean_std": null,
+      "fit_points": 13,
+      "fit_relative_rms": 0.3373558780572259,
+      "fit_rms": 0.3364414521205268,
+      "pyth_median_abs": 0.47000362924573613,
+      "pyth_rms": 0.4700036292457362,
+      "supported_triangle_samples": 91,
+      "tau": 2,
+      "triangle_samples": 2000
+    },
+    {
+      "D": 6,
+      "a_fit": 0.4259586648410762,
+      "axis_fit_points": 9,
+      "axis_lin_rms": 0.5821341992625044,
+      "axis_quad_rms": 0.05418216997465784,
+      "b_fit": 2.209401720914788,
+      "circularity_mean_std": 0.0,
+      "fit_points": 41,
+      "fit_relative_rms": 0.2463918155139779,
+      "fit_rms": 0.4710618809225611,
+      "pyth_median_abs": 0.5920675818185654,
+      "pyth_rms": 0.7036079222920726,
+      "supported_triangle_samples": 318,
+      "tau": 4,
+      "triangle_samples": 2000
+    },
+    {
+      "D": 9,
+      "a_fit": 0.2386211901824295,
+      "axis_fit_points": 17,
+      "axis_lin_rms": 1.168957733177252,
+      "axis_quad_rms": 0.07184945886266246,
+      "b_fit": 2.839826804261686,
+      "circularity_mean_std": 0.05994915337076811,
+      "fit_points": 145,
+      "fit_relative_rms": 0.19892087756699892,
+      "fit_rms": 0.7425007306536884,
+      "pyth_median_abs": 0.5677736837271983,
+      "pyth_rms": 1.1605620274568664,
+      "supported_triangle_samples": 693,
+      "tau": 8,
+      "triangle_samples": 2000
+    },
+    {
+      "D": 12,
+      "a_fit": 0.13636404029225466,
+      "axis_fit_points": 25,
+      "axis_lin_rms": 1.2670428417784425,
+      "axis_quad_rms": 0.07098962716754045,
+      "b_fit": 2.8604282289778133,
+      "circularity_mean_std": 0.14461803380564217,
+      "fit_points": 481,
+      "fit_relative_rms": 0.1893369523264514,
+      "fit_rms": 1.1755913192846588,
+      "pyth_median_abs": 0.6045573593019995,
+      "pyth_rms": 1.946080816145105,
+      "supported_triangle_samples": 1500,
+      "tau": 16,
+      "triangle_samples": 2000
+    },
+    {
+      "D": 17,
+      "a_fit": 0.07266965107948536,
+      "axis_fit_points": 35,
+      "axis_lin_rms": 1.2911994590351168,
+      "axis_quad_rms": 0.06506428132053528,
+      "b_fit": 2.713414676722169,
+      "circularity_mean_std": 0.10366555677289867,
+      "fit_points": 1201,
+      "fit_relative_rms": 0.13387905938779338,
+      "fit_rms": 1.190176350463076,
+      "pyth_median_abs": 0.4237281657193783,
+      "pyth_rms": 2.4783835179423552,
+      "supported_triangle_samples": 1959,
+      "tau": 32,
+      "triangle_samples": 2000
+    }
+  ],
+  "probability_method": "nonnegative_stencil_convolution",
+  "residual_scope": "axis separability on samples above p_min_fit; not a metric theorem"
+}

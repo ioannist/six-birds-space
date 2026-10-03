@@ -15,10 +15,21 @@ def _kmeans_single(
     if k > n:
         raise ValueError("k must be <= number of points")
     centroids = X[rng.choice(n, size=k, replace=False)]
-    labels = np.zeros(n, dtype=int)
+    labels = np.full(n, -1, dtype=int)
     for _ in range(max_iter):
         d2 = np.sum((X[:, None, :] - centroids[None, :, :]) ** 2, axis=2)
         new_labels = np.argmin(d2, axis=1)
+        # Repair empty cells by moving a point from a nonsingleton cell.
+        # This also handles repeated coordinates, where reseeding centroids
+        # alone cannot defeat argmin ties.
+        counts = np.bincount(new_labels, minlength=k)
+        for empty in np.flatnonzero(counts == 0):
+            candidates = np.flatnonzero(counts[new_labels] > 1)
+            losses = d2[candidates, new_labels[candidates]]
+            point = candidates[np.argmax(losses)]
+            counts[new_labels[point]] -= 1
+            new_labels[point] = empty
+            counts[empty] += 1
         if np.array_equal(new_labels, labels):
             break
         labels = new_labels
@@ -42,11 +53,15 @@ def kmeans(
 ) -> np.ndarray:
     """Simple deterministic k-means clustering.
 
-    Returns labels in 0..k-1. Empty clusters are re-seeded deterministically.
+    Returns a surjective labeling in 0..k-1. Empty cells are split deterministically.
     """
     X_arr = np.asarray(X, dtype=np.float64)
     if X_arr.ndim != 2:
         raise ValueError("X must be 2D")
+    if not np.isfinite(X_arr).all():
+        raise ValueError("X must have finite entries")
+    if max_iter <= 0:
+        raise ValueError("max_iter must be positive")
     n = X_arr.shape[0]
     if n == 0:
         raise ValueError("X must be non-empty")

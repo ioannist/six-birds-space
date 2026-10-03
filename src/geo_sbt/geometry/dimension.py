@@ -5,6 +5,7 @@ from __future__ import annotations
 import numpy as np
 
 from ..packaging import Q_f
+from ..metrics_tv import is_distribution
 
 
 def shannon_entropy(p: np.ndarray, *, base: float = np.e) -> float:
@@ -12,6 +13,10 @@ def shannon_entropy(p: np.ndarray, *, base: float = np.e) -> float:
     p_arr = np.asarray(p, dtype=np.float64)
     if p_arr.ndim != 1:
         raise ValueError("p must be 1D")
+    if not is_distribution(p_arr) or np.any(p_arr < 0):
+        raise ValueError("p must be a probability distribution")
+    if not np.isfinite(base) or base <= 0 or base == 1:
+        raise ValueError("entropy base must be positive and different from 1")
     mask = p_arr > 0.0
     if not np.any(mask):
         return 0.0
@@ -58,7 +63,11 @@ def information_dimension_slope(
     *,
     fit_slice: slice | None = None,
 ) -> dict:
-    """Fit H ≈ a * log(1/epsilon) + b and return slope/intercept/r2."""
+    """Fit H (in nats) ≈ a * log(1/epsilon) + b.
+
+    This is a finite slope proxy. Separate scale normalization is needed before
+    interpreting it as an information dimension across changing metrics.
+    """
     H = np.asarray(entropies, dtype=np.float64)
     eps = np.asarray(epsilons, dtype=np.float64)
     if H.ndim != 1 or eps.ndim != 1:
@@ -68,10 +77,13 @@ def information_dimension_slope(
     if fit_slice is not None:
         H = H[fit_slice]
         eps = eps[fit_slice]
-    if H.size == 0:
-        raise ValueError("no points for fit")
-
-    x = np.log(1.0 / eps)
+    if H.size < 2:
+        raise ValueError("at least two points are required for fit")
+    if not np.isfinite(H).all() or not np.isfinite(eps).all() or np.any(eps <= 0):
+        raise ValueError("entropies and positive scales must be finite")
+    x = -np.log(eps)
+    if np.ptp(x) <= 1e-12:
+        raise ValueError("scale regression requires distinct scales")
     y = H
     coeffs = np.polyfit(x, y, deg=1)
     slope = float(coeffs[0])
@@ -105,6 +117,10 @@ def ball_growth_curve(
         centers_idx = np.asarray(centers, dtype=int)
 
     radii_arr = np.asarray(radii, dtype=np.float64)
+    if radii_arr.ndim != 1 or not np.isfinite(radii_arr).all() or np.any(radii_arr < 0):
+        raise ValueError("radii must be finite nonnegative numbers")
+    if centers_idx.ndim != 1 or not centers_idx.size or np.any(centers_idx < 0) or np.any(centers_idx >= n):
+        raise ValueError("centers must be nonempty and in range")
     mean_counts = []
     counts_per_center = []
     for r in radii_arr:
@@ -131,7 +147,11 @@ def ball_growth_dimension(
     r_min_quantile: float = 0.05,
     r_max_quantile: float = 0.5,
 ) -> dict:
-    """Estimate ball-growth dimension from a distance matrix."""
+    """Estimate a finite ball-growth slope in a nonsaturated radius range.
+
+    Insufficient usable radii raise instead of fitting saturated counts and
+    presenting the result as a valid local growth exponent.
+    """
     d_arr = np.asarray(d, dtype=np.float64)
     if d_arr.ndim != 2 or d_arr.shape[0] != d_arr.shape[1]:
         raise ValueError("d must be square")
@@ -139,7 +159,11 @@ def ball_growth_dimension(
     if n == 0:
         raise ValueError("empty distance matrix")
 
-    mask = np.isfinite(d_arr)
+    if n_radii < 2 or centers < 1:
+        raise ValueError("require at least two radii and one center")
+    if not 0 <= r_min_quantile < r_max_quantile <= 1:
+        raise ValueError("radius quantiles must satisfy 0 <= min < max <= 1")
+    mask = np.isfinite(d_arr) & (d_arr > 0)
     mask &= ~np.eye(n, dtype=bool)
     vals = d_arr[mask]
     if vals.size == 0:
@@ -167,9 +191,8 @@ def ball_growth_dimension(
     x = np.log(radii[valid])
     y = np.log(mean_counts[valid])
 
-    if x.size < 2:
-        x = np.log(radii)
-        y = np.log(mean_counts)
+    if x.size < 2 or np.ptp(x) <= 1e-12:
+        raise ValueError("insufficient distinct nonsaturated radii for ball-growth fit")
 
     slope = 0.0
     if x.size >= 2:

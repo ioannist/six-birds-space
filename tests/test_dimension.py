@@ -81,3 +81,15 @@ def test_ball_growth_separation_grid_vs_sierpinski():
     assert np.isfinite(dim_grid)
     assert np.isfinite(dim_sier)
     assert abs(dim_grid - dim_sier) >= 0.1
+
+
+def test_degenerate_dimension_fits_rejected():
+    import pytest
+    with pytest.raises(ValueError):
+        information_dimension_slope(np.array([1., 2.]), np.ones(2))
+    with pytest.raises(ValueError):
+        information_dimension_slope(np.array([1., 2.]), np.array([0., 1.]))
+    with pytest.raises(ValueError):
+        ball_growth_dimension(np.ones((4, 4)) - np.eye(4))
+    with pytest.raises(ValueError):
+        shannon_entropy(np.array([-.1, 1.1]))

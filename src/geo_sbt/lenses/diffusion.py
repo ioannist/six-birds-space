@@ -36,7 +36,7 @@ def diffusion_coordinates(P: np.ndarray, n_eigs: int) -> np.ndarray:
 
     if eigsh is not None and n > k + 1:
         try:
-            evals, evecs = eigsh(L, k=min(k + 1, n - 1), which="SM")
+            evals, evecs = eigsh(L, k=min(k + 1, n - 1), which="SM", v0=np.random.default_rng(0).normal(size=n))
         except Exception:
             evals, evecs = np.linalg.eigh(L)
     else:

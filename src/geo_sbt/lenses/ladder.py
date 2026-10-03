@@ -12,33 +12,20 @@ from .kmeans import kmeans
 
 
 def _normalize_levels(levels, n: int) -> List[int]:
+    if n <= 0:
+        raise ValueError("substrate must be nonempty")
     if isinstance(levels, int):
         L = levels
-        if L <= 0:
-            raise ValueError("levels must be positive")
+        if L <= 0 or L > n:
+            raise ValueError("number of levels must be in [1, n]")
         if L == 1:
-            return [min(max(1, n), n)]
-        m_min = 2
+            return [n]
         m_max = min(n, 2 ** (L - 1))
-        if m_max < m_min:
-            m_max = m_min
-        counts = []
-        for i in range(L):
-            t = i / (L - 1)
-            val = int(round(m_min * (m_max / m_min) ** t))
-            counts.append(val)
-        counts[0] = max(1, counts[0])
+        counts = np.rint(np.geomspace(1, m_max, L)).astype(int).tolist()
         for i in range(1, L):
-            if counts[i] <= counts[i - 1]:
-                counts[i] = counts[i - 1] + 1
-        counts[-1] = min(counts[-1], n)
-        for i in range(L - 2, -1, -1):
-            if counts[i] >= counts[i + 1]:
-                counts[i] = counts[i + 1] - 1
-        if counts[0] <= 0:
-            counts[0] = 1
-        if counts[-1] > n:
-            counts[-1] = n
+            counts[i] = max(counts[i], counts[i - 1] + 1)
+        for i in range(L - 1, -1, -1):
+            counts[i] = min(counts[i], n - (L - 1 - i))
         return counts
 
     if isinstance(levels, Iterable):

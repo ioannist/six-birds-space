@@ -7,7 +7,7 @@ from typing import List, Tuple
 
 import numpy as np
 
-from ..packaging import markov_power
+from ..packaging import assert_row_stochastic, markov_power
 
 try:  # optional
     from scipy.sparse.csgraph import dijkstra as sp_dijkstra  # type: ignore
@@ -30,10 +30,23 @@ def cost_matrix_from_kernel(
     eps_edge: float = 0.0,
     symmetrize: str = "none",
 ) -> np.ndarray:
-    """Build a cost matrix from a kernel."""
+    """Build nonnegative edge costs -log(max(W, eta)) on W > eps_edge.
+
+    eta is a probability floor, not additive smoothing. Absent edges stay
+    absent. Diagonal zero represents the empty protocol. Weight averaging
+    is symmetric but need not preserve row stochasticity.
+    """
     P_arr = np.asarray(P_hat, dtype=np.float64)
     if P_arr.ndim != 2 or P_arr.shape[0] != P_arr.shape[1]:
         raise ValueError("P_hat must be a square matrix")
+
+    assert_row_stochastic(P_arr)
+    if not np.isfinite(eta) or not 0.0 < eta <= 1.0:
+        raise ValueError("eta must be in (0, 1]")
+    if not np.isfinite(eps_edge) or eps_edge < 0.0:
+        raise ValueError("eps_edge must be finite and nonnegative")
+    # Clip only tolerance-sized floating errors accepted by the validator.
+    P_arr = np.clip(P_arr, 0.0, 1.0)
 
     if symmetrize == "none":
         W = P_arr
@@ -71,6 +84,8 @@ def adjacency_from_cost(cost: np.ndarray) -> List[List[Tuple[int, float]]]:
     cost_arr = np.asarray(cost, dtype=np.float64)
     if cost_arr.ndim != 2 or cost_arr.shape[0] != cost_arr.shape[1]:
         raise ValueError("cost must be a square matrix")
+    if np.isnan(cost_arr).any() or np.any(cost_arr < 0.0):
+        raise ValueError("costs must be nonnegative or positive infinity")
     n = cost_arr.shape[0]
     adj: List[List[Tuple[int, float]]] = [[] for _ in range(n)]
     for i in range(n):
@@ -106,13 +121,21 @@ def all_pairs_shortest_path(cost: np.ndarray) -> np.ndarray:
     if cost_arr.ndim != 2 or cost_arr.shape[0] != cost_arr.shape[1]:
         raise ValueError("cost must be a square matrix")
 
+    adj = adjacency_from_cost(cost_arr)  # validate before either backend
+    if cost_arr.size == 0:
+        return cost_arr.copy()
     if sp_dijkstra is not None:
         try:
-            return sp_dijkstra(cost_arr, directed=True, unweighted=False)
+            from scipy.sparse import csr_matrix
+
+            # Dense csgraph treats zero as no edge. Explicit sparse entries
+            # preserve zero-cost transitions, including separation classes.
+            rows, cols = np.where(np.isfinite(cost_arr) & ~np.eye(len(cost_arr), dtype=bool))
+            graph = csr_matrix((cost_arr[rows, cols], (rows, cols)), shape=cost_arr.shape)
+            return sp_dijkstra(graph, directed=True, unweighted=False)
         except Exception:
             pass
 
-    adj = adjacency_from_cost(cost_arr)
     n = cost_arr.shape[0]
     dists = np.zeros((n, n), dtype=np.float64)
     for i in range(n):
@@ -130,7 +153,10 @@ def distortion_between_scales(
     """Compute distortion between fine distances and projected coarse distances."""
     d_f = np.asarray(d_fine, dtype=np.float64)
     d_c = np.asarray(d_coarse, dtype=np.float64)
-    r = np.asarray(r_fine_to_coarse, dtype=int)
+    r_raw = np.asarray(r_fine_to_coarse)
+    if not np.isfinite(r_raw).all() or np.any(r_raw != np.floor(r_raw)):
+        raise ValueError("refinement map must contain finite integers")
+    r = r_raw.astype(int)
     if d_f.ndim != 2 or d_c.ndim != 2:
         raise ValueError("d_fine and d_coarse must be 2D")
     if d_f.shape[0] != d_f.shape[1] or d_c.shape[0] != d_c.shape[1]:
@@ -138,10 +164,16 @@ def distortion_between_scales(
     if r.ndim != 1 or r.shape[0] != d_f.shape[0]:
         raise ValueError("refinement map length mismatch")
 
+    if np.any(r < 0) or np.any(r >= len(d_c)):
+        raise ValueError("refinement map is out of range")
+    if np.isnan(d_f).any() or np.isnan(d_c).any() or np.any(d_f < 0) or np.any(d_c < 0):
+        raise ValueError("distances must be nonnegative or positive infinity")
     proj = d_c[r[:, None], r[None, :]]
     mask = np.isfinite(d_f) & np.isfinite(proj)
     if not np.any(mask):
-        return {"max_abs_diff": float("inf"), "alpha": 1.0, "finite_pairs": 0}
+        return {"max_abs_diff": float("inf"), "alpha": 1.0, "finite_pairs": 0,
+                "unmatched_pairs": int(np.sum(np.isfinite(d_f) != np.isfinite(proj))),
+                "finite_max_abs_diff": None, "disconnected": True}
 
     alpha = 1.0
     if rescale == "lstsq":
@@ -157,10 +189,20 @@ def distortion_between_scales(
     else:
         raise ValueError("rescale must be None, 'lstsq', or 'median'")
 
-    diff = np.abs(d_f - alpha * proj)
-    max_abs_diff = float(np.max(diff[mask]))
+    diff = np.abs(d_f[mask] - alpha * proj[mask])
+    finite_max = float(np.max(diff))
+    unmatched = int(np.sum(np.isfinite(d_f) != np.isfinite(proj)))
+    # An unmatched reachable pair has infinite distortion; never hide it by
+    # restricting the supremum to pairs finite in both metrics.
+    disconnected = bool(np.any(~np.isfinite(d_f)) or np.any(~np.isfinite(proj)))
+    # The global finite-metric audit fails for any disconnection. Keep the
+    # finite-pair diagnostic separately; infinity minus infinity is undefined.
+    max_abs_diff = float("inf") if disconnected else finite_max
     return {
         "max_abs_diff": max_abs_diff,
         "alpha": alpha,
         "finite_pairs": int(np.sum(mask)),
+        "unmatched_pairs": unmatched,
+        "finite_max_abs_diff": finite_max,
+        "disconnected": disconnected,
     }

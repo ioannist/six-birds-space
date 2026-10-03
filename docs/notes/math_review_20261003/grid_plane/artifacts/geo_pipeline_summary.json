@@ -1,0 +1,153 @@
+{
+  "constraints": null,
+  "distortions": [
+    {
+      "alpha": 1.367592526266752,
+      "coarse_m": 4,
+      "disconnected": false,
+      "fine_m": 8,
+      "raw": 3.8599570170700996,
+      "rescaled": 3.7107316482509707,
+      "unmatched_pairs": 0
+    },
+    {
+      "alpha": 1.2942667393702454,
+      "coarse_m": 8,
+      "disconnected": false,
+      "fine_m": 16,
+      "raw": 5.4431595056708595,
+      "rescaled": 3.6560670789655223,
+      "unmatched_pairs": 0
+    },
+    {
+      "alpha": 1.23287819297173,
+      "coarse_m": 16,
+      "disconnected": false,
+      "fine_m": 32,
+      "raw": 5.922504550231064,
+      "rescaled": 4.606993375902476,
+      "unmatched_pairs": 0
+    },
+    {
+      "alpha": 1.3685809665128963,
+      "coarse_m": 32,
+      "disconnected": false,
+      "fine_m": 64,
+      "raw": 8.780275381036327,
+      "rescaled": 5.368924731970196,
+      "unmatched_pairs": 0
+    },
+    {
+      "alpha": 1.348285051120187,
+      "coarse_m": 64,
+      "disconnected": false,
+      "fine_m": 128,
+      "raw": 9.40815574611831,
+      "rescaled": 6.0502285842134285,
+      "unmatched_pairs": 0
+    }
+  ],
+  "holonomy": null,
+  "lens": {
+    "levels": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "n_eigs": 6,
+    "seed": 0
+  },
+  "metric": {
+    "eps_edge": 1e-15,
+    "eta": 1e-12,
+    "symmetrize": "weight_avg"
+  },
+  "n_micro": 625,
+  "per_level": [
+    {
+      "delta": 0.11169712826898703,
+      "inf_count": 0,
+      "m": 4,
+      "mean_finite_dist": 3.868787925038649,
+      "stab_max": 0.111697128268987,
+      "stab_mean": 0.0881359616175034
+    },
+    {
+      "delta": 0.27956504579276886,
+      "inf_count": 0,
+      "m": 8,
+      "mean_finite_dist": 4.882153324879113,
+      "stab_max": 0.3253263084416106,
+      "stab_mean": 0.15575521895538294
+    },
+    {
+      "delta": 0.33363321741013585,
+      "inf_count": 0,
+      "m": 16,
+      "mean_finite_dist": 6.021285868772963,
+      "stab_max": 0.6428222656249999,
+      "stab_mean": 0.28105788857986413
+    },
+    {
+      "delta": 0.3329534482446769,
+      "inf_count": 0,
+      "m": 32,
+      "mean_finite_dist": 7.509966049088087,
+      "stab_max": 0.7180989583333333,
+      "stab_mean": 0.39283495501129573
+    },
+    {
+      "delta": 0.325156128513147,
+      "inf_count": 0,
+      "m": 64,
+      "mean_finite_dist": 9.916569719399385,
+      "stab_max": 0.7825927734375,
+      "stab_mean": 0.5109798038262249
+    },
+    {
+      "delta": 0.31100720832328693,
+      "inf_count": 0,
+      "m": 128,
+      "mean_finite_dist": 13.293776656182937,
+      "stab_max": 0.7825927734375,
+      "stab_mean": 0.6251987755703532
+    }
+  ],
+  "prototypes": "uniform",
+  "route_mismatch": [
+    {
+      "coarse_m": 4,
+      "fine_m": 16,
+      "mid_m": 8,
+      "tv_sup": 0.08812809759351414
+    },
+    {
+      "coarse_m": 8,
+      "fine_m": 32,
+      "mid_m": 16,
+      "tv_sup": 0.10996267966217632
+    },
+    {
+      "coarse_m": 16,
+      "fine_m": 64,
+      "mid_m": 32,
+      "tv_sup": 0.1390424125872361
+    },
+    {
+      "coarse_m": 32,
+      "fine_m": 128,
+      "mid_m": 64,
+      "tv_sup": 0.12902226105716863
+    }
+  ],
+  "route_mismatch_definition": "U_fine P^(2tau) C_coarse versus U_fine P^tau C_mid U_mid P^tau C_coarse",
+  "substrate": {
+    "kind": "grid",
+    "lazy": 0.5,
+    "n_side": 25
+  },
+  "tau": 5
+}
