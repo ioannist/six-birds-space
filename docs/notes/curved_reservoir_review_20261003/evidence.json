@@ -1,0 +1,399 @@
+{
+  "actual_Markov_metric_transport_controls": [
+    {
+      "actual_Markov_metric_error": 0.10107867320510344,
+      "actual_angle_error": 0.0015046930436418172,
+      "angle_from_Markov_metric_reconstruction": 0.021113792828101264,
+      "area_normalized_angle_from_Markov_metric": 1.0767344273924453,
+      "beta": 64.0,
+      "derived_uniform_metric_error_bound": 0.20815512648261505,
+      "metric_recognition_residuals": {
+        "landmark_orthogonality_error": 0.10107867320510344,
+        "metric_reconstruction_error": 0.11240541252904857,
+        "radial_error": 0.03305713954645717
+      },
+      "proved_angle_error_bound": 91.19969520331,
+      "reservoir_volume": 8,
+      "scope": "Finite Markov-to-metric-to-transport control. Universal shrinking-loop theorem is written separately.",
+      "spherical_gnomonic_triangle_side": 0.2,
+      "tau": 5,
+      "true_spherical_area": 0.019609099784459447
+    },
+    {
+      "actual_Markov_metric_error": 0.05420367320510344,
+      "actual_angle_error": 0.0016292953780918384,
+      "angle_from_Markov_metric_reconstruction": 0.021238395162551285,
+      "area_normalized_angle_from_Markov_metric": 1.0830887392078592,
+      "beta": 128.0,
+      "derived_uniform_metric_error_bound": 0.10407756324130753,
+      "metric_recognition_residuals": {
+        "landmark_orthogonality_error": 0.05420367320510344,
+        "metric_reconstruction_error": 0.06217593498412022,
+        "radial_error": 0.018297143882763156
+      },
+      "proved_angle_error_bound": 45.599847601655,
+      "reservoir_volume": 8,
+      "scope": "Finite Markov-to-metric-to-transport control. Universal shrinking-loop theorem is written separately.",
+      "spherical_gnomonic_triangle_side": 0.2,
+      "tau": 5,
+      "true_spherical_area": 0.019609099784459447
+    },
+    {
+      "actual_Markov_metric_error": 0.026859923205103664,
+      "actual_angle_error": 0.0006568270257140997,
+      "angle_from_Markov_metric_reconstruction": 0.020265926810173546,
+      "area_normalized_angle_from_Markov_metric": 1.033496031584002,
+      "beta": 256.0,
+      "derived_uniform_metric_error_bound": 0.052038781620653764,
+      "metric_recognition_residuals": {
+        "landmark_orthogonality_error": 0.026859923205103664,
+        "metric_reconstruction_error": 0.031136759965875394,
+        "radial_error": 0.009356834299178662
+      },
+      "proved_angle_error_bound": 22.7999238008275,
+      "reservoir_volume": 8,
+      "scope": "Finite Markov-to-metric-to-transport control. Universal shrinking-loop theorem is written separately.",
+      "spherical_gnomonic_triangle_side": 0.2,
+      "tau": 5,
+      "true_spherical_area": 0.019609099784459447
+    }
+  ],
+  "exact_moment_constant_stage_five": "32805/32768",
+  "finite_ladders": [
+    {
+      "all_microstate_route_bound": 1.953125,
+      "beta": 0.25,
+      "coarsest_level": 0,
+      "contact_quantization_maximum_exponent": 1,
+      "distortions": [
+        {
+          "analytic_bound": 183.52925592730801,
+          "uniform_distortion": 37.56176512239435
+        },
+        {
+          "analytic_bound": 161.24607062012845,
+          "uniform_distortion": 45.56176512239435
+        }
+      ],
+      "eps_edge": 0,
+      "equal_time_all_microstate_route_mismatch": 0.02398328507164658,
+      "equal_time_prototype_route_mismatch": 0.0020723554747236732,
+      "eta": 1.5894571940104166e-07,
+      "exact_stage_five_polynomial_coefficients": [
+        "5",
+        "7345/1024",
+        "109/16",
+        "31/8",
+        "1"
+      ],
+      "fine_reference_contains_antipodal_axis_pairs": true,
+      "gateway_rate_bound": 0.125,
+      "holding_probability_at_least": 0.5,
+      "levels": [
+        {
+          "actual_representative_displacement": 0.8148269163709889,
+          "closure_all_microstate_rows": 0.029796029533410182,
+          "closure_and_prototype_bound": "5/64",
+          "connected_all_pairs": true,
+          "edge_baseline_margin": 0.9895199831482364,
+          "fine_reservoirs_per_fiber": 16,
+          "floor_below_all_positive_off_diagonal_weights": true,
+          "landmark_indices": [
+            0,
+            2,
+            4
+          ],
+          "lens_level": 0,
+          "macro_states": 6,
+          "metric_error_bound": 92.62303531006421,
+          "minimum_reference_lower_gap": 0.0,
+          "normalized_metric_diameter": 29.56176512239435,
+          "rho_bound": 3.141592653589793,
+          "uniform_normalized_metric_error": 27.99096879559945,
+          "worst_prototype_defect": 0.02980063358942653
+        },
+        {
+          "actual_representative_displacement": 0.8148269163709889,
+          "closure_all_microstate_rows": 0.034265433963421944,
+          "closure_and_prototype_bound": "5/64",
+          "connected_all_pairs": true,
+          "edge_baseline_margin": 0.9895199831482364,
+          "fine_reservoirs_per_fiber": 4,
+          "floor_below_all_positive_off_diagonal_weights": true,
+          "landmark_indices": [
+            3,
+            11,
+            19
+          ],
+          "lens_level": 1,
+          "macro_states": 24,
+          "metric_error_bound": 84.62303531006421,
+          "minimum_reference_lower_gap": 0.0,
+          "normalized_metric_diameter": 37.56176512239435,
+          "rho_bound": 3.141592653589793,
+          "uniform_normalized_metric_error": 36.97607957893719,
+          "worst_prototype_defect": 0.034270728627840974
+        },
+        {
+          "actual_representative_displacement": 0.0,
+          "closure_all_microstate_rows": 0.035382785070924835,
+          "closure_and_prototype_bound": "5/64",
+          "connected_all_pairs": true,
+          "edge_baseline_margin": 2.0783130283000375,
+          "fine_reservoirs_per_fiber": 1,
+          "floor_below_all_positive_off_diagonal_weights": true,
+          "landmark_indices": [
+            10,
+            42,
+            74
+          ],
+          "lens_level": 2,
+          "macro_states": 96,
+          "metric_error_bound": 70.33985000288463,
+          "minimum_reference_lower_gap": 0.0,
+          "normalized_metric_diameter": 45.56176512239435,
+          "rho_bound": 0,
+          "uniform_normalized_metric_error": 45.31863107865248,
+          "worst_prototype_defect": 0.035388252387444474
+        }
+      ],
+      "maximum_gateway_rate": 0.061848958333333336,
+      "microstates": 768,
+      "prototype_route_bound": "5/16",
+      "reservoir_volume": 8,
+      "route_domain": "Both finest prototypes and every microstate; total time ten versus five plus five.",
+      "staging": 5
+    },
+    {
+      "all_microstate_route_bound": 1.9140625,
+      "beta": 0.5,
+      "coarsest_level": 1,
+      "contact_quantization_maximum_exponent": 2,
+      "distortions": [
+        {
+          "analytic_bound": 111.34910355540217,
+          "uniform_distortion": 24.76878232292632
+        },
+        {
+          "analytic_bound": 95.22561587920136,
+          "uniform_distortion": 28.766722123337377
+        }
+      ],
+      "eps_edge": 0,
+      "equal_time_all_microstate_route_mismatch": 0.035536716805243534,
+      "equal_time_prototype_route_mismatch": 0.0014345343935693968,
+      "eta": 9.934107462565104e-09,
+      "exact_stage_five_polynomial_coefficients": [
+        "5",
+        "7345/1024",
+        "109/16",
+        "31/8",
+        "1"
+      ],
+      "fine_reference_contains_antipodal_axis_pairs": true,
+      "gateway_rate_bound": 0.125,
+      "holding_probability_at_least": 0.5,
+      "levels": [
+        {
+          "actual_representative_displacement": 0.8911225078866527,
+          "closure_all_microstate_rows": 0.01476029296544219,
+          "closure_and_prototype_bound": "5/128",
+          "connected_all_pairs": true,
+          "edge_baseline_margin": 0.5938741185563807,
+          "fine_reservoirs_per_fiber": 16,
+          "floor_below_all_positive_off_diagonal_weights": true,
+          "landmark_indices": [
+            3,
+            11,
+            19
+          ],
+          "lens_level": 1,
+          "macro_states": 24,
+          "metric_error_bound": 55.4531103086219,
+          "minimum_reference_lower_gap": 0.0,
+          "normalized_metric_diameter": 22.604668940805606,
+          "rho_bound": 3.141592653589793,
+          "uniform_normalized_metric_error": 20.45780764039534,
+          "worst_prototype_defect": 0.014760292965442234
+        },
+        {
+          "actual_representative_displacement": 0.4876162427151061,
+          "closure_all_microstate_rows": 0.015411678702909437,
+          "closure_and_prototype_bound": "5/128",
+          "connected_all_pairs": true,
+          "edge_baseline_margin": 1.2316743177888043,
+          "fine_reservoirs_per_fiber": 4,
+          "floor_below_all_positive_off_diagonal_weights": true,
+          "landmark_indices": [
+            10,
+            42,
+            74
+          ],
+          "lens_level": 2,
+          "macro_states": 96,
+          "metric_error_bound": 49.612807939600685,
+          "minimum_reference_lower_gap": 0.0,
+          "normalized_metric_diameter": 26.608527590772532,
+          "rho_bound": 2.221441469079183,
+          "uniform_normalized_metric_error": 24.523317095612146,
+          "worst_prototype_defect": 0.015411678702909382
+        },
+        {
+          "actual_representative_displacement": 0.0,
+          "closure_all_microstate_rows": 0.015617472356711614,
+          "closure_and_prototype_bound": "5/128",
+          "connected_all_pairs": true,
+          "edge_baseline_margin": 2.771460208859983,
+          "fine_reservoirs_per_fiber": 1,
+          "floor_below_all_positive_off_diagonal_weights": true,
+          "landmark_indices": [
+            36,
+            164,
+            292
+          ],
+          "lens_level": 3,
+          "macro_states": 384,
+          "metric_error_bound": 41.16992500144231,
+          "minimum_reference_lower_gap": 0.0,
+          "normalized_metric_diameter": 30.61498657460708,
+          "rho_bound": 0,
+          "uniform_normalized_metric_error": 28.65432882118787,
+          "worst_prototype_defect": 0.015617472356711626
+        }
+      ],
+      "maximum_gateway_rate": 0.053955078125,
+      "microstates": 6144,
+      "prototype_route_bound": "5/32",
+      "reservoir_volume": 16,
+      "route_domain": "Both finest prototypes and every microstate; total time ten versus five plus five.",
+      "staging": 5
+    }
+  ],
+  "scope": "New spherical reservoir dynamics and supplied nested cell lenses; stage five retained. Universal proofs are written; finite matrices and parameter evaluations are floating controls.",
+  "source_sha256": {
+    "lean/GeoSBT/CoherentMetric.lean": "55c79a93b841d324de4db5e2ca362919a2411b83c5ad4d8de0e58b66f66c43d1",
+    "lean/GeoSBT/MarkovClosure.lean": "4e7b3c6a428dfe9c7d1b65337c58fb801307661b36230c6c7cef2e472da9469a",
+    "lean/GeoSBT/TransportError.lean": "1f6fd9a81c041727db8249969367ee058db1a912dcb86aec26f0917a064a082e",
+    "scripts/audit_curved_reservoir_coherence.py": "75b8c243e009c811e519faddb0356ce418061bc518c0cde5f2a336793ae63703",
+    "src/geo_sbt/__init__.py": "b30079fa5aeb0655932383562d12c138ccb5b5b138bfbf3f8401c5d4e58dc96f",
+    "src/geo_sbt/geometry/__init__.py": "bc2b8d64ca2969b157220a198b515a0b5ed8fe24e20d847606df0d3482994963",
+    "src/geo_sbt/geometry/dimension.py": "0e48a53b427e401c2080faea2dca253497a9fb54d870831e98a66f221dc32a56",
+    "src/geo_sbt/geometry/holonomy.py": "4c4276abc826866d92c86f26f90a3d223e9758ca39b7a75ad264c16dd58b1b10",
+    "src/geo_sbt/geometry/metric.py": "c2dbc47e9b6a5dd6a2d63033889f5b8308e57938d8f5aa27bd83db1711fa3e06",
+    "src/geo_sbt/geometry/spherical_transport.py": "139a164872b175d748cb22f92a6691eba8daa38d0ffaa8250ed64fc3bbc697cd",
+    "src/geo_sbt/lenses/__init__.py": "2726558896d9d7ee940553e17c5da15b39c9957e040a50938fcb4f9347e86f6b",
+    "src/geo_sbt/lenses/diffusion.py": "d313b1635b1de24cc739d6ac067f35e73a5976c8b4612f7d3dedf67f8905036f",
+    "src/geo_sbt/lenses/kmeans.py": "1a2f8a8b980047fb85261393b25701a327f9be89bf8a0304ef11bea7f9caa704",
+    "src/geo_sbt/lenses/ladder.py": "532955f8d7de75d9bbd7aec033e19a5f2e2419b7fe68a69127791432df76d59b",
+    "src/geo_sbt/lenses/prototypes.py": "88bf003df0ba6faaac8d921b646caa491d460672e3dda56582422820bf2ae3e3",
+    "src/geo_sbt/lenses/stationary.py": "7952d192122b64be54c625b94e7bafcbe7dd7cff5fb5986504d88bef36ffb587",
+    "src/geo_sbt/metrics_tv.py": "6b846a8ceb69e0dffca11d0000b8a54a7c523786e767607a2f3891fc3dab94c3",
+    "src/geo_sbt/packaging.py": "e1905ca7b105ce19aa826befb351ae410179d5d61e5b4e0d69c80b8edc5d42ee",
+    "src/geo_sbt/route_mismatch.py": "d99ff8c9401e0f1ef6896bb4cbcf4f52833dd4897a626b1ab30859e445806052",
+    "src/geo_sbt/substrates/__init__.py": "98ba68b11ea5d1fadd7156784fa2201ee417071ab31b2b00fbe8ae8c8f7af59f",
+    "src/geo_sbt/substrates/constraints.py": "39c89170b318a4bd990f6ebaf070fc7c9260caf0214cc37b04423774da83fc33",
+    "src/geo_sbt/substrates/grid.py": "52c74a30aaa861f98ae3962946df65d3dec8d58780449e04d80df9eafb1914cb",
+    "src/geo_sbt/substrates/knn.py": "71791a3388bdb9a011501336802bde16b2fa60e5dea9fd0d6a60b058049c78b4",
+    "src/geo_sbt/substrates/sierpinski.py": "f4d19395485f1a10a2eb38c95e17906ea2204910292fd67c1db3f9b3c1effc04",
+    "src/geo_sbt/substrates/sphere.py": "5aaa1a40c9298062ce34366d89961b185ef8070c6b96da3ce26460442c0489b3",
+    "src/geo_sbt/substrates/validate.py": "78b14171077bdba4dca037190b43fa2ed8422fd88724a76ee982ace063ecf595"
+  },
+  "universal_formula_evaluations": [
+    {
+      "all_microstate_route_bound": 1.89453125,
+      "baseline_margin": 1.2870212991163261,
+      "beta": 5.656854249492381,
+      "cell_covering_radius_bound": 0.2776801836348979,
+      "closure_and_prototype_bound": 0.01953125,
+      "curvature_loop_scale": 0.6484197773255048,
+      "finest_macro_states": 98304,
+      "floor_formula": "2^(-ceil(beta*pi))/(256*m*V*16); no fixed numerical floor in the limit",
+      "level": 5,
+      "metric_error_bound": 6.492399049808755,
+      "metric_error_divided_by_loop_scale_squared": 15.441614286938956,
+      "prototype_route_bound": 0.078125,
+      "reservoir_volume": 32,
+      "scope": "Values of proved formulae, not an executed exponentially large microstate audit."
+    },
+    {
+      "all_microstate_route_bound": 0.011927289999305538,
+      "baseline_margin": 11.041108066483352,
+      "beta": 256.0,
+      "cell_covering_radius_bound": 0.00013558602716547748,
+      "closure_and_prototype_bound": 9.5367431640625e-06,
+      "curvature_loop_scale": 0.25,
+      "finest_macro_states": 412316860416,
+      "floor_formula": "2^(-ceil(beta*pi))/(256*m*V*16); no fixed numerical floor in the limit",
+      "level": 16,
+      "metric_error_bound": 0.260368681822773,
+      "metric_error_divided_by_loop_scale_squared": 4.165898909164368,
+      "prototype_route_bound": 3.814697265625e-05,
+      "reservoir_volume": 65536,
+      "scope": "Values of proved formulae, not an executed exponentially large microstate audit."
+    },
+    {
+      "all_microstate_route_bound": 1.818734294901699e-07,
+      "baseline_margin": 22.179393302393546,
+      "beta": 65536.0,
+      "cell_covering_radius_bound": 2.0688785883404157e-09,
+      "closure_and_prototype_bound": 1.4551915228366852e-10,
+      "curvature_loop_scale": 0.0625,
+      "finest_macro_states": 1770887431076116955136,
+      "floor_formula": "2^(-ceil(beta*pi))/(256*m*V*16); no fixed numerical floor in the limit",
+      "level": 32,
+      "metric_error_bound": 0.0017484319102901533,
+      "metric_error_divided_by_loop_scale_squared": 0.44759856903427925,
+      "prototype_route_bound": 5.820766091346741e-10,
+      "reservoir_volume": 4294967296,
+      "scope": "Values of proved formulae, not an executed exponentially large microstate audit."
+    },
+    {
+      "all_microstate_route_bound": 4.2345595774913935e-17,
+      "baseline_margin": 44.360291039588624,
+      "beta": 4294967296.0,
+      "cell_covering_radius_bound": 4.816983333650082e-19,
+      "closure_and_prototype_bound": 3.3881317890172014e-20,
+      "curvature_loop_scale": 0.00390625,
+      "finest_macro_states": 32667107224410092492483962313449748299776,
+      "floor_formula": "2^(-ceil(beta*pi))/(256*m*V*16); no fixed numerical floor in the limit",
+      "level": 64,
+      "metric_error_bound": 4.90306323638323e-08,
+      "metric_error_divided_by_loop_scale_squared": 0.0032132715225961137,
+      "prototype_route_bound": 1.3552527156068805e-19,
+      "reservoir_volume": 18446744073709551616,
+      "scope": "Values of proved formulae, not an executed exponentially large microstate audit."
+    },
+    {
+      "all_microstate_route_bound": 2.295559346625191e-36,
+      "baseline_margin": 88.7217105982932,
+      "beta": 1.8446744073709552e+19,
+      "cell_covering_radius_bound": 2.611291897584943e-38,
+      "closure_and_prototype_bound": 1.8367099231598242e-39,
+      "curvature_loop_scale": 1.52587890625e-05,
+      "finest_macro_states": 11116040566782354760662814560834039153913918527901494147787928064759660445433856,
+      "floor_formula": "2^(-ceil(beta*pi))/(256*m*V*16); no fixed numerical floor in the limit",
+      "level": 128,
+      "metric_error_bound": 2.182417454766386e-17,
+      "metric_error_divided_by_loop_scale_squared": 9.373411594441187e-08,
+      "prototype_route_bound": 7.346839692639297e-39,
+      "reservoir_volume": 340282366920938463463374607431768211456,
+      "scope": "Values of proved formulae, not an executed exponentially large microstate audit."
+    },
+    {
+      "all_microstate_route_bound": 6.746042609838033e-75,
+      "baseline_margin": 177.4445497099662,
+      "beta": 3.402823669209385e+38,
+      "cell_covering_radius_bound": 7.67389718489778e-77,
+      "closure_and_prototype_bound": 5.397605346934028e-78,
+      "curvature_loop_scale": 2.3283064365386963e-10,
+      "finest_macro_states": 1287149561274489321559106399827761228238019118776869764261461898597289346887060509772979932624022729058243058385902660881960372749946870714857630304584073216,
+      "floor_formula": "2^(-ceil(beta*pi))/(256*m*V*16); no fixed numerical floor in the limit",
+      "level": 256,
+      "metric_error_bound": 2.3115654496533965e-36,
+      "metric_error_divided_by_loop_scale_squared": 4.264085625938555e-17,
+      "prototype_route_bound": 2.159042138773611e-77,
+      "reservoir_volume": 115792089237316195423570985008687907853269984665640564039457584007913129639936,
+      "scope": "Values of proved formulae, not an executed exponentially large microstate audit."
+    }
+  ]
+}

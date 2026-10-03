@@ -8,3 +8,4 @@ import GeoSBT.QuadraticLimit
 import GeoSBT.Connection
 import GeoSBT.PrototypeObstruction
 import GeoSBT.TransportError
+import GeoSBT.CoherentMetric

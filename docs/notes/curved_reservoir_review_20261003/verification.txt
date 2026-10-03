@@ -1,0 +1,1 @@
+Finite staged matrices, all coherence gates, Markov transport controls and exact coefficients rechecked. Universal limit proof is written separately.

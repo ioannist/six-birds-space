@@ -1,0 +1,1 @@
+Exact macro probabilities, paths, locality and Hilbert obstructions verified.

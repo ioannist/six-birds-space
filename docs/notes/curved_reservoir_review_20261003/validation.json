@@ -1,0 +1,38 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "artifact_sha256": {
+    "docs/notes/curved_goal_completion_audit_20261003.md": "23461895b60b207202b364b33b5a37c5a1d4009d2e5addecee15fd413e33ab4b",
+    "docs/notes/curved_reservoir_coherence_review_20261003.md": "0b445f94636f7cc78bed5114cfe31b8fc9a4f91a66fd4ef7e5629100a38d0bc1",
+    "docs/notes/curved_reservoir_review_20261003/evidence.json": "257f8eab6a7da47bf768574c4633ccd0cfb9bbb0c2ccbc1e806dee8f8f58e111",
+    "docs/notes/curved_reservoir_review_20261003/lean_axioms.txt": "b7d0aeea7c1a3149e8d45ec731fb318da050f814c49ae203769dbc7346c7d997",
+    "docs/notes/curved_reservoir_review_20261003/lean_build.txt": "8387437ac245ae00b5e137b5219488de06f2845b36da78543ef4d4983331cb64",
+    "docs/notes/curved_reservoir_review_20261003/preserved_nonembedding_verification.txt": "c54ec7b02b334d1a38f62b78bb327efa3cf18756b7814830c2baa05afed793d6",
+    "docs/notes/curved_reservoir_review_20261003/preserved_prototype_verification.txt": "69377e6fead5566abd170652b05905a5dbc96dff01e0a67e6366a4d4420fe690",
+    "docs/notes/curved_reservoir_review_20261003/python_tests.txt": "2cd2df752bf063e6ea4258354f2240d3214a3d9d10c0ec6ce97b7e4e99fe5333",
+    "docs/notes/curved_reservoir_review_20261003/verification.txt": "4bea01423b86e0fcdc7c0511540a55e4c9e868bf91f3724901d1e9f2270f7b49",
+    "docs/notes/review_claims_20261003.md": "9cbde52faae8ba2773385d455abdaf0d522918cbfc239518af9fa6757c74caba",
+    "lean/GeoSBT/CoherentMetric.lean": "55c79a93b841d324de4db5e2ca362919a2411b83c5ad4d8de0e58b66f66c43d1",
+    "lean/README.md": "0547f28065726ea9f7a0bccc42bd3e0a5a4b9659c8563d139e329b9c9933292d",
+    "tests/test_curved_reservoir_control.py": "de96d2247da4aee6cf43ca0bb9c4c0b667e30b1a769944bf4db69f6d642967b0"
+  },
+  "canonical_failure_certificates_rechecked": true,
+  "evidence_source_hashes_match": true,
+  "explicit_changes": [
+    "Spherical reservoir microdynamics replace original kNN sphere kernel",
+    "Supplied nested cube-cell lenses",
+    "Sphere model and marked orthogonal landmarks for repaired transport",
+    "Declared metric normalization and decreasing inactive floor"
+  ],
+  "goal_requirements_verified": true,
+  "goal_source_sha256": "bb12a71b4818c16a101db6a3c96758a5aa7205a35895f953d89c901f0f7952b3",
+  "lean_build_jobs": 2117,
+  "paper_and_archival_artifacts_unchanged_since_goal_start": true,
+  "printed_axiom_anchors": 59,
+  "python_tests": 112,
+  "success_branch": "Explicit coherent curved Markov construction with justified transport interpretation",
+  "universal_theorem_evidence": "Written constructive proof with substantive partial Lean bridges; finite audits are computational evidence"
+}

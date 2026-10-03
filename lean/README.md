@@ -74,6 +74,14 @@ quantitative coordinate and transport bounds under explicit model and
 conditioning hypotheses. Neither its applicability to learned Markov metrics
 nor the MDS spectral perturbation argument is formalized here.
 
+`CoherentMetric.lean` passes exponential probability brackets to the actual
+floored likelihood cost, proves reference-distance domination along every
+finite protocol, and brackets the actual protocol-cost infimum. A written
+reservoir construction derives the probability bounds for a coherent curved
+Markov family and establishes spherical transport applicability at shrinking
+loop scale. The full reservoir, mesh and limit construction is outside Lean;
+it changes the original sphere dynamics and supplies its lens recognition.
+
 `PrototypeObstruction.lean` proves a lower TV-defect bound for every stochastic
 fiber-supported prototype from a return bound holding throughout a fixed
 fiber. Exact canonical grid/gasket counts establish that reweighting prototypes

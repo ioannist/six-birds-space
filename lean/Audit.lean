@@ -57,3 +57,6 @@ import GeoSBT
 #print axioms GeoSBT.triangleHolonomy_common_chart
 #print axioms GeoSBT.triangle_transport_error
 #print axioms GeoSBT.normalized_angle_error
+#print axioms GeoSBT.Protocol.reference_le_cost
+#print axioms GeoSBT.weightedEdist_reference_bracket
+#print axioms GeoSBT.likelihood_cost_exp_bracket
