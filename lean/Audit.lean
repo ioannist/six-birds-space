@@ -44,3 +44,13 @@ import GeoSBT
 #print axioms GeoSBT.gasket_staged_log_bracket
 #print axioms GeoSBT.squared_readout_error_le
 #print axioms GeoSBT.quadratic_cost_readout_error
+#print axioms GeoSBT.abs_log_le_relative_error
+#print axioms GeoSBT.log_cost_error
+#print axioms GeoSBT.centered_log_ratio_error
+#print axioms GeoSBT.cost_axis_residual_bound
+#print axioms GeoSBT.covariantShift_commute_iff
+#print axioms GeoSBT.covariantShift_gauge
+#print axioms GeoSBT.plaquetteHolonomy_gauge
+#print axioms GeoSBT.triangleHolonomy_eq_one_iff
+#print axioms GeoSBT.macro_return_le_fiber_bound
+#print axioms GeoSBT.prototype_defect_ge_fiber_escape

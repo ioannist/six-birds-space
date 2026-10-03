@@ -25,10 +25,11 @@ The space instantiation implements:
 - **Lens ladders**: diffusion/spectral embeddings with deterministic k-means and refinement maps
 - **Emergent metric pipeline**: macro kernel, cost from likelihood, shortest-path distances
 - **Holonomy diagnostic**: curvature-like loop residue via local MDS and Procrustes transport
-- **Staged diffusion experiment**: finite quadratic-cost evidence and exact uniform certificates; L1 controls distinguish separability from a quadratic law
+- **Staged diffusion experiment**: exact finite certificates and a uniform quadratic-limit proof for the original walk, with a matched correlated-step failure control
 - **Artifact contract + run packs**: committed run packs under `docs/notes/runs/` and paper-ready comparison figures/tables
 - **Constructive controls**: block-grid and recursive-gasket lenses with vanishing defects under explicit joint refinement and distance units
-- **Lean anchors**: weighted extended path metrics, separation quotients, finite Markov closure bounds, Hilbert obstructions and conditional quadratic readouts
+- **Prototype repair limits**: exact fixed-partition lower bounds show that reweighting cannot cure the canonical grid/gasket worst persistence defects
+- **Lean anchors**: weighted extended path metrics, finite Markov closure, Hilbert obstructions, logarithmic readout bounds and common-space transport/holonomy identities
 
 ## Scope and limitations
 

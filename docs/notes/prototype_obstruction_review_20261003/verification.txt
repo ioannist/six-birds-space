@@ -1,0 +1,1 @@
+Exact canonical prototype optima and universal defect lower bounds verified.

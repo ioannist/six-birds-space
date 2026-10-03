@@ -51,6 +51,25 @@ positive-gap and logarithmic cost bounds are also mechanized. Python exact
 counts and paths supply finite witnesses; recursive graph laws and the metric
 limit argument are written proofs outside Lean.
 
+`QuadraticLimit.lean` proves quantitative logarithm bounds from relative
+probability error, returns both uncentered and centered accounting costs,
+and bounds the axis residual under an additive reference law. The original
+walk's Fourier local-limit estimate is derived in a written proof outside
+Lean; it supplies the applicability premises rather than an RMS fit.
+
+`Connection.lean` defines covariant shifts on a common space of frame fields.
+It proves their commutation is equivalent to trivial square holonomy under
+commuting base translations, including for abelian coefficient groups. It
+also proves the gauge laws and the triangle route criterion. The vector-section
+operator norm and spherical parallel-transport calculations are written
+arguments outside Lean; they do not establish MDS-estimator consistency.
+
+`PrototypeObstruction.lean` proves a lower TV-defect bound for every stochastic
+fiber-supported prototype from a return bound holding throughout a fixed
+fiber. Exact canonical grid/gasket counts establish that reweighting prototypes
+cannot reduce their worst persistence defect. This does not lower-bound the
+closure-idempotence defect or exclude other lenses and stages.
+
 `Audit.lean` prints the transitive axioms of the anchors. The mathematical
 declarations should use only Lean's standard foundations (`propext`,
 `Classical.choice`, `Quot.sound`), with no `sorryAx` or added axioms. These files do

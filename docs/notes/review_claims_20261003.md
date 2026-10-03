@@ -1,5 +1,18 @@
 # Mathematical review: current claims and evidence
 
+Further strengthening after checkpoint `6af8d4c`:
+[a uniform quadratic-limit theorem](quadratic_limit_review_20261003.md) now
+supports the original staged accounting claim on growing central windows.
+[Covariant transport operators](connection_holonomy_review_20261003.md) give
+a precise noncommutativity interpretation and an exact spherical area control.
+The complete Fourier and geometric calculations are written proofs; their
+quantitative and algebraic bridges are mechanized. The original estimator's
+consistency and learned-lens coherence remain separate gaps.
+An [exact prototype-optimization obstruction](prototype_obstruction_review_20261003.md)
+also shows that reweighting supported prototypes cannot improve the canonical
+finest grid/gasket worst persistence defects. A recovery at stage five must
+change those lenses, as the constructive controls do.
+
 The finite metric and closure constructions are valid after repair. There are
 now constructive coherent grid and fractal regimes under the original micro
 dynamics and staging five. The recursive gasket construction has a compact
@@ -22,9 +35,9 @@ The requested pre-review baseline is commit `4e2e9a0`.
 | Constructive grid coherence | Block lenses on the original open grid have vanishing closure, prototype, normalized distortion and prototype-input route defects in a joint substrate/cell regime, including stage five. | Blocks are supplied interfaces. Distance units and a decreasing floor are declared. The limit readout is an L1 square; coherence does not imply a Euclidean inner product. |
 | Constructive fractal coherence | Recursive cell lenses on the original gasket at stage five have the same vanishing-defect properties. Their normalized metrics converge to a compact, self-similar metric space of dimension `log(3)/log(2)`. | Cell genealogy is recognition input. Cell size and macro depth both grow; this is not infinite refinement of a fixed finite substrate. The floor scales below positive edge weights. |
 | Fractal non-smoothing | At every point of that gasket limit, balls of radii `2^-j` contain a four-point obstruction ruling out every real Hilbert fit with uniform distance error at most `2^-j/16`. | This is a specified approximation criterion. No curvature tensor, anomalous-diffusion theorem or different tangent-space definition is inferred. |
-| Canonical learned lenses | Valid finite metrics and recorded audit defects; the canonical gasket also has an exact local nonembedding witness. | Worst prototype defects are about 0.783 (grid), 0.985 (sphere), and 0.849 (gasket). Full-ladder small-defect coherence fails. Finite nonembedding also occurs on the grid, so it alone is not a fractal classifier. |
-| Grid/sphere loop residue | Gauge-correct finite O(2) Procrustes loop residue separates the two canonical cases: median sphere/grid ratio about 25.34. | Rank and orientation checks are explicit. There is no proved curvature-tensor identification or coherent curved limit. SO(2) rotations commute, so literal operator noncommutativity is not established. |
-| Staged quadratic cost | Exact integer walk counts certify a uniform centered quadratic-cost bound on predefined finite windows; at stage 128, the normalized square-root readout error is at most 0.1 on all 529 window points. | The pinned lattice walk, stage, torus and window are explicit. The exact Python checker is outside Lean. This readout is separate from the macro shortest-path metric, and no continuum local-limit theorem is claimed. |
+| Canonical learned lenses | Valid finite metrics and recorded audit defects; the canonical gasket also has an exact local nonembedding witness. The grid/gasket worst persistence defects are exact minima over every supported stochastic prototype choice at their fixed partition and stage. | Worst prototype defects are about 0.783 (grid), 0.985 (sphere), and 0.849 (gasket). Full-ladder small-defect coherence fails. The sphere value is for uniform prototypes only. Finite nonembedding also occurs on the grid, so it alone is not a fractal classifier. |
+| Grid/sphere loop residue | Gauge-correct finite O(2) Procrustes loop residue separates the two canonical cases: median sphere/grid ratio about 25.34. Covariant shifts on a common section space commute exactly when their square holonomy is trivial. A supplied unit-sphere connection has an exact area law. | Individual SO(2) matrices commute, while covariant shifts can fail to commute. The estimator is not proved to recover that geometric connection, and no coherent curved learned-lens limit is established. Shrinking-loop curvature uses area normalization. |
+| Staged quadratic cost | The original lattice walk has a derived uniform local probability estimate, a quadratic negative-log limit with coefficient 2/n and offset log(pi n/2), vanishing axis residual and a Euclidean square-root readout limit. The exact stage-128 certificate remains sharper on its 529 points. | Fixed central windows in diffusion units, growing torus size, and unclipped probabilities are explicit. The Fourier proof is outside Lean; the log/residual bridges are mechanized. This readout remains separate from the macro shortest-path metric. |
 | Constraints and controls | Directional gating changes the kernel and metric even with the lens held fixed. L1 axis separability is exactly zero, while its squared-distance Pythagorean residual is nonzero. | Anisotropy can retain a positive quadratic form and weighted Pythagoras. It need not destroy inner-product geometry. Saturated and unsupported diagnostics fail explicitly. |
 
 ## Constructive replacements
@@ -56,6 +69,14 @@ not certify an eigensolver or infer an infinite regime from ten finite cases.
 
 ## Mechanization and verification boundary
 
+The [quadratic-limit audit](quadratic_limit_review_20261003/evidence.json) and
+[connection audit](connection_holonomy_review_20261003/evidence.json) extend
+the preceding checkpoint, along with the exact prototype obstruction. The
+current suite passes **88 tests**; the fresh Lean build and **53** transitive
+axiom checks use only the standard foundations.
+Full-suite, Lean and exact recheck receipts are in
+[quadratic_limit_review_20261003](quadratic_limit_review_20261003/python_tests.txt).
+
 [The Lean coverage description](../../lean/README.md) identifies the represented
 statements and the remaining external applicability arguments. Weighted metric,
 finite Markov and quantitative Hilbert bridges are proved in Lean. The entire
@@ -63,7 +84,7 @@ recursive graph family, measure construction and Hausdorff-dimension proof are
 written proofs outside Lean. Numerical implementations are not formally
 verified by the scalar bridges.
 
-The latest validation receipts are:
+The validation receipts at the preceding `6af8d4c` checkpoint are:
 
 - [77 passing Python tests](recursive_gasket_review_20261003/python_tests.txt),
   including false-target controls, fractional-input rejection, direct comparison
@@ -78,7 +99,7 @@ The latest validation receipts are:
 - Source-stamped [gasket audit](recursive_gasket_review_20261003/evidence.json),
   [stage-five grid audit](staged_block_lens_review_20261003/evidence.json) and
   [learned-lens certificates](local_nonembedding_review_20261003/certificate.json).
-  All recorded Python source hashes match the reviewed sources.
+  Recorded Python source hashes matched the sources at that checkpoint.
 
 The [initial repair checkpoint](mathematical_review_20261003.md) records the
 twenty corrected canonical and sweep configurations. The
@@ -101,15 +122,18 @@ The scripts write new results rather than replacing historical packs:
 OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_block_lens_stage_five.py --output results/staged_block_review
 OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_recursive_gasket_coherence.py --output results/recursive_gasket_review
 OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/certify_local_nonembedding.py --verify docs/notes/local_nonembedding_review_20261003/certificate.json
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_quadratic_limit.py --output results/quadratic_limit_review
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_connection_holonomy.py --output results/connection_holonomy_review
+OPENBLAS_NUM_THREADS=1 .venv/bin/python3 scripts/audit_prototype_obstruction.py --verify docs/notes/prototype_obstruction_review_20261003/evidence.json
 .venv/bin/python3 -m pytest -q
 cd lean
 lake build
 lake env lean Audit.lean
 ```
 
-This completes the mathematical review and its implementation repairs. The
-later manuscript revision must preserve the distinction between the proved
+The later manuscript revision must preserve the distinction between the proved
 cell-lens constructions, validated finite diagnostics and false historical
-interpretations. In particular, a coherent curved limit, automatic lens
-discovery and a Euclidean macro path-metric limit remain unproved; they are not
-needed for the explicit coherent-fractal construction established here.
+interpretations. A coherent curved limit, automatic lens discovery and a
+Euclidean macro path-metric limit remain unproved. The stronger staged-cost
+limit and covariant-shift results resolve distinct original-claim gaps; they
+do not discharge these remaining obligations.

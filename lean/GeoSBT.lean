@@ -4,3 +4,6 @@ import GeoSBT.Pythagoras
 import GeoSBT.LikelihoodCost
 import GeoSBT.MarkovClosure
 import GeoSBT.EuclideanObstruction
+import GeoSBT.QuadraticLimit
+import GeoSBT.Connection
+import GeoSBT.PrototypeObstruction

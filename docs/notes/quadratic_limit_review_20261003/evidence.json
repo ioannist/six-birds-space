@@ -1,0 +1,356 @@
+{
+  "analytic_bounds_not_executions": [
+    {
+      "radius_in_sqrt_stage_units": 1.4142135623730951,
+      "stage": 512,
+      "uniform_absolute_probability_bound": 7.399968183785768e-06,
+      "uniform_axis_residual_bound": 2.8880440835344046,
+      "uniform_centered_cost_bound": 0.9626813611781349,
+      "uniform_normalized_sqrt_readout_bound": 0.6937872012289268,
+      "uniform_relative_probability_bound": 0.32493584149573096
+    },
+    {
+      "radius_in_sqrt_stage_units": 1.4142135623730951,
+      "stage": 1024,
+      "uniform_absolute_probability_bound": 1.8445721466691396e-06,
+      "uniform_axis_residual_bound": 1.1598356741549791,
+      "uniform_centered_cost_bound": 0.3866118913849931,
+      "uniform_normalized_sqrt_readout_bound": 0.4396657203973225,
+      "uniform_relative_probability_bound": 0.16199194044936874
+    },
+    {
+      "radius_in_sqrt_stage_units": 1.4142135623730951,
+      "stage": 4096,
+      "uniform_absolute_probability_bound": 1.1503256944954657e-07,
+      "uniform_axis_residual_bound": 0.2526641803685747,
+      "uniform_centered_cost_bound": 0.08422139345619156,
+      "uniform_normalized_sqrt_readout_bound": 0.20520890996273963,
+      "uniform_relative_probability_bound": 0.040409043742003894
+    },
+    {
+      "radius_in_sqrt_stage_units": 1.4142135623730951,
+      "stage": 16384,
+      "uniform_absolute_probability_bound": 7.185586742868781e-09,
+      "uniform_axis_residual_bound": 0.06119817400639273,
+      "uniform_centered_cost_bound": 0.020399391335464243,
+      "uniform_normalized_sqrt_readout_bound": 0.10099354270314574,
+      "uniform_relative_probability_bound": 0.010096712275279614
+    },
+    {
+      "radius_in_sqrt_stage_units": 1.4142135623730951,
+      "stage": 65536,
+      "uniform_absolute_probability_bound": 4.4903749892575554e-10,
+      "uniform_axis_residual_bound": 0.015181303669198613,
+      "uniform_centered_cost_bound": 0.0050604345563995375,
+      "uniform_normalized_sqrt_readout_bound": 0.050301265174941365,
+      "uniform_relative_probability_bound": 0.002523831436292398
+    }
+  ],
+  "finite_checks": [
+    {
+      "measured_uniform_absolute_probability_error": 0.0002581062896530291,
+      "measured_window_centered_cost_error": 0.17553348402979907,
+      "scope": "floating exhaustive support-box comparison plus analytic outside-box bound",
+      "stage": 16,
+      "uniform_absolute_probability_bound": 0.0581763750981851,
+      "uniform_axis_residual_bound": null,
+      "uniform_centered_cost_bound": null,
+      "uniform_normalized_sqrt_readout_bound": null,
+      "uniform_relative_probability_bound": 79.8296903454942,
+      "window_D": 4
+    },
+    {
+      "measured_uniform_absolute_probability_error": 5.913694537660729e-05,
+      "measured_window_centered_cost_error": 0.053055264990351514,
+      "scope": "floating exhaustive support-box comparison plus analytic outside-box bound",
+      "stage": 32,
+      "uniform_absolute_probability_bound": 0.012139162172977593,
+      "uniform_axis_residual_bound": null,
+      "uniform_centered_cost_bound": null,
+      "uniform_normalized_sqrt_readout_bound": null,
+      "uniform_relative_probability_bound": 33.31474522732061,
+      "window_D": 5
+    },
+    {
+      "measured_uniform_absolute_probability_error": 1.4459130090378226e-05,
+      "measured_window_centered_cost_error": 0.04234821928487165,
+      "scope": "floating exhaustive support-box comparison plus analytic outside-box bound",
+      "stage": 64,
+      "uniform_absolute_probability_bound": 0.0014559830002619123,
+      "uniform_axis_residual_bound": null,
+      "uniform_centered_cost_bound": null,
+      "uniform_normalized_sqrt_readout_bound": null,
+      "uniform_relative_probability_bound": 7.991606342818568,
+      "window_D": 8
+    },
+    {
+      "measured_uniform_absolute_probability_error": 3.5530142036059543e-06,
+      "measured_window_centered_cost_error": 0.018781878282235986,
+      "scope": "floating exhaustive support-box comparison plus analytic outside-box bound",
+      "stage": 128,
+      "uniform_absolute_probability_bound": 0.00013924722353233154,
+      "uniform_axis_residual_bound": null,
+      "uniform_centered_cost_bound": null,
+      "uniform_normalized_sqrt_readout_bound": null,
+      "uniform_relative_probability_bound": 1.5286016314760211,
+      "window_D": 11
+    },
+    {
+      "measured_uniform_absolute_probability_error": 8.829713675659822e-07,
+      "measured_window_centered_cost_error": 0.010460924381516357,
+      "scope": "floating exhaustive support-box comparison plus analytic outside-box bound",
+      "stage": 256,
+      "uniform_absolute_probability_bound": 2.9788635486774172e-05,
+      "uniform_axis_residual_bound": 11.341842924075992,
+      "uniform_centered_cost_bound": 3.780614308025331,
+      "uniform_normalized_sqrt_readout_bound": 1.3748844147828083,
+      "uniform_relative_probability_bound": 0.6540160105088894,
+      "window_D": 16
+    }
+  ],
+  "matched_control": {
+    "covariance": [
+      [
+        "3/8",
+        "1/4"
+      ],
+      [
+        "1/4",
+        "3/8"
+      ]
+    ],
+    "denominator": 16,
+    "quadratic_cost": "(12/5)*(x*x+y*y)/n-(16/5)*x*y/n",
+    "rows": [
+      {
+        "centered_cost_intervals": [
+          [
+            "301551443619/125000000000",
+            "2412411548953/1000000000000"
+          ],
+          [
+            "301551443619/125000000000",
+            "2412411548953/1000000000000"
+          ],
+          [
+            "792003308361/500000000000",
+            "1584006616723/1000000000000"
+          ]
+        ],
+        "covariance_quadratic_residual": "-16/5",
+        "exact_residual_interval": [
+          "-101275515037/31250000000",
+          "-3240816481181/1000000000000"
+        ],
+        "k": 4,
+        "points_and_counts": [
+          [
+            0,
+            0,
+            659584729807956772
+          ],
+          [
+            4,
+            0,
+            59098106842663616
+          ],
+          [
+            0,
+            4,
+            59098106842663616
+          ],
+          [
+            4,
+            4,
+            135314787451811240
+          ]
+        ],
+        "residual_upper_bound_excluded": "-1",
+        "stage": 16
+      },
+      {
+        "centered_cost_intervals": [
+          [
+            "1883201239941/1000000000000",
+            "941600619971/500000000000"
+          ],
+          [
+            "1883201239941/1000000000000",
+            "941600619971/500000000000"
+          ],
+          [
+            "1243127263441/1000000000000",
+            "621563631721/500000000000"
+          ]
+        ],
+        "covariance_quadratic_residual": "-5/2",
+        "exact_residual_interval": [
+          "-2523275216443/1000000000000",
+          "-63081880411/25000000000"
+        ],
+        "k": 5,
+        "points_and_counts": [
+          [
+            0,
+            0,
+            6065536429500704355160339889692273444
+          ],
+          [
+            5,
+            0,
+            922582704314146071657585369974092928
+          ],
+          [
+            0,
+            5,
+            922582704314146071657585369974092928
+          ],
+          [
+            5,
+            5,
+            1749789896853757022575088914757137216
+          ]
+        ],
+        "residual_upper_bound_excluded": "-1",
+        "stage": 32
+      },
+      {
+        "centered_cost_intervals": [
+          [
+            "2403191393371/1000000000000",
+            "600797848343/250000000000"
+          ],
+          [
+            "2403191393371/1000000000000",
+            "600797848343/250000000000"
+          ],
+          [
+            "1595901912533/1000000000000",
+            "797950956267/500000000000"
+          ]
+        ],
+        "covariance_quadratic_residual": "-16/5",
+        "exact_residual_interval": [
+          "-3210480874211/1000000000000",
+          "-100327527319/31250000000"
+        ],
+        "k": 8,
+        "points_and_counts": [
+          [
+            0,
+            0,
+            1030969671732917419793126666944026882940793809481662356989232575508086598436
+          ],
+          [
+            8,
+            0,
+            93229451393762585665397506019428652660360377301571797489688836241024583936
+          ],
+          [
+            0,
+            8,
+            93229451393762585665397506019428652660360377301571797489688836241024583936
+          ],
+          [
+            8,
+            8,
+            209003950707181210772700012625991363957823105186791196977540745125994370480
+          ]
+        ],
+        "residual_upper_bound_excluded": "-1",
+        "stage": 64
+      },
+      {
+        "centered_cost_intervals": [
+          [
+            "454094523983/200000000000",
+            "567618154979/250000000000"
+          ],
+          [
+            "454094523983/200000000000",
+            "567618154979/250000000000"
+          ],
+          [
+            "94406775569/62500000000",
+            "302101681821/200000000000"
+          ]
+        ],
+        "covariance_quadratic_residual": "-121/40",
+        "exact_residual_interval": [
+          "-378804603841/125000000000",
+          "-121217473229/40000000000"
+        ],
+        "k": 11,
+        "points_and_counts": [
+          [
+            0,
+            0,
+            59665182079699564281447321436522646855673791258686766157870553708037289786758388812033898335712175418379700937467347962243519440835069484730737236912932
+          ],
+          [
+            11,
+            0,
+            6161227428697309070146149826563272975626522878291666244263867419016056470491538770347515628628848345608913070937131430363240612798379946422023015744000
+          ],
+          [
+            0,
+            11,
+            6161227428697309070146149826563272975626522878291666244263867419016056470491538770347515628628848345608913070937131430363240612798379946422023015744000
+          ],
+          [
+            11,
+            11,
+            13173934606987895710345392928181471780822617704471069754701124128150182716516051642256416491979119348691647083720811240218095552912962683263912268000000
+          ]
+        ],
+        "residual_upper_bound_excluded": "-1",
+        "stage": 128
+      }
+    ],
+    "scope": "Matched lazy finite-step dynamics; failure of the supplied coordinate-axis identity, with a weighted inner-product limit.",
+    "steps": [
+      [
+        0,
+        0,
+        8
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        -1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        -1,
+        1
+      ],
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        -1,
+        -1,
+        2
+      ]
+    ]
+  },
+  "scope": "Written universal Fourier proof; floating finite checks and exact matched-control certificates are separately labelled.",
+  "source_sha256": {
+    "experiments/config_validation.py": "dfcdb2f92cb2b41540e489592194155c025d8c85418d6d37412a588dc5f9e421",
+    "experiments/runners/pythagoras_rw_grid.py": "0b002b6b71ed20b14b39545d966d9beb9d5ffbae3fb698f752dc7866f5fdbb5a",
+    "scripts/audit_quadratic_limit.py": "5b93a0d1a22188b9fb218999b676bc2d716466b70cab84b4db3586eef0f2690c",
+    "scripts/certify_local_nonembedding.py": "4f256c72fa467cede8defd0348c6a53e7a83a0b495de7b88c27e41de6a9ee6ba"
+  }
+}

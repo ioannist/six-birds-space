@@ -1,0 +1,83 @@
+{
+  "constant_flat_connection_commutator_norm": 0.0,
+  "exact_rational_area_law": {
+    "area_and_angle_magnitude": "1/16",
+    "commutator_norm": "2 sin(1/32)",
+    "longitude_width": "1/4",
+    "sin_latitude_high": "1/2",
+    "sin_latitude_low": "1/4"
+  },
+  "rational_area_floating_check": {
+    "analytic_norm": 0.06248982797065216,
+    "commutator_norm_after_independent_O2_gauges": 0.06248982797065243,
+    "latitude_high": 0.5235987755982989,
+    "latitude_low": 0.25268025514207865,
+    "longitude_width": 0.25,
+    "normalized_by_coordinate_area_and_center_density": 0.9967823474943991,
+    "operator_commutator_norm": 0.06248982797065217,
+    "oriented_surface_area": 0.0625,
+    "principal_holonomy_angle_magnitude": 0.0625
+  },
+  "scope": "Supplied geometric connection and common-space operators; no MDS-estimator, Markov-metric, or learned-lens consistency theorem.",
+  "shrinking_rectangles": [
+    {
+      "analytic_norm": 0.1516910361514444,
+      "commutator_norm_after_independent_O2_gauges": 0.15169103615144444,
+      "latitude_high": 0.5,
+      "latitude_low": 0.09999999999999998,
+      "longitude_width": 0.4,
+      "normalized_by_coordinate_area_and_center_density": 0.9923927189406,
+      "operator_commutator_norm": 0.15169103615144436,
+      "oriented_surface_area": 0.15183684878294998,
+      "principal_holonomy_angle_magnitude": 0.15183684878294998
+    },
+    {
+      "analytic_norm": 0.03814748886542318,
+      "commutator_norm_after_independent_O2_gauges": 0.038147488865423344,
+      "latitude_high": 0.4,
+      "latitude_low": 0.19999999999999998,
+      "longitude_width": 0.2,
+      "normalized_by_coordinate_area_and_center_density": 0.99827362661345,
+      "operator_commutator_norm": 0.038147488865423185,
+      "oriented_surface_area": 0.03814980230271787,
+      "principal_holonomy_angle_magnitude": 0.03814980230271787
+    },
+    {
+      "analytic_norm": 0.009549348536152202,
+      "commutator_norm_after_independent_O2_gauges": 0.009549348536152363,
+      "latitude_high": 0.35,
+      "latitude_low": 0.25,
+      "longitude_width": 0.1,
+      "normalized_by_coordinate_area_and_center_density": 0.9995795873862688,
+      "operator_commutator_norm": 0.009549348536152198,
+      "oriented_surface_area": 0.009549384820092842,
+      "principal_holonomy_angle_magnitude": 0.009549384820092842
+    },
+    {
+      "analytic_norm": 0.0023880918775754205,
+      "commutator_norm_after_independent_O2_gauges": 0.0023880918775756013,
+      "latitude_high": 0.325,
+      "latitude_low": 0.27499999999999997,
+      "longitude_width": 0.05,
+      "normalized_by_coordinate_area_and_center_density": 0.9998955989888637,
+      "operator_commutator_norm": 0.002388091877575417,
+      "oriented_surface_area": 0.0023880924450444072,
+      "principal_holonomy_angle_magnitude": 0.0023880924450444072
+    },
+    {
+      "analytic_norm": 0.0005970697478596967,
+      "commutator_norm_after_independent_O2_gauges": 0.0005970697478598874,
+      "latitude_high": 0.3125,
+      "latitude_low": 0.2875,
+      "longitude_width": 0.025,
+      "normalized_by_coordinate_area_and_center_density": 0.9999739436833239,
+      "operator_commutator_norm": 0.0005970697478596962,
+      "oriented_surface_area": 0.0005970697567284786,
+      "principal_holonomy_angle_magnitude": 0.0005970697567284786
+    }
+  ],
+  "source_sha256": {
+    "lean/GeoSBT/Connection.lean": "f05e499f83f1acd19551e158c9c5871891a4834c402c03e1defcf44785e91113",
+    "scripts/audit_connection_holonomy.py": "daed510603898484c500032431d5bd47d165016626ab21ad9964fe6dd2f9f7a9"
+  }
+}
