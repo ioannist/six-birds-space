@@ -1,0 +1,48 @@
+\section{Reproducibility}
+\label{app:reproducibility}
+
+All results can be regenerated from the repository.
+Install with \texttt{pip install -e ".[audit]"} (the audit extra adds SciPy for the exact certificates and sparse audits; the core library needs only NumPy), and additionally \texttt{pip install matplotlib} for the figures.
+Scripts write to \texttt{results/}, which is not version-controlled; the committed audit records used in this paper live under \texttt{docs/notes/}.
+Floating-point results can differ in the last digits across platforms and linear-algebra libraries, and eigenvector degeneracies can change learned partitions; the exact certificates record the partitions they certify.
+
+\paragraph{Learned ladders, sweeps and holonomy (\cref{sec:learned,sec:limits}, \cref{fig:holonomy}a).}
+\begin{quote}\small
+\texttt{python scripts/audit\_mathematics.py -{}-output results/math\_review -{}-sweeps}
+\end{quote}
+This runs the six canonical configurations in \texttt{experiments/configs/} (\texttt{grid\_plane}, \texttt{sphere\_knn}, \texttt{sierpinski}, \texttt{anisotropic}, \texttt{holonomy\_demo}, \texttt{pythagoras\_rw\_grid}) and the fourteen sweeps in \texttt{experiments/configs/sweeps/}, together with the fixed-lens gating control and the dimension proxies.
+Individual runs use \texttt{python experiments/run.py -{}-config <file>}.
+
+\paragraph{Exact certificates.}
+\begin{quote}\small
+\texttt{python scripts/certify\_quadratic\_walk.py -{}-verify <certificate>}\\
+\texttt{python scripts/certify\_local\_nonembedding.py -{}-verify <certificate>}\\
+\texttt{python scripts/audit\_prototype\_obstruction.py -{}-verify <evidence>}
+\end{quote}
+Each verifier rebuilds its certificate from the stated inputs (integer recurrences, exact shortest paths, rational enclosures) and rejects altered entries.
+
+\paragraph{Constructed regimes, curvature and the quadratic limit.}
+\begin{quote}\small
+\texttt{python scripts/audit\_block\_lens\_stage\_five.py -{}-output <dir>}\\
+\texttt{python scripts/audit\_recursive\_gasket\_coherence.py -{}-output <dir>}\\
+\texttt{python scripts/audit\_curved\_reservoir\_coherence.py -{}-output <dir>}\\
+\texttt{python scripts/audit\_connection\_holonomy.py -{}-output <dir>}\\
+\texttt{python scripts/audit\_holonomy\_estimator.py -{}-output <dir>}\\
+\texttt{python scripts/audit\_quadratic\_limit.py -{}-output <dir>}
+\end{quote}
+These audit the finite instances of \cref{thm:grid,thm:gasket,thm:sphere,thm:commutator,thm:mds-obstruction,thm:local-limit} and record source hashes; their values of the universal bounds at large parameters are evaluations of formulas, not executions.
+
+\paragraph{Figures, tests and formalization.}
+\begin{quote}\small
+\texttt{python scripts/make\_paper\_figures\_v3.py}\\
+\texttt{python -m pytest -q}\\
+\texttt{cd lean \&\& lake build \&\& lake env lean Audit.lean}
+\end{quote}
+The figure script reads the committed audit records and recomputes the canonical holonomy loops and the lattice-walk probabilities; it checks the loop counts and medians against the holonomy record and the convolution probabilities against the exact certificate counts.
+The test suite has $112$ tests.
+\texttt{cd paper \&\& make pdf} builds this document.
+
+\paragraph{Canonical configurations.}
+Learned ladders: $\tau=5$, levels $\{4,8,16,32,64,128\}$, six diffusion coordinates, seed $0$, uniform prototypes, weight averaging, $\eta=10^{-12}$, $\varepsilon_{\mathrm{edge}}=10^{-15}$; grid side $25$ with holding probability $\tfrac12$; $500$ sphere points with $10$ neighbours, $\sigma=0.5$ and self-loop $10^{-6}$; gasket level $5$ with holding probability $\tfrac12$; east gating at strength $1$.
+Holonomy: single level $m=128$, $24$ chart neighbours, one-hop expansion, minimum overlap $4$, triangles from $8$ nearest neighbours, at most $800$ loops, sampling seeds $0$ (grid) and $1$ (sphere).
+Staged costs: torus side $512$, holding probability $\tfrac12$, $\tau\in\{4,8,16,32,64,128\}$, window half-width $\lceil3\sqrt\tau\,\rceil$ capped at $30$, $2000$ right-triangle samples, fitting threshold $10^{-20}$.

@@ -1,0 +1,20 @@
+\section{Version history}
+\label{app:versions}
+
+\paragraph{Version 1 (5 February 2026).}
+First public version (Zenodo, DOI \href{https://doi.org/10.5281/zenodo.18494975}{10.5281/zenodo.18494975}).
+
+\paragraph{Version 2 (27 February 2026).}
+Editorial and metadata revision for repository submission; the code archive DOI was added. Results unchanged.
+
+\paragraph{Version 3 (4 October 2026).}
+Zenodo, DOI \href{https://doi.org/10.5281/zenodo.23130783}{10.5281/zenodo.23130783}.
+A mathematical review of the constructions, code and experiments, followed by a rewrite of the paper.
+\begin{itemize}[leftmargin=*]
+\item \emph{Metric.} The cost rule is stated as the implemented floor $-\log\max(W,\eta)$; the additive rule $-\log(W+\eta)$ given earlier can produce negative costs. Zero-cost edges are now retained by the shortest-path computation, and disconnection makes the distortion audit fail instead of being skipped. The metric and closure foundations are formalized in Lean (eleven modules, $59$ audited declarations; earlier versions had three short anchors).
+\item \emph{Coherence.} The criterion is now a limit along a declared refinement family in declared units. Earlier versions described the canonical learned ladders as coherent on the basis of bounded defects; their finest-level worst prototype defects are $0.78$, $0.99$ and $0.85$, and for the grid and gasket partitions this cannot be improved by any choice of prototypes. Route mismatch, described earlier as recorded, was not present in the earlier run records and is now computed. Coherent grid, gasket and sphere constructions are new.
+\item \emph{Fractal regime.} The earlier fixed-point reading of the learned gasket ladder is replaced by the recursive-cell construction, its limit space, its Hausdorff dimension and its local Hilbert obstruction. Finite dimension proxies are no longer read as dimensions, and finite nonembedding is shown not to distinguish fractals from grids.
+\item \emph{Holonomy.} Transports now use the full orthogonal group, since MDS charts are defined only up to reflection. The corrected medians $0.00169$ (grid) and $0.0428$ (sphere) replace $0.0479$ and $0.5980$. The interpretation of curvature as noncommutation is restated for covariant shift operators, since planar rotations commute. The inconsistency theorem for the local-MDS estimator and the landmark estimator with its Markov applicability are new.
+\item \emph{Pythagoras.} Displacement probabilities are computed by nonnegative convolution; the earlier FFT computation assigned roundoff mass to unreachable displacements, which inflated the small-stage values (quadratic-fit error $12.10$ and median residual $33.19$ at $\tau=4$, now $0.471$ and $0.862$) and produced an apparent sharp transition near $\tau=16$. The axis residual is identified as a separability test. The uniform local limit theorem, the exact certificates and the correlated-step control are new, and the earlier expectation that anisotropy destroys the Pythagorean form is withdrawn.
+\item \emph{Presentation.} The paper was restructured and rewritten, with a new abstract and new figures generated from the corrected records.
+\end{itemize}

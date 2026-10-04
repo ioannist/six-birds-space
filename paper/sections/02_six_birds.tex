@@ -1,0 +1,55 @@
+\section{Six Birds: how the primitives specialize to geometry}
+\label{sec:six-birds}
+
+Six Birds Theory~\cite{SixBirdsTheory} describes how a higher layer of description (a ``theory'' in its technical sense: a lens, a completion and an audit) becomes available when repeated compression of a lower layer stabilizes.
+It identifies six primitives.
+The primitives are unchanged here; what changes is the object they produce.
+For counting, the stable object is quantity~\cite{ToCountAStone}; for plotting, it is location, distance and transport.
+This section states the correspondence informally; later sections make each item precise.
+
+\paragraph{P1, operator rewrite (closure).}
+A layer is usable only if its dynamics can be written in its own variables without reopening micro detail.
+Here this is the macro kernel $K=UP^{\tau}C$ and the closure operator $E=P^{\tau}CU$ on micro distributions.
+Closure is not assumed; its defect is measured (\cref{sec:closure}).
+
+\paragraph{P2, constraints (feasibility).}
+Constraints decide which transitions are possible and how likely they are.
+Geometrically they shape neighbourhoods and anisotropy.
+Gating moves in one direction deforms the induced metric even when the lens is held fixed (\cref{sec:anisotropy}).
+
+\paragraph{P3, protocols (order of composition).}
+A protocol is a chain of moves.
+Distance is the cheapest protocol between two points, and curvature is the dependence of transport on the route taken: carrying a frame around a loop need not return it unchanged.
+\Cref{sec:curvature} shows that this route dependence is exactly the failure of two covariant transport operators to commute, a statement that remains meaningful even though planar rotations themselves commute.
+
+\paragraph{P4, staging (multi-scale refinement).}
+Staging supplies the time parameter $\tau$ and a ladder of refining lenses.
+Geometry is claimed only for structure that persists along a declared refinement family; in our constructions both the substrate and the lens are refined jointly.
+
+\paragraph{P5, packaging (quotienting indistinguishability).}
+Packaging maps many microstates to one macro state.
+This is where points come from: a point is a block of microstates that the interface does not distinguish at the chosen resolution.
+
+\paragraph{P6, accounting (cost).}
+Accounting assigns a cost to each move.
+Our cost is the negative log-probability of a macro transition, so distance is a ledger rather than a ruler.
+Different ways of composing the same ledger give different geometries: chained macro transitions give an $L^1$ metric on the grid, while the one-shot cost of a long staged displacement is quadratic and gives Euclidean distance (\cref{sec:pythagoras}).
+
+\begin{table}[t]
+\centering
+\small
+\caption{The six primitives and their role in this paper.}
+\label{tab:six-birds-geometry}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.2\textwidth}X@{}}
+\toprule
+Primitive & Role in emergent geometry \\
+\midrule
+P1 Operator rewrite & Macro kernel and closure operator; closure and persistence defects (\cref{sec:closure}). \\
+P2 Constraints & Feasible moves; anisotropy and deformation of the induced metric (\cref{sec:anisotropy}). \\
+P3 Protocols & Distance as cheapest protocol; curvature as route dependence of transport (\cref{sec:construction,sec:curvature}). \\
+P4 Staging & Stage $\tau$ and refinement families; coherence as a joint limit (\cref{sec:closure,sec:constructed}). \\
+P5 Packaging & Points as blocks of microstates; supplied versus learned lenses (\cref{sec:learned,sec:constructed}). \\
+P6 Accounting & Negative-log costs; quadratic accounting and the Pythagorean law (\cref{sec:construction,sec:pythagoras}). \\
+\bottomrule
+\end{tabularx}
+\end{table}

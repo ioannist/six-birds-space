@@ -8,16 +8,19 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{xurl}
-\usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{caption}
 \usepackage{tabularx}
 \usepackage{placeins}
 \usepackage{fancyhdr}
 \usepackage{natbib}
-\usepackage{pdflscape}
 \usepackage{enumitem}
 \usepackage{orcidlink}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, fit, calc}
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{thmtools}
 
 \hypersetup{
   colorlinks=true,
@@ -29,17 +32,45 @@
   pdftitle={To Plot a Stone with Six Birds: Constructing and Auditing Emergent Geometry from Markov Dynamics}
 }
 
+\captionsetup{font=small, labelfont=bf}
+\setlist{itemsep=2pt, topsep=4pt}
+\setlength{\emergencystretch}{2.5em}
+
+% ---------------------------------------------------------------------------
+% Theorem environments
+% ---------------------------------------------------------------------------
+\declaretheorem[name=Theorem, numberwithin=section, style=plain]{theorem}
+\declaretheorem[name=Proposition, sibling=theorem, style=plain]{proposition}
+\declaretheorem[name=Lemma, sibling=theorem, style=plain]{lemma}
+\declaretheorem[name=Corollary, sibling=theorem, style=plain]{corollary}
+\declaretheorem[name=Definition, sibling=theorem, style=definition]{definition}
+\declaretheorem[name=Remark, sibling=theorem, style=remark]{remark}
+
+% Provenance line placed after a statement: how the statement is established.
+\newcommand{\provenance}[1]{\par\smallskip\noindent{\small\textit{Basis.}~#1}\par\smallskip}
+\newcommand{\lean}[1]{\nolinkurl{#1}}
+
+% ---------------------------------------------------------------------------
+% Notation
+% ---------------------------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\TV}{\mathrm{TV}}
+\newcommand{\RM}{\mathrm{RM}}
+\newcommand{\Dist}{\mathrm{Dist}}
+\newcommand{\dH}{\dim_{\mathrm{H}}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\Kmac}{K}
+
 \title{To Plot a Stone with Six Birds:\\Constructing and Auditing Emergent Geometry from Markov Dynamics}
 \author{Ioannis Tsiokos\,\orcidlink{0009-0009-7659-5964}}
-\date{5 February 2026\\[4pt]{\small Version 2 (revised 27 February 2026) \quad$\cdot$\quad Zenodo v1: \href{https://doi.org/10.5281/zenodo.18494975}{10.5281/zenodo.18494975}}}
-
-\newcommand{\printaffiliation}{%
-  \begin{center}\small \end{center}%
-}
+\date{First version (v1): 5 February 2026\\[2pt]
+{\small Version 3: 4 October 2026 \quad$\cdot$\quad DOI: \href{https://doi.org/10.5281/zenodo.23130783}{10.5281/zenodo.23130783} \quad$\cdot$\quad v1 DOI: \href{https://doi.org/10.5281/zenodo.18494975}{10.5281/zenodo.18494975}}}
 
 \fancypagestyle{firstpage}{%
   \fancyhf{}
-  \fancyfoot[C]{\scriptsize Automorph Inc., Wilmington, DE, USA \quad \texttt{ioannis@automorph.io} \quad DOI: \href{https://doi.org/10.5281/zenodo.18494975}{10.5281/zenodo.18494975} \quad \textcopyright\ 2026 \quad CC-BY 4.0 \quad Preprint --- not peer reviewed.}
+  \fancyfoot[C]{\scriptsize Automorph Inc., Wilmington, DE, USA \quad \texttt{ioannis@automorph.io} \quad DOI: \href{https://doi.org/10.5281/zenodo.23130783}{10.5281/zenodo.23130783} \quad \textcopyright\ 2026 \quad CC-BY 4.0 \quad Preprint --- not peer reviewed.}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
@@ -47,25 +78,29 @@
 \begin{document}
 \maketitle
 \thispagestyle{firstpage}
-\printaffiliation
 
 \input{sections/00_abstract}
-\noindent\textbf{keywords:} emergent geometry; computational metric construction; closure audits; graph distances; reproducible pipelines; emergence calculus
+\noindent\textbf{Keywords:} emergent geometry; Markov chains; coarse-graining; likelihood path metrics; holonomy; Sierpi\'nski gasket; local limit theorem; Lean~4; emergence calculus
+
 \input{sections/01_introduction}
-\input{sections/02_six_birds_recap}
-\input{sections/03_emergent_geometry_construction}
-\input{sections/04_diagnostics}
-\input{sections/05_experimental_pipeline}
-\input{sections/06_results_E1_E4}
-\input{sections/07_holonomy_and_pythagoras}
-\input{sections/08_robustness_and_limits}
-\input{sections/09_discussion_conclusion}
-\appendix
-\input{sections/appendix_lean_anchors}
-\input{sections/appendix_reproducibility}
+\input{sections/02_six_birds}
+\input{sections/03_construction}
+\input{sections/04_closure_coherence}
+\input{sections/05_learned_ladders}
+\input{sections/06_constructed_regimes}
+\input{sections/07_curvature}
+\input{sections/08_pythagoras}
+\input{sections/09_limits}
+\input{sections/10_conclusion}
 
 \clearpage
 \bibliographystyle{plainnat}
 \bibliography{references}
+
+\appendix
+\input{sections/appendix_a_lean}
+\input{sections/appendix_b_proofs}
+\input{sections/appendix_c_reproducibility}
+\input{sections/appendix_d_versions}
 
 \end{document}

@@ -1,0 +1,208 @@
+\section{Proof details}
+\label{app:proofs}
+
+This appendix gives the written proofs behind the results of \cref{sec:constructed,sec:curvature,sec:pythagoras}.
+Mechanized steps are cited by their Lean names; finite constants that are computed exactly are marked as such.
+
+\subsection{Block lenses on the grid (\texorpdfstring{\cref{thm:grid}}{Theorem 6.1})}
+\label{app:grid-proof}
+
+The open-grid walk moves from $z$ to each of its $\deg(z)\in\{2,3,4\}$ neighbours with probability $1/(2\deg z)$.
+It is reversible with stationary law $\pi(z)=\deg(z)/(2\mathcal E)$, where $\mathcal E$ is the number of undirected edges.
+
+\emph{(i) Escape.}
+Since $\deg\ge2$, the uniform prototype $u$ of a $b\times b$ block satisfies $u\le(\mathcal E/b^2)\,\pi$ pointwise, and the domination persists: $uP^t\le(\mathcal E/b^2)\pi$.
+Every directed edge carries stationary flow $\pi(z)P(z,z')=1/(4\mathcal E)$, and at most $4b$ directed edges leave a block.
+So at each step the probability of traversing an edge out of the original block is at most $(\mathcal E/b^2)\cdot4b/(4\mathcal E)=1/b$.
+Ending outside the block requires such a traversal at one of the five steps; a union bound gives escape at most $5/b$, and \cref{prop:closure-basic} gives the bounds on $s$ and $\delta$.
+
+\emph{(ii) Macro weights.}
+For $b\ge8$ a five-step walk changes each block coordinate by at most one, so among distinct blocks only cardinal and diagonal pairs communicate.
+For a cardinal pair, each of the $b$ sites along the shared side can cross on the first step (probability at least $1/8$) and then hold four times (probability $1/16$); weighting by prototype mass $1/b^2$ gives at least $1/(128b)$.
+A crossing requires a start within five sites of the side, a strip of mass at most $5b/b^2=5/b$.
+For a diagonal pair, a corner site with two perpendicular moves and three holds gives at least $1/(512b^2)$, and the start must lie in the intersection of two strips, of mass at most $25/b^2$.
+The same bounds hold for the reversed transitions and hence for $W$.
+
+\emph{(iii) Metric bracket.}
+The floor $\eta_b=1/(1024b^2)$ is below every positive weight, so it changes no cost.
+A cardinal edge costs at most $\log(128b)=c_b$ and at least $\log(b/5)=c_b-e$; a diagonal edge costs at least $2\log(b/5)$.
+A cardinal edge changes the Manhattan distance to the target by at most one and a diagonal edge by at most two, so every protocol from $x$ to $y$ costs at least $(c_b-e)L(x,y)$; this is positive because $b>5$.
+A monotone cardinal path gives the upper bound.
+
+\emph{(iv)--(v) Normalized readout and distortion.}
+From (iii), $|d_b/c_b-L|\le(e/c_b)L$ and $L\le2(M-1)$, so $|\rho_b-L/M|\le2e/c_b$.
+For a fine block index $i$ and coarse index $\lfloor i/2\rfloor$, $\bigl||i-j|-2|\lfloor i/2\rfloor-\lfloor j/2\rfloor|\bigr|\le1$ in each coordinate, so $|L_{\mathrm f}/M_{\mathrm f}-L_{\mathrm c}\circ r/M_{\mathrm c}|\le2/M_{\mathrm f}$; the triangle inequality adds the two readout errors.
+
+\emph{(vi) Routes.}
+Started from a fine prototype, leaving the coarse block requires leaving the fine block, so by the argument of (i) with width $b_{\mathrm f}$ the direct route $A$ escapes its initial coarse block with probability at most $10/b_{\mathrm f}$.
+On the staged route $V$ the middle label changes in the first five steps with probability at most $5/b_{\mathrm f}$, and after re-lifting to the middle prototype the coarse label changes with probability at most $5/b_{\mathrm m}$.
+Total variation to the initial coarse point mass equals the escape probability, and the triangle inequality gives $\RM\le15/b_{\mathrm f}+5/b_{\mathrm m}$.
+The bound concerns fine prototype inputs; concentrated boundary inputs are not covered.
+
+\subsection{Recursive gasket cells (\texorpdfstring{\cref{thm:gasket,thm:gasket-limit}}{Theorems 6.2 and 6.3})}
+\label{app:gasket-proof}
+
+\emph{The interface constant.}
+The level-$\ell$ gasket graph has $(3^{\ell+1}+3)/2$ vertices; non-corner vertices have degree four and its three outer corners degree two.
+Distinct outer corners of a level-$s$ cell are $2^s\ge8$ steps apart, so a five-step walk crosses at most one interface, and every path contributing to the flux across an interface stays within five steps of the shared corner.
+For $s\ge3$ this radius-five neighbourhood is the union of two copies of a fixed corner neighbourhood, contains only degree-four vertices and no other junction, and is therefore the same for every $s$ and $m$; swapping the owner of the shared vertex exchanges two symmetric copies and leaves the aggregate flux unchanged, and reversibility makes the two directed fluxes equal.
+The aggregate five-step flux $\kappa=\sum_{z\in f^{-1}(x)}P^5(z,f^{-1}(y))$ is computed exactly on the level-4 graph with three level-3 cells: $23810$ weighted paths out of $8^5$, so $\kappa=11905/16384$.
+This gives $K_{xy}=\kappa/n_x$ for adjacent cells and zero otherwise.
+
+\emph{Closure and metric.}
+A cell has at most three neighbours, so its escape is at most $3\kappa/n_x\le3\kappa/(V_s-3)$; \lean{closure_defect_le_macro_escape} gives the same bound for $\delta$.
+The symmetrized weight of a contact is $W_{xy}=\tfrac\kappa2(1/n_x+1/n_y)\in[\kappa/V_s,\kappa/(V_s-3)]$, so with the inactive floor $\eta_s=\kappa/(2V_s)$ every edge cost lies in $[c_s-e_s,c_s]$, and counting edges gives $(c_s-e_s)D_m\le d_{s,m}\le c_sD_m$.
+Since $D_m\le2^m-1$, $|\rho_{s,m}-D_m/2^m|\le e_s/c_s$.
+
+\emph{Graph laws.}
+Let $G_0$ be a point and $G_m$ three copies of $G_{m-1}$ joined pairwise by single edges at the corresponding outer corners.
+By induction: (1) every recursive copy is isometrically embedded; (2) the diameter and every outer-corner distance equal $2^m-1$; (3) $|D_m(x,y)-2D_{m-1}(r(x),r(y))|\le1$.
+For (1)--(2), a geodesic cannot leave a child copy and return through the same bridge, and returning through the other bridge costs at least $2D+3$ with $D=2^{m-1}-1$, more than the internal corner-to-corner path of length $D$; so children are convex, and the direct bridge route between outer corners of two children has length exactly $2D+1=2^m-1$, while the route through the third child costs $3D+2$.
+For (3), $G_m$ is also obtained from $G_{m-1}$ by replacing each vertex by a triangle whose three external edges attach at distinct ports.
+A coarse geodesic of length $q$ lifts to $q$ bridges and at most $q+1$ triangle edges, so $D_m\le2q+1$; a fine geodesic cannot leave and re-enter a triangle, uses $q'\ge q$ bridges and crosses at least $q'-1$ intermediate triangles between distinct ports, so $D_m\ge2q-1$ (and $D_m\le1$ when $q=0$).
+Distortion (v) follows from (3) and the readout bound at both levels.
+
+\emph{Routes.}
+The stationary law is proportional to degree.
+A fine fibre of size $n$ contains at most one degree-two exterior corner, so its uniform prototype is within total variation $1/(2n-1)$ of the stationary law conditioned on the fibre, which is pointwise at most $\pi/\pi(\text{fibre})$; this domination persists under $P$.
+At most six directed edges leave a fibre, each carrying conditional flux at most $\tfrac12$ divided by the fibre's total degree, so each step leaves the fibre with probability at most $3/(4n-2)$.
+Ten steps and the initial total-variation correction give direct escape at most $32/(4n-2)$; the staged route escapes with probability at most $3\kappa/(V_{\mathrm f}-3)+3\kappa/(V_{\mathrm m}-3)$, and the triangle inequality gives (vi).
+
+\emph{The limit space.}
+By (3), $|\delta_{m+1}-\delta_m|\le2^{-(m+1)}$ uniformly, so $\delta_m\to\delta$ uniformly with $|\delta-\delta_m|\le2^{-m}$.
+Each $\delta_m$ is a pseudometric on addresses, so $\delta$ is one, and the quotient $\mathcal G$ is a metric space.
+The functions $\delta_m$ are continuous on the compact product space $\{0,1,2\}^{\N}$ and converge uniformly, so $\delta$ is continuous and $\mathcal G$, a continuous image, is compact.
+The three constant addresses are at distance $(2^m-1)/2^m\to1$, and $\delta\le1$, so the diameter is $1$.
+Isometry of recursive copies gives $D_{m+j}(pa|_m,pb|_m)=D_m(a|_m,b|_m)$ for a prefix $p$ of length $j$, hence $\delta(pa,pb)=2^{-j}\delta(a,b)$.
+Statement (ii) of \cref{thm:gasket-limit} follows from $|\rho_{s,m}-D_m/2^m|\le\epsilon_s$ and $|\delta_m-\delta|\le2^{-m}$.
+
+\emph{Ball growth and dimension.}
+In $G_m$, let $1\le R<2^m$ and $2^{k-1}\le R<2^k$.
+The copy of $G_{k-1}$ containing $x$ has diameter $2^{k-1}-1<R$, so $|B_x(R)|\ge3^{k-1}$.
+Conversely, a geodesic that uses $q$ bridges between depth-$(k-1)$ copies crosses $q-1$ intermediate copies corner to corner, so its length is at least $q2^{k-1}-(2^{k-1}-1)$; for $R<2^k$ this forces $q\le2$, and since the contact graph of these copies has maximum degree three, $B_x(R)$ meets at most $1+3+6=10$ copies, so $|B_x(R)|\le10\cdot3^{k-1}$.
+With $d_f=\log3/\log2$ this gives $\tfrac13R^{d_f}\le|B_x(R)|\le10R^{d_f}$.
+Let $\mu$ be the image of the uniform product measure; each prefix cylinder of length $m$ has mass $3^{-m}$.
+Because $|\delta-\delta_m|\le2^{-m}$, the limiting ball $B_x(r)$ contains every cylinder whose prefix lies within $D_m$-distance $2^m r-1$ of the prefix of $x$ and is contained in the union of cylinders within $2^m r+1$; applying the graph bounds and letting $m\to\infty$ gives $\tfrac13r^{d_f}\le\mu(B_x(r))\le10r^{d_f}$ for $0<r<1$.
+For the upper dimension bound, the $3^m$ prefix copies have diameter $2^{-m}$ and $\sum(2^{-m})^q=3^m2^{-mq}\to0$ for $q>d_f$.
+For the lower bound, a set of diameter $\ell<1$ lies in a ball of radius $\ell$ and so has $\mu$-mass at most $10\ell^{d_f}$; any cover therefore has $\sum\ell_i^{d_f}\ge1/10$, the $d_f$-dimensional Hausdorff measure is positive, and $\dH\mathcal G=d_f$.
+
+\emph{The Hilbert obstruction.}
+For prefix length $m\ge3$ and $a=2^{m-2}$, the isometric-copy corner distances and the two possible first-level routes give
+$D_m(A,B)=D_m(C,D)=3a-1$, $D_m(A,C)=a-1$, $D_m(B,D)=a+1$ and $D_m(A,D)=D_m(B,C)=2a$ (checked exactly for $m=3,\dots,6$).
+Dividing by $2^m$ and letting $m\to\infty$ gives the limiting distances $\tfrac34,\tfrac34,\tfrac14,\tfrac14,\tfrac12,\tfrac12$.
+With every distance moved by $\tfrac1{16}$ against the inequality, $2(\tfrac{11}{16})^2-2(\tfrac5{16})^2-2(\tfrac9{16})^2=\tfrac{15}{128}>0$, so~\eqref{eq:quadrilateral} fails and no inner-product approximation within $\tfrac1{16}$ exists (\lean{gasket_limit_quadrilateral_gap}, \lean{no_hilbert_uniform_approximation}).
+For any point $x$ choose an address; its prefix copy of length $j$ contains $x$, has diameter $2^{-j}$ and so lies in the closed ball $B_x(2^{-j})$, and it contains the four points scaled by $2^{-j}$.
+
+\subsection{Spherical reservoirs (\texorpdfstring{\cref{thm:sphere,thm:markov-curvature}}{Theorems 6.4 and 7.4})}
+\label{app:sphere-proof}
+
+\emph{Escape.}
+Let a prototype be uniform on a union of $g$ reservoirs, with density $1/(gV)$.
+Killing the walk when it leaves the fibre gives a symmetric substochastic matrix, whose column sums are at most one, so the surviving density never exceeds $1/(gV)$.
+Only the $g$ gateways can leave, each at rate at most $\tfrac18$, so each step's exit probability is at most $1/(8V)$ and $\tau$ steps give escape at most $\tau/(8V)$.
+
+\emph{Probability brackets.}
+Put $t=\beta\log2$, so $Q_{ik}\le e^{-t\,d_S(q_i,q_k)}/(8n)$ and $\sum_kQ_{ik}e^{t\,d_S(q_i,q_k)}\le\tfrac18$.
+Including within-reservoir moves, every weighted row sum is at most $\tfrac98$, and by the triangle inequality the exponential moment $\mathbb E\,e^{t\,d_S(\text{start},\text{current})}$ grows by at most $\tfrac98$ per step after a contact.
+Before the first contact the gateway density is at most $1/V$, so the weighted first-contact flux at each step is at most $1/(8V)$; summing over the first-contact time and allowing any later contacts gives a weighted contact probability at most $C_\tau/V$ with $C_\tau=\tfrac\tau8(\tfrac98)^{\tau-1}$, $C_5=32805/32768$.
+If coarse representatives $r_x$ are within $\varrho$ of every reservoir point in their fibres, a path ending in another fibre has displacement at least $d_S(r_x,r_y)-2\varrho$, so $K_{xy}\le(C_5/V)e^{-t[d_S(r_x,r_y)-2\varrho]}$.
+A single contact at the first step followed by four holds gives $K_{xy}\ge e^{-t[d_S(r_x,r_y)+2\varrho]}/(256\,nVg_x)$.
+The cube-mesh fibres at each level have equal size, so $K$ is symmetric.
+
+\emph{Metric bracket.}
+With the inactive floor of \cref{thm:sphere} and threshold zero, if $\log(V/C_5)\ge2t\varrho$ every off-diagonal cost satisfies $t\,d_S(r_x,r_y)\le c(x,y)\le t\,d_S(r_x,r_y)+2t\varrho+\log(256\,nVg_{\max})$.
+The lower bound holds edge by edge, so by the spherical triangle inequality every protocol costs at least $t\,d_S$ between its endpoints (\lean{Protocol.reference_le_cost}); the direct edge gives the upper bound (\lean{weightedEdist_reference_bracket}, \lean{likelihood_cost_exp_bracket}).
+Hence $0\le d/t-d_S\le2\varrho+\log(256\,nVg_{\max})/t$.
+
+\emph{Meshes and parameters.}
+Face vectors have length at least one, so radial projection at most doubles Euclidean displacement, and geodesic distance is at most $\pi/2$ times chord distance; cell points lie within face distance $2\sqrt2\,2^{-\ell}$ of their representatives, giving the cell radius bound $\varrho_\ell=2\pi\sqrt2\,2^{-\ell}$.
+With $n_r=6\cdot4^{r+2}$, $V_r=2^r$, $t_r=2^{r/2}\log2$ and $g_{\max}=16$, the baseline condition holds for every $r\ge5$: at $r=5$, $2t_r\varrho_r=\pi\log2<\pi<22/7<10/3-37/32768\le\log V_r-\log C_5$ (using $\log2\ge2/3$ and $\log C_5\le37/32768$), and for larger $r$ the left side decreases while $\log V_r$ increases, and $2\varrho_r+\log(256\,n_rV_r\cdot16)/t_r=\epsilon_r$.
+Adjacent lens projections move endpoints by at most $\varrho_r$, giving distortion at most $2\epsilon_r+2\varrho_r$.
+The representatives form $\varrho_r$-nets of the sphere, so matching every sphere point to a nearby representative is a correspondence of distortion at most $\epsilon_r+2\varrho_r$, which proves Gromov--Hausdorff convergence; antipodal axis points give diameter at least $\pi$.
+
+\emph{Routes.}
+On fine prototypes each route is within $10/(8V)$ of the initial coarse point mass, giving $5/(2V)$.
+For arbitrary microstates, a packing estimate on the cube mesh shows that a spherical ball of radius $s$ contains at most $100(s+1/n)^2n_r$ representatives, where $n=2^{r+2}$ is the face side count; integrating $te^{-ts}$ against this count bounds the contact rate of any gateway by $a_r=\min\bigl(\tfrac18,\tfrac{25}2[2/t^2+2/(nt)+1/n^2]\bigr)=O(2^{-r})$.
+A walk from any microstate then contacts another reservoir in ten steps with probability at most $10a_r$, and the staged route adds $5a_r$ and $5/(8V)$, giving $15a_r+5/(8V_r)$.
+
+\emph{Transport.}
+For \cref{thm:markov-curvature}, the clipped normalized metric is within $\epsilon_r$ of the true sphere metric, including at the marked axes, so \cref{thm:landmark} applies once its margins hold.
+On the positive-$z$ face take the north landmark and the representatives at gnomonic coordinates $(u_r,1/n)$ and $(1/n,u_r)$, with $u_r$ the grid coordinate nearest $h_r=2^{-r/8}$.
+For large $r$ these lie in a patch where the gnomonic area density is at least $\tfrac12$ and the planar triangle area is at least $h_r^2/4$, so the spherical area is at least $h_r^2/8$.
+Projecting the positive $x$-axis gives frames with projection length at least $0.8$, and pairwise dot products above $0.85$ give arc margins above $1.8$, for both the true and the reconstructed points once $2\sqrt3\,\epsilon_r\le1/40$.
+\Cref{thm:landmark} then bounds the angle error by $3\pi\sqrt3\,C\epsilon_r$, and dividing by the area gives the stated rate.
+
+\subsection{Covariant shifts and the spherical connection (\texorpdfstring{\cref{thm:commutator}}{Theorem 7.1})}
+\label{app:connection-proof}
+
+Since $uv=vu$, $(S_uS_vs)(x)=A_xB_{ux}s(uvx)=L_xs(uvx)$ and $(S_vS_us)(x)=B_xA_{vx}s(uvx)=M_xs(uvx)$, so the commutator is $(L_x-M_x)s(uvx)=(H_x-I)M_xs(uvx)$.
+Choosing a section supported at a single point $uvx$ shows that commutation forces $H_x=I$.
+On a finite set with bijective translations the commutator is a block-diagonal operator after a permutation, so its norm is the largest block norm $\|(H_x-I)M_x\|=\|H_x-I\|$.
+For a rotation $R$ by $\theta$, $(R-I)^{\mathsf T}(R-I)=2I-R-R^{\mathsf T}=(2-2\cos\theta)I$, so $\|R-I\|=2\sin(\theta/2)$.
+Frame changes act by $A'_x=Q_xA_xQ_{ux}^{-1}$, $B'_x=Q_xB_xQ_{vx}^{-1}$, $s'(x)=Q_xs(x)$, which conjugates the shifts by the orthogonal map $s\mapsto Q s$ and gives $H'_x=Q_xH_xQ_x^{-1}$.
+
+For the sphere, $r(\phi,\lambda)=(\cos\phi\cos\lambda,\cos\phi\sin\lambda,\sin\phi)$ with frame $e_\phi=\partial_\phi r$, $e_\lambda=(-\sin\lambda,\cos\lambda,0)$.
+Tangential projection of ambient derivatives gives the Levi-Civita connection, with $\nabla_{\partial_\lambda}e_\phi=-\sin\phi\,e_\lambda$, $\nabla_{\partial_\lambda}e_\lambda=\sin\phi\,e_\phi$ and $\nabla_{\partial_\phi}e_\phi=\nabla_{\partial_\phi}e_\lambda=0$.
+A parallel field along a latitude therefore rotates its components by $\sin\phi\,\Delta\lambda$, and along a meridian its components are constant.
+Around the rectangle the square holonomy is the rotation by $-w(\sin\phi_1-\sin\phi_0)$, and the area is $\int\cos\phi\,d\phi\,d\lambda=w(\sin\phi_1-\sin\phi_0)$.
+When the area is below $\pi$, the principal angle magnitude equals the area. For a square of side $h$ centred at latitude $\phi$, the area is $2h\cos\phi\sin(h/2)$, and both are $h^2\cos\phi\,(1+o(1))$.
+
+\subsection{The local-MDS obstruction (\texorpdfstring{\cref{thm:mds-obstruction}}{Theorem 7.2})}
+\label{app:mds-proof}
+
+\emph{Identical charts.}
+Charts on the same point set have distance matrices that differ by a permutation of rows and columns, hence the same centred Gram matrix up to that permutation.
+If the second and third eigenvalues are distinct, the retained two-dimensional subspace is common, so the MDS coordinates differ by orthogonal maps, the full-rank Procrustes transports are pure gauge, and the triangle product is the identity (\lean{triangleHolonomy_common_chart}). For points obtained from a fixed planar configuration at scale $h$ the gap holds for small $h$, since two eigenvalues are of order $h^2$ and the rest of order $h^4$; without a gap, different valid truncations need not be gauge copies.
+
+\emph{The distinct-chart configuration.}
+Take the twelve integer points
+$(0,0)$, $(2,0)$, $(0,2)$, $(1,-4)$, $(5,1)$, $(-3,-3)$, $(6,-4)$, $(4,5)$, $(2,-3)$, $(1,3)$, $(-4,0)$, $(1,1)$
+in the tangent plane at the north pole and map them to the unit sphere by the exponential map at scale $h$.
+Use $k=8$ without expansion and the triangle with centres at the first three points.
+The three neighbourhoods are distinct, their membership is fixed for all small $h$ by strict gaps in squared distances at the $k$-th neighbour, and every chart and overlap covariance has positive determinant after rescaling by the appropriate power of $h$.
+For fixed plane points $a,b$, $d_h(a,b)^2=h^2|a-b|^2-\tfrac{h^4}{3}\det(a,b)^2+O(h^6)$.
+For a chart with centred plane coordinates $X$ and $G=X^{\mathsf T}X$, the centred spherical Gram matrix divided by $h^2$ is $XX^{\mathsf T}+h^2E+O(h^4)$ with $E=-\tfrac12J\,W\,J$, $W_{ab}=-\det(a,b)^2/3$ and $J$ the centring matrix.
+The two retained eigenvalues are separated from the zero eigenvalues, so the retained rank-two part of the Gram matrix is smooth in $h$, and its first-order term is $F=PE+EP-PEP$ with $P=XG^{-1}X^{\mathsf T}$ the projection onto the range of $X$; a coordinate factor with $XY^{\mathsf T}+YX^{\mathsf T}=F$ is $Y=EXG^{-1}-\tfrac12XG^{-1}(X^{\mathsf T}EX)G^{-1}$, unique up to gauge.
+For an edge with common zeroth-order overlap matrix $A$, the cross-covariance divided by $h^2$ is $A^{\mathsf T}A+h^2M_1+O(h^4)$, $M_1=A^{\mathsf T}Y_j+Y_i^{\mathsf T}A$, and the polar factor is $I+h^2\omega J_2+O(h^4)$ with $\omega=(M_{1,21}-M_{1,12})/\operatorname{tr}(A^{\mathsf T}A)$ and $J_2$ the rotation generator.
+The three edge coefficients sum, in exact rational arithmetic, to $-7884106465972959320549378723/3276386621095812942397680000$.
+The spherical triangle has area $2h^2(1+o(1))$ (its gnomonic image is a right triangle with legs $\tan 2h$), so the angle divided by the area tends to the constant of \cref{thm:mds-obstruction}.
+
+\emph{Dense samples.}
+Remove background points within distance $20h$ of the north pole and add an $h$-net on the rest of the sphere.
+All patch points lie within $8h$ of the pole, so for small $h$ every background point is farther from each centre than every patch point, and the three charts are unchanged while the whole sample becomes $O(h)$-dense.
+
+\emph{Stability.}
+For $M=US$, $N=VT$ with $S,T$ positive definite, polar optimality gives $\operatorname{tr}(U^{\mathsf T}M)-\operatorname{tr}(V^{\mathsf T}M)\ge\tfrac12\sigma_{\min}(M)\|U-V\|_F^2$; adding the inequality for $N$ and applying Cauchy--Schwarz to $\operatorname{tr}((U-V)^{\mathsf T}(M-N))$ gives the stated bound.
+
+\subsection{Landmark transport (\texorpdfstring{\cref{thm:landmark}}{Theorem 7.3})}
+\label{app:landmark-proof}
+
+Cosine is $1$-Lipschitz, so each raw landmark coordinate vector has error at most $\sqrt3\,\epsilon$, and normalization (valid since $\sqrt3\,\epsilon\le\tfrac12$) at most doubles it: every reconstructed point is within $E=2\sqrt3\,\epsilon$ of the truth.
+Projecting the fixed unit reference vector perturbs by at most $2E$, so the first frame vector has error at most $4E/\kappa$, the second at most $E+4E/\kappa$, and the frame operator error is at most $E(1+8/\kappa)$.
+In $R(p,q)=I+K+K^2/(1+p\cdot q)$, the cross-product matrix changes by at most $2E$, its square by at most $4E$ and the denominator by at most $2E$, giving ambient error at most $E(2+4/\gamma+2/\gamma^2)$.
+Each row-coordinate transport $F_p^{\mathsf T}R(p,q)^{\mathsf T}F_q$ therefore has error at most $EC$, the loop product at most $3EC$ (\lean{triangle_transport_error}), and for planar rotations the circular angle distance is at most $\tfrac\pi2$ times the operator distance; principal angle magnitudes are $1$-Lipschitz, which gives $\tfrac{3\pi}2EC=3\pi\sqrt3\,C\epsilon$ as a bound on the distance between the estimated angle and the true principal angle.
+That $R(p,q)$ is parallel transport along the shorter arc follows because it fixes the arc normal and maps the arc tangent at $p$ to that at $q$, both of which are parallel along the arc.
+For the loop angle, write $de_1=a\,e_2+b\,n$, $de_2=-a\,e_1+c\,n$ for an oriented frame with normal $n$; then $da=c\wedge b=-b\wedge c$ is minus the area form, parallel coordinates rotate by $\oint a$, and Stokes' theorem gives angle $-\text{area}$; when the area is below $\pi$ the principal angle magnitude is the area.
+
+\subsection{The quadratic limit (\texorpdfstring{\cref{thm:local-limit,cor:quadratic}}{Theorem 8.1 and Corollary 8.2})}
+\label{app:quadratic-proof}
+
+The one-step characteristic function is $\varphi(t)=\tfrac12+\tfrac14(\cos t_1+\cos t_2)\in[0,1]$, and the inversion formula is exact because $\varphi^n$ is a trigonometric polynomial.
+With $r=|t|$, $q=1-\varphi$ and $h=r^2/8$, elementary sine and Taylor bounds give $r^2/(2\pi^2)\le q\le h$, $0\le h-q\le r^4/96$, and $q\ge\tfrac{11}{96}r^2$ for $r\le1$.
+For $0\le q\le1$, $0\le e^{-nq}-(1-q)^n\le\tfrac{n q^2}2e^{-(n-1)q}$ and $0\le e^{-nq}-e^{-nh}\le n(h-q)e^{-nq}$, so on the unit disk $|\varphi^n-e^{-nh}|\le\tfrac{7n}{384}r^4e^{-(n-1)ar^2}$ with $a=\tfrac{11}{96}$.
+Integrating over the plane contributes $\tfrac{7}{768\pi a^3}\tfrac{n}{(n-1)^3}$.
+Outside the unit disk, $|\varphi^n|\le e^{-nr^2/(2\pi^2)}$ contributes at most $\tfrac{\pi}{2n}e^{-n/(2\pi^2)}$, and the Gaussian tail contributes $\tfrac2{\pi n}e^{-n/8}$.
+The inverse transform of $e^{-n|t|^2/8}$ over the whole plane is $g_n$, which proves \cref{thm:local-limit}.
+
+On $|z|\le R\sqrt n$, $g_n(z)\ge\tfrac2{\pi n}e^{-2R^2}$, so $|p_n/g_n-1|\le E_R(n)$ at $z$ and at $0$.
+If $|u-1|\le e<1$ then $|\log u|\le e/(1-e)$ (\lean{abs_log_le_relative_error}); applying this to $p_n(z)/g_n(z)$ and $p_n(0)/g_n(0)$ gives the centred bound and, with one logarithm, the uncentred bound (\lean{log_cost_error}, \lean{centered_log_ratio_error}).
+The axis residual of the exact quadratic $2|z|^2/n$ vanishes, so three applications of the centred bound give $3d_R(n)$ (\lean{cost_axis_residual_bound}).
+Nonnegativity of $F_n$ follows from $p_n(0)-p_n(z)=(2\pi)^{-2}\int\varphi^n(1-\cos t\cdot z)\,dt\ge0$, and then $|\sqrt{F_n/2}-|z|/\sqrt n|\le\sqrt{|F_n/2-|z|^2/n|}\le\sqrt{d_R(n)/2}$ (\lean{quadratic_cost_readout_error}).
+Rounding $\sqrt n\,u$ to the lattice changes the normalized displacement by at most $\sqrt{2/n}\le\sqrt2$, so with $R\ge\operatorname{diam}(K)+\sqrt2$ every rounded difference lies in the window, and the continuum statement follows.
+
+\emph{The correlated control.}
+Here $\varphi_c=\tfrac12+\tfrac18(\cos t_1+\cos t_2)+\tfrac14\cos(t_1+t_2)\in[0,1]$, $q_c=1-\varphi_c\ge r^2/(4\pi^2)$, $h_c=\tfrac12t^{\mathsf T}\Sigma t$ with $r^2/16\le h_c\le5r^2/16$, and $0\le h_c-q_c\le3r^4/64$.
+The same argument gives
+$|p^c_n(z)-g^c_n(z)|\le\tfrac{49}{1024\pi A^3}\tfrac{n}{(n-1)^3}+\tfrac4{\pi n}e^{-\pi^2n/16}$ with $A=1/(4\pi^2)$ and $g^c_n(z)=\tfrac{4}{\pi\sqrt5\,n}e^{-Q_n(z)}$,
+so the centred cost converges uniformly to $Q_n$ on $|z|\le R\sqrt n$, where $Q_n\le4R^2$.
+At $x=y=k_n=\lfloor\sqrt n\rfloor$ the residual of $Q_n$ is $-\tfrac{16}5k_n^2/n\to-\tfrac{16}5$.

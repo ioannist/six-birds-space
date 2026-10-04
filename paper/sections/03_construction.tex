@@ -1,0 +1,105 @@
+\section{The construction: from packaging to a metric}
+\label{sec:construction}
+
+This section defines the objects used throughout and proves the basic metric facts.
+Nothing here depends on a particular substrate.
+
+\subsection{Micro dynamics, lenses and prototypes}
+
+Let $Z$ be a finite nonempty set of microstates and $P\in\R^{Z\times Z}$ a row-stochastic Markov kernel~\cite{Norris1997}.
+Distributions are row vectors, so one step maps $\mu$ to $\mu P$, and the stage parameter $\tau\in\N$ gives the $\tau$-step map $\mu\mapsto\mu P^{\tau}$.
+
+A \emph{lens} is a map $f\colon Z\to X$ onto a finite set $X$ of macro states (nonempty, since $f$ is onto).
+Its fibres $f^{-1}(x)$ are the blocks of microstates that the lens does not distinguish; they are the candidate \emph{points} at this resolution.
+The lens is encoded by the deterministic coarse matrix $C\in\{0,1\}^{Z\times X}$, $C[z,x]=\one\{f(z)=x\}$, which pushes a micro distribution $\mu$ forward to $\mu C$.
+
+To go back from macro to micro we choose, for each $x\in X$, a \emph{prototype} $u_x$, a probability distribution on $Z$.
+The prototypes form the rows of a stochastic matrix $U\in\R^{X\times Z}$.
+We always use prototypes supported on their own fibres, $u_x(z)=0$ whenever $f(z)\neq x$.
+Then every fibre is nonempty and
+\begin{equation}
+UC=I_X,
+\label{eq:UC}
+\end{equation}
+so lifting a macro distribution and repackaging it returns the same macro distribution.
+Two prototype choices are used: \emph{uniform} on the fibre, and \emph{stationary-conditional}, which restricts a chosen stationary law $\pi$ of $P$ to the fibre and renormalizes; the latter requires $\pi(f^{-1}(x))>0$ for every $x$.
+
+\subsection{Closure and the macro kernel}
+
+Lifting, evolving for $\tau$ steps and repackaging defines two operators:
+\begin{equation}
+E \coloneqq P^{\tau}CU \in\R^{Z\times Z},
+\qquad
+K \coloneqq UP^{\tau}C \in\R^{X\times X}.
+\label{eq:closure-macro}
+\end{equation}
+$E$ is the \emph{closure} acting on micro distributions (evolve, repackage, re-lift), and $K$ is the \emph{macro kernel}: $K_{xy}$ is the probability that a walker started from prototype $u_x$ is in block $y$ after $\tau$ steps.
+Both are row-stochastic whenever $P$ and $U$ are (\cref{prop:closure-basic}).
+This is the simplest form of the operator-rewrite primitive: micro dynamics rewritten in macro variables by inserting a packaging map and a chosen lift.
+
+\subsection{Likelihood costs}
+\label{sec:costs}
+
+To obtain an undirected geometry we symmetrize macro transition probabilities into a weight array
+\begin{equation}
+W\coloneqq \tfrac12\bigl(K+K^{\mathsf T}\bigr),
+\end{equation}
+which is symmetric with entries in $[0,1]$ (it need not be stochastic).
+Fix a probability floor $0<\eta\le 1$ and an edge threshold $\varepsilon_{\mathrm{edge}}\ge 0$.
+For $x\neq y$ the edge $\{x,y\}$ is present when $W_{xy}>\varepsilon_{\mathrm{edge}}$, and then its cost is
+\begin{equation}
+c(x,y)\coloneqq -\log\max\bigl(W_{xy},\eta\bigr)\ \in\ [0,\,-\log\eta].
+\label{eq:cost}
+\end{equation}
+Absent edges have cost $+\infty$.
+The floor only caps the cost of very unlikely present edges; it never creates an edge.
+Costs are nonnegative because $\max(W_{xy},\eta)\le 1$.
+
+\begin{remark}[Why a floor and not additive smoothing]
+The superficially similar rule $-\log(W_{xy}+\eta)$ is negative whenever $W_{xy}+\eta>1$, for instance when $W_{xy}=1$.
+A negative undirected edge creates negative-cost cycles, so the infimum over paths can be $-\infty$ and shortest-path algorithms are invalid.
+The floor rule~\eqref{eq:cost} avoids this.
+In the limit constructions of \cref{sec:constructed} the floor is chosen below every positive edge weight, so it is inactive; a fixed positive floor would eventually clip edges of a refining family whose transition probabilities tend to zero.
+\end{remark}
+
+\subsection{Distance as cheapest protocol}
+
+A \emph{protocol} from $x$ to $y$ is a finite path $\gamma=(x=x_0,x_1,\dots,x_k=y)$ in the macro graph, including the empty path when $x=y$.
+Its cost is additive, $\mathrm{Cost}(\gamma)=\sum_{i<k}c(x_i,x_{i+1})$, and the induced distance is
+\begin{equation}
+d(x,y)\coloneqq \inf_{\gamma\colon x\rightsquigarrow y}\mathrm{Cost}(\gamma)\ \in[0,\infty].
+\label{eq:path-metric}
+\end{equation}
+In computation, $d$ is obtained by an all-pairs shortest-path search.
+Edges of cost exactly zero must be kept as edges: treating them as absent would disconnect precisely the zero-distance classes that \cref{prop:metric} identifies.
+
+\begin{proposition}[The likelihood path distance]
+\label{prop:metric}
+For every finite macro kernel $K$, floor $0<\eta\le1$ and threshold $\varepsilon_{\mathrm{edge}}\ge0$:
+\begin{enumerate}[label=(\roman*)]
+\item $d$ is an extended pseudometric on $X$: $d(x,x)=0$, $d(x,y)=d(y,x)$, and $d(x,z)\le d(x,y)+d(y,z)$, with values in $[0,\infty]$.
+\item $d(x,y)<\infty$ for all $x,y$ if and only if the macro graph is connected.
+\item Identifying points at distance zero gives an extended metric space whose distances are those of $d$.
+It is an ordinary metric space exactly when the graph is connected.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The empty protocol gives $d(x,x)=0$.
+Concatenating a protocol from $x$ to $y$ with one from $y$ to $z$ gives a protocol from $x$ to $z$ whose cost is the sum, which yields the triangle inequality after taking infima; reversing a protocol preserves its cost because $c$ is symmetric.
+Nonnegativity of~\eqref{eq:cost} keeps all values in $[0,\infty]$.
+Part (ii) is immediate from the definition, since only absent edges have infinite cost.
+Part (iii) is the separation quotient of an extended pseudometric.
+\end{proof}
+
+\provenance{Lean: weighted protocols and their costs are defined in \lean{PathMetric.lean}, which proves \lean{weightedEdist_self}, \lean{weightedEdist_triangle}, \lean{weightedEdist_symm} and builds \lean{weightedPseudoEMetricSpace} without assuming connectivity, positive costs or separation. \lean{weightedSeparationMetric} applies the separation quotient of \lean{QuotientMetric.lean} to this distance, and \lean{flooredLikelihoodCost_nonneg} proves nonnegativity of~\eqref{eq:cost} for $W\le1$ and $0<\eta\le1$.}
+
+Zero distances between distinct points do occur.
+For the two-state deterministic swap with threshold $\varepsilon_{\mathrm{edge}}<1$ (for instance $0$), both off-diagonal probabilities equal one, so both edges are present with cost zero and the two states are at distance zero.
+Separation is therefore a property to be checked, not assumed.
+The constructions of \cref{sec:constructed} prove explicit positive lower bounds on all edge costs together with connectivity, which gives separation and finiteness directly.
+
+\begin{remark}[Directed costs]
+Using $K$ instead of $W$ gives a directed shortest-path distance, an extended quasi-pseudometric: it satisfies the triangle inequality but need not be symmetric, and distinct points may again be at distance zero.
+Directed geometries are natural under asymmetric constraints but are not studied here.
+\end{remark}

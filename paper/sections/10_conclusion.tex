@@ -1,0 +1,72 @@
+\section{Discussion and conclusion}
+\label{sec:conclusion}
+
+The title asks how to plot a stone when space may not be assumed.
+The answer developed here is that plotting is a successful closure.
+A lens packages microstates into points, prototypes and staging turn the micro dynamics into a macro kernel, accounting turns transition probabilities into costs, and composition of moves turns costs into distances.
+Whether the result deserves to be called a geometry is decided by audits: the layer must close, its points must persist, and its distances must agree across refinement in declared units.
+When these audits pass along a refinement family and the normalized metrics also converge, as they do in our three constructions, the limit is the emergent space.
+
+\paragraph{What the six primitives produce.}
+The constructions exhibit three qualitatively different outcomes from the same pipeline.
+A lazy walk on a grid gives the $L^1$ square, a lazy walk on a gasket gives a self-similar space of dimension $\log3/\log2$ that is non-Euclidean at every point and every dyadic scale, and a reservoir chain with a spherical contact law gives the round sphere, whose curvature can be read back from the Markov metrics.
+In the language of~\cite{SixBirdsTheory}, packaging (P5) creates the candidate points, staging (P4) supplies the refinement along which coherence is tested, operator rewrite (P1) is the macro kernel whose closure is audited, accounting (P6) supplies the ledger, protocols (P3) turn the ledger into a distance and, through transport around loops, into curvature, and constraints (P2) decide which moves are available and so shape every one of these.
+
+\paragraph{The lens is where the work is.}
+All three coherent regimes rely on lenses that are written down from knowledge of the substrate.
+The learned spectral ladders, which are the obvious coordinate-free alternative, give valid metrics but fail persistence, and for the grid and gasket partitions no prototype choice can repair this.
+\Cref{prop:closure-basic} identifies what a good lens must do: since persistence equals escape and escape bounds closure, a lens should make blocks that a walker rarely leaves in $\tau$ steps, while still growing in number.
+Learning lenses by minimizing escape under a growth constraint, and proving that such lenses recover the constructions of \cref{sec:constructed}, is the natural next problem.
+
+\paragraph{The readout decides the geometry.}
+The same local walk rule, on the open grid and on the lattice, yields two geometries.
+Chaining macro transitions, each costing roughly the same, counts lattice steps and produces $L^1$ distance; the one-shot likelihood of a long staged displacement is quadratic and produces Euclidean distance.
+Neither is the ``true'' geometry of the walk.
+They answer different accounting questions, which is precisely the Six Birds view that geometry is a property of a closure (a lens, a completion and an audit) rather than of the substrate alone.
+Whether some lens makes the macro shortest-path metric of an isotropic walk converge to a Euclidean space is open.
+
+\paragraph{Curvature is route dependence, and estimators must be checked.}
+Curvature appears as the failure of transports along different routes to agree, equivalently as the noncommutation of covariant shift operators on a common space of frame fields.
+This survives the abelian nature of planar rotations.
+The practical lesson concerns estimation: a natural estimator built from local MDS charts and Procrustes alignment is gauge invariant and flat on flat data, yet converges to the wrong curvature on exact spherical data.
+Consistency requires both a correct reconstruction of the local geometry and metric errors small compared with loop areas.
+
+\paragraph{Three cautions.}
+Constraints do deform the induced metric, but correlation or anisotropy in a walk need not destroy the Pythagorean law; it changes which directions are orthogonal.
+Failure of local Euclidean embedding is not a signature of fractality, since grid-like $L^1$ metrics fail it too; a fractal is identified by its limit space and its dimension.
+And a small finite defect certifies nothing until the family, the units and the regime are declared.
+
+\paragraph{Open problems.}
+Beyond lens discovery and Euclidean path-metric limits, the main open questions are closure bounds that are small uniformly in the number of repetitions; coherent lenses for the original sphere $k$NN dynamics; recognition of an unknown manifold from a Markov metric without supplied landmarks; and a complete formalization of the continuum constructions.
+
+\paragraph{Conclusion.}
+Points, distances and curvature can be constructed from Markov dynamics together with a supplied lens, a declared accounting rule and, for curvature, declared recognition input, with every step audited and the key steps proved.
+The constructions do not show that space is inevitable; they show what it costs.
+A space-like layer exists when a lens makes the dynamics close, persist and agree with itself across scales, and its shape (taxicab, fractal or round) is fixed by the dynamics, the lens and the rule by which moves are composed and costed.
+In this sense the stone is not plotted in a space; the space is what becomes true about the stone once the six birds make a stable map possible.
+
+\section*{Declarations}
+
+\paragraph{Corresponding author.}
+Correspondence to Ioannis Tsiokos (\texttt{ioannis@automorph.io}).
+
+\paragraph{Competing interests.}
+The author declares no competing interests.
+
+\paragraph{Funding.}
+No external funding was received for this research.
+
+\paragraph{Ethics approval and consent to participate.}
+Not applicable; this study involves mathematics and computation only and uses no human participants, animal subjects or personal data.
+
+\paragraph{Data availability.}
+All generated artifacts (JSON certificates, audit records and figures) are available in the repository. No external datasets were used; all data are produced by the included scripts.
+
+\paragraph{Code availability.}
+Source code, Lean formalization, configurations and audit scripts are available at \url{https://github.com/ioannist/six-birds-space}. A permanent archive of an earlier release of the code (February 2026, accompanying versions 1 and 2) is deposited at Zenodo under DOI \href{https://doi.org/10.5281/zenodo.18595948}{10.5281/zenodo.18595948}; the constructions, certificates and figures of this version are in the repository.
+
+\paragraph{Author contributions.}
+I.T.\ is the sole author and was responsible for conceptualization, methodology, software, formal analysis, writing and visualization.
+
+\paragraph{Use of AI tools.}
+Large language model tools (Claude, Anthropic; Codex, OpenAI) were used for software development, for the mathematical review, proof development and verification of the constructions, for Lean formalization, and for drafting and checking the manuscript. The author directed the work and is responsible for its content.

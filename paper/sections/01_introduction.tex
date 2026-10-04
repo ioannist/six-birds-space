@@ -1,46 +1,118 @@
 \section{Introduction}
 \label{sec:introduction}
 
-To \emph{plot} an object is to treat it as if it already lives in a space: we assign locations, measure distances, and speak of surfaces and curvature as though these were primitive facts.  Yet in practice we never access ``space itself''---we access only interactions, constraints, and limited interfaces: what an observer can reliably distinguish, compress, and act upon.  Six Birds Theory (SBT)~\cite{SixBirdsTheory} takes this seriously: points, distances, and geometric laws are not axioms but \emph{closure artifacts} of stable compression under the six primitives.
+To \emph{plot} a stone is to treat it as if it already lives in a space: we give it a location, measure how far it is from other things, and speak of the surface it rests on as flat or curved.
+Yet nobody observes space directly.
+What an observer has is narrower: a record of how configurations change, and an interface that can tell some configurations apart and not others.
+Six Birds Theory (SBT)~\cite{SixBirdsTheory} takes this seriously and treats points, distances and geometric laws not as primitives but as \emph{closure artifacts}: structures that become available when repeated compression of a dynamics stabilizes.
+This paper asks what that means concretely.
+Starting from a finite Markov chain and nothing else, when can one construct points, a distance, and a notion of curvature, and how can one tell whether the result deserves to be called a geometry?
 
-This is a Research Article: it reports original computational experiments with reproducible configurations, committed run-pack artifacts, and mechanized Lean anchors, not a review, opinion, or purely theoretical contribution.
+\paragraph{The construction in one paragraph.}
+Microstates are grouped into blocks by a \emph{lens}; the blocks are the candidate points.
+Each block is represented by a \emph{prototype}, a probability distribution on its microstates.
+Lifting a block to its prototype, running the micro dynamics for $\tau$ steps, and recording which block the walker lands in gives a Markov kernel between blocks.
+Transition probabilities are symmetrized, each macro transition is assigned a cost, the negative logarithm of its symmetrized probability (floored away from zero), and the distance between two blocks is the cost of the cheapest chain of transitions connecting them.
+\Cref{fig:pipeline} summarizes the pipeline.
+Nothing in it refers to coordinates: whatever geometry appears is produced by the dynamics, the choice of lens, and the accounting rule.
 
-This paper asks a concrete question: \emph{how do you plot a stone if you are not allowed to assume space?}  A stone has microstructure (grains, pores, microfractures) and dynamics (how disturbances propagate, how configurations change).  An agent with finite bandwidth cannot retain all micro-detail; it must package.  If repeated packaging produces a stable notion of ``the same'' (macro states), if feasible moves compose into protocols, and if the costs of effecting or distinguishing moves become coherent across refinement, then a space-like layer becomes available.  In one line:
-\begin{quote}
-\noindent \textbf{Geometry is what you get when repeated packaging produces a stable notion of nearby, composition of moves, and cost of moving, and that structure closes under refinement.}
-\end{quote}
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=5mm and 6mm,
+  stage/.style={draw=black!55, rounded corners=2pt, fill=blue!4, align=center, font=\small, inner sep=4pt, minimum height=12mm, text width=24mm},
+  audit/.style={draw=black!35, rounded corners=2pt, fill=orange!6, align=center, font=\footnotesize, inner sep=3pt, text width=46mm},
+  arr/.style={-{Stealth[length=2mm]}, black!65, thick}
+]
+\node[stage] (micro) {micro kernel\\$P$ on $Z$};
+\node[stage, right=of micro] (lens) {lens $f\colon Z\to X$\\prototypes $U$};
+\node[stage, right=of lens] (macro) {macro kernel\\$K=UP^{\tau}C$};
+\node[stage, right=of macro] (cost) {edge costs\\$-\log\max(W,\eta)$};
+\node[stage, right=of cost] (metric) {path metric\\$d$ on $X$};
+\draw[arr] (micro) -- (lens);
+\draw[arr] (lens) -- (macro);
+\draw[arr] (macro) -- (cost);
+\draw[arr] (cost) -- (metric);
+\node[audit, below=8mm of lens, xshift=4mm] (gates) {\textbf{coherence audits}\\closure $\delta$, persistence $s$,\\route mismatch, distortion};
+\node[audit, below=8mm of cost, xshift=4mm] (readouts) {\textbf{geometric readouts}\\limit space, dimension,\\Hilbert obstruction, holonomy};
+\draw[arr, dashed] (macro.south) |- (gates.east);
+\draw[arr, dashed] (metric.south) |- (readouts.east);
+\end{tikzpicture}
+\caption{From dynamics to a metric. A lens groups microstates into macro states, prototypes lift macro states back to distributions, and staging for $\tau$ steps gives the macro kernel $K$. Symmetrized macro transition probabilities $W$ are converted into nonnegative edge costs, and the distance is the cheapest protocol (path) cost. Audits test whether the layer closes and persists; readouts describe the geometry it produces.}
+\label{fig:pipeline}
+\end{figure}
 
-The narrative of this paper parallels our companion work on emergent mathematics~\cite{ToCountAStone}: there we study how counting-like structure becomes stable under SBT closure; here we study how \emph{plotting-like} structure becomes stable.  The difference is one of emphasis.  ``Counting'' stabilizes a notion of quantity; ``plotting'' stabilizes a notion of \emph{location and transport}.  Both are instances of the same emergence calculus: staging (multi-scale refinement) and packaging (quotienting by indistinguishability) are forced by finite interfaces, while accounting turns feasibility into a ledger that can be optimized over protocols.
+\paragraph{When is it a geometry?}
+Any lens produces a distance matrix, so a distance matrix alone proves nothing.
+We require \emph{coherence}: the packaged layer must close (repackaging does not drift), its points must persist (prototypes are nearly fixed by the closed dynamics), and the induced distances must agree across a family of refining lenses once units are declared.
+\Cref{sec:closure} makes this precise.
+A central lesson of the paper is that coherence must be stated as a limit along an explicit refinement family, with explicit distance units: finite defect values, and phrases such as ``bounded defect'', carry no information on their own, because every total-variation defect is at most one and every distortion on a connected finite graph is finite.
 
-\paragraph{What we do (high level).}
-We start from a finite substrate of microstates with micro-dynamics (a Markov kernel).  At each stage we construct a lens (a packaging map) and prototypes that realize closure, yielding a macro kernel.  We then define distance from accounting: transition likelihood induces cost, and distance is the minimal cost of a protocol connecting macro states.  A geometric layer is said to exist when this induced metric structure is coherent across refinement, as quantified by a small set of diagnostics (idempotence and stability defects, route mismatch, inter-scale distortion, connectivity), and when curvature is detected as loop holonomy (protocol noncommutativity made geometric).
+\paragraph{What the paper establishes.}
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Foundations} (\cref{sec:construction,sec:closure}).
+The likelihood path distance is always an extended pseudometric, and identifying points at distance zero gives an extended metric.
+The closure and macro kernels are stochastic; a prototype's persistence defect equals its macro escape probability; and the worst escape is an upper bound on the closure defect on every microstate.
+These statements are mechanized in Lean~4.
+\item \textbf{Three coherent regimes} (\cref{sec:constructed}).
+With the original stage $\tau=5$, we construct nested lenses whose closure, persistence, route and normalized distortion defects vanish together, and identify the limit of the normalized metrics: block lenses on the original lazy grid walk (limit: the $L^1$ unit square); recursive cells on the original lazy gasket walk (limit: a compact self-similar space of Hausdorff dimension $\log 3/\log 2$, in which every ball of radius $2^{-j}$ about every point admits no Hilbert approximation with distance error at most $2^{-j}/16$); and nested cube cells on a new family of spherical reservoir chains (limit: the round unit sphere).
+\item \textbf{Curvature as route dependence of transport} (\cref{sec:curvature}).
+Holonomy is identified exactly with the noncommutation of covariant transport operators on a common section space, and a supplied spherical connection obeys an exact area law.
+The local-MDS and Procrustes holonomy estimator used in our pipeline is gauge invariant and separates our flat and curved test substrates, but it is not a consistent curvature estimator: on exact spherical distances its area-normalized output can converge to $\approx1.2032$ or to $0$ instead of $1$.
+A landmark-based transport estimator does converge, and the reservoir construction supplies the metric-error rate needed to apply it to actual Markov metrics.
+\item \textbf{Pythagoras as accounting} (\cref{sec:pythagoras}).
+For the isotropic lazy walk on the lattice $\Z^2$, a Fourier local limit estimate shows that the centred negative-log probability $F_n(z)$ after $n$ steps satisfies $|F_n(z)-2|z|^2/n|\to0$ uniformly on central windows $|z|\le R\sqrt n$, with explicit error bounds.
+Hence the readout $\sqrt{F_n(z)/2}$ converges uniformly to the Euclidean length $|z|/\sqrt n$ in diffusive units, and the coordinate-axis Pythagorean residual vanishes.
+A matched walk with correlated steps keeps a quadratic cost, but at the diagonal displacement $x=y=\lfloor\sqrt n\rfloor$ its axis residual tends to $-16/5$.
+\item \textbf{An audit of learned lenses} (\cref{sec:learned}).
+Lens ladders learned by spectral clustering give valid finite metrics with measurable, constraint-sensitive structure, but their finest levels have worst prototype defects of about $0.78$ (grid), $0.99$ (sphere) and $0.85$ (gasket).
+For the grid and gasket partitions no choice of prototypes can lower the worst defect.
+\end{enumerate}
 
-\paragraph{Computational contributions.}
-The concrete deliverables of this paper are algorithmic and software-engineering contributions:
-(i)~a modular pipeline for constructing graph distances and path-cost metrics from Markov kernels via spectral lens ladders, macro-kernel closure, and shortest-path optimization;
-(ii)~a diagnostic toolkit for auditing metric coherence across scales---including idempotence defect, prototype stability, route mismatch, inter-scale distortion, connectivity, and loop-holonomy curvature estimation via local multidimensional scaling (MDS) and Procrustes alignment;
-(iii)~reproducible experiment configurations, committed run-pack artifacts, and paper-ready comparison scripts that tie every quoted number to an auditable source;
-and (iv)~minimal Lean~4 mechanized anchors for the core metric constructions (triangle inequality via path concatenation, separation quotient).
-This work sits at the intersection of computational geometry, manifold learning, and representation auditing: we construct metrics from observations rather than assuming them, and we provide stability and coherence tests that distinguish genuine geometric signal from packaging artifacts.
+\begin{table}[t]
+\centering
+\small
+\caption{Summary of the regimes studied. ``Original'' dynamics are the lazy walks used throughout the paper; all lens families use stage $\tau=5$. Coherence means that closure, persistence, route and normalized distortion defects tend to zero together along the stated family (\cref{def:coherence}).}
+\label{tab:summary}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.12\textwidth}@{}}
+\toprule
+Regime & Micro dynamics & Lens & Outcome & Section \\
+\midrule
+Grid & original open-grid walk & nested blocks (supplied) & coherent; normalized metrics converge to the $L^1$ unit square & \cref{sec:grid} \\
+Gasket & original gasket walk & recursive cells (supplied) & coherent; normalized metrics converge to a compact self-similar space, $\dH=\log 3/\log 2$, with a quantitative local Hilbert obstruction & \cref{sec:gasket} \\
+Sphere & spherical reservoir chains (new) & nested cube cells (supplied) & coherent, including routes from every microstate; normalized metrics converge to the unit sphere; transport recovers curvature $1$ & \cref{sec:sphere,sec:transport-repair} \\
+Learned ladders & original grid, gasket, gated grid; sphere $k$NN walk & spectral $k$-means & valid finite metrics; persistence fails at fine levels & \cref{sec:learned} \\
+Staged accounting & original isotropic walk on $\Z^2$ & none (displacement) & centred cost $\to2|z|^2/n$ on diffusive windows; square-root readout $\to$ Euclidean distance & \cref{sec:pythagoras} \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\paragraph{Reader map: exhibits.}
-We emphasize falsification-first: each exhibit has a corresponding ``where it breaks'' analysis.  The core experimental exhibits are:
-\begin{itemize}
-  \item \textbf{E1 (plane-like)}: on a grid substrate with isotropic local moves, the emergent metric is coherent across scales (low defects, connected macro graph, bounded distortions).
-  \item \textbf{E2 (curvature as holonomy)}: a loop-based holonomy diagnostic concentrates near zero on plane-like substrates but shifts upward on sphere-like substrates, revealing curvature as protocol residue.
-  \item \textbf{E3 (fractal regime)}: on a Sierpi\'nski substrate, refinement does not smooth toward Euclidean neighborhoods but stabilizes in scale-space, separating fractal from smooth regimes.
-  \item \textbf{E4 (constraints deform geometry)}: imposing directional feasibility constraints induces anisotropic deformation of the emergent metric and its cross-scale coherence.
-  \item \textbf{E5 (Pythagoras emergence)}: using negative log transition probability as cost under isotropic staged diffusion, the stable accounting law becomes approximately quadratic and separable, yielding a Pythagorean structure; a Manhattan control fails as expected.
-\end{itemize}
+\Cref{tab:summary} collects these outcomes.
+Two features deserve emphasis.
+First, the coherent lenses are \emph{supplied}: they are written down using the structure of each substrate, not discovered from the kernel.
+The constructions therefore establish that coherent geometric layers exist under the stated dynamics, not that they can be found automatically.
+Second, the same local rule (hold with probability $\tfrac12$, otherwise step to a uniformly chosen neighbour) yields two different geometries depending on the readout.
+Under block lenses on the open grid, where only the boundary convention differs, the normalized protocol (shortest-path) metric converges to $L^1$ distance, whereas on the lattice the one-shot likelihood of a long staged displacement is asymptotically quadratic, and its square-root readout yields Euclidean distance.
+Which geometry ``emerges'' depends on how moves are composed and costed, a point we return to in \cref{sec:conclusion}.
 
-\paragraph{Reproducibility.}
-All experiments are runnable from configuration files in the repository (including end-to-end harness runs and a canonical holonomy run).  For writing stability, we also commit ``run packs'' under \texttt{docs/notes/runs/} containing the exact summary JSONs and plots referenced by the paper, together with paper-ready comparison figures and a quotables table.  This anchors the narrative to concrete, auditable artifacts rather than ad hoc screenshots.
+\paragraph{How the claims are established.}
+The paper uses four kinds of evidence, and each result states which ones it rests on in a short line beginning \emph{Basis}.
+\emph{Lean} means the statement, or the named bridge within its proof, is mechanized in Lean~4 against mathlib, with only the standard axioms (\cref{app:lean}).
+\emph{Written proof} means a conventional mathematical proof, given in the text or in \cref{app:proofs}.
+\emph{Exact computation} means a finite certificate checked in integer or rational arithmetic by a verifier that rebuilds it from the stated inputs.
+\emph{Floating computation} means an ordinary numerical experiment.
+Finite computations illustrate and check the universal arguments; they never substitute for them.
 
-\paragraph{Code availability.}
-The repository for this paper is available at:
-\begin{itemize}[noitemsep,topsep=2pt]
-\item \url{https://github.com/ioannist/six-birds-space}
-\end{itemize}
+\paragraph{Relation to other work.}
+This paper is the geometric instantiation of the emergence calculus of~\cite{SixBirdsTheory} and a companion to our treatment of emergent counting~\cite{ToCountAStone}.
+It draws on standard tools: Markov chains~\cite{Norris1997}, diffusion maps and spectral clustering for learned lenses~\cite{CoifmanLafon2006,vonLuxburg2007,Lloyd1982}, classical multidimensional scaling and Procrustes alignment~\cite{BorgGroenen2005,Schonemann1966}, Riemannian holonomy~\cite{Lee1997Riemannian}, fractal geometry~\cite{Falconer2003Fractal}, metric convergence~\cite{Gromov1999Metric}, and local limit theorems~\cite{Durrett2019Probability}.
 
 \paragraph{Roadmap.}
-Section~\ref{sec:six-birds-recap} recaps the six primitives and how they specialize to geometry.  We then present the emergent geometry construction (points as equivalence classes; distance as optimized accounting), the diagnostic toolkit, the experimental pipeline, and the exhibits, followed by robustness and failure modes and minimal Lean anchors.
+\Cref{sec:six-birds} recalls the six primitives and how they specialize to geometry.
+\Cref{sec:construction} defines the construction and proves its metric properties.
+\Cref{sec:closure} develops closure theory and states the coherence criterion.
+\Cref{sec:learned} audits learned spectral ladders, and \cref{sec:constructed} constructs the three coherent regimes.
+\Cref{sec:curvature} treats curvature, \cref{sec:pythagoras} the Pythagorean law, and \cref{sec:limits} robustness and scope.
+\Cref{sec:conclusion} interprets the results.
+The appendices contain the Lean map, proof details, reproduction instructions and the version history.
+All code, configurations, certificates and audit records are available at \url{https://github.com/ioannist/six-birds-space}.

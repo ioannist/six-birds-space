@@ -1,0 +1,70 @@
+\section{Robustness, failure modes and scope}
+\label{sec:limits}
+
+\subsection{Sensitivity of the learned pipeline}
+
+Fourteen sensitivity configurations perturb the canonical runs: eleven concern the learned ladders (stage, ladder range, prototypes, edge threshold, holonomy settings) and three concern the staged costs.
+\Cref{tab:sweeps} lists the learned-ladder audits; all values are floating computations.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Sensitivity of the learned pipeline: $\delta$ and $\max s$ at the finest level, $\RM$ the largest route mismatch over nested triples. Unless stated, $\tau=5$, levels $4$--$128$, uniform prototypes and $\varepsilon_{\mathrm{edge}}=10^{-15}$.}
+\label{tab:sweeps}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Substrate & Change & finest $m$ & $\delta$ & $\max s$ & $\RM$ \\
+\midrule
+Grid & none (canonical) & 128 & 0.311 & 0.783 & 0.139 \\
+Grid & $\tau=1$ & 128 & 0.300 & 0.403 & 0.107 \\
+Grid & $\tau=20$ & 128 & 0.278 & 0.939 & 0.134 \\
+Grid & levels $4$--$32$ & 32 & 0.324 & 0.508 & 0.125 \\
+Grid & levels $8$--$256$ & 256 & 0.307 & 0.869 & 0.154 \\
+Grid & stationary-conditional prototypes & 128 & 0.318 & 0.783 & 0.144 \\
+Grid & $\varepsilon_{\mathrm{edge}}=0.01$ & 128 & 0.311 & 0.783 & 0.139 \\
+Sphere $k$NN & none (canonical) & 128 & 0.267 & 0.985 & 0.112 \\
+Sphere $k$NN & $\tau=1$ & 128 & 0.528 & 1.000 & 0.187 \\
+Sphere $k$NN & $\tau=30$ & 128 & 0.240 & 0.996 & 0.057 \\
+Sphere $k$NN & stationary-conditional prototypes & 128 & 0.269 & 0.985 & 0.105 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Stage and resolution.}
+On the grid, shorter staging lowers the worst prototype defect ($0.40$ at $\tau=1$) and longer staging raises it ($0.94$ at $\tau=20$); a coarser ladder lowers it and a finer one raises it.
+No setting makes it small, which is what \cref{sec:constructed} leads one to expect when blocks contain only a few microstates.
+On the sphere $k$NN substrate the worst defect is at least $0.98$ in every sweep.
+
+\paragraph{Prototypes.}
+Stationary-conditional prototypes leave the worst grid defect at $0.783$, as \cref{thm:prototype-obstruction} predicts for any prototype choice on this partition.
+
+\paragraph{Connectivity.}
+The sweeps named for edge thresholding raise $\varepsilon_{\mathrm{edge}}$ to $0.01$ but remain connected, with no infinite distances; they do not demonstrate a disconnection failure.
+Disconnection is nevertheless a real failure mode: the test suite contains a threshold that does disconnect the macro graph, and in that case the global distortion audit fails rather than reporting a discrepancy over the surviving finite pairs.
+
+\paragraph{Holonomy settings.}
+Within the sphere pipeline (level $m=64$, $18$ chart neighbours), the median loop angle is $0.083$ over $369$ loops.
+A configuration with smaller charts and no expansion ($12$ neighbours, minimum overlap $6$), together with a different loop neighbourhood ($6$ instead of $8$) and loop budget ($800$ instead of $500$), leaves the median similar ($0.086$) but roughly halves the number of evaluable loops ($190$).
+Varying the stage moves the median between $0.066$ ($\tau=1$) and $0.106$ ($\tau=30$).
+The scores depend on chart parameters, as \cref{thm:mds-obstruction} explains they must.
+
+\paragraph{Staged costs.}
+Extending the isotropic stages to $\tau=256$ (stages $16$--$256$) on a torus of side $1024$ continues the trend of \cref{sec:pythagoras} (fit error $0.019$, median residual $0.008$).
+On a torus of side $32$ with $\tau$ up to $256$ the window condition $N>2\tau$ fails, yet the residuals are small (median $0.0003$ at $\tau=256$).
+This is not evidence for the quadratic law: on a fixed torus the walk approaches the uniform law, and every cost surface flattens.
+Small residuals certify nothing unless the regime conditions of \cref{cor:quadratic} hold.
+
+\subsection{Scope}
+
+The results are precise, and so are their limits.
+\begin{itemize}[leftmargin=*]
+\item \textbf{Existence, not discovery.} The coherent lenses of \cref{sec:constructed} are supplied using the structure of each substrate. No algorithm in this paper finds them from an unlabelled kernel, and the learned spectral ladders do not meet the coherence criterion.
+\item \textbf{Joint limits.} Coherence is proved along families in which the substrate grows together with the lens. A fixed finite substrate cannot satisfy the requirement that the number of macro states grows, and for the lazy grid walk persistence fails at the finest (singleton) resolution (\cref{sec:closure}).
+\item \textbf{Finite horizon.} Closure is controlled for a fixed number of repetitions only; the bound grows linearly with the horizon.
+\item \textbf{Declared units and domains.} Distortion vanishes in declared normalized units, not in raw cost units. Route coherence is proved on prototype inputs for the grid and the gasket, and on every microstate for the sphere.
+\item \textbf{Modified spherical dynamics.} The curved construction replaces the $k$NN walk by reservoir chains whose contact law encodes the sphere. Coherence of the original sphere $k$NN ladder is not established.
+\item \textbf{Curvature.} The local-MDS scores measure route dependence of an estimated connection, not Riemannian curvature, and the estimator is not consistent. The landmark estimator is consistent under a spherical model with marked landmarks; it does not recognize an unknown manifold.
+\item \textbf{Euclidean geometry.} Euclidean distance arises as the square-root readout of a one-shot staged cost on the lattice. No macro shortest-path metric in this paper is shown to converge to a Euclidean space; on the grid it converges to $L^1$.
+\item \textbf{Finite diagnostics.} Dimension proxies are not dimensions, finite nonembedding witnesses do not classify fractals, and finite holonomy scores are not curvature estimates.
+\item \textbf{Formal verification.} Lean covers the metric and closure foundations and the quantitative bridges named in each \emph{Basis} line. The Fourier estimate, the recursive gasket limit and its dimension, the reservoir construction and the differential geometry of the sphere are written proofs; the numerical code is tested but not formally verified. The written proofs have not been independently refereed.
+\end{itemize}

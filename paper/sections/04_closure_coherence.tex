@@ -1,0 +1,117 @@
+\section{Closure, persistence and coherence}
+\label{sec:closure}
+
+A lens always produces a distance matrix.
+This section introduces the audits that decide whether the packaged layer behaves like a stable description, proves the identities that make them computable, and states the coherence criterion used in the rest of the paper.
+Throughout, $\TV(\mu,\nu)=\tfrac12\|\mu-\nu\|_1$ is total variation distance.
+
+\subsection{Closure and persistence defects}
+
+The closure $E$ of~\eqref{eq:closure-macro} would be a projection if applying it twice changed nothing.
+We measure the departure from idempotence by the worst case over point masses,
+\begin{equation}
+\delta\coloneqq \max_{z\in Z}\TV\bigl(\delta_zE^2,\ \delta_zE\bigr).
+\label{eq:delta}
+\end{equation}
+Every distribution is a convex combination of point masses, so the same number bounds $\TV(\mu E^2,\mu E)$ for every distribution $\mu$, and the bound is attained.
+Points should also persist: the closed dynamics should nearly fix each prototype.
+The \emph{prototype} (persistence) \emph{defect} of $x\in X$ is
+\begin{equation}
+s(x)\coloneqq \TV\bigl(u_xE,\ u_x\bigr),
+\label{eq:stability}
+\end{equation}
+and we report its mean and its worst case $\max_x s(x)$.
+The \emph{escape probability} of $x$ is $1-K_{xx}$, the probability that a walker started from $u_x$ is outside block $x$ after $\tau$ steps.
+
+\begin{proposition}[Closure identities]
+\label{prop:closure-basic}
+Let $P$ and $U$ be stochastic and let the prototypes be supported on their fibres.
+\begin{enumerate}[label=(\roman*)]
+\item $E$ and $K$ are stochastic, and $UC=I$.
+\item Lifting by $U$ preserves the $\ell^1$ norm of every signed macro vector: $\|vU\|_1=\|v\|_1$.
+\item Each prototype defect equals the escape probability: $s(x)=1-K_{xx}$.
+\item The closure defect on every microstate is bounded by the worst escape:
+$\delta\le\max_{x}(1-K_{xx})$.
+\item For every distribution $\mu$ and $k\in\N$, $\TV(\mu E^{k+1},\mu E)\le k\,\delta$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) Products of stochastic matrices are stochastic, $C$ is stochastic because $f$ is a function, and fibre support gives $UC=I$.
+(ii) The rows of $U$ have disjoint supports and unit mass, so $\|vU\|_1=\sum_x|v_x|\,\|u_x\|_1=\|v\|_1$.
+(iii) Write $B=P^{\tau}C$, so $E=BU$ and $K=UB$.
+Then $u_xE-u_x=(K_{x\cdot}-e_x)U$, and by (ii) its total variation is $\tfrac12\|K_{x\cdot}-e_x\|_1=1-K_{xx}$.
+(iv) The identity $E^2-E=(BU)^2-BU=(B(UB)-B)U=B(K-I)U$ shows that row $z$ of $E^2-E$ is $(B_{z\cdot}(K-I))U$.
+By (ii) its total variation is $\tfrac12\|B_{z\cdot}(K-I)\|_1$; as $B_{z\cdot}$ is a distribution, convexity bounds this by $\max_x\tfrac12\|K_{x\cdot}-e_x\|_1=\max_x(1-K_{xx})$.
+(v) By induction, using $\TV(\mu E^{j+1},\mu E^{j})\le\delta$ for the distribution $\mu E^{j-1}$ and the triangle inequality.
+\end{proof}
+
+\provenance{Lean: \lean{closure_and_macro_stochastic}, \lean{lift_coarse_identity}, \lean{fiber_push_l1_isometry}, \lean{prototype_stability_eq_escape}, \lean{closure_defect_factorization}, \lean{closure_defect_le_macro_escape}, \lean{totalVariation_extreme_point_iff} and \lean{closure_repetition_bound} in \lean{MarkovClosure.lean}.}
+
+Part (iv) is the workhorse of \cref{sec:constructed}: to control closure on \emph{every} microstate it suffices to bound how much probability leaves each block, which is a statement about the prototypes alone.
+Part (v) is deliberately weak.
+Repeating the closure $k$ times can drift by up to $k\delta$ (and trivially by at most $1$); nothing in this paper provides a bound that is both small and uniform in the number of repetitions.
+
+Two cautions shape the coherence criterion below.
+First, every total-variation defect lies in $[0,1]$, so saying that $\delta$ is ``bounded'' says nothing; only smallness relative to a declared tolerance, or convergence to zero along a family, is informative.
+Second, persistence cannot be demanded all the way down to single microstates.
+For the lazy grid walk (holding probability $\tfrac12$) on a grid of side at least two, with singleton fibres ($C=U=I$, $\tau=1$), every prototype defect is $1-P_{zz}=\tfrac12$, whatever the grid size.
+Conversely, a small idempotence defect does not imply persistence: the two-state kernel with all entries $\tfrac12$ is exactly idempotent, yet its singleton prototypes have defect $\tfrac12$.
+Persistence is a property of blocks that are large compared with the distance a walker travels in $\tau$ steps.
+
+\subsection{Refinement: routes and distortion}
+
+Geometry is a multi-scale claim, so the audits must also compare lenses.
+A \emph{refinement ladder} is a sequence of lenses $f_0,f_1,\dots,f_L$ (coarse to fine) with containment maps $r\colon X_{j+1}\to X_j$ satisfying $f_j=r\circ f_{j+1}$.
+
+\paragraph{Route mismatch.}
+For a nested triple of fine, middle and coarse lenses (subscripts $\mathrm f,\mathrm m,\mathrm c$), the coarse label can be reached from fine prototypes directly, or by stopping at the middle scale to repackage:
+\begin{equation}
+A\coloneqq U_{\mathrm f}P^{2\tau}C_{\mathrm c},
+\qquad
+V\coloneqq U_{\mathrm f}P^{\tau}C_{\mathrm m}U_{\mathrm m}P^{\tau}C_{\mathrm c}.
+\end{equation}
+Both routes use the same total time $2\tau$.
+The \emph{route mismatch} is $\RM\coloneqq\max_{x}\TV(A_{x\cdot},V_{x\cdot})$, a maximum over fine prototype inputs.
+Replacing $U_{\mathrm f}$ by the identity gives the stronger \emph{all-microstate} route mismatch, a maximum over every micro point mass; we state which version a result controls.
+
+\paragraph{Distortion in declared units.}
+Distances at different scales are measured in different units: refining the lens multiplies the number of steps between far-apart points and changes the cost per step.
+A coherence statement must therefore declare a unit $\lambda_j>0$ at each scale and compare normalized distances $\rho_j=d_j/\lambda_j$.
+The \emph{normalized distortion} between adjacent scales is
+\begin{equation}
+\Dist(j{+}1\to j)\coloneqq\max_{a,b\in X_{j+1}}\bigl|\rho_{j+1}(a,b)-\rho_j\bigl(r(a),r(b)\bigr)\bigr|.
+\label{eq:distortion}
+\end{equation}
+In the exploratory runs of \cref{sec:learned} no unit is declared in advance; instead a scale factor $\alpha$ is fitted by least squares through the origin and the \emph{fitted raw distortion} $\max|d_{j+1}(a,b)-\alpha\,d_j(r(a),r(b))|$ is reported in cost units.
+The two notions are different.
+If instead the raw comparison uses the prescribed unit ratio $\lambda_{j+1}/\lambda_j$ as its coefficient, the raw distortion is exactly $\lambda_{j+1}$ times the normalized distortion; a fitted coefficient gives a different number.
+In the constructions of \cref{sec:constructed} normalized distortion tends to zero while raw distortion with the prescribed ratio need not, because the units grow; the declared unit is part of the result.
+A distortion audit also requires every pair to be finite: if the macro graph is disconnected the global audit fails, and a discrepancy computed only over pairs that happen to be finite at both scales is not evidence of coherence.
+
+\subsection{The coherence criterion}
+
+\begin{definition}[Coherent refinement family]
+\label{def:coherence}
+Fix a stage $\tau$.
+A \emph{refinement family} is a sequence, indexed by $k$, of micro kernels $P_k$, each with a nested ladder of a fixed number $L+1\ge3$ of lenses $f_{k,0},\dots,f_{k,L}$ (coarse to fine), fibre-supported prototypes, floors, thresholds and declared distance units.
+The family is \emph{coherent} if, as $k\to\infty$,
+\begin{enumerate}[label=(\alph*)]
+\item the maximum over levels of the closure defect $\delta$ and of the worst prototype defect $\max_x s(x)$ tends to zero;
+\item every macro graph is connected;
+\item the maximum route mismatch over the nested triples of consecutive levels tends to zero;
+\item the maximum normalized distortion over adjacent levels tends to zero; and
+\item the layer does not degenerate: at every level the number of macro states tends to infinity, while the normalized diameters stay bounded away from zero.
+\end{enumerate}
+All our constructions use three-level ladders ($L=2$).
+\end{definition}
+
+Condition (e) excludes trivial ways of passing (a)--(d), such as keeping a fixed number of blocks or collapsing all distances.
+Two further remarks fix the scope of the definition.
+The micro kernel is allowed to change with $k$: in our constructions the substrate and the lens are refined \emph{jointly}, and no statement is made about refining one fixed finite substrate indefinitely: a fixed finite substrate has boundedly many macro states and so cannot satisfy condition (e), and for the lazy grid walk persistence also fails at singleton resolution.
+And making transitions artificially slow would shrink escape probabilities without producing any geometry, so the dynamics must be declared before the audits are run.
+In the grid and gasket constructions the micro kernel is the original lazy walk at every size; in the spherical construction the kernel family and all its parameters are specified in advance as functions of $k$ (\cref{sec:sphere}).
+The stage is $\tau=5$ throughout.
+
+When a family is coherent, the normalized metric spaces $(X_k,\rho_k)$ may converge to a compact limit.
+That limit, together with readouts such as its dimension, its local embeddability and its holonomy, is the \emph{emergent geometry} of the family.

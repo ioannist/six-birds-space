@@ -1,0 +1,37 @@
+\section{Lean formalization}
+\label{app:lean}
+
+The Lean~4 development lives in \texttt{lean/}; it uses toolchain \texttt{v4.27.0}, with the mathlib revision pinned in the lake manifest.
+It is built with \texttt{lake build}, and \texttt{lake env lean Audit.lean} prints the transitive axioms of $59$ declarations.
+Each depends only on Lean's standard foundations (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}, or a subset of them); there are no added axioms and no \texttt{sorry}.
+\Cref{tab:lean} maps the modules to the results of the paper.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Lean modules and the statements they support.}
+\label{tab:lean}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.14\textwidth}@{}}
+\toprule
+Module & Content & Used in \\
+\midrule
+\lean{PathMetric} & Weighted finite protocols with costs in $[0,\infty]$; concatenation and reversal; zero self-distance, triangle inequality and symmetry of the protocol infimum; the extended pseudometric space. & \cref{prop:metric} \\
+\lean{QuotientMetric} & Ordinary and extended separation quotients, preserving distances; applied to the weighted protocol distance. & \cref{prop:metric} \\
+\lean{LikelihoodCost} & Nonnegativity of $-\log\max(p,\eta)$ for $p\le1$, $0<\eta\le1$, and its faithful encoding in $[0,\infty]$. & \cref{sec:costs} \\
+\lean{MarkovClosure} & Stochasticity of $P^\tau CU$ and $UP^\tau C$; $UC=I$; extreme-point TV criterion; closure-defect factorization; fibre-lift $\ell^1$ isometry; persistence equals escape; closure bounded by escape; finite-horizon repetition bound. & \cref{prop:closure-basic}, \cref{sec:constructed} \\
+\lean{PrototypeObstruction} & Lower bound on the persistence defect of every fibre-supported prototype from fibre return probabilities. & \cref{thm:prototype-obstruction} \\
+\lean{EuclideanObstruction} & Four-point inequality in real inner-product spaces; no uniform Hilbert approximation under a strict interval gap; gasket cost brackets and the finite and limiting quadrilateral gaps. & \cref{sec:nonembedding}, \cref{thm:gasket,thm:gasket-limit} \\
+\lean{QuadraticLimit} & Logarithm bounds from relative probability error; uncentred and centred cost errors; axis-residual bound. & \cref{cor:quadratic} \\
+\lean{Pythagoras} & Classical Pythagoras in inner-product spaces; square-root readout bound from a uniform quadratic-cost bound. & \cref{cor:quadratic} \\
+\lean{Connection} & Covariant shifts of group-valued frame fields; commutation iff trivial square holonomy (including abelian groups); gauge laws; triangle route criterion; common-chart cancellation. & \cref{thm:commutator,thm:mds-obstruction} \\
+\lean{TransportError} & Error of a product of three approximate contractions in a normed ring; division of angle error by positive area. & \cref{thm:landmark,thm:markov-curvature} \\
+\lean{CoherentMetric} & Exponential probability brackets to floored likelihood costs; reference-distance domination along every protocol; bracket on the protocol infimum. & \cref{thm:sphere} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Trust boundary.}
+The Lean development proves the general metric and closure facts and the quantitative bridges that connect probability estimates to costs, residuals, readouts and transport errors.
+It does not contain the substrate-specific estimates (block counting on the grid, the gasket interface constant and recursive graph laws, the reservoir flux and mesh estimates), the Fourier local limit theorem, the construction of the gasket limit space and its Hausdorff dimension, or the differential geometry of the sphere; these are the written proofs of \cref{app:proofs}.
+Exact certificates (integer recurrences, rational logarithm and exponential enclosures, exact shortest paths) are checked by Python verifiers that rebuild them from their inputs; they are outside Lean's trust boundary, and no Lean theorem imports their outputs as premises.
+Floating-point code is tested ($112$ tests) but not formally verified.

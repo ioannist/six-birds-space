@@ -23,3 +23,27 @@ lean/lake-packages/
 
 # OS
 .DS_Store
+
+# Credentials and local environment
+.env
+.env.*
+*.pem
+*.key
+
+# AI agent state, settings and transcripts
+.claude/
+.codex/
+.cursor/
+.aider*
+.gemini/
+*.transcript
+*transcript*.jsonl
+paper/.codex_thread_id
+
+# LaTeX build byproducts (contain local paths); main.pdf, main.bbl and main.flattened.tex stay tracked
+paper/*.aux
+paper/*.log
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.blg
+paper/*.out
